@@ -1,18 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%
-% DEFINITIONS AND COMMANDS
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% MARGINS:
-%
 %\textwidth 6.5in \oddsidemargin 0in \evensidemargin 0in \textheight
 %8.5in \topmargin -3.5in
 
-%
-% LOAD PACKAGES:
-%
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -22,30 +11,29 @@
 \usepackage{unh_thesis}
 %\usepackage{harvard}
 \usepackage{Times}
+\usepackage[bookmarks=true, colorlinks=true, citecolor=blue,
+urlcolor=blue, linkcolor=black]{hyperref}
 
-%%My own packages
 \usepackage[T1]{fontenc}
-\usepackage[left=1.55in,top=1.1in,right=1.1in,bottom=1in]{geometry}    %HP laserjet 3600
-%\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=black, citecolor=black, urlcolor=black]{hyperref}
-\usepackage{graphicx}
-\usepackage[round]{natbib}
-% packages added by Gopal
-\usepackage{lscape}
-\usepackage{multirow}
-\usepackage{supertabular}
-\usepackage{rotating}
-%\usepackage{pstricks}
-\usepackage{longtable}
-\usepackage{threeparttable}
-\usepackage{mathtools}
-\usepackage{relsize}
-%\usepackage{caption}
+\usepackage[left=1.55in,top=1.1in,right=1.1in,bottom=1in]{geometry}    %HP
+% laserjet 3600
+%\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=black,
+% citecolor=black, urlcolor=black]{hyperref}
+\usepackage{graphicx} \usepackage[round]{natbib} % packages added by Gopal
+\usepackage{lscape} \usepackage{multirow} \usepackage{supertabular}
+\usepackage{rotating} %\usepackage{pstricks}
+\usepackage{longtable} \usepackage{threeparttable} \usepackage{mathtools}
+\usepackage{relsize} %\usepackage{caption}
 %\DeclareMathSizes{12}{20}{14}{10}  % For size 12 text
 %\DeclareMathSizes{11}{19}{13}{9}   % For size 11 text
-\DeclareMathSizes{10}{18}{12}{8}   % For size 10 text
-% This package and new command were added by Gopal to use in the creating long tables, tables spanning multiple pages. %The issue  was that pre-defining the parboxes for a long table automatically justified the text. This command keeps %the box sizes and aligns the text to the left of the box. so instead of "p" for defining a parbox in a table an "x" is used which is \raggedright (means flushes to left)
-\usepackage{array}
-\newcolumntype{x}[1]{%
+\DeclareMathSizes{10}{18}{12}{8}    % For size 10 text
+% This package and new command were added by Gopal to use in the creating long
+% tables, tables spanning multiple pages. %The issue  was that pre-defining the
+% parboxes for a long table automatically justified the text. This command keeps
+% %the box sizes and aligns the text to the left of the box. so instead of "p"
+% for defining a parbox in a table an "x" is used which is \raggedright (means
+% flushes to left)
+\usepackage{array} \newcolumntype{x}[1]{%
 >{\raggedright\hspace{0pt}}p{#1}}%
 
 %My own added commands
@@ -69,6 +57,7 @@
 
     \newcommand{\DP}[2]{\frac{\partial #1}{\partial #2}}
     \newcommand{\DF}[2]{\frac{#1}{ #2}}
+
 %Commands related to figures
 %    \setlength{\abovecaptionskip}{-1mm}
 %    \renewcommand\floatpagefraction{.9}
