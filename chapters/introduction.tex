@@ -1,11 +1,419 @@
 \chapter{INTRODUCTION}              % <- Your first chapter title.
 \pagenumbering{arabic}              % <- Do this command only for
                                     %    the first chapter!
-\section{General}
-\par \indent
+                                    
+This research proposal is based on the following premises:
 
-There is recent interest in cross-flow turbines.
+\begin{itemize}
 
-\section{Problem Statement}
-\par \indent
-This is the problem statement.
+	\item Cross-flow turbines (CFTs) are worth considering for some wind and marine
+	hydrokinetic (MHK) energy applications.
+	
+	\item Engineers currently do not have adequate computationally affordable
+	modeling tools to design these types of turbines. Because behavior cannot be
+	predicted easily, devices cannot be optimized.
+	
+	\item Present methods for array design need at the very least to be
+	recalibrated for CFTs. Higher fidelity models fail to capture the benefits of
+	using cross-flow turbines instead of axial-flow turbines, rendering them
+	somewhat useless.
+	
+	\item Actuator line models (ALMs) allow for reasonably accurate performance and
+	detailed flow predictions in Navier--Stokes simulations, with lower
+	computational cost compared with blade-resolved techniques, making them ideal
+	for high fidelity array analysis.
+ 
+\end{itemize}
+
+Since there is currently no open-source ALM for cross-flow turbines, it is
+proposed that one be developed for use with the OpenFOAM computational fluid
+dynamics framework. This model is to be validated with extensive tow tank
+experiments, performed at sufficiently high Reynolds number, using turbines with
+significantly different geometric parameters.
+
+
+\section{What are cross-flow turbines and why do they matter?}
+
+A cross-flow turbine (CFT) is a device that converts a fluid's kinetic energy to
+shaft work, which has its axis of rotation perpendicular to the flow. A familiar
+example is the Darrieus vertical-axis wind turbine (VAWT) concept, investigated
+thoroughly in the late 1970s through the early 1990s by groups including Sandia
+National Laboratories (SNL) in the US and the National Research Council (NRC) in
+Canada \cite{Para2002}. The CFT concept has been nearly abandoned for
+large-scale onshore wind, but today is being applied or considered for floating
+offshore wind \cite{Sandia2012, Paulsen2011}, smaller-scale wind
+\cite{Giges2012}, and marine hydrokinetic (MHK) energy conversion, e.g., in
+tidal and river flows.
+
+There are good reasons why the three-bladed, horizontal-axis propeller-type
+axial-flow turbine (AFT) concept has become the design of choice for large scale
+onshore wind. Axial-flow turbines are easier to analyze (for higher power
+coefficients $C_P = P/(1/2 \rho A U_\infty^3)$) since their operating principles
+can be though of as an essentially steady flow over a foil before stall. AFTs
+also have the benefit of research ``inertia''---a lot has been invested and a
+lot of knowledge has accumulated already. As a result, the designs are quite
+mature, for wind energy at least. In contrast, the CFT has been studied and
+applied significantly less, though there have been cases where CFTs have
+performed nearly equivalently well as AFTs. However, CFTs are harder to design,
+since their blades are constantly changing their angles of attack throughout the
+turbine's rotation, often undergoing dynamic stall as part of normal operation
+\cite{Para2002}. Beside their unpredictability, the highly oscillatory blade
+loading presents significant design challenges for avoiding fatigue---a main
+cause for failure or premature retirement of the large Darrieus wind turbines.
+
+Despite their shortcomings, CFTs still may be valuable in some cases. They are
+simpler, omni-directional machines, which negates the need for yawing and
+pitching mechanisms. In the wind field, CFTs show promise for projects where
+space is limited, e.g., urban environments, as adjacent turbines sometimes
+interact ``constructively'' to increase each other's power outputs
+\cite{Li2010}---a trait not possessed by AFTs. A group from the California
+Institute of Technology has shown that arrays of VAWTs can potentially provide
+an order-of-magnitude increase in the power output per land area of a wind
+turbine array, since the devices can be spaced more closely than HAWTs
+\cite{Dabiri2011}. Field measurements have shown that their wakes recover more
+quickly than those of AFTs, and this cannot be entirely attributed to higher
+turbulence generation \cite{Kinzel2012}.
+
+For MHK development, a field much less mature than wind power, the cross-flow
+turbine concept is playing a major role thanks to its omni-directionality and
+flexibility with respect to frontal area shape, allowing for more precisely
+tuned fitment in channels with complex bathymetry or installed structures.
+Chosen by the Ocean Renewable Power Company (ORPC) for their TidGen design, a
+cross-flow turbine was the first grid-connected tidal energy device in the US,
+which was installed in Cobscook Bay, ME \cite{ORPC2012}. Today, ORPC is working
+on improving their turbine's performance, and planning for the installation of 4
+more turbines \cite{Nelson2013}. As will be discussed in the following section,
+present predictive capability is significantly less than adequate, for both
+individual devices and arrays, which is a primary motivation for this research.
+
+
+\section{The state of engineering tools for CFTs}
+
+\subsection{For individual devices}
+
+Presently, the most reliable predictor of turbine performance is physical
+modeling (building prototypes or copying existing designs that have been
+field-tested), so long as important dynamical scales (Reynolds number, mainly)
+are sufficiently matched. It has been shown that performance becomes essentially
+Reynolds number independent at an approximate blade chord Reynolds number $Re_c
+\approx \lambda U_\infty c / \nu = O(10^5)$ \cite{Bravo2007}, which was
+confirmed by experiments with a reference turbine in the UNH tow tank
+\cite{Bachant2014}. However, experiments at this scale can be quite expensive.
+For example, a turbine with a 1 m diameter and 10 cm chord would need to be
+tested in a flow on the order of 1 m/s in water and 10 m/s in air. For a turbine
+this large it is typically impractical to manufacture many prototypes to find
+the optimal design, so numerical modeling is preferred. There exists a large
+spectrum of numerical modeling techniques with widely varying computational cost
+and fidelity, and sometimes only the most complex and computationally expensive
+are trustworthy.
+
+Momentum models are the simplest and cheapest, where the turbine blades are
+discretized into blade elements, for which 2-D static lift and drag data are
+tabulated. The relative velocity and angle of attack for a blade element are
+calculated by seeking a balance between forces computed from the static foil
+data and the rate of change of momentum of the fluid passing by the blade
+element. Momentum methods break down for large streamwise forces, i.e.,
+``induction factors''---common in water and high solidity turbines---and must be
+corrected empirically. Despite their deficiencies, these models can do a
+reasonable job for low solidity (ratio of blade planform area to swept area)
+turbines when combined with corrections for dynamic loading, the most prominent
+cause of which is dynamic stall \cite{Para2002}. A double multiple streamtube
+(DMS) momentum model can compute a full turbine performance curve in seconds on
+a modern desktop computer.
+
+Vortex line methods are similar to momentum models, except blade element local
+velocity is computed using potential flow theory, where lifting bodies are bound
+vortex lines that shed vortex wake elements whose influences are combined via
+the Biot--Savart law \cite{Strickland1979}. Sandia National Labs' CACTUS is an
+example of a vortex method \cite{Murray2011}. CACTUS has been tested against
+experimental data from large, low-solidity wind turbines (those for which
+momentum models do well), but has been shown to fail for smaller turbines in
+water, which are typically higher solidity \cite{Michelen2014}. Regarding
+computing effort, vortex line methods can compute a full turbine performance
+curve in minutes---slightly longer than the DMS method, but still quite fast.
+The increase in accuracy of the flow field prediction and the robustness with
+respect to high turbine loading justify the slightly higher expense of the
+vortex line method.
+
+A more sophisticated vortex model is the so-called panel method, where turbine
+geometry can be specified arbitrarily as potential flow boundary elements,
+negating the need for sectional foil coefficient tables. This is a significantly
+more computationally expensive model. A single turbine operating point (not a
+curve) may take hours on a conventional desktop PC. Furthermore, boundary layer
+models are necessary to predict the occurrence and consequences of dynamic
+stall \cite{Zanon2012}.
+
+The most computationally expensive models solve the Navier--Stokes equations,
+with turbulence modeled with Reynolds-averaging (RANS) or large eddy simulation
+(LES)---the former being relatively less expensive, since LES directly solves a
+larger portion of the energy spectrum of turbulence. If a body-fitted grid is
+used, the actual turbine geometry is included as part of the computational
+domain, and the mesh is generally refined next to the solid surfaces to resolve
+the boundary layer, i.e., with cells adjacent to walls having a nondimensional
+wall distance $y^+ \sim 1$. When only run in two dimensions, RANS methods are
+affordable enough to be run on a single CPU, computing a single turbine
+operating point in hours. However, 3-D effects are important enough that 2-D
+simulations are not reliable, at least as predictors of absolute performance
+\cite{Li2013}. 3-D simulations with a body-fitted grid are very expensive
+(especially for LES), therefore are practically limited to high performance
+computing (HPC) clusters. Even with the high computational expense, these models
+are not perfect and results can deviate significantly from experimental
+measurements, especially when using RANS models \cite{Li2013}.
+
+Actuator line models (ALMs) are a mixture of the blade element and
+Navier--Stokes methods. The turbine is not part of the mesh, but is represented
+by lines that move through the flow, acting as momentum sinks, where the
+resultant force is computed using 2-D foil data. Negating the need for a
+body-fitted grid and resolving the boundary layer removes a significant amount
+of computational effort, but the flow field is still computed more accurately
+than with momentum or vortex methods, since nonlinear effects and turbulence are
+included in the RANS or LES equations.
+
+
+\subsection{For arrays}
+
+Effective turbine array engineering directly depends on accurate prediction of
+turbine wake generation, evolution and interaction, along with the impact of
+various types of turbulent inflow on power production of each device. Like for
+individual turbines, physical modeling is an option for predicting array
+performance, though it becomes even more expensive to match relevant dynamical
+scales. For this reason, turbine arrays are mainly designed using numerical
+methods.
+
+The contemporary industry standard method for predicting array performance
+involves the superposition of prescribed wakes \cite{Stevens2014b}. Evolution
+can be dependent on a single expansion coefficient chosen by the free stream
+turbulence intensity \cite{Jensen1983, Choi2013} or computed by a solution of
+the linearized RANS equations with an empirically derived constant eddy
+viscosity closure \cite{Ainslie1988}. In light of the CFT's unique near-wake
+dynamics, the valitidy of these models is questionable. At the very least they
+would need to be recalibrated for CFTs, though their applicability is limited in
+the near-wake of any turbine, meaning they are generally inappropriate for
+closely-spaced arrays.
+	
+The next step up in complexity is the actuator disk method, where a constant
+body force is added to the Navier--Stokes equations. This method can be
+computationally cheap with RANS, or quite expensive and thorough with LES. The
+ORPC turbine array is being laid out using the SNL-EFDC code, which uses a
+constant uniform force applied to the RANS equations, where the turbine injects
+turbulence kinetic energy and dissipation for the model's $k$--$\epsilon$
+closure \cite{Nelson2013}. These models will most likely fail to predict the
+fast wake recovery of CFTs, as they do not resolve the blade forces that create
+the unique mean flow field in the near-wake \cite{Bachant2014_JOT}.
+	
+At present simulations with body-fitted grids are limited to one or two turbines
+due to computational cost, which means they are impractical for full array
+simulations. Thus the actuator line method, when combined with LES, is the most
+complex model being used today. The ALM has the benefit of resolving unsteady
+flow features created by periodic blade forcing and end effects, ultimately
+producing the most accurate parameterization for turbine induced forces in
+Navier--Stokes simulations. It has been shown in blind axial-flow turbine
+modeling tests that ALM/LES methods fair better when predicting turbine induced
+turbulence, and therefore will be more accurate at predicting flow within a
+turbine array \cite{Krogstad2013}.
+
+
+\section{Developing the cross-flow turbine actuator line model}
+
+As described in the previous section, the actuator line model is valuable in
+that it can be used to predict both the performance and wake of a turbine. It
+can also be applied to high fidelity modeling of turbine arrays thanks to its
+time-resolved nature. The ALM also eliminates the need for complex grids, which
+is a significant simplification since mesh generation is arguably the largest
+impediment to automation in CFD \cite{Slotnick2014}. Computational effort will
+also be significantly reduced since the ALM does not need a rotating mesh, and
+small cells near the turbine blade surface can be eliminated.
+
+The proposed model will have some of the drawbacks of momentum and vortex
+methods for predicting performance, namely the reliance on static foil data.
+However, the flow field, and therefore relative velocity and blade angle of
+attack will be predicted more accurately, and should therefore produce more
+accurate predictions of turbine performance and wake characteristics.
+
+\subsection{Experimental work}
+
+In order to benchmark numerical models and further understand the flow physics
+of the CFT wake, we have developed an automated turbine test bed. Note that this
+work included a complete redesign of the UNH tow tank's motion, control, and
+data acquisition systems. We have also developed a reference vertical-axis
+turbine (UNH-RVAT) and collected a baseline performance and near-wake dataset,
+which has been made publicly available \cite{Bachant2014_data}. From these
+measurements we have identified that the unique mean velocity field in the
+near-wake advects momentum and energy axially, which contributes significantly
+to near-wake recovery \cite{Bachant2014_JOT}.
+
+We have also preliminarily quantifed scaling ($Re$) effects to ensure results
+will be relevant to full-scale, confirming that performance becomes Reynolds
+number independent at $Re_c \approx 2 \times 10^5$, and near-wake
+characteristics slightly lower \cite{Bachant2014}. Further analysis will be done
+to analyze the effects of $Re$ on the relative importance of mean and turbulent
+flow mechanisms governing near-wake dynamics, similar to that of
+\cite{Bachant2014_JOT}, to assess the ability of scaled physical model arrays to
+predict accurately the flow through full-scale arrays.
+
+Regarding additional experimental work, an SNL/DOE reference model ``RM2''
+cross-flow turbine will be built and an additional dataset will be collected.
+These tests will help diagnose issues with CACTUS by also measuring the effects
+of strut drag. They will also provide a validation case for the ALM using a
+turbine with relatively low solidity---4\% versus the RVAT's 13\%.
+
+\subsection{Numerical work with body-fitted grids}
+
+To obtain a closer look at what is happening in the flow field around the RVAT,
+3-D RANS simulations of the actual turbine geometry are being performed using
+SNL's Red Mesa HPC cluster. If these simulations can correctly postdict the
+blade loading and near-wake measurements, they can be used to ``interpolate''
+the experimental results and provide more insight for validation of the ALM, or
+to possibly diagnose and remedy some of the flaws within the CACTUS code.
+Currently some test simulations have been run, showing promising results, and a
+2-D slice of the model is being used to check for grid convergence.
+
+\subsection{ALM mathematical model}
+
+The actuator line model, originally developed by Sorensen and Shen
+\cite{Sorensen2002}, treats turbine blades as lines of blade elements, for which
+2-D foil lift and drag coefficients are tabulated. For any given blade element,
+relative flow velocity and angle of attack are computed by adding the vectors
+of relative blade motion and the local fluid velocity. The blade lift and drag
+forces are calculated using
+
+\begin{equation}
+F_L = \frac{1}{2} \rho A_\mathrm{elem} C_L U_\mathrm{rel}^2,
+\end{equation}
+and
+\begin{equation}
+F_D = \frac{1}{2} \rho A_\mathrm{elem} C_D U_\mathrm{rel}^2,
+\end{equation}
+where $\rho$ is the fluid density, $A_\mathrm{elem}$ is the blade element
+planform area (span $\times$ chord), $U_\mathrm{rel}$ is the local relative
+velocity, and $C_L$ and $C_D$ are the sectional lift and drag coefficients,
+chosen from a table via the local angle of attack and typically the Reynolds
+number. The forces are then projected onto the rotor coordinate system to
+calculate torque, overall drag, etc. Forces from the turbine shaft and blade
+support struts will be computed in a similar way.
+
+The use of static foil data necessitates corrections for various dynamic effects
+induced by the the actuator lines rotating within the flow field. Dynamic stall
+may be encountered when the blade angle of attack increases past a certain
+threshold, and is characterized by an initial increase in lift as a vortex is
+shed from the foil's leading edge, after which a drop in lift occurs as the
+vortex is advected downstream. Dynamic stall has been shown to be a significant
+positive contributor to performance in CFTs \cite{Para2002, Urbina2013}, so it
+is important to choose an accurate model. Following common examples in the
+literature, including CACTUS, we will start with the Leishmann--Beddoes model
+due to its favorable performance in, for example, Scheurich and Brown
+\cite{Scheurich2011}. The dynamic stall model will also likely benefit from the
+low Mach number modification of Sheng et al. \cite{Sheng2008}.
+
+Other dynamic loading considerations stem from the blade rotation and
+acceleration---so-called pitching circulation, flow curvature, and added-mass
+effects. We will start by using the correction methodology of CACTUS, which is
+based on an analogy with a pitching flat plate, using the nondimensional pitch
+rate of the blade element to correct normal and tangential force coefficients
+\cite{Murray2011}. It is possible that these corrections will not produce
+adequate results, but by using the Navier--Stokes equations to solve the flow
+field we at least will have removed the uncertainty due to wake vortex
+instability discussed in Michelen et al. \cite{Michelen2014}.
+
+There is an important difference, however, in the way the body force is imparted
+on the flow field. In the vortex method, singularities exist by design, but in a
+Navier--Stokes simulation on a grid, a singularity of force caused by, e.g., a
+blade element in a single cell, can cause numerical instability. We will adopt
+the Gaussian projection method of Sorensen and Shen \cite{Sorensen2002}, which
+is also used in the National Renewable Energy Laboratory's (NREL) Simulator for
+Wind Farm Applications (SOWFA), a comprehensive library for ALM/LES wind farm
+simulations in OpenFOAM \cite{Churchfield2013}.
+
+If the proposed body force model is inadequate for postdicting our experimental
+performance data, one possible strategy for improving accuracy is to generate
+foil coefficient databases with more dimensions, e.g., blade pitch rate or local
+turbulence levels. It may also be possible to modify the dynamic loading models
+based on insight from the body-fitted grid simulations.
+
+\subsection{ALM software implementation}
+
+The cross-flow turbine actuator line model (CFT-ALM) will be written into an
+extension library for the OpenFOAM free and open-source CFD library. OpenFOAM is
+in general a package for solving partial differential equations using the finite
+volume method. However, it contains many pre-built applications for meshing,
+pre-processing, solving, and post-processing CFD simulations. The library
+contains implementations of models for compressible and incompressible flow,
+turbulence via RANS, LES, and detatched eddy simulation (DES), multiphase flows,
+dynamic mesh handling, and more, making it a very powerful general purpose
+simulation framework, capable of easily scaling to massively parallel high
+performance computing clusters. OpenFOAM is also widely used throughout industry
+and academia, making it a perfect library in which to integrate this model, with
+respect to potential impact and adoption.
+
+The code will be written in OpenFOAM's style, similar to NREL's SOWFA, but will
+use OpenFOAM's \texttt{fvOptions} framework for adding source terms to equations
+at runtime. This strategy will allow the CFT-ALM to be added to many of the
+solvers included in OpenFOAM, meaning it can be readily used with RANS or LES,
+multiphase models (e.g. for simulating the free surface in MHK installations),
+and even with heat transfer. Furthermore, unlike SOWFA, custom solvers will not
+need to be developed to include the CFT-ALM. It is also likely that the
+extension library developed here will be expanded to include axial flow turbine
+models similar to SOWFA.
+
+Since all applications are run from a command line and all input data is text
+based, automation and integration with other tools is relatively
+straightforward. Future enhancements could include cooperation with software for
+generating static foil data, e.g., XFOIL or other OpenFOAM solvers, turbine
+controller models, structural analysis codes, and optimization tools, e.g.,
+SNL's DAKOTA, for both individual turbines and array layouts.
+
+\subsection{Dissemination}
+  
+One important objective is to distribute research products (code, data, CAD
+files, etc.) openly, such that they are as useful and reproducible as possible.
+It is also important that the code is set up to grow and evolve via
+contributions from the community---one of the most significant advantages of the
+open-source development model.
+
+Unfortunately, a lot of research code is merely described in publications, but
+never released for adoption and improvement by the community. For example,
+Shamsoddin and Porte-Agel have written a cross-flow turbine actuator line model
+for LES, but have not made their code available or described results regarding
+performance prediction \cite{Shamsoddin2014}. Even CACTUS, despite being
+open-source, is simply distributed as a static archive for download, so there is
+no clear procedure for users to contribute to the code.
+
+To help correct this issue, the results of this research will be open-source and
+hosted on GitHub.com to facilitate the inclusion of improvements by other
+developers through their fork/pull mechanism. We have already implemented a
+sharing strategy for experimental results using GitHub to host code and
+processed data, and figshare.com for raw data, CAD files, and snapshots of code
+or simulation settings used in specific publications \cite{Bachant2014_data,
+Bachant2014_CAD, Bachant2014_Vortexje, Bachant2014_OF-AS}. We will continue to
+share results in this way to ensure maximum impact from reuse, remixing, etc.
+Furthermore, the library developed here will be openly available through all
+stages of development (in fact, it is already), which will hopefully prevent
+other developers from unknowingly working on similar projects, and collaborating
+instead.
+
+\section{Summary}
+
+It is argued that the research community and industry alike would benefit from
+the development of an open-source actuator line model to represent cross-flow
+turbines in Navier--Stokes simulations---written as an extension to OpenFOAM, in
+particular. It is proposed that this method will use a combination of the
+standard ALM used for axial-flow turbines, with dynamic corrections similar to
+SNL's CACTUS vortex line model, and the typical Gaussian projection of body
+force onto the flow field.
+
+In order to understand and validate the model, detailed experimental work has
+been undertaken with a simple reference model turbine. Thus far these
+measurements have revealed important mechanisms in the CFT near-wake that help
+contribute to its relatively fast wake recovery, which will need to be captured
+by the ALM. Experiments have also shown the consequences of scaled physical
+models, confirming that we are likely operating in a Reynolds-number independent
+regime, therefore model validation can be assumed to be approximately true for
+full-scale applications. Acquiring another validation dataset for a turbine
+with significantly different geometric parameters is planned, ensuring broad
+applicability of the model.
+
+Ultimately, the proposed work will produce a versatile engineering tool, which
+can be used for individual turbine design on a few computing cores using
+Reynold-averaged Navier--Stokes turbulence models, as well as for state of the
+art research and design for turbine arrays with large eddy simulation and high
+performance computing.
