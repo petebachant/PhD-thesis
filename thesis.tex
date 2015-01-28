@@ -1,23 +1,9 @@
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% UNH Thesis Style defined by other people and used successfully by
-% Iulian Ruset for PhD Thesis submitted and accepted May 2005
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \documentclass[12pt,letterpaper]{report} % use this when printing for thesis submission (single sided)
 %\documentclass[11pt,letterpaper]{book} % use this instead of previous if double side wanted (for drafts), and some trees will be saved
 
-%%%%%%%%%%%%%%%%%%%%
 \renewcommand\bibname{\vspace{0.2in} \Large  BIBLIOGRAPHY} % To make bibliography in capital 12/05/05 Burcin Donmez
-%%%%%%%%%%%%%%%%%%%%
 
-%\input{../chapters/frontmatter/bookdefs}
-\input{bookdefs}
-%%%%%%%%%%5
-% This piece of code added to change the title "bibliography" to "references" -Gopal
-% source - http://web.mit.edu/answers/latex/latex_bibtoref.html
+\input{commands}
 
 \makeatletter
     \def\thebibliography#1{\chapter*{REFERENCES\@mkboth
@@ -29,46 +15,31 @@
     \sloppy\clubpenalty4000\widowpenalty4000
     \sfcode`\.=1000\relax}
     \makeatother
-%%%%%%%%%%%%%%
 
 
 \begin{document}
 
-%\include{../chapters/frontmatter/frontmatter}               % FRONTMATTER - Includes title page, acknowledgments, abstract, etc
-\include{chapters/frontmatter/frontmatter}               % FRONTMATTER - Includes title page, acknowledgments, abstract, etc
+% FRONTMATTER - Includes title page, acknowledgments, abstract, etc
+\include{chapters/frontmatter}
 
-%\begin{singlespace}        % just in case you want to reduce the size of the thesis for printing purposes, need to comment "singlespace" from bibliography
+% just in case you want to reduce the size of the thesis for printing purposes, need to comment "singlespace" from bibliography
+%\begin{singlespace} 
 
 \pagenumbering{arabic}
 
+\include{chapters/introduction}
 
 
-%CHAPTERS INCLUDED HERE
-\include{chapters/chap1/chapter1_standalone}
-\include{chapters/chap2/chapter2_standalone}
-\include{chapters/chap3/chapter3_standalone}
-%\include{chapters/chap4/chapter4_standalone}
+%\addcontentsline{toc}{chapter}{Appendix: Compilation of Impact Test Data}
+%\include{chapters/appendixA}
 
-
-\addcontentsline{toc}{chapter}{Appendix: Compilation of Impact Test Data} % Adds Appendix to the TOC
-\include{chapters/appendix/appendixA}
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%
-\addcontentsline{toc}{chapter}{REFERENCES} % Add Bibliography into table of contents 12/05/05 Burcin Donmez
-%%%%%%%%%%%%%%%%%%%
-
+% Add Bibliography into table of contents
+\addcontentsline{toc}{chapter}{REFERENCES} 
 
 \vspace{0.5in}
-%DIFFERENT LOCATIONS FOR THE BIB FILE
-%\bibliography{E:/tex/jabref_bib/ref}           % REFERENCES - Bibliography
-%\bibliography{C:/latex_docs/mythesis/biblio/biblio.bib}           % REFERENCES - Bibliography
-%\bibliography{C:/latex_docs/final_thesis/biblio/biblio.bib}           % REFERENCES - Bibliography
+
 \begin{singlespace}
-\bibliography{biblio}           % REFERENCES - Bibliography
+\bibliography{library}
 \end{singlespace}
 
 \end{document}
