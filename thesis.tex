@@ -1,7 +1,10 @@
-\documentclass[12pt,letterpaper]{report} % use this when printing for thesis submission (single sided)
-%\documentclass[11pt,letterpaper]{book} % use this instead of previous if double side wanted (for drafts), and some trees will be saved
+\documentclass[12pt,letterpaper]{report} % use this when printing for thesis
+% submission (single sided)
+%\documentclass[11pt,letterpaper]{book} % use this instead of previous if double
+% side wanted (for drafts), and some trees will be saved
 
-\renewcommand\bibname{\vspace{0.2in} \Large  BIBLIOGRAPHY} % To make bibliography in capital 12/05/05 Burcin Donmez
+% To make bibliography title all caps
+\renewcommand\bibname{\vspace{0.2in} \Large  BIBLIOGRAPHY}
 
 \input{commands}
 
@@ -22,19 +25,37 @@
 % FRONTMATTER - Includes title page, acknowledgments, abstract, etc
 \include{chapters/frontmatter}
 
-% just in case you want to reduce the size of the thesis for printing purposes, need to comment "singlespace" from bibliography
-%\begin{singlespace} 
+% just in case you want to reduce the size of the thesis for printing purposes,
+% need to comment "singlespace" from bibliography
+%\begin{singlespace}
 
 \pagenumbering{arabic}
 
+
+% Introduction setting up motivation, goals, requirements
 \include{chapters/introduction}
-\include{chapters/cft_wake_characteristics}
+
+% Chapter on developing experimental setup and turbine?
+
+% Chapter on RVAT baseline experiments
+\include{chapters/baseline_experiments}
+
+% Chapter on Re dep experiments, etc.
+
+% Chapter on RM2 experiments, or maybe this should be earlier?
+
+% Chapter on RVAT blade-resolved RANS
+
+% Chapter on developing ALM and its results
+
+% Conclusions
+
 
 %\addcontentsline{toc}{chapter}{Appendix: Compilation of Impact Test Data}
 %\include{chapters/appendixA}
 
 % Add Bibliography into table of contents
-\addcontentsline{toc}{chapter}{REFERENCES} 
+\addcontentsline{toc}{chapter}{REFERENCES}
 
 \vspace{0.5in}
 
@@ -43,4 +64,3 @@
 \end{singlespace}
 
 \end{document}
-
