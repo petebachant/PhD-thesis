@@ -21,6 +21,18 @@ the subsequent boundary layer resolution.
 \section{Reynolds number corrections}
 As seen in Chapter~\ref{chap:Re-dep}
 
+\section{Effects on turbulence modeling}
+
+Conventional blade element simulations use either momentum or vortex methods to
+solve for the incident flow field, and these methods do not model the effects of
+turbulence. With the actuator line model, there is the opportunity to improve
+the physical realism by not only adding a source to the momentum equations, but
+also to the turbulence model equations.
+
+In this case, we seek to ``inject'' turbulence dependent on blade loading, both
+for the $k$--$\epsilon$ RANS model and the
+\todo[inline]{Pick LES model to work with.}
+
 \section{Software implementation}
 
 \section{Results}
