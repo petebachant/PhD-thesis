@@ -8,9 +8,6 @@ in the near-wake. To do this, it was necessary to upgrade the UNH tow tank's
 linear motion, control, and data acquisition systems, along with the turbine
 test bed instrumentation developed in \cite{Bachant2011MS}.
 
-\section{Experimental setup}
-
-
 \section{Modifications to the UNH tow tank}
 
 \begin{table}
@@ -29,8 +26,42 @@ On-board power & $4\times12$ V batteries & Continuous 120 and 220 VAC \\
 
 \subsection{Linear guides}
 
+The previous linear guide system consisted of a ``master'' guide constructed from
+$4 \times 4$ inch fiberglass tubing, and a ``slave'' guide constructed from aluminum angle, on which plastic wheels rode. Over time, the fiberglass tubing had failed structurally and was covered with stainless steel bars fixed with double-sided tape. These bars shifted around considerably during towing and were a source of noise.
 
-\subsection{Motion control}
+A new set of linear guides was designed from 1.25 inch diameter Thomson 440C
+stainless steel linear shafts and super self-aligning linear bearings. The
+existing carriage was modified to retrofit the linear bearings, and a series of
+parts were designed to adapt the stainless shafts to the existing quasi-level
+mounting surfaces, which helped keep cost down.
+
+\subsection{Motion and control}
+
+The tow tank's previous motion system consisted of a 10 horsepower AC induction
+motor powered by a Yaskawa V7 variable frequency drive. The motor was coupled to
+a speed reducing gearbox, on which a pulley was mounted to drive a 0.25 inch
+diameter wire rope. It was seen in previous testing that this system had very
+low acceleration ($\sim 0.1$ m/s$^2$), which severely reduced steady state
+towing durations. The relatively low spring constant of the wire rope tow member
+also gave the system a low natural frequency, which resonated due to cross-flow
+turbines' cycling forcing. Furthermore, the system was only velocity-controlled,
+and in an open-loop manner. This meant positioning was done manually, which took
+a skilled operator, and reduced usable tank length further to allow for
+coasting to a stop.
+
+These issues were addressed by changing the motor to a permanent magnet servo
+motor, sized to tow turbines with 1 m$^2$ frontal area up to 3 m/s, while
+accelerating at 2 m/$^2$. The motor was powered by a Kollmorgen S700 servo
+drive, controlled by an ACS NTM EtherCAT master controller, providing closed
+loop position (and velocity) control. A series of emergency stop buttons were
+installed to dramatically increase the safety of the system.
+
+A steel-reinforced polyurethane timing belt was chosen as the new drive member.
+The most robust timing belt profile---an ATL20---was chosen for maximum
+stiffness per unit width, increasing the drive member spring constant roughly by a
+factor of 7.
+
+\subsection{Data acquisition and on-board accessories}
 
 
 \section{Upgraded turbine test bed}
