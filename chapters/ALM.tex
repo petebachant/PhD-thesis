@@ -8,15 +8,53 @@ The ultimate goal of the actuator line model is to drive down the computational
 costs of simulating turbines by negating the need for complicated meshing, and
 the subsequent boundary layer resolution.
 
+The ALM is based on the classical blade element theory, developed by
+\todo[inline]{Find citation for creator of blade element theory}
+and subsequently first implemented by Sorensen and Shen \cite{Sorensen2002}.
+
 \section{Model inputs}
 
 % Not multiple Re coefficient tables!
 
 \section{Blade element discretization}
 
+In the ALM, a turbine is a collection of actuator lines, which themselves are
+collections of actuator line elements (ALEs). The position of each ALE is a
+point in space indicating the quarter-chord location of the element
+cross-section. The element is further defined by its chord direction vector,
+chord length, span direction vector, span length, and velocity vector.
+
+\section{Force projection}
+
+After the force on the ALE from the flow is calculated, it is then projected
+back onto the flow field as a source term in the momentum equation. To avoid
+instability due to sharp gradients, the source term is tapered from its maximum
+value away from the element location by means of a spherical Gaussian function.
+The width of this function is
+\todo[inline]{Add final width of Gaussian projection}
+
 \section{Unsteady aerodynamics}
 
+In the context of a turbine---especially a cross-flow turbine---the actuator
+lines will encounter unsteady conditions, both in their angle of attack and
+relative velocity. These conditions necessitate the use of unsteady aerodynamic
+models to augment the static foil characteristics. Furthermore, the angles of
+attack encountered by a CFT blade will often be high enough to encounter dynamic
+stall. It is therefore necessary to model both unsteady attached and detached
+flow to obtain accurate loading predictions.
+
+Leishman and Beddoes developed a semi-empirical model for unsteady aerodynamics
+and dynamic stall, which is derived from the phenomenology of the physics
+instead rather than pure empiricism \cite{Leishman1989}.
+
 \section{Flow curvature corrections}
+
+The rotating blades of a cross-flow turbine will have varying angle of attack
+along their chords for any given azimuthal location due to the circular path.
+This makes it difficult to define a single angle of attack for use in the static
+coefficient lookup tables. Furthermore, this effect is more pronounced for high
+solidity ($c/R$) turbines.
+
 
 \section{Reynolds number corrections}
 As seen in Chapter~\ref{chap:Re-dep}
