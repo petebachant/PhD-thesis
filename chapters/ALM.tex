@@ -12,6 +12,70 @@ The ALM is based on the classical blade element theory, developed by
 \todo[inline]{Find citation for creator of blade element theory}
 and subsequently first implemented by Sorensen and Shen \cite{Sorensen2002}.
 
+% % % Below from introduction
+
+The actuator line model, originally developed by Sorensen and Shen
+\cite{Sorensen2002}, treats turbine blades as lines of blade elements, for which
+2-D foil lift and drag coefficients are tabulated. For any given blade element,
+relative flow velocity and angle of attack are computed by adding the vectors
+of relative blade motion and the local fluid velocity. The blade lift and drag
+forces are calculated using
+
+\begin{equation}
+F_L = \frac{1}{2} \rho A_\mathrm{elem} C_L U_\mathrm{rel}^2,
+\end{equation}
+and
+\begin{equation}
+F_D = \frac{1}{2} \rho A_\mathrm{elem} C_D U_\mathrm{rel}^2,
+\end{equation}
+where $\rho$ is the fluid density, $A_\mathrm{elem}$ is the blade element
+planform area (span $\times$ chord), $U_\mathrm{rel}$ is the local relative
+velocity, and $C_L$ and $C_D$ are the sectional lift and drag coefficients,
+chosen from a table via the local angle of attack and typically the Reynolds
+number. The forces are then projected onto the rotor coordinate system to
+calculate torque, overall drag, etc. Forces from the turbine shaft and blade
+support struts will be computed in a similar way.
+
+The use of static foil data necessitates corrections for various dynamic effects
+induced by the the actuator lines rotating within the flow field. Dynamic stall
+may be encountered when the blade angle of attack increases past a certain
+threshold, and is characterized by an initial increase in lift as a vortex is
+shed from the foil's leading edge, after which a drop in lift occurs as the
+vortex is advected downstream. Dynamic stall has been shown to be a significant
+positive contributor to performance in CFTs \cite{Para2002, Urbina2013}, so it
+is important to choose an accurate model. Following common examples in the
+literature, including CACTUS, we will start with the Leishmann--Beddoes model
+due to its favorable performance in, for example, Scheurich and Brown
+\cite{Scheurich2011}. The dynamic stall model will also likely benefit from the
+low Mach number modification of Sheng et al. \cite{Sheng2008}.
+
+Other dynamic loading considerations stem from the blade rotation and
+acceleration---so-called pitching circulation, flow curvature, and added-mass
+effects. We will start by using the correction methodology of CACTUS, which is
+based on an analogy with a pitching flat plate, using the nondimensional pitch
+rate of the blade element to correct normal and tangential force coefficients
+\cite{Murray2011}. It is possible that these corrections will not produce
+adequate results, but by using the Navier--Stokes equations to solve the flow
+field we at least will have removed the uncertainty due to wake vortex
+instability discussed in Michelen et al. \cite{Michelen2014}.
+
+There is an important difference, however, in the way the body force is imparted
+on the flow field. In the vortex method, singularities exist by design, but in a
+Navier--Stokes simulation on a grid, a singularity of force caused by, e.g., a
+blade element in a single cell, can cause numerical instability. We will adopt
+the Gaussian projection method of Sorensen and Shen \cite{Sorensen2002}, which
+is also used in the National Renewable Energy Laboratory's (NREL) Simulator for
+Wind Farm Applications (SOWFA), a comprehensive library for ALM/LES wind farm
+simulations in OpenFOAM \cite{Churchfield2013}.
+
+If the proposed body force model is inadequate for postdicting our experimental
+performance data, one possible strategy for improving accuracy is to generate
+foil coefficient databases with more dimensions, e.g., blade pitch rate or local
+turbulence levels. It may also be possible to modify the dynamic loading models
+based on insight from the body-fitted grid simulations.
+
+% % % Above from introduction
+
 \section{Model inputs}
 
 % Not multiple Re coefficient tables!
