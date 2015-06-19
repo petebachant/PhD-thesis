@@ -60,18 +60,45 @@ individual devices and arrays, which is a primary motivation for this research.
 \section{Principles of cross-flow turbine operation}
 
 Blade element theory can be employed to obtain a simplified view of the
-kinematics and dynamics of a CFT. Figure~\ref{fig:vectors} shows the velocity
-and forcing on a CFT blade element.
-
+kinematics and dynamics of a CFT. Figure~\ref{fig:vectors} shows the relevant
+velocity and and force vectors on a CFT blade element. The relative velocity and
+angle of attack $\alpha$ are calculated by adding the inflow velocity vector to
+the opposite of the blade element velocity $\omega R$, where $\omega$ is the
+shaft angular velocity and $R$ is the element radius. In the relative velocity
+coordinate system, the lift and drag are then oriented normal and tangential to
+the relative velocity, respectively. These forces ultimately produce the shaft
+torque, and in turn the shaft power. 
 
 \begin{figure}[ht]
-
 \caption{Vector diagram of velocity and forcing on a cross-flow turbine blade
 element.}
-
 \label{fig:vectors}
 \end{figure}
 
+The shaft's angular velocity is nondimensionalized as the tip speed ratio
+\begin{equation}
+\lambda = \frac{\omega R}{U_\infty},
+\label{eq:lambda}
+\end{equation}
+where $U_\infty$ is the free stream velocity.
+Torque $T$ is characterized by the nondimensional torque coefficient 
+\begin{equation}
+C_T = \frac{T}{\frac{1}{2} \rho A R U_\infty^2},
+\label{eq:ct}
+\end{equation}
+where $\rho$ is the fluid density and $A$ is the turbine's frontal area.
+Similarly, the turbine power $P = T\omega$ and overall rotor drag $F_D$ are
+normalized as the power coefficient
+\begin{equation}
+C_P = \frac{T \omega}{\frac{1}{2} \rho A U_\infty^3},
+\label{eq:cp}
+\end{equation}
+and the rotor drag coefficient
+\begin{equation}
+C_D = \frac{F_D}{\frac{1}{2} \rho A U_\infty^2}.
+\label{eq:cd}
+\end{equation}
+It is also worth noting that $C_P = \lambda C_T$.
 
 \section{The state of engineering tools for CFTs}
 
