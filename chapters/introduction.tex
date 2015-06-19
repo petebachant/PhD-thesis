@@ -238,65 +238,6 @@ turbulence, and therefore will be more accurate at predicting flow within a
 turbine array \cite{Krogstad2013}.
 
 
-
-
-\section{Developing the cross-flow turbine actuator line model}
-
-As described in the previous section, the actuator line model is valuable in
-that it can be used to predict both the performance and wake of a turbine. It
-can also be applied to high fidelity modeling of turbine arrays thanks to its
-time-resolved nature. The ALM also eliminates the need for complex grids, which
-is a significant simplification since mesh generation is arguably the largest
-impediment to automation in CFD \cite{Slotnick2014}. Computational effort will
-also be significantly reduced since the ALM does not need a rotating mesh, and
-small cells near the turbine blade surface can be eliminated.
-
-The proposed model will have some of the drawbacks of momentum and vortex
-methods for predicting performance, namely the reliance on static foil data.
-However, the flow field, and therefore relative velocity and blade angle of
-attack will be predicted more accurately, and should therefore produce more
-accurate predictions of turbine performance and wake characteristics.
-
-\subsection{Numerical work with body-fitted grids}
-
-To obtain a closer look at what is happening in the flow field around the RVAT,
-3-D RANS simulations of the actual turbine geometry are being performed using
-SNL's Red Mesa HPC cluster. If these simulations can correctly postdict the
-blade loading and near-wake measurements, they can be used to ``interpolate''
-the experimental results and provide more insight for validation of the ALM, or
-to possibly diagnose and remedy some of the flaws within the CACTUS code.
-Currently some test simulations have been run, showing promising results, and a
-2-D slice of the model is being used to check for grid convergence.
-
-
-\section{Summary}
-
-It is argued that the research community and industry alike would benefit from
-the development of an open-source actuator line model to represent cross-flow
-turbines in Navier--Stokes simulations---written as an extension to OpenFOAM, in
-particular. It is proposed that this method will use a combination of the
-standard ALM used for axial-flow turbines, with dynamic corrections similar to
-SNL's CACTUS vortex line model, and the typical Gaussian projection of body
-force onto the flow field.
-
-In order to understand and validate the model, detailed experimental work has
-been undertaken with a simple reference model turbine. Thus far these
-measurements have revealed important mechanisms in the CFT near-wake that help
-contribute to its relatively fast wake recovery, which will need to be captured
-by the ALM. Experiments have also shown the consequences of scaled physical
-models, confirming that we are likely operating in a Reynolds-number independent
-regime, therefore model validation can be assumed to be approximately true for
-full-scale applications. Acquiring another validation dataset for a turbine
-with significantly different geometric parameters is planned, ensuring broad
-applicability of the model.
-
-Ultimately, the proposed work will produce a versatile engineering tool, which
-can be used for individual turbine design on a few computing cores using
-Reynold-averaged Navier--Stokes turbulence models, as well as for state of the
-art research and design for turbine arrays with large eddy simulation and high
-performance computing.
-
-
 \section{Objectives}
 
 The objectives of this research are:
@@ -317,3 +258,27 @@ The objectives of this research are:
 	low computational expense.
 
 \end{enumerate}
+
+To obtain a closer look at what is happening in the flow field around the RVAT,
+3-D RANS simulations of the actual turbine geometry are being performed using
+SNL's Red Mesa HPC cluster. If these simulations can correctly postdict the
+blade loading and near-wake measurements, they can be used to ``interpolate''
+the experimental results and provide more insight for validation of the ALM, or
+to possibly diagnose and remedy some of the flaws within the CACTUS code.
+Currently some test simulations have been run, showing promising results, and a
+2-D slice of the model is being used to check for grid convergence.
+
+As described in the previous section, the actuator line model is valuable in
+that it can be used to predict both the performance and wake of a turbine. It
+can also be applied to high fidelity modeling of turbine arrays thanks to its
+time-resolved nature. The ALM also eliminates the need for complex grids, which
+is a significant simplification since mesh generation is arguably the largest
+impediment to automation in CFD \cite{Slotnick2014}. Computational effort will
+also be significantly reduced since the ALM does not need a rotating mesh, and
+small cells near the turbine blade surface can be eliminated.
+
+The proposed model will have some of the drawbacks of momentum and vortex
+methods for predicting performance, namely the reliance on static foil data.
+However, the flow field, and therefore relative velocity and blade angle of
+attack will be predicted more accurately, and should therefore produce more
+accurate predictions of turbine performance and wake characteristics.
