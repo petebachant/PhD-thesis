@@ -267,39 +267,6 @@ Currently some test simulations have been run, showing promising results, and a
 2-D slice of the model is being used to check for grid convergence.
 
 
-\subsection{ALM software implementation}
-
-The cross-flow turbine actuator line model (CFT-ALM) will be written into an
-extension library for the OpenFOAM free and open-source CFD library. OpenFOAM is
-in general a package for solving partial differential equations using the finite
-volume method. However, it contains many pre-built applications for meshing,
-pre-processing, solving, and post-processing CFD simulations. The library
-contains implementations of models for compressible and incompressible flow,
-turbulence via RANS, LES, and detatched eddy simulation (DES), multiphase flows,
-dynamic mesh handling, and more, making it a very powerful general purpose
-simulation framework, capable of easily scaling to massively parallel high
-performance computing clusters. OpenFOAM is also widely used throughout industry
-and academia, making it a perfect library in which to integrate this model, with
-respect to potential impact and adoption.
-
-The code will be written in OpenFOAM's style, similar to NREL's SOWFA, but will
-use OpenFOAM's \texttt{fvOptions} framework for adding source terms to equations
-at runtime. This strategy will allow the CFT-ALM to be added to many of the
-solvers included in OpenFOAM, meaning it can be readily used with RANS or LES,
-multiphase models (e.g. for simulating the free surface in MHK installations),
-and even with heat transfer. Furthermore, unlike SOWFA, custom solvers will not
-need to be developed to include the CFT-ALM. It is also likely that the
-extension library developed here will be expanded to include axial flow turbine
-models similar to SOWFA.
-
-Since all applications are run from a command line and all input data is text
-based, automation and integration with other tools is relatively
-straightforward. Future enhancements could include cooperation with software for
-generating static foil data, e.g., XFOIL or other OpenFOAM solvers, turbine
-controller models, structural analysis codes, and optimization tools, e.g.,
-SNL's DAKOTA, for both individual turbines and array layouts.
-
-
 \section{Summary}
 
 It is argued that the research community and industry alike would benefit from
