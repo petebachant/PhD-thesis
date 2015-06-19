@@ -6,6 +6,22 @@ on a boundary layer-resolving body-fitted grid. It is of interest to determine
 the accuracy of such a simulation, since as previously discussed the flow
 physics of CFTs are very complex.
 
+
+\section{Turbulence modeling}
+
+Two popular RANS models were used to model turbulence---the Spalart--Allmaras
+(SA) and Menter's $k$--$\omega$ shear stress transport (SST) models. These are
+both eddy-viscosity type models, where the SA solves one additional scalar
+transport equation and the SST two.
+
+
+\section{Verification}
+
+To verify that the simulations had reached a grid-independent solution in both
+space and time, a 2-D slice of the model was run at various grid spacings, for
+both turbulence models.
+
+
 \section{Comparing cost with physical modeling}
 
 
