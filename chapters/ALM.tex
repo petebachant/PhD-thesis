@@ -121,7 +121,49 @@ solidity ($c/R$) turbines.
 
 
 \section{Reynolds number corrections}
-As seen in Chapter~\ref{chap:Re-dep}
+
+As seen in Chapter~\ref{chap:Re-dep}, Reynolds number can have significant
+effects on turbine performance below a threshold value. To maintain accuracy
+using a single static foil data table in a flow of varying inflow velocity
+magnitude, Reynolds number corrections should be applied. Yamauchi and Johnson
+\cite{Yamauchi1983} proposed a simple correction derived from turbulent flat
+plate boundary layer results, where the drag coefficient is corrected as
+\begin{equation}
+C_d = C_{d_{\mathrm{table}}}/ K,
+\label{eq:cd-correction}
+\end{equation}
+where $K = f(Re)/f(Re_\mathrm{table})$. There are several choices for the
+scaling function $f(Re)$:
+\begin{equation}
+f(Re) = Re^{-0.5},
+\end{equation}
+\begin{equation}
+f(Re) = Re^{-0.2},
+\end{equation}
+\begin{equation}
+f(Re) = \frac{0.455}{\ln Re}2.58 - \frac{A}{Re},
+\end{equation}
+\begin{equation}
+f(Re) = (3.46 \ln Re - 5.6)^{-2},
+\end{equation}
+or
+\begin{equation}
+f(Re) = (\ln Re - 0.407)^{-2.64}.
+\end{equation}
+
+Figure~\ref{fig:Re-corrections} shows the results of the chosen Reynolds number
+correction compared with foil data taken at multiple $Re$.
+
+\begin{figure}
+\caption{Reynolds number corrections compared with foil data acquired at
+multiple Reynolds numbers.}
+\label{fig:Re-corrections}
+\end{figure}
+
+Note that these Reynolds number corrections are applied before the dynamic stall
+model, such that the changes in e.g. the Kirchoff flow equation fit parameters
+$S_1$ and $S_2$ will be changed automatically as well.
+
 
 \section{Effects on turbulence modeling}
 
