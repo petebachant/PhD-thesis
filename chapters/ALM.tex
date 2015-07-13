@@ -88,6 +88,19 @@ point in space indicating the quarter-chord location of the element
 cross-section. The element is further defined by its chord direction vector,
 chord length, span direction vector, span length, and velocity vector.
 
+\section{Determining inflow velocity}
+
+In momentum methods, the inflow velocity is determined by solving for the axial
+and angular induction factors \cite{Manwell2002}. However, using Navier--Stokes
+methods, it is somewhat unclear how to calculate the velocity vector used to
+compute the angle of attack and relative velocity. Sorensen and Shen used an
+actuator line element's position to determine the inflow velocity for an
+axial-flow turbine \cite{Sorensen2002}. Similarly, Shamsoddin and Porte-Agel use
+the velocity at a blade element's location in their actuator line simulation of
+a vertical-axis turbine using LES \cite{Shamsoddin2014}. Schito and Zasso
+developed an effective velocity model \cite{Schito2014}
+\todo[inline]{Summarize the Shito and Zasso effective velocity model}
+
 \section{Force projection}
 
 After the force on the ALE from the flow is calculated, it is then projected
