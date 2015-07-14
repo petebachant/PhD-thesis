@@ -88,6 +88,8 @@ point in space indicating the quarter-chord location of the element
 cross-section. The element is further defined by its chord direction vector,
 chord length, span direction vector, span length, and velocity vector.
 
+Each element has a rectangular planform centered at the element position.
+
 \section{Determining inflow velocity}
 
 In momentum methods, the inflow velocity is determined by solving for the axial
@@ -243,6 +245,20 @@ straightforward. Future enhancements could include cooperation with software for
 generating static foil data, e.g., XFOIL or other OpenFOAM solvers, turbine
 controller models, structural analysis codes, and optimization tools, e.g.,
 SNL's DAKOTA, for both individual turbines and array layouts.
+
+\subsection{Object orientation}
+
+C++ permits the object oriented programming paradigm, which helps modularize
+code for increased readability and reuse. In \textit{turbinesFoam}, a turbine is
+a software object that is composed of actuator line objects, which themselves
+are composed of actuator line element objects. Structuring the code this way
+allows testing of the functionality of individual components. For example, an
+actuator line can be tested outside the turbine context to ensure is produces
+the correct forcing, without adding the complexity of rotation, other actuator
+lines, etc. that would be present in a turbine rotor. In contrast, the actuator
+line model in \textit{SOWFA} uses a single software object to represent an
+entire array of turbines. This architecture necessitates iterating through many
+nested lists down to the element level, which can be confusing to read.
 
 \subsection{Parallelization}
 
