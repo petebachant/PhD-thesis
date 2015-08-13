@@ -8,6 +8,7 @@ in the near-wake. To do this, it was necessary to upgrade the UNH tow tank's
 linear motion, control, and data acquisition systems, along with the turbine
 test bed instrumentation developed in \cite{Bachant2011MS}.
 
+
 \section{Modifications to the UNH tow tank}
 
 \begin{table}
@@ -61,6 +62,132 @@ The most robust timing belt profile---an ATL20---was chosen for maximum
 stiffness per unit width, increasing the drive member spring constant roughly by a
 factor of 7.
 
+
+%%% From RM2 test plan %%%
+
+Experiments will be performed in the UNH tow/wave tank, a 36 m long facility
+with a 3.66 m wide by 2.44 m deep cross-section, capable of tow speeds up to 3
+m/s\footnote{Note that though 3 m/s is the technical limit, the practical limit
+    for achieving substantial tow durations is approximately 2 m/s.}, pictured in
+Figure~\ref{fig-tow_tank}. The turbine will be mounted in a frame built from
+NACA 0020 struts, attached to the tow carriage by four linear bearings, which
+transfer all streamwise force to a pair of S-beam load cells. The turbine shaft
+RPM will be controlled by a servo motor system, which allows prescription of the
+turbine tip speed ratio. The load torque will be measured by an inline rotary
+torque transducer and a load cell mounted at a fixed distance from the servo
+motor, providing a redundant measurement. Turbine shaft angle will be measured
+using the servo drive's emulated encoder output, set to $10^5$ counts per
+turbine shaft revolution. Carriage speed, and therefore inflow velocity will be
+measured using a linear encoder with 10 $\mu$m resolution. All of these
+performance-related quantities will be sampled as 2 kHz, while the tow tank's
+motion controller will provide redundant measurements of the carriage speed and
+turbine angular velocity sampled at 1 kHz. Turbine wake measurements at 1
+turbine diameter downstream will be measured with a Nortek Vectrino+ acoustic
+Doppler velocimeter, sampling at 200 Hz. A list of the sensors to be used in the
+experiment is shown in Table~\ref{tab-sensors}, instrumentation in
+Table~\ref{tab-instrumentation}, and a drawing of the experimental setup is
+shown in Figure~\ref{fig-exp_setup}.
+
+
+\begin{figure}[ht!]
+    \centering 
+%    \includegraphics[clip,trim=0 0.4in 0 0.37in, 
+%    width=0.49\textwidth]{Figures/tow_tank_length} 
+%    \includegraphics[clip,trim=0.67in 0 0 0, 
+%    width=0.49\textwidth]{Figures/test_bed_photo} 
+    \caption{Photos of the UNH towing tank and turbine test bed.} 
+    \label{fig:tow_tank}
+\end{figure}
+
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        Measured quantity & Device type & Mfg. \& model & Nominal accuracy \\
+        \hline 
+        Carriage position & Linear encoder & Renishaw LM15 & 10 $\mu$m/pulse \cite{RenishawLM15}\\
+        Turbine angle & Servo encoder output & Kollmorgen AKD & 10$^5$ pulse/rev \cite{KollmorgenAKD}\\
+        Turbine torque & Rotary transducer & Interface T8-200 & $\pm$0.5 Nm \cite{InterfaceT8}\\ 
+        Turbine torque (2) & Load cell (\& arm) & Sentran ZB3-200 & $\pm$0.2 Nm \cite{SentranZB}\\
+        Drag force, left & Load cell & Sentran ZB3-500 & $\pm$0.6 N \cite{SentranZB}\\
+        Drag force, right & Load cell & Sentran ZB3-500 & $\pm$0.6 N \cite{SentranZB}\\
+        Fluid velocity & ADV & Nortek Vectrino+ & $\pm$0.5\% $\pm$1 mm/s \cite{NortekVectrino}\\
+    \end{tabular}
+    \caption{Details of the sensors to be used for the experiment. Note that ``(2)''
+        denotes a secondary redundant measurement. ``Turbine torque (2)'' nominal
+        accuracy estimated by combining load cell accuracy and arm machining tolerances
+        ($\pm 1 \times 10^{-4}$ m) as root-sum-square.} \label{tab-sensors}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c|c}
+        Measured quantity & Device type & Mfg. \& model \\
+        \hline 
+        Carriage position & Differential counter & NI 9411 \\
+        Carriage velocity (2) & Motion controller & ACS NTM \\
+        Turbine angle & Differential counter & NI 9411 \\
+        Turbine RPM (2) & Motion controller & ACS NTM \\
+        Turbine torque & Analog voltage input & NI 9405 \\ 
+        Turbine torque (2) & Analog bridge input & NI 9237 \\
+        Drag force, left & Analog bridge input & NI 9237 \\
+        Drag force, right & Analog bridge input & NI 9237 \\
+    \end{tabular}
+    \caption{Details of the instrumentation to be used for the experiment. Note that
+        ``(2)'' denotes a secondary redundant measurement.}
+    \label{tab:instrumentation}
+\end{table}
+
+\begin{figure}[ht]
+    \centering
+%    \includegraphics[clip,trim=0.01in 0 0 0, width=0.95\textwidth]{Figures/tank_cross_section}
+    \caption{Illustration of the experimental setup.}
+    \label{fig:exp_setup}
+\end{figure}
+
+
+\subsection{Calibrations}
+
+Before collecting data, traceable calibration certificates will be obtained for
+the Interface T8-200 torque transducer and NI 9405 and NI 9237 modules. The
+torque transducer calibration will be used directly in data processing, while
+the drag measurement load cells will be calibrated using an additional Sentran
+ZB S-beam load cell and indicator, a package which will also have its own
+calibration certificate. This load cell will be mounted to a fixture that allows
+varying load on each drag load cell---while the linear bearings are
+installed---by a lead screw.  The redundant torque measurement load cell/arm
+system will be calibrated in a similar fashion using the Sentran load cell and
+indicator, by attaching it to a fixture with a distance from the axis of
+rotation known to within approximately 0.005 inches.
+
+\subsection{Synchronization of instrumentation subsystems}
+
+The three data acquisition instrumentation subsystems---motion controller, NI
+DAQ (performance measurements), and Vectrino+ (wake velocity
+measurements)---will begin sampling at precisely the same time each run, after
+being triggered by a TTL pulse created by the motion controller. This strategy
+retains synchronization for all performance signal samples (tow speed, torque,
+drag, angular velocity), ensuring precise calculation of, e.g., power
+coefficient. Since there is also synchronization of the initial sample from each
+three subsystems, correlation of events in the performance and wake signals is
+also possible.
+
+\subsection{Tare drag and torque compensation} 
+
+Tare torque and drag runs will also be performed to measure the shaft bearing
+friction torque and turbine mounting frame drag, respectively. These data will
+be similar to the turbine performance data, omitting torque measurements for the
+tare drag runs and vice versa. Tare drag runs will be performed for each tow
+speed in the experiment, for which the mean value is used in data processing.
+Tare torque runs will be performed by rotating the turbine shaft (without
+blades) in air at constant angular velocity for a specified duration, over the
+range of angular velocities used throughout the experiment. Tare torque will
+then be fit with a linear regression versus shaft angular velocity, and added to
+the measured turbine torque in post-processing.
+
+%%% End section from RM2
+
+
 \subsection{Data acquisition and on-board accessories}
 
 
@@ -81,6 +208,16 @@ and ADV were integrated into a single application. This combined with the
 ability to load and automatically execute test matrices in comma-separated value
 (CSV) format allowed for experiments consisting of thousands of tows, where the
 previous generation could only realistically achieve around 100.
+
+
+\section{Determining tank settling time}
+
+Sample tows will be done to determine the amount of time taken between runs such
+that the tank has settled adequately, i.e., background turbulence and any large
+scale mean flows have been dissipated. This will be assessed by towing the
+turbine, then allowing the Vectrino to continue recording velocity data,
+monitoring the mean and standard deviation of the signals. The settling times
+will be stored in the experiment configuration---one value for each tow speed.
 
 
 \section{Turbine models}
@@ -106,7 +243,7 @@ constructed from three NACA 0020 section blades with constant $c=0.14$ m chord
 length, mounted at half-chord and half-span with zero preset blade pitch. The
 support struts are also NACA 0020 sections with 0.14 m chord length, and these
 are fixed to a $0.095$ m diameter shaft. A sketch of the turbine rotor is shown
-in Figure~\ref{fig-expsetup} and CAD models are available from
+in Figure~\ref{fig:expsetup} and CAD models are available from
 \cite{Bachant2014_CAD}.
 
 
