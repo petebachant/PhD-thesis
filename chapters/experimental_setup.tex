@@ -81,3 +81,71 @@ and ADV were integrated into a single application. This combined with the
 ability to load and automatically execute test matrices in comma-separated value
 (CSV) format allowed for experiments consisting of thousands of tows, where the
 previous generation could only realistically achieve around 100.
+
+
+\section{Turbine models}
+
+Two physical turbine models were designed and built.
+
+\subsection{UNH-RVAT}
+
+A primary goal for the UNH-RVAT was geometric simplicity, for the sake of
+replication in numerical models. The turbine was model constructed from straight
+14 cm chord length NACA 0020 extrusions, used for both the blades and struts.
+Blades were mounted at mid-chord and mid-span, having a length of 1 m and placed
+at 1 m diameter.
+
+% Below from JoT paper
+
+The turbine model was designed to be geometrically simple, in the spirit of, but
+not identical to the Sandia/DOE Reference Model 2 (RM2) CFT \cite{Neary2013,
+    Barone2011}. Compared to the full-scale Sandia/DOE RM2, it would be
+approximately a 1:6 scale model, albeit with higher solidity, or chord-to-radius
+ratio. The turbine rotor is $H=1$ m tall, has a $D=1$ m diameter and was
+constructed from three NACA 0020 section blades with constant $c=0.14$ m chord
+length, mounted at half-chord and half-span with zero preset blade pitch. The
+support struts are also NACA 0020 sections with 0.14 m chord length, and these
+are fixed to a $0.095$ m diameter shaft. A sketch of the turbine rotor is shown
+in Figure~\ref{fig-expsetup} and CAD models are available from
+\cite{Bachant2014_CAD}.
+
+
+\subsection{DOE/SNL RM2}
+
+The turbine is to be a 1:6 scale model of the RM2 rotor. Turbine geometry is to
+be scaled from the RM2 ``rev 0'' design report \cite{Barone2011}, with the
+exception of the shaft diameter, which will be a scaled version of the SAFL RM2
+shaft \cite{Hill2014}. The hub design is also similar to the SAFL model, which
+may aid in comparison of the results, though this is not a top priority.
+Geometric parameters are shown in Table~\ref{tab:turb_geom} and a drawing of the
+turbine design is shown in Figure~\ref{fig:RM2-drawing}. The turbine model
+components---blades, struts, shaft, and center hub sections---will be fabricated
+from 6061-T6 aluminum, which will be hardcoat anodized per MIL-8625-A, type III,
+class 2 specifications.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l|l|l}
+        & Full-scale & Model (1:6) \\
+        \hline 
+        Diameter (m)   & 6.450 & 1.075 \\ 
+        Height (m)     & 4.840 & 0.8067 \\ 
+        Blade root chord (m) & 0.4000 & 0.06667 \\ 
+        Blade tip chord (m)  & 0.2400 & 0.04000 \\ 
+        Blade profile & NACA 0021 & NACA 0021 \\ 
+        Blade mount & 1/2 chord & 1/2 chord \\ 
+        Blade pitch (deg.) & 0.0 & 0.0 \\ 
+        Strut profile & NACA 0021 & NACA 0021 \\ 
+        Strut chord (m) & 0.3600 & 0.06000 \\ 
+        Shaft diameter (m) & 0.2540 \cite{Beam2011} or 0.4160 \cite{Hill2014} & 0.06350\\ 
+    \end{tabular}
+    \caption{RM2 turbine geometric parameters.}
+    \label{tab:turb_geom}
+\end{table}
+
+\begin{figure}[ht]
+    \centering
+%    \includegraphics[width=0.5\textwidth]{Figures/turbine}
+    \caption{Illustration of the UNH RM2 scaled physical model.}
+    \label{fig:RM2-drawing}
+\end{figure}
