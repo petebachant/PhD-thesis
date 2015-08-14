@@ -20,7 +20,7 @@ figdirs = {"RVAT-baseline": join(expdir, "RVAT baseline", "Figures"),
 
 figlists = {"RVAT-baseline": [],
             "RVAT-Re-dep": ["cp_vs_tsr.pdf", "mean_u.pdf", "mean_upvp.pdf"],
-            "AD": ["AD_streamwise.pdf", "meancontquiv_AD.pdf"]}
+            "AD": ["streamwise.pdf", "meancontquiv.pdf"]}
 
 for name, figlist in figlists.items():
     figdir = figdirs[name]
