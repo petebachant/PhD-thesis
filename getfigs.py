@@ -4,7 +4,6 @@ This script copies figures into the local figures directory.
 """
 
 import os
-import sys
 import shutil
 from os.path import join
 
@@ -12,6 +11,8 @@ homedir = os.path.expanduser("~")
 expdir = join(homedir, "Research", "Experiments")
 foamrun_23x = join(homedir, "OpenFOAM", "pete-2.3.x", "run")
 foamrun_24x = foamrun_23x.replace("2.3.x", "2.4.x")
+foamrun_ext1 = join("media", "pete", "Data1", "OpenFOAM", "pete-2.3.x", "run")
+foamrun_ext2 = foamrun_ext1.replace("Data1", "Data2")
 
 figdirs = {"RVAT-baseline": join(expdir, "RVAT baseline", "Figures"),
            "RVAT-Re-dep": join(expdir, "RVAT Re dep", "Figures"),
