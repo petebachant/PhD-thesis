@@ -90,6 +90,19 @@ chord length, span direction vector, span length, and velocity vector.
 
 Each element has a rectangular planform centered at the element position.
 
+An actuator is created from defined geometry points, which are not necessarily
+ALE locations, but rather where ALE parameters are interpolated from. This way,
+an actuator line can be defined by fewer geometry points than element locations.
+For example, an AL with straight planform boundaries---e.g. a straight or
+tapered wing---only needs two geometry points to be fully defined. See
+Figure~\ref{fig:AL-geom} for a schematic.
+
+\begin{figure}[ht]
+    \caption{Actuator line geometry definitions.}
+    
+    \label{fig:AL-geom}
+\end{figure}
+
 \section{Determining inflow velocity}
 
 In momentum methods, the inflow velocity is determined by solving for the axial
@@ -145,8 +158,24 @@ factor for an axial-flow rotor. This has been further developed by Shen et al.
 the rotor context, such that the model could be used for axial- and cross-flow
 turbines, along with standalone actuator lines, e.g. wings.
 
-This model should be a function of the actuator line's aspect ratio.
+This model should be a function of the actuator line's aspect ratio and possibly
+its shape, but should not depend on the machine in which the AL operates.
 
+Inspired by lifting line theory, we assume lift will taper off at the root/tip
+of an actuator line in an elliptical manner. We define the nondimensional taper
+starting location
+\begin{equation}
+    \tau = 1 - \frac{L_e}{R_A}, 
+    \label{eq:end-length}
+\end{equation}
+where $L_e$ is the end effect length in terms of mean chords, $R_A$ is the
+aspect ratio, and $0 \le \tau \le 1$. For example, if a rectangular wing of
+aspect ratio 10 is modeled as an actuator line, an end effect length $L_e = 2$
+would cause lift to taper 2 chords from the tip or the nondimensional span
+location $\tau = 4/5$ from the root. Parameterizing the effect this way has the
+advantage of amplifying end effects for low aspect ratio ALs while holding $L_e$
+constant, which is assumed to be a function of the AL planform shape.
+Nonetheless, $L_e$ gives a tuning parameter to improve AL loading accuracy.
 
 \section{Reynolds number corrections}
 
@@ -226,6 +255,12 @@ In this case, we seek to inject turbulence dependent on blade loading, both
 for the $k$--$\epsilon$ RANS model and the
 \todo[inline]{Pick LES model to work with.}
 
+Turbulence sources were calibrated by simulating a 2-D symmetrical NACA airfoil
+using the $k$--$\omega$ SST turbulence model, given its strength at predicting
+stall. We seek a turbulence injection rate as a function of drag coefficient, as
+this should be a good indicator of flow separation, where production of
+turbulence will be greatly increased.
+
 
 \section{Software implementation}
 
@@ -279,21 +314,77 @@ nested lists down to the element level, which can be confusing to read.
 
 \section{Results}
 
+
 \subsection{Actuator line in steady flow}
+
+\subsubsection{Angle of attack and inflow velocity detection}
+
+The value of this simulation is to verify that the ALM can correctly detect
+inflow velocity and therefore angle of attack such that 2-D coefficients can be
+looked up appropriately.
+
+
+\subsubsection{End effects}
+
+Next we will examine the spanwise loading of a rectangular wing in steady flow
+to compare with classical theory and experiments.
+
+\begin{figure}
+    \caption{Spanwise loading for an actuator line with rectangular planform in steady flow.}
+    
+    \label{fig:AL-spanwise}
+\end{figure}
+
 
 \subsection{Pitching actuator line}
 
+Verifying and validating dynamic stall models was done by simulating a
+harmonically pitching actuator line in steady flow, which has been studied
+extensively in the literature both experimentally and numerically. This test
+case also helped evaluate and tune the model's ability to detect inflow velocity
+and angle of attack before being implemented as part of a turbine rotor.
+
+\begin{figure}
+    \caption{Comparison of geometric and detected angle of attack and inflow
+        velocity for a harmonically pitching airfoil.}
+    
+    \label{fig:pitching-alpha-U_rel}
+\end{figure}
+
+\begin{figure}
+    \caption{Unsteady normal force coefficient for a harmonically pitching NACA
+        0012 foil.}
+    
+    \label{fig:pitching-cn}
+\end{figure}
+
+
 \subsection{High solidity cross-flow turbine}
+
+\subsubsection{Performance prediction}
+
+\begin{figure}
+    \caption{Power and drag coefficient curves computed for the UNH-RVAT using
+        the Leishman--Beddoes model modified by Sheng et al.}
+    
+    \label{fig:RVAT-ALM-perf-curves}
+\end{figure}
 
 \subsection{Low solidity cross-flow turbine}
 
+
 \subsection{Axial-flow turbine}
 
-\subsection{Cross-flow turbine array}
 
 \subsection{Cross-flow turbine LES}
 
+
 \subsection{Cross-flow turbine with free surface}
+
+
+\subsection{Dual cross-flow turbines}
+
+Lastly, as a test of one of the main purposes of the ALM, we will simulate two cross-flow turbines, as measured experimentally in \cite{Li2010}.
 
 
 \section{Computational cost}
@@ -301,3 +392,12 @@ nested lists down to the element level, which can be confusing to read.
 
 
 \section{Conclusions}
+
+In this chapter the actuator line model has been developed and tested against a
+wide variety of validation cases.
+
+Despite a small loss in accuracy, the ALM can do a reasonable job predicting the
+performance and wake of a cross-flow turbine. It is therefore expected that this
+tool will provide a much improved means of designing array layouts compared with
+simple actuator disks, point sources, or superposition techniques---and all with
+acceptable computational cost, i.e., not requiring HPC resources.
