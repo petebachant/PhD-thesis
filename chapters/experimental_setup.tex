@@ -235,26 +235,29 @@ previous generation could only realistically achieve around 100.
 
 \subsection{Tare drag and torque compensation} 
 
-Tare torque and drag runs will also be performed to measure the shaft bearing
-friction torque and turbine mounting frame drag, respectively. These data will
-be similar to the turbine performance data, omitting torque measurements for the
-tare drag runs and vice versa. Tare drag runs will be performed for each tow
-speed in the experiment, for which the mean value is used in data processing.
-Tare torque runs will be performed by rotating the turbine shaft (without
-blades) in air at constant angular velocity for a specified duration, over the
-range of angular velocities used throughout the experiment. Tare torque will
-then be fit with a linear regression versus shaft angular velocity, and added to
-the measured turbine torque in post-processing.
+The drag and torque measurement systems were set up in such a way that raw
+measurements for drag would include all submerged gear and torque would include
+all friction below the transducer along with the turbine shaft torque. To
+compensate, tare torque and drag runs were to be performed to measure the shaft
+bearing friction torque and turbine mounting frame drag, respectively. These
+data will be similar to the turbine performance data, omitting torque
+measurements for the tare drag runs and vice versa. Tare drag runs will be
+performed for each tow speed in the experiment, for which the mean value is used
+in data processing. Tare torque runs will be performed by rotating the turbine
+shaft (without blades) in air at constant angular velocity for a specified
+duration, over the range of angular velocities used throughout the experiment.
+Tare torque will then be fit with a linear regression versus shaft angular
+velocity, and added to the measured turbine torque in post-processing.
 
 
 \subsection{Synchronization of instrumentation subsystems}
 
 The three data acquisition instrumentation subsystems---motion controller, NI
 DAQ (performance measurements), and Vectrino+ (wake velocity
-measurements)---will begin sampling at precisely the same time each run, after
-being triggered by a TTL pulse created by the motion controller. This strategy
-retains synchronization for all performance signal samples (tow speed, torque,
-drag, angular velocity), ensuring precise calculation of, e.g., power
+measurements)---were set to begin sampling at precisely the same time each run,
+after being triggered by a TTL pulse created by the motion controller. This
+strategy retains synchronization for all performance signal samples (tow speed,
+torque, drag, angular velocity), ensuring precise calculation of, e.g., power
 coefficient. Since there is also synchronization of the initial sample from each
 three subsystems, correlation of events in the performance and wake signals is
 also possible.
@@ -262,17 +265,31 @@ also possible.
 
 \section{Determining tank settling time}
 
-Sample tows will be done to determine the amount of time taken between runs such
-that the tank has settled adequately, i.e., background turbulence and any large
-scale mean flows have been dissipated. This will be assessed by towing the
-turbine, then allowing the Vectrino to continue recording velocity data,
-monitoring the mean and standard deviation of the signals. The settling times
-will be stored in the experiment configuration---one value for each tow speed.
+Each experiment, sample tows were done to determine the amount of time taken
+between runs such that the tank has settled adequately, i.e., background
+turbulence and any large scale mean flows have been dissipated. This was
+assessed by towing the turbine, then allowing the Vectrino to continue recording
+velocity data, monitoring the mean and standard deviation of the signals. The
+settling times were then in the experiment configuration---one value for each
+tow speed, to be used by \textit{TurbineDAQ} as wait times between automated
+runs.
 
 
 \section{Turbine models}
 
-Two physical turbine models were designed and built.
+Two physical turbine models were designed and built. The first was intended to
+be a geometrically simple---i.e. symmetrical foil profiles, square frontal area,
+rectangular blade planform---high-solidity turbine. This turbine was constructed
+from materials donated by Lucid Energy Technologies, LLP., and dubbed the
+``Reference Vertical-Axis Turbine'' or UNH-RVAT.
+
+The second turbine was designed and built as part of a measurement task for
+Sandia National Laboratories (SNL), in collaboration with the US Department of
+Energy (DOE). The so-called ``Reference Model 2'' (RM2) was developed by SNL to
+be a standard cross-flow turbine for which modelers could validate their
+predictions \cite{Neary2014}. The RM2 was designed using Sandia's CACTUS vortex
+line code \cite{Barone2011}, and its low solidity made it a nice complement to
+the UNH-RVAT for testing the robustness of numerical models to varying solidity.
 
 \subsection{UNH-RVAT}
 
@@ -299,16 +316,15 @@ in Figure~\ref{fig:exp-setup} and CAD models are available from
 
 \subsection{DOE/SNL RM2}
 
-The turbine is to be a 1:6 scale model of the RM2 rotor. Turbine geometry is to
-be scaled from the RM2 ``rev 0'' design report \cite{Barone2011}, with the
-exception of the shaft diameter, which will be a scaled version of the SAFL RM2
-shaft \cite{Hill2014}. The hub design is also similar to the SAFL model, which
-may aid in comparison of the results, though this is not a top priority.
-Geometric parameters are shown in Table~\ref{tab:turb-geom} and a drawing of the
-turbine design is shown in Figure~\ref{fig:RM2-drawing}. The turbine model
-components---blades, struts, shaft, and center hub sections---will be fabricated
-from 6061-T6 aluminum, which will be hardcoat anodized per MIL-8625-A, type III,
-class 2 specifications.
+The turbine was designed as a 1:6 scale model of the RM2 rotor described in the
+RM2 ``rev 0'' design report \cite{Barone2011}, with the exception of the shaft
+diameter, which was scaled from the SAFL RM2 shaft \cite{Hill2014}. The hub
+design is also similar to the SAFL model, which may aid in comparison of the
+results, though this is not a top priority. Geometric parameters are shown in
+Table~\ref{tab:turb-geom} and a drawing of the turbine design is shown in
+Figure~\ref{fig:RM2-drawing}. The turbine model components---blades, struts,
+shaft, and center hub sections---will be fabricated from 6061-T6 aluminum, which
+will be hardcoat anodized per MIL-8625-A, type III, class 2 specifications.
 
 \begin{table}[ht]
     \centering
