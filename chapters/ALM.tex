@@ -261,6 +261,42 @@ stall. We seek a turbulence injection rate as a function of drag coefficient, as
 this should be a good indicator of flow separation, where production of
 turbulence will be greatly increased.
 
+An automated OpenFOAM case was developed to perform the turbulence injection
+calibration. This case automatically created a \texttt{blockMeshDict} for a
+given NACA foil at specified angle of attack, ran the simulation until
+convergence, then sampled and logged the lift, drag, moment coefficients, along
+with the maximum values and locations of $k$, $\omega$, and $\epsilon$ 1.25
+chords downstream of the leading edge.
+
+\begin{figure}[ht]
+    \centering
+    
+    \caption{2-D NACA 0021 foil mesh at 20 degrees angle of attack.}
+    
+    \label{fig:NACA-foil-mesh}
+\end{figure}
+
+
+\begin{figure}[ht]
+    \centering
+    
+    \caption{Turbulence kinetic energy computed around the 2-D NACA 0021 foil at
+        20 degrees angle of attack.}
+    
+    \label{fig:NACA-foil-k}
+\end{figure}
+
+
+\begin{figure}[ht]
+    \centering
+    
+    \caption{Simulated drag coefficient and turbulence quantities plotted versus
+        angle of attack for a 2-D NACA 0021.}
+    
+    \label{fig:NACA-foil-turbulence}
+\end{figure}
+
+
 
 \section{Software implementation}
 
