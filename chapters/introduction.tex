@@ -1,20 +1,40 @@
 \chapter{Introduction}
 \pagenumbering{arabic} % <- Do this command only for the first chapter
 
+With the discovery of anthropogenic climate change and the looming end to fossil
+fuel supplies, humans are now striving for a fully sustainable energy portfolio.
+Towards this end, sources of flowing fluid like on- and offshore wind along with
+water in river and tidal flows---a.k.a. marine hydrokinetic (MHK) energy---can
+help. It is estimated that there is still \todo[inline]{Find how much untapped
+    wind energy there is} W of wind power left untapped globally, while there is
+\todo[inline]{Find how much untapped MHK power there is} W of MHK power for the
+taking. \todo[inline]{Find BP stats on when oil will run out.}
+\todo[inline]{Cite climate change mitigation paper.}
 
-\section{What are cross-flow turbines and why do they matter?}
+A turbine is the most common machine for extracting energy from these flows,
+converting the energy to shaft work by the fluid applying torque on the rotor.
+Wind turbine designs have matured a lot over the past couple decades, to the
+point where they are not changing much conceptually, though they are pushing
+forward by increasing size. MHK turbine designs on the other hand are quite
+immature despite taking heavy influence wind technology.
 
-A cross-flow turbine (CFT) is a device that converts a fluid's kinetic energy to
-shaft work, which has its axis of rotation perpendicular to the flow. A familiar
-example is the Darrieus vertical-axis wind turbine (VAWT) concept, investigated
-thoroughly in the late 1970s through the early 1990s by groups including Sandia
-National Laboratories (SNL) in the US and the National Research Council (NRC) in
-Canada \cite{Para2002}, examples of which are shown in
+Rotor concepts can essentially be divided into two classes---axial-flow and
+cross-flow---describing the relative orientation of the axis to the nominal flow
+direction. The ubiquitous horizontal-axis wind turbine (HAWT) is an example of
+an axial-flow turbine (AFT), while the egg-beater shaped Darrieus vertical-axis
+wind turbine (VAWT) is an example of a cross-flow turbine (CFT). Note that a
+cross-flow turbine can accept flow from any direction perpendicular to its
+rotation, meaning the axis can be horizontal, vertical, or anything in between.
+
+The most well-know CFT, the Darrieus vertical-axis wind turbine (VAWT) concept,
+was developed thoroughly in the late 1970s through the early 1990s by groups
+including Sandia National Laboratories (SNL) in the US and the National Research
+Council (NRC) in Canada \cite{Para2002}, examples of which are shown in
 Figure~\ref{fig:Darrieus}. The CFT concept has been nearly abandoned for
 large-scale onshore wind, but today is being applied or considered for floating
 offshore wind \cite{Sandia2012, Paulsen2011}, smaller-scale wind
 \cite{Giges2012}, and marine hydrokinetic (MHK) energy conversion, e.g., in
-tidal and river flows.
+tidal and river flows. \todo[inline]{Add the FlowWind or whatever turbine story}
 
 \begin{figure}[ht]
 \caption{The Sandia 34 m (left) and Eole (right) Darrieus vertical-axis wind
@@ -111,6 +131,7 @@ C_D = \frac{F_D}{\frac{1}{2} \rho A U_\infty^2}.
 \label{eq:cd}
 \end{equation}
 It is also worth noting that $C_P = \lambda C_T$.
+
 
 \section{The state of engineering tools for CFTs}
 
@@ -238,25 +259,40 @@ turbulence, and therefore will be more accurate at predicting flow within a
 turbine array \cite{Krogstad2013}.
 
 
-\section{Objectives}
+\section{Goals and objectives}
 
-The objectives of this research are:
+The main goal of this research is to develop a tool for predicting CFT array
+performance. The requirements of this tool are:
+
+\begin{itemize}
+    
+    \item Higher accuracy than vortex models. These are commonly used, but since
+    they solve for potential flow do not contain any information about
+    turbulence.
+    
+    \item Able to predict performance of a small array on a single PC with reasonable computation time per configuration, but easily portable to high performance computing for details simulations of large arrays.
+    
+    \item Easy to automate. 
+    
+    \item Cheaper than physical modeling. 
+    
+\end{itemize}
+
+
+The strategy for meeting these requirements includes the following objectives:
 
 \begin{enumerate}
 
 	\item To improve the understanding of both high and low solidity cross-flow
     turbine wakes, most importantly the apparent increased rate of recovery
-    compared with axial-flow turbines.
+    compared with axial-flow turbines. This will establish our flow modeling
+    targets.
 	
 	\item To assess the allowable scale mismatch at which physical models can
 	provide results relevant to full-scale devices and arrays.
 	
 	\item To evaluate the ability of high-fidelity computational fluid dynamics and
 	high performance computing to supplement or even replace experimental work.
-	
-	\item To develop a numerical model capable of predicting the performance and
-	wake dynamics of a cross-flow turbine with reasonable accuracy and relatively
-	low computational expense.
 
 \end{enumerate}
 
