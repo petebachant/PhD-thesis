@@ -1,8 +1,41 @@
 \chapter{Developing an actuator line model for cross-flow turbines}
 
+To recap, the overarching goal of this work was to produce a model for
+predicting the performance of arrays of turbines, with a focus on the less
+common cross-flow concept. The requirements for this model were:
+
+\begin{enumerate}
+    \item Must be able to obtain results for a small array of turbines on a
+    typical PC using simulation time on the order of hours per operating
+    condition.\label{req:solution-time}
+    
+    \item Should reasonably match experimental near-wake results for both high
+    and low solidity cross-flow turbines with respect to the mean velocity and
+    turbulence kinetic energy structure, as well as the relative strengths of
+    wake recovery mechanisms. This will ensure our forcing model is a good wake
+    generator, and the flow evolution can then be predicted by an accurate flow
+    solver and turbulence model.\label{req:wake}
+    
+    \item Should be able to predict the average performance of a standalone
+    turbine to within the accuracy established by blade-resolved 3-D CFD or
+    blade element methods.
+    
+    \item Should match experimental results for the augmented performance of
+    turbines in proximity to each other. This is similar to
+    requirement~\ref{req:wake}, though from the perspective of turbine's
+    response to the flow rather than the flow's response to the turbine.
+    
+    \item Software should be open-source and not rely on closed-source software,
+    if possible.
+\end{enumerate}
+
 After getting a sense for how two different turbines perform, and how they
 affect the flow in which they are placed, the goal is to now develop a way to
 predict these effects without resorting to blade-resolved Navier--Stokes CFD.
+
+The blade-resolved CFD work presented in Chapter~\ref{chap:CFD} provided some
+targets for what we might expect ideal ALM results to look like inside a RANS
+model.
 
 The ultimate goal of the actuator line model is to drive down the computational
 costs of simulating turbines by negating the need for complicated meshing, and
