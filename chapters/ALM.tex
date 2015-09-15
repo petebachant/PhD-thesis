@@ -27,6 +27,8 @@ common cross-flow concept. The requirements for this model were:
     
     \item Software should be open-source and not rely on closed-source software,
     if possible.
+    
+    \item Must be cheaper than physical models for a 3 turbine array. 
 \end{enumerate}
 
 With respect to requirement~\ref{req:solution-time}, fast solution times could
@@ -528,7 +530,12 @@ Lastly, as a test of one of the main purposes of the ALM, we will simulate two c
 
 
 \section{Computational cost}
-% Compare with the blade-resolved RANS
+
+Compared to blade-resolved RANS, the ALM can solve a standalone turbine case on
+the order of CPU minutes per second of simulated time versus 1,000 CPU hours per
+second---a savings of 4 orders of magnitude. However, the results for the ALM
+are not quite as detailed. For example, the $-y$ tip vortex (where dynamic stall
+is occurring) is not captured by the ALM.
 
 
 \section{Conclusions}
