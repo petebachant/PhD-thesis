@@ -29,6 +29,34 @@ common cross-flow concept. The requirements for this model were:
     if possible.
 \end{enumerate}
 
+With respect to requirement~\ref{req:solution-time}, fast solution times could
+be obtained by both momentum and vortex models. However, their poor performance
+for high solidity turbines precludes their use \cite{Joo2015}. Furthermore, it
+is theoretically impossible for a potential flow vortex method to properly
+realize the wake dynamics (requirement~\ref{req:wake})---most importantly the
+turbulent transport, which has been shown in both experiment and blade-resolved
+CFD to be on the same order of magnitude as the vertical advection. We are
+therefore left with Navier--Stokes models.
+
+As we have also seen in Chapter~\ref{chap:CFD}, 2-D blade-resolved CFD could
+fulfill solution time requirements, but will never capture vertical advection,
+meaning it will also fail to model the performance in an array. Furthermore, 2-D
+CFD would not allow for mixed-turbine arrays (AFTs and CFTs). 3-D CFD on the
+other hand, would allow for mixed-turbine arrays, could be accurate enough, but
+the processing power required would not meet
+requirement~\ref{req:solution-time}.
+
+We are then left with actuator-type methods inside Navier--Stokes solvers. As
+shown in Chapter~\ref{chap:RVAT-baseline}, the conventional uniform actuator
+disk is not a good candidate for a cross-flow turbine wake generator, never mind
+the fact that it does not typically compute performance predictions. There are
+modified verssions---such as the actuator cylinder---which have been developed
+for CFTs \cite{Shamsoddin2014}, though their effectiveness is unknown for 3-D
+cases. Finally, the actuator line model (ALM) provides a potential candidate for
+meeting all requirements, with the prospect of leveraging continued progress on
+improved Navier--Stokes turbulence models. Thus the ALM was chosen for the
+present work.
+
 After getting a sense for how two different turbines perform, and how they
 affect the flow in which they are placed, the goal is to now develop a way to
 predict these effects without resorting to blade-resolved Navier--Stokes CFD.
