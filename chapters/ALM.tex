@@ -177,16 +177,38 @@ a vertical-axis turbine using LES \cite{Shamsoddin2014}. Schito and Zasso
 developed an effective velocity model \cite{Schito2014}
 \todo[inline]{Summarize the Shito and Zasso effective velocity model}
 
+\todo[inline]{Move single steady AL results here?}
+
+\todo[inline]{Describe OpenFOAM's cell point interpolation}
+
+
 \section{Force projection}
 
 After the force on the ALE from the flow is calculated, it is then projected
 back onto the flow field as a source term in the momentum equation. To avoid
 instability due to sharp gradients, the source term is tapered from its maximum
 value away from the element location by means of a spherical Gaussian function.
-The width of this function is
-\todo[inline]{Add final width of Gaussian projection}
+The width of this function $\eta$ is controlled by a single parameter
+$\epsilon$, which is then multiplied by the actuator line element force and
+imparted on a cell with distance $| \vec{r} |$ from the actuator line element
+quarter chord location:
 
-\section{Unsteady aerodynamics}
+\begin{equation}
+    \eta = \frac{1}{\epsilon^3 \pi^{3/2}} \exp 
+    \left[ - \left( \frac{| \vec{r} |}{\epsilon} \right)^2 \right].
+    \label{eq:projection}
+\end{equation}
+
+Jha et al. \cite{Jha2014} provides guidelines for choosing a projection width.
+
+Ultimately, an adaptive $\epsilon$ was chosen such that it would be either equal
+to $c/2$, or the cube root of the volume of the containing cell in the mesh.
+This way, fine meshes could benefit from the increased accuracy of more
+concentrated momentum sources, and coarse meshes would be protected from
+numerical instability. \todo[inline]{Add final width of Gaussian projection}
+
+
+\section{Unsteady aerodynamics and dynamic stall}
 
 In the context of a turbine---especially a cross-flow turbine---the actuator
 lines will encounter unsteady conditions, both in their angle of attack and
@@ -198,7 +220,14 @@ flow to obtain accurate loading predictions.
 
 Leishman and Beddoes developed a semi-empirical model for unsteady aerodynamics
 and dynamic stall, which is derived from the phenomenology of the physics
-instead rather than pure empiricism \cite{Leishman1989}.
+instead rather than pure empiricism \cite{Leishman1989}. Beddoes then updated
+the model to the so-called ``3G'' version \cite{Beddoes1993}. Three variations
+of this dynamic stall model were tested for cross-flow turbines by Dyachuk et
+al. \cite{Dyachuk2014}, with the conclusion that the Sheng et al. low Mach
+number modified version \cite{Sheng2008} provided the best results.
+Nevertheless, all three models will be implemented and tested in a similar
+fashion.
+
 
 \section{Flow curvature corrections}
 
@@ -207,6 +236,12 @@ along their chords for any given azimuthal location due to the circular path.
 This makes it difficult to define a single angle of attack for use in the static
 coefficient lookup tables. Furthermore, this effect is more pronounced for high
 solidity ($c/R$) turbines.
+
+\todo[inline]{Put results for how wake changes with no flow curvature model on
+    here or later?}
+
+Two different flow curvature corrections were considered; one by Goude
+\cite{Goude2012} and one by Mandal and Burton \cite{Mandal1994}.
 
 
 \section{End effects}
@@ -237,6 +272,7 @@ location $\tau = 4/5$ from the root. Parameterizing the effect this way has the
 advantage of amplifying end effects for low aspect ratio ALs while holding $L_e$
 constant, which is assumed to be a function of the AL planform shape.
 Nonetheless, $L_e$ gives a tuning parameter to improve AL loading accuracy.
+
 
 \section{Reynolds number corrections}
 
@@ -391,6 +427,7 @@ generating static foil data, e.g., XFOIL or other OpenFOAM solvers, turbine
 controller models, structural analysis codes, and optimization tools, e.g.,
 SNL's DAKOTA, for both individual turbines and array layouts.
 
+
 \subsection{Object orientation}
 
 C++ permits the object oriented programming paradigm, which helps modularize
@@ -405,11 +442,17 @@ line model in \textit{SOWFA} uses a single software object to represent an
 entire array of turbines. This architecture necessitates iterating through many
 nested lists down to the element level, which can be confusing to read.
 
+
 \subsection{Parallelization}
 
+OpenFOAM's custom container classes and loop macros were used wherever possible
+to aid in parallelization.
 
 
 \section{Results}
+
+In this section results are presented for cases used to verify various
+sub-models, and finally test the ALM against the experimental targets.
 
 
 \subsection{Actuator line in steady flow}
