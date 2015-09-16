@@ -139,9 +139,17 @@ based on insight from the body-fitted grid simulations.
 
 % % % Above from introduction
 
+
 \section{Model inputs}
 
-% Not multiple Re coefficient tables!
+A turbine can be fully described by its geometry, number of elements and their
+associated 2-D profiles, and their corresponding coefficient data. Its rotation
+can be described by a mean tip speed ratio only, though experiments have shown
+that the cyclic loading of a CFT will cause an oscillation in tip speed ratio at
+the blade passage frequency. This oscillation can be described by an amplitude
+and phase, similar to how angular velocity was prescribed in
+Chapter~\ref{chap:CFD}'s blade-resolved CFD simulations.
+
 
 \section{Blade element discretization}
 
@@ -166,22 +174,62 @@ Figure~\ref{fig:AL-geom} for a schematic.
     \label{fig:AL-geom}
 \end{figure}
 
+
 \section{Determining inflow velocity}
 
 In momentum methods, the inflow velocity is determined by solving for the axial
 and angular induction factors \cite{Manwell2002}. However, using Navier--Stokes
 methods, it is somewhat unclear how to calculate the velocity vector used to
-compute the angle of attack and relative velocity. Sorensen and Shen used an
-actuator line element's position to determine the inflow velocity for an
-axial-flow turbine \cite{Sorensen2002}. Similarly, Shamsoddin and Porte-Agel use
-the velocity at a blade element's location in their actuator line simulation of
-a vertical-axis turbine using LES \cite{Shamsoddin2014}. Schito and Zasso
-developed an effective velocity model \cite{Schito2014}
-\todo[inline]{Summarize the Shito and Zasso effective velocity model}
+compute the angle of attack and relative velocity, though we have access to much
+more information about the flow. Sorensen and Shen used an actuator line
+element's position to determine the inflow velocity for an axial-flow turbine
+\cite{Sorensen2002}. Similarly, Shamsoddin and Porte-Agel use the velocity at a
+blade element's location in their actuator line simulation of a vertical-axis
+turbine using LES \cite{Shamsoddin2014}. NREL's SOWFA ALM for OpenFOAM also uses
+the velocity at the actuator line element location for computing inflow velocity
+and local angle of attack with no corrections \cite{Churchfield2013}.
 
-\todo[inline]{Move single steady AL results here?}
+Schito and Zasso developed an effective velocity model (EVM) for computing
+actuator forces in Navier--Stokes simulations \cite{Schito2014}. Their EVM
+proposes that inflow velocity should be sampled along a line perpendicular to
+the mean relative flow direction. They ultimately chose a the line to be 1.5
+chord lengths upstream of the actuator point (i.e. quarter-chord location). A
+sampling line was chosen to be 5 times the local mesh cell length. Finally, an
+angle of attack correction is proposed
+\begin{equation}
+    \Delta \alpha = \frac{c}{M} (1.2553 - 0.0552 C_d) C_l,
+    \label{eq:EVM-dalpha}
+\end{equation}
+where $c$ is the chord length, $M$ is the mesh size, and $C_l$ and $C_d$ are the
+lift and drag coefficients, respectively. Note that the constants in
+Equation~\ref{eq:EVM-dalpha} were determined from a calibration with 2-D
+blade-resolved CFD for a NACA 0012 foil and are not assumed to be universal.
 
-\todo[inline]{Describe OpenFOAM's cell point interpolation}
+The EVM, despite showing robustness for its chosen validation case,
+unfortunately involves determination of two unknown tuning parameters. To avoid
+the additional work necessary to determine these, a new inflow velocity
+detection algorithm was sought based on the assumption that there is some point
+relative to the actuator line element location with a velocity vector close
+enough to that of the free stream, yet will still include the effect of
+induction when used in a turbine.
+
+Velocity at a prescribed point in the mesh is determined using OpenFOAM's
+\texttt{interpolationCellPoint} class, which provides a linear weighted
+interpolation using cell values. The description from the class documentation is
+quoted below:
+
+\begin{quote}
+    Given cell centre values and point (vertex) values decompose into
+    tetrahedra and linear interpolate within them.
+\end{quote}
+
+The inflow velocity detection point was determined by an iterative process,
+simulating a single actuator line in a steady flow---both with stationary and
+harmonic pitching motion. The ``correct'' angle of attack and relative velocity
+would therefore be equal to the geometric values. Note that this test was redone
+as additional sub-models were added, as these affect the flow and therefore the
+inflow velocity vector angle and magnitude. Results are shown later in this
+chapter after all such sub-models are described.
 
 
 \section{Force projection}
@@ -202,6 +250,9 @@ quarter chord location:
 \end{equation}
 
 Jha et al. \cite{Jha2014} provides guidelines for choosing a projection width.
+
+Schito and Zasso \cite{Schito2014} found that a projection $\epsilon$ equal to
+the local mesh length was optimal.
 
 Ultimately, an adaptive $\epsilon$ was chosen such that it would be either equal
 to $c/2$, or the cube root of the volume of the containing cell in the mesh.
