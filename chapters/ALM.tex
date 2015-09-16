@@ -271,18 +271,38 @@ lines will encounter unsteady conditions, both in their angle of attack and
 relative velocity. These conditions necessitate the use of unsteady aerodynamic
 models to augment the static foil characteristics. Furthermore, the angles of
 attack encountered by a CFT blade will often be high enough to encounter dynamic
-stall. It is therefore necessary to model both unsteady attached and detached
-flow to obtain accurate loading predictions.
+stall (DS). It is therefore necessary to model both unsteady attached and
+detached flow to obtain accurate loading predictions.
 
-Leishman and Beddoes developed a semi-empirical model for unsteady aerodynamics
-and dynamic stall, which is derived from the phenomenology of the physics
-instead rather than pure empiricism \cite{Leishman1989}. Beddoes then updated
-the model to the so-called ``3G'' version \cite{Beddoes1993}. Three variations
-of this dynamic stall model were tested for cross-flow turbines by Dyachuk et
-al. \cite{Dyachuk2014}, with the conclusion that the Sheng et al. low Mach
-number modified version \cite{Sheng2008} provided the best results.
+\todo[inline]{Discuss Gormont model}
+
+Leishman and Beddoes (LB) developed a semi-empirical model for unsteady
+aerodynamics and dynamic stall, which is derived from the phenomenology of the
+physics instead rather than pure empiricism \cite{Leishman1989}. Beddoes then
+updated the model to the so-called ``3G'' version \cite{Beddoes1993}. Three
+variations of this dynamic stall model were tested for cross-flow turbines by
+Dyachuk et al. \cite{Dyachuk2014}, with the conclusion that the Sheng et al. low
+Mach number modified version \cite{Sheng2008} provided the best results.
 Nevertheless, all three models will be implemented and tested in a similar
 fashion.
+
+The LB DS models can be summarized conceptually based on the following principles:
+\begin{itemize}
+    \item Dynamic conditions cause a time lag in effective angle of attack and
+    lift force.
+    
+    \item Dynamic motion can cause an impulsive loading due to added mass
+    effects.
+    
+    \item Separation can be determined by the Kirchoff flow approximation, which
+    is also used to parameterize the normal force coefficient table based on the
+    trailing edge separation point. This separation point also encounters a time
+    lag.
+    
+    \item The separation initiates a vortex shedding cycle that causes an
+    overshoot and subsequent undershoot in lift before returning to an attached
+    flow condition.
+\end{itemize}
 
 
 \section{Flow curvature corrections}
