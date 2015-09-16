@@ -255,10 +255,13 @@ Schito and Zasso \cite{Schito2014} found that a projection $\epsilon$ equal to
 the local mesh length was optimal.
 
 Ultimately, an adaptive $\epsilon$ was chosen such that it would be either equal
-to $c/2$, or the cube root of the volume of the containing cell in the mesh.
-This way, fine meshes could benefit from the increased accuracy of more
-concentrated momentum sources, and coarse meshes would be protected from
-numerical instability. \todo[inline]{Add final width of Gaussian projection}
+to $c/2$, or twice the cube root of the volume of the containing cell in the
+mesh (roughly equivalent to the $2\Delta r$ recommended by Troldborg
+\cite{Troldborg2008}), whichever was larger. This way, fine meshes could benefit
+from the increased accuracy of more concentrated momentum sources, and coarse
+meshes would be protected from numerical instability.
+
+\todo[inline]{Add final width of Gaussian projection}
 
 
 \section{Unsteady aerodynamics and dynamic stall}
