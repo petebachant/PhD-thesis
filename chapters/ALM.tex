@@ -85,19 +85,19 @@ of relative blade motion and the local fluid velocity. The blade lift and drag
 forces are calculated using
 
 \begin{equation}
-F_L = \frac{1}{2} \rho A_\mathrm{elem} C_L U_\mathrm{rel}^2,
+F_L = \frac{1}{2} \rho A_\mathrm{elem} C_L |\vec{U}_\mathrm{rel}|^2,
 \end{equation}
 and
 \begin{equation}
-F_D = \frac{1}{2} \rho A_\mathrm{elem} C_D U_\mathrm{rel}^2,
+F_D = \frac{1}{2} \rho A_\mathrm{elem} C_D |\vec{U}_\mathrm{rel}|^2,
 \end{equation}
 where $\rho$ is the fluid density, $A_\mathrm{elem}$ is the blade element
-planform area (span $\times$ chord), $U_\mathrm{rel}$ is the local relative
-velocity, and $C_L$ and $C_D$ are the sectional lift and drag coefficients,
-chosen from a table via the local angle of attack and typically the Reynolds
-number. The forces are then projected onto the rotor coordinate system to
-calculate torque, overall drag, etc. Forces from the turbine shaft and blade
-support struts will be computed in a similar way.
+planform area (span $\times$ chord), $\vec{U}_\mathrm{rel}$ is the local
+relative velocity, and $C_L$ and $C_D$ are the sectional lift and drag
+coefficients, chosen from a table via the local angle of attack and typically
+the Reynolds number. The forces are then projected onto the rotor coordinate
+system to calculate torque, overall drag, etc. Forces from the turbine shaft and
+blade support struts will be computed in a similar way.
 
 The use of static foil data necessitates corrections for various dynamic effects
 induced by the actuator lines rotating within the flow field. Dynamic stall may
@@ -311,13 +311,29 @@ The rotating blades of a cross-flow turbine will have varying angle of attack
 along their chords for any given azimuthal location due to the circular path.
 This makes it difficult to define a single angle of attack for use in the static
 coefficient lookup tables. Furthermore, this effect is more pronounced for high
-solidity ($c/R$) turbines.
+solidity ($c/R$) turbines. Two different flow curvature corrections were
+considered; one by Goude \cite{Goude2012} and one by Mandal and Burton
+\cite{Mandal1994}.
 
-\todo[inline]{Put results for how wake changes with no flow curvature model on
-    here or later?}
+The Goude correction is derived by considering a flat plat moving along a circular path. 
 
-Two different flow curvature corrections were considered; one by Goude
-\cite{Goude2012} and one by Mandal and Burton \cite{Mandal1994}.
+\begin{equation}
+    \alpha = \delta + \arctan \frac{V_\mathrm{abs} \cos(\theta_b -
+        \beta)}{V_\mathrm{abs} \sin(\theta_b - \beta) + \Omega R} - \frac{\Omega
+        x_{0r}c}{V_\mathrm{ref}} - \frac{\Omega c}{4 V_\mathrm{ref}},
+    \label{eq:Goude-curvature}
+\end{equation}
+where $\delta$ is the blade pitch angle, $V_\mathrm{abs}$ is the magnitude of
+the local inflow velocity at the blade, $\theta_b$ is the blade azimuthal
+position, $\beta$ is the direction of the inflow velocity, $\Omega$ is the
+turbine's angular velocity, $R$ is the blade element radius, $x_{0r}$ is a
+normalized blade attachment point along the chord, $c$ is the blade chord
+length, and $V_\mathrm{ref}$ is the reference flow velocity for calculating
+angle of attack.
+
+Note that we will be using vector objects and their associated arithmetic in
+software, so the last two terms in Equation~\ref{eq:Goude-curvature} will be
+simply added to the scalar angle of attack.
 
 
 \section{End effects}
