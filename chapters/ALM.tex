@@ -663,8 +663,22 @@ and angle of attack before being implemented as part of a turbine rotor.
 
 \subsection{High solidity cross-flow turbine}
 
+The UNH-RVAT was chosen as a high solidity CFT case for model validation, thanks
+to our earlier experimental and numerical investigations.
+
+\todo[inline]{Describe end effects model settings for RVAT.}
+
 
 \subsubsection{Performance prediction}
+
+Power and drag coefficient curves are plotted for the UNH-RVAT in
+Figure~\ref{fig:RVAT-ALM-perf-curves}. The ALM does a good job predicting the
+drag coefficient, along with the power coefficient at low tip speed ratios, but
+overpredicts $C_P$ at high $\lambda$. This may be caused by the physical model
+turbine having exposed bolt heads and other imperfections located far enough
+from the axis to have a large parasitic effect at high rotation rates. In
+Chapter~\ref{chap:RM2} we showed how these losses can be significant even with
+carefully smoothed struts and strut-blade connections.
 
 \begin{figure}
     \caption{Power and drag coefficient curves computed for the UNH-RVAT using
@@ -687,6 +701,13 @@ directions of the effects of tip vortices are opposite.
     
     \label{fig:RVAT-ALM-meancontquiv-DS}
 \end{figure}
+
+The sensitivity of the wake's mean flow structure was also tested with respect
+to flow curvature correction for blade loading, the results for which are
+plotted in Figure~\ref{fig:RVAT-ALM-flow-curvature}. Like the dynamic stall
+model, the chosen curvature correction can have a significant effect on the
+location at which tip vortices are strongest, which in turn affects the
+qualitative structure of the mean flow in the near-wake.
 
 \begin{figure}
     \caption{Mean velocity field at $x/D=1$ with the LB-SGC model, with and
@@ -720,14 +741,35 @@ Figure~\ref{fig:RVAT-ALM-recovery}.
 
 \subsection{Low solidity cross-flow turbine}
 
-Figure~\ref{fig:RM2-ALM-perf-curves} presents the performance curves computed by
-the ALM, and those from the tow tank experiments.
+The RM2 low solidity cross-flow turbine is another good validation case given
+its differences from the UNH-RVAT. 
+
+\todo[inline]{Describe end effects model settings for RM2.}
+
+Figure~\ref{fig:RM2-ALM-perf-curves} presents
+the performance curves computed by the ALM, and those from the tow tank
+experiments. As with the high solidity RVAT, the drop in $C_P$ comes at higher
+$\lambda$.
 
 \begin{figure}
     \caption{Power and drag coefficient curves computed for the RM2 using the
         LB-SGC model.}
     
     \label{fig:RM2-ALM-perf-curves}
+\end{figure}
+
+Since the RM2 dataset contained measurements with no blades and both high and
+low drag struts. The RM2 was also simulated in these conditions to assess how
+well the actuator line model can predict the losses due to strut drag, which may
+be a partial explanation for why the power coefficient does not drop off at high
+$\lambda$ as quickly as in the experiments. Performance curves without blades
+are shown in Figure~\ref{fig:RM2-ALM-strut-perf}.
+
+\begin{figure}
+    \caption{Turbine performance curve with no blades, with NACA 0021 (a) and
+        cylindrical (b) struts.}
+    
+    \label{fig:RM2-ALM-strut-perf}
 \end{figure}
 
 Figure~\ref{fig:RM2-ALM-flow-curvature} shows the mean velocity field computed
@@ -747,7 +789,6 @@ corrections to obtain accurate results.
 \end{figure}
 
 
-
 \subsection{Axial-flow turbine}
 
 The performance and near-wake of an axial flow turbine was measured in a wind
@@ -762,12 +803,42 @@ other models for comparison.
 
 \subsection{Cross-flow turbine LES}
 
+Thanks to the ALM's general implementation as a source term, we are not tied to
+any specific turbulence model. This means that as turbulence modeling and
+computational power advance, the ALM can continue to be used. As a look towards
+the future prospect of simulating large CFT arrays in great detail, a single CFT
+was placed in a large eddy simulation (LES). Turbine geometry was identical to
+the UNH-RVAT case, but the domain was extended to look at wake evolution father
+downstream.
+
+\begin{figure}
+    \caption{Snapshot of vorticity contours for the UNH-RVAT LES case.}
+    
+    \label{RVAT-LES}
+\end{figure}
+
+\todo[inline]{Add meancontquiv for RVAT LES case?}
+
+\todo[inline]{Add recovery terms for RVAT LES case?}
+
 
 \subsection{Cross-flow turbine with free surface}
 
-Though not an explicit goal of the model, we can leverage OpenFOAM's included
-volume of fluid (VOF) model to simulate a turbine in an environment with a free
-surface.
+Though not an explicit goal of the model, once again the generic source term
+mechanism in OpenFOAM allows us to leverage their included volume of fluid (VOF)
+solver \textit{interFoam} to simulate a turbine in an environment with a free
+surface. This case was identical to the RVAT wake modeling case with respect to
+all parameters, except the domain was extended vertically and refined near the
+air-water interface.
+
+\begin{figure}
+    \caption{Wave pattern generated by the UNH-RVAT actuator line simulation.}
+    
+    \label{RVAT-wave-pattern}
+\end{figure}
+
+This model could be used to simulate the effects of waves on turbine
+performance, measured experimentally in \cite{Bachant2011-AJK, Bachant2011-MS}.
 
 
 \subsection{Dual cross-flow turbines}
@@ -788,7 +859,30 @@ is occurring) is not captured by the ALM.
 \section{Conclusions}
 
 In this chapter the actuator line model has been developed and tested against a
-wide variety of validation cases.
+wide variety of validation cases:
+
+\begin{itemize}
+    \item A static wing in steady flow.
+    
+    \item A wing in steady flow harmonically pitching beyond its stall threshold.
+    
+    \item A high solidity cross-flow turbine.
+    
+    \item A low solidity cross-flow turbine.
+    
+    \item A cross-flow turbine with no blades and two different types of support
+    struts.
+    
+    \item A axial flow turbine.
+    
+    \item A cross-flow turbine in a large eddy simulation.
+    
+    \item A cross-flow turbine in a VOF free surface simulation.
+    
+    \item Two cross-flow turbines in proximity to each other.
+\end{itemize}
+
+With respect to the model's goals...
 
 Despite a small loss in accuracy, the ALM can do a reasonable job predicting the
 performance and wake of a cross-flow turbine. It is therefore expected that this
