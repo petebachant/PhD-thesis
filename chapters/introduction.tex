@@ -102,9 +102,12 @@ the relative velocity, respectively. These forces ultimately produce the shaft
 torque, and in turn the shaft power. 
 
 \begin{figure}[ht]
-\caption{Vector diagram of velocity and forcing on a cross-flow turbine blade
-element.}
-\label{fig:vectors}
+    \centering
+    
+    \caption{Vector diagram of velocity and forcing on a cross-flow turbine
+        blade element.}
+    
+    \label{fig:vectors}
 \end{figure}
 
 The shaft's angular velocity is nondimensionalized as the tip speed ratio
@@ -131,6 +134,71 @@ C_D = \frac{F_D}{\frac{1}{2} \rho A U_\infty^2}.
 \label{eq:cd}
 \end{equation}
 It is also worth noting that $C_P = \lambda C_T$.
+
+So why then, is it difficult to analyze these machines? A first glimpse can be
+seen in Figure~\ref{fig:geom-alpha-urel}, where the geometric angle of attack
+and relative velocity are plotted over one turbine revolution for various tip
+speed ratios. If we imagine a typical high solidity $\sigma = Nc/R$ turbine
+operating at $\lambda = 2$, for example \cite{Howell2010}, we see that angles of
+attack can be very high even in optimal conditions. Note that we are calculating
+geometric angle of attack---the ``true'' angle of attack will be reduced by a
+slowing of the inflow velocity, also known as induction. 
+
+\begin{figure}[ht]
+    \caption{Geometric angle of attack and relative velocity versus azimuthal
+        angle at various tip speed ratios.}
+    
+    \label{fig:geom-alpha-urel}
+\end{figure}
+
+As shown in Figure~\ref{fig:vectors}, the blade's lift to drag ratio and angle
+of attack can be thought of as the quantities to maximize in order to develop
+shaft torque. However, beyond a threshold angle of attack, i.e., the static
+stall angle, $C_l/C_d$ drops. Predicting foil characteristics (lift, drag,
+pitching moment) is difficult beyond the static stall angle, where boundary
+layer separation becomes dominant over most of the foil suction surface, which
+reduces lift and increases drag dramatically. For example,
+Figure~\ref{fig:S826-perf} shows measured lift and drag coefficients compared
+with 2-D and 3-D Navier--Stokes CFD simulations from Cakmakcioglu et
+al.\cite{Cakmakcioglu2014}. The linear lift slope region and static stall angle
+are predicted well enough, but the peak $C_l/C_d$ is massively overestimated.
+This may not be an issue for a machine designed to operate at relatively fixed
+and/or pre-stall $\alpha$, e.g., airplane wings, propellers, or axial-flow wind
+turbines, but a cross-flow turbine will most likely encounter post-stall
+regimes, making even high-fidelity CFD analysis an uncertain prospect for
+accurate blade load prediction.
+
+
+\begin{figure}[ht]
+    \centering
+    
+    \includegraphics[width=\textwidth]{figures/cakmak-et-al-2014-fig8}
+    
+    \caption{Characteristics of an S826 airfoil at $Re=145,000$, from
+        \cite{Cakmakcioglu2014}.}
+    
+    \label{fig:S826-perf}
+\end{figure}
+
+
+\todo[inline]{Show examples of XFOIL.} As we see, even simple tools based on
+potential flow can do a good job predicting foil characteristics in the linear
+regime, but as stall is encountered, numerical prediction becomes very difficult
+due to the complex flow physics.
+
+
+\subsection{Dynamic stall}
+
+Up until now we have only considered static stall, which introduces difficulty
+in accurately predicting foil performance. Now we will consider the oscillating
+angle of attack and relative velocity on the CFT blade element, which introduces
+dynamic loading and so-called dynamic stall (DS).
+
+Unsteady foil behavior and dynamic stall have been studied extensively in
+rotorcraft research. In the absence of stall, even a helicopter rotor airfoil
+will deviate from static behavior due to cyclic pitching.\todo[inline]{Get some
+    background info from Leishman's book}
+
 
 
 \section{The state of engineering tools for CFTs}
