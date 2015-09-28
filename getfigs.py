@@ -16,11 +16,15 @@ foamrun_ext2 = foamrun_ext1.replace("Data1", "Data2")
 
 figdirs = {"RVAT-baseline": join(expdir, "RVAT baseline", "Figures"),
            "RVAT-Re-dep": join(expdir, "RVAT Re dep", "Figures"),
-           "AD": join(foamrun_24x, "actuatorSurface", "figures")}
+           "AD": join(foamrun_24x, "actuatorSurface", "figures"),
+           "CFD-pop": join(homedir, "Google Drive", "Research",
+                           "CFD popularity", "figures")}
 
 figlists = {"RVAT-baseline": [],
             "RVAT-Re-dep": ["cp_vs_tsr.pdf", "mean_u.pdf", "mean_upvp.pdf"],
-            "AD": ["streamwise.pdf", "meancontquiv.pdf"]}
+            "AD": ["streamwise.pdf", "meancontquiv.pdf"],
+            "CFD-pop": ["cfd-online.pdf"]}
+
 
 for name, figlist in figlists.items():
     figdir = figdirs[name]
