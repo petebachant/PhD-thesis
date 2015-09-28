@@ -546,18 +546,32 @@ chords downstream of the leading edge.
 
 \section{Software implementation}
 
-The cross-flow turbine actuator line model (CFT-ALM) will be written into an
-extension library for the OpenFOAM free and open-source CFD library. OpenFOAM is
-in general a package for solving partial differential equations using the finite
-volume method. However, it contains many pre-built applications for meshing,
-pre-processing, solving, and post-processing CFD simulations. The library
-contains implementations of models for compressible and incompressible flow,
-turbulence via RANS, LES, and detatched eddy simulation (DES), multiphase flows,
-dynamic mesh handling, and more, making it a very powerful general purpose
-simulation framework, capable of easily scaling to massively parallel high
-performance computing clusters. OpenFOAM is also widely used throughout industry
-and academia, making it a perfect library in which to integrate this model, with
-respect to potential impact and adoption.
+The ALM will be written into an extension library for the OpenFOAM free and
+open-source CFD library. OpenFOAM is in general a package for solving partial
+differential equations using the finite volume method. However, it contains many
+pre-built applications for meshing, pre-processing, solving, and post-processing
+CFD simulations. The library contains implementations of models for compressible
+and incompressible flow, turbulence via RANS, LES, and detached eddy simulation
+(DES), multiphase flows, dynamic mesh handling, and more, making it a very
+powerful general purpose simulation framework, capable of easily scaling to
+massively parallel high performance computing clusters. OpenFOAM is also widely
+used throughout industry and academia. As shown in Figure~\ref{fig:cfd-online},
+OpenFOAM has the second highest number of discussion threads, but a much higher
+post-per-thread count compared to other popular discussion forums on
+CFD-online.com. This greater community involvement makes OpenFOAM a perfect
+library in which to integrate this model, with respect to potential impact,
+adoption, and collaboration.
+
+\begin{figure}[ht]
+    \centering
+    
+    \includegraphics[width=0.95\textwidth]{figures/CFD-pop_cfd-online}
+    
+    \caption{Total number of threads (left) and posts-per-thread for the four
+        most popular forums on CFD-online.com as of September 27, 2015.}
+    
+    \label{fig:cfd-online}
+\end{figure}
 
 The code will be written in OpenFOAM's style, similar to NREL's SOWFA, but will
 use OpenFOAM's \texttt{fvOptions} framework for adding source terms to equations
