@@ -404,25 +404,52 @@ factor for an axial-flow rotor. This has been further developed by Shen et al.
 the rotor context, such that the model could be used for axial- and cross-flow
 turbines, along with standalone actuator lines, e.g. wings.
 
-This model should be a function of the actuator line's aspect ratio and possibly
-its shape, but should not depend on the machine in which the AL operates.
-
-Inspired by lifting line theory, we assume lift will taper off at the root/tip
-of an actuator line in an elliptical manner. We define the nondimensional taper
-starting location
+From Prandtl's lifting line theory, the geometric angle of attack $\alpha$ of a
+foil with an arbitrary circulation distribution can be expressed as a function
+of nondimensional span $\theta$ as \cite{Anderson2001}
 \begin{equation}
-    \tau = 1 - \frac{L_e}{R_A}, 
-    \label{eq:end-length}
+    \alpha (\theta) = \frac{2S}{\pi c (\theta)}
+    \sum_1^N A_n \sin \theta
+    + \sum_1^N n A_n \frac{\sin n \theta}{\sin \theta}
+    + \alpha_{L = 0}(\theta),
+    \label{eq:lifting-line}
 \end{equation}
-where $L_e$ is the end effect length in terms of mean chords, $R_A$ is the
-aspect ratio, and $0 \le \tau \le 1$. For example, if a rectangular wing of
-aspect ratio 10 is modeled as an actuator line, an end effect length $L_e = 2$
-would cause lift to taper 2 chords from the tip or the nondimensional span
-location $\tau = 4/5$ from the root. Parameterizing the effect this way has the
-advantage of amplifying end effects for low aspect ratio ALs while holding $L_e$
-constant, which is assumed to be a function of the AL planform shape.
-Nonetheless, $L_e$ gives a tuning parameter to improve AL loading accuracy.
+where $S$ is the span length, $c(\theta)$ is the chord length, and $N$ is the
+number of locations or elements sampled along the foil. This relationship can be rearranged into a matrix equation to solve for the unknown Fourier coefficients $A_n$,
+\begin{equation}
+    [\alpha_m ] - \alpha_{L=0} = [D_{mn}][A_n],
+\end{equation}
+where
+\begin{equation}
+    D_{mn} = \sum_1^N \left[ \frac{2b}{\pi c_m} \sin n \theta_m + n \frac{\sin n \theta_m}{\sin \theta_m} \right].
+\end{equation}
 
+With the Fourier coefficients, the circulation distribution can be calculated as
+\begin{equation}
+    \Gamma (\theta) = 2SU_\infty \sum_1^N A_n \sin n \theta,
+\end{equation}
+which, via the Kutta--Joukowski theorem, provides the lift distribution
+\begin{equation}
+    L(\theta) = -\rho_\infty U_\infty \Gamma (\theta).
+\end{equation}
+
+We can therefore compute a correction function 
+\begin{equation}
+    F(\theta) = \frac{L(\theta)}{L_\mathrm{max}},
+\end{equation}
+which will be in the range $[0, 1]$, similar to the Glauert corrections, but
+does not contain rotor parameters. The correction function for various methods
+is compared in Figure~\ref{fig:end-effects}.
+
+\begin{figure}
+    \centering
+    
+    \caption{End effect correction function values for the Glauert, Shen et al.,
+        and lifting line methods.}
+    
+    \label{fig:end-effects}
+\end{figure}
+    
 
 \section{Reynolds number corrections}
 
