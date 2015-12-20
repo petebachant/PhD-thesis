@@ -71,33 +71,29 @@ The ultimate goal of the actuator line model is to drive down the computational
 costs of simulating turbines by negating the need for complicated meshing, and
 the subsequent boundary layer resolution.
 
-The ALM is based on the classical blade element theory, developed by
-\todo[inline]{Find citation for creator of blade element theory}
-and subsequently first implemented by Sorensen and Shen \cite{Sorensen2002}.
-
-% % % Below from introduction
-
 The actuator line model, originally developed by Sorensen and Shen
-\cite{Sorensen2002}, treats turbine blades as lines of blade elements, for which
-2-D foil lift and drag coefficients are tabulated. For any given blade element,
+\cite{Sorensen2002}, is based on the classical blade element theory of ???
+\todo[inline]{Find citation for creator of blade element theory}
+combined with a Navier--Stokes description of the flow field.
+The ALM treats turbine blades as lines of blade elements, for which
+2-D profile lift and drag coefficients are given. For each blade element,
 relative flow velocity and angle of attack are computed by adding the vectors
 of relative blade motion and the local fluid velocity. The blade lift and drag
-forces are calculated using
-
+forces are calculated as
 \begin{equation}
-F_L = \frac{1}{2} \rho A_\mathrm{elem} C_L |\vec{U}_\mathrm{rel}|^2,
+    F_l = \frac{1}{2} \rho A_\mathrm{elem} C_l |\vec{U}_\mathrm{rel}|^2,
 \end{equation}
 and
 \begin{equation}
-F_D = \frac{1}{2} \rho A_\mathrm{elem} C_D |\vec{U}_\mathrm{rel}|^2,
+    F_d = \frac{1}{2} \rho A_\mathrm{elem} C_d |\vec{U}_\mathrm{rel}|^2,
 \end{equation}
 where $\rho$ is the fluid density, $A_\mathrm{elem}$ is the blade element
 planform area (span $\times$ chord), $\vec{U}_\mathrm{rel}$ is the local
-relative velocity, and $C_L$ and $C_D$ are the sectional lift and drag
-coefficients, chosen from a table via the local angle of attack and typically
-the Reynolds number. The forces are then projected onto the rotor coordinate
-system to calculate torque, overall drag, etc. Forces from the turbine shaft and
-blade support struts will be computed in a similar way.
+relative velocity, and $C_l$ and $C_d$ are the sectional lift and drag
+coefficients, chosen from a table per the local angle of attack. The forces are
+then projected onto the rotor coordinate system to calculate torque, overall
+drag, etc. Forces from the turbine shaft and blade support struts are computed
+in a similar way.
 
 The use of static foil data necessitates corrections for various dynamic effects
 induced by the actuator lines rotating within the flow field. Dynamic stall may
