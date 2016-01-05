@@ -431,41 +431,41 @@ magnitude, Reynolds number corrections should be applied. Yamauchi and Johnson
 \cite{Yamauchi1983} proposed a simple correction derived from turbulent flat
 plate boundary layer results, where the drag coefficient is corrected as
 \begin{equation}
-C_d = C_{d_{\mathrm{table}}}/ K,
-\label{eq:cd-correction}
+    C_d = C_{d_{\mathrm{table}}}/ K,
+    \label{eq:cd-correction}
 \end{equation}
 where $K = f(Re)/f(Re_\mathrm{table})$. There are several choices for the
 scaling function $f(Re)$:
 \begin{equation}
-f(Re) = Re^{-0.5},
+    f(Re) = Re^{-0.5},
 \end{equation}
 \begin{equation}
-f(Re) = Re^{-0.2},
+    f(Re) = Re^{-0.2},
 \end{equation}
 \begin{equation}
-f(Re) = \frac{0.455}{\ln Re}2.58 - \frac{A}{Re},
+    f(Re) = \frac{0.455}{\ln Re}2.58 - \frac{A}{Re},
 \end{equation}
 \begin{equation}
-f(Re) = (3.46 \ln Re - 5.6)^{-2},
+    f(Re) = (3.46 \ln Re - 5.6)^{-2},
 \end{equation}
 or
 \begin{equation}
-f(Re) = (\ln Re - 0.407)^{-2.64}.
+    f(Re) = (\ln Re - 0.407)^{-2.64}.
 \end{equation}
 
 Yamauchi and Johnson propose a correction for the lift coefficient that will
 keep the lift slope constant, i.e.
 \begin{equation}
-C_l = K C_{l_\mathrm{table}} (\alpha/K),
+    C_l = K C_{l_\mathrm{table}} (\alpha/K),
 \end{equation}
 where
 \begin{equation}
-K = \alpha_{\max} / \alpha_{\max_\mathrm{table}} = C_{l_{\max}} /
-C_{l_{\max_\mathrm{table}}}.
+    K = \alpha_{\max} / \alpha_{\max_\mathrm{table}} = C_{l_{\max}} /
+    C_{l_{\max_\mathrm{table}}}.
 \end{equation}
 The scaling constant is chosen as
 \begin{equation}
-K = \left( Re/Re_\mathrm{table} \right)^n,
+    K = \left( Re/Re_\mathrm{table} \right)^n,
 \end{equation}
 where $n$ is a small positive number between approximately 0.125 and 0.2.
 
