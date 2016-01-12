@@ -398,14 +398,15 @@ With the Fourier coefficients, the circulation distribution can be calculated as
 \begin{equation}
     \Gamma (\theta) = 2SU_\infty \sum_1^N A_n \sin n \theta,
 \end{equation}
-which, via the Kutta--Joukowski theorem, provides the lift distribution
+which, via the Kutta--Joukowski theorem, provides the lift coefficient
+distribution
 \begin{equation}
-    L(\theta) = -\rho_\infty U_\infty \Gamma (\theta).
+    C_l(\theta) = \frac{-\Gamma (\theta)}{\frac{1}{2} c U_\infty}..
 \end{equation}
 
 We can therefore compute a correction function 
 \begin{equation}
-    F(\theta) = \frac{L(\theta)}{L_\mathrm{max}},
+    F = C_l(\theta)/C_l(\theta)_{\max},
 \end{equation}
 which will be in the range $[0, 1]$, similar to the Glauert corrections, but
 does not contain rotor parameters. The correction function for various methods
