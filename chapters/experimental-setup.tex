@@ -314,6 +314,7 @@ predictions \cite{Neary2014}. The RM2 was designed using Sandia's CACTUS vortex
 line code \cite{Barone2011}, and its low solidity made it a nice complement to
 the UNH-RVAT for testing the robustness of numerical models to varying solidity.
 
+
 \subsection{UNH-RVAT}
 
 A primary goal for the UNH-RVAT was geometric simplicity, for the sake of
@@ -335,6 +336,32 @@ support struts are also NACA 0020 sections with 0.14 m chord length, and these
 are fixed to a $0.095$ m diameter shaft. A sketch of the turbine rotor is shown
 in Figure~\ref{fig:exp-setup} and CAD models are available from
 \cite{Bachant2014-RVAT-CAD}.
+
+% Below from RVAT-Re-dep paper
+
+The UNH-RVAT turbine has three blades made from NACA 0020 profiles with a 0.14 m
+chord. The~blades are mounted at mid-chord w.r.t. the turbine axis, and the
+turbine has a height (blade span) of 1 m and a diameter of 1 m; \textit{cf}.
+Figure~\ref{fig:turbine}. The blockage ratio produced by the rotor's frontal
+area is 11\%, which we decided not to correct for, as reliable methods are not
+yet agreed upon for CFTs \cite{Cavagnaro2014}. As such, blockage should be taken
+into account when using these data for model validation, \emph{i.e.}, the
+experimental domain should be mimicked. The rotor has a relatively high solidity
+$Nc/(\pi D) = 0.13$ and a large chord-to-radius ratio $c/R = 0.28$. A CAD model
+of the turbine is available from \cite{Bachant2014-RVAT-CAD}.
+
+\begin{figure}[ht]
+    \centering
+    
+    %\includegraphics[width=0.4\textwidth]{figures/turbine}
+    
+    \caption{University of New Hampshire Reference Vertical Axis Turbine (UNH-RVAT)
+        turbine model. Turbine blades and struts made from NACA 0020 profiles with
+        0.14~m chord. Note that the upper and lower mounting flanges have been excluded,
+        as these were included in the tare drag measurements.}
+    
+    \label{fig:turbine}
+\end{figure}
 
 
 \subsection{DOE/SNL RM2}
