@@ -1,73 +1,46 @@
-\documentclass[12pt,letterpaper]{report} % use this when printing for thesis
-% submission (single sided)
-%\documentclass[11pt,letterpaper]{book} % use this instead of previous if double
-% side wanted (for drafts), and some trees will be saved
+\documentclass[12pt]{unhthesis}
+%\documentclass[12pt, doublespace]{unhthesis}
 
-% To make bibliography title all caps
-\renewcommand\bibname{\vspace{0.2in} \Large  BIBLIOGRAPHY}
-
-\input{commands}
-
-\makeatletter
-    \def\thebibliography#1{\chapter*{REFERENCES\@mkboth
-      {REFERENCES}{REFERENCES}}\list
-      {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
-    \advance\leftmargin\labelsep
-    \usecounter{enumi}}
-    \def\newblock{\hskip .11em plus .33em minus .07em}
-    \sloppy\clubpenalty4000\widowpenalty4000
-    \sfcode`\.=1000\relax}
-    \makeatother
-
+\input{preamble}
+\usepackage{todonotes}
 
 \begin{document}
 
 \listoftodos
 
-% FRONTMATTER - Includes title page, acknowledgments, abstract, etc
-\include{chapters/frontmatter}
+\input{cover}
+% \input{copyright}
+\input{committee}
+\input{acknowledgements}
+\tableofcontents
+\listofnomenclature
+\listoftables
+\listoffigures
+\include{abstract}
 
-% just in case you want to reduce the size of the thesis for printing purposes,
-% need to comment "singlespace" from bibliography
-%\begin{singlespace}
-
-\pagenumbering{arabic}
-
+\mainmatter
 % Introduction setting up motivation, goals, requirements
 \include{chapters/introduction}
-
 % Chapter on developing experimental setup
 \include{chapters/experimental-setup}
-
 % Chapter on RVAT baseline experiments
 \include{chapters/RVAT-baseline}
-
 % Chapter on Re dep experiments
 \include{chapters/RVAT-Re-dep}
-
 % Chapter on RM2 experiments, including wake, Re dep, strut drag
 \include{chapters/RM2}
-
 % Chapter on blade-resolved RANS
 \include{chapters/blade-resolved-CFD}
-
 % Chapter on developing ALM and its results
 \include{chapters/ALM}
-
 % Conclusions
 \include{chapters/conclusions}
 
-\addcontentsline{toc}{chapter}{Appendix A: Sharing research outputs}
-\include{chapters/appendix-a}
-
-% Add Bibliography into table of contents
-\addcontentsline{toc}{chapter}{REFERENCES}
-
-\vspace{0.5in}
-
-\begin{singlespace}
+\backmatter
 \bibliographystyle{abbrv}
 \bibliography{library}
-\end{singlespace}
+
+\appendix
+\include{appendices/open-research}
 
 \end{document}
