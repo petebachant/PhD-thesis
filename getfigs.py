@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-"""
-This script copies figures into the local figures directory.
-"""
+"""This script copies figures into the local figures directory."""
 
 import os
 import shutil
