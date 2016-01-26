@@ -101,17 +101,17 @@ RANS solver to also show how close spacing can improve power output of CFTs.
 To summarize, the questions we hope to answer here are:
 
 \begin{enumerate}
-    
+
     \item Can or should 2-D RANS be used for array design?
-    
+
     \item How accurately can 3-D RANS predict performance?
-    
+
     \item Can 3-D RANS ``interpolate'' the experimental results and provide insight to develop new low-order wake generators to represent CFTs?
-    
+
     \item Does 3-D RANS realize the correct proportions of wake recovery
     mechanisms, i.e., are the 3-D blade-resolved results a good ``target'' for
     those from a low-order model?
-    
+
 \end{enumerate}
 
 
@@ -129,24 +129,24 @@ determined from experimental measurements \cite{Bachant2014,
 
 \begin{figure}[ht]
     \centering
-    
+
 %    \includegraphics[clip, trim=0 1in 0 1in, width=0.8\textwidth]{figures/CAD}
-    
+
     \caption{CAD drawings of the UNH-RVAT cross-flow turbine as designed (left)
         and cleaned for simulation (right).}
-    
+
     \label{fig:RVAT-CAD}
 \end{figure}
 
 
 \begin{figure}[ht]
     \centering
-    
+
 %    \includegraphics[width=0.9\textwidth]{figures/exp_perf}
-    
+
     \caption{Mean rotor power (left) and drag (right) coefficient curves from
         the tow tank experiments\cite{Bachant2015-RVAT-Re-dep-data}.}
-    
+
     \label{fig:exp_perf}
 \end{figure}
 
@@ -193,20 +193,20 @@ of cells in the streamwise direction, $N_x$.
 3-D computer aided design (CAD) files of the turbine are available from
 \cite{Bachant2014-RVAT-CAD}.
 
-\begin{figure}[ht]    
+\begin{figure}[ht]
 %    \includegraphics[width=0.8\textwidth]{figures/2d_mesh}
-    
+
     \caption{Overview of the 2-D computational mesh.}
-    
+
     \label{fig:mesh}
 \end{figure}
 
 
 \begin{figure}[ht]
 %    \includegraphics[width=0.7\textwidth]{figures/2D_blade_mesh_closeup}
-    
+
     \caption{Detailed view of the 2-D computational mesh near the blades.}
-    
+
     \label{fig:blade-mesh}
 \end{figure}
 
@@ -239,14 +239,14 @@ approximately $5 \times 10^4$ for the 2-D cases and 16 million for the 3-D case.
 
 \begin{figure}[ht]
     \centering
-    
+
 %    \includegraphics[width=0.9\textwidth]{figures/verification}
-    
+
     \caption{Time step (left) and grid size (right) dependence for the 2-D case
         with both the SST and SA turbulence models. Time step dependence was carried
         out with $N_x=70$ and grid size dependence with the time steps annotated for
         each turbulence model.}
-    
+
     \label{fig:verification}
 \end{figure}
 
@@ -287,12 +287,12 @@ change as well.
 
 \begin{figure}[ht]
     \centering
-    
+
 %    \includegraphics[width=0.9\textwidth]{figures/perf_bar_chart}
-    
+
     \caption{Power (left) and drag (right) coefficient predictions from
         experiments and each numerical model.}
-    
+
     \label{fig:perf-comp}
 \end{figure}
 
@@ -312,21 +312,21 @@ wake dynamics.
 
 \begin{figure}
 %    \includegraphics[width=0.65\textwidth]{figures/2D_vorticity_SA_964}
-    
+
     \caption{Instantaneous vorticity contours (at $t=9.64$ s) computed for the
         2-D Spalart--Allmaras case.}
-    
+
     \label{fig:vorticity-2D}
 \end{figure}
 
 \begin{figure}
     \centering
-    
+
 %    \includegraphics[width=0.8\textwidth]{figures/3D_vorticity_SA_964_10-threshold}
-    
+
     \caption{Iso-vorticity contours (at $t=9.64$ s) colored by the streamwise
         component of vorticity for the 3-D Spalart--Allmaras case.}
-    
+
     \label{fig:vorticity-3D}
 \end{figure}
 
@@ -338,13 +338,13 @@ keeping the proximity of the walls constant increases the blockage ratio. The
 
 \begin{figure}
     \centering
-    
+
 %    \includegraphics[width=0.95\textwidth]{figures/profiles}
-    
+
     \caption{Mean velocity (left) and turbulence kinetic energy (right) profiles
         at $x/D=1$ from 2-D simulations, 3-D simulations ($z/H=0$), and experiments
         \cite{Bachant2015-JoT}.}
-    
+
     \label{fig:profiles}
 \end{figure}
 
@@ -389,44 +389,44 @@ condition versus the experiment's free surface.
 
 \begin{figure}
     \centering
-%    \begin{subfigure}[b]{\textwidth}
-%        \centering 
-%        
-%        \includegraphics[clip, trim=0 0.1in 0 0.2in,
-%        width=0.75\textwidth]{figures/meancontquiv_exp}
-%        
-%        \caption{Mean velocity field at $x/D=1$ from experiments
-%            \cite{Bachant2015-RVAT-Re-dep-data}.}
-%        
-%        \label{fig:meancontquiv-exp}
-%    \end{subfigure}
-%    
-%    \begin{subfigure}[b]{\textwidth}
-%        \centering 
-%        
-%        \includegraphics[clip, trim=0 0.2in 0 0.15in,
-%        width=0.8\textwidth]{figures/meancontquiv_kOmegaSST}
-%        
-%        \caption{Mean velocity at $x/D=1$ computed by the 3-D SST model.}
-%        
-%        \label{fig:meancontquiv-SST}
-%    \end{subfigure}
-%    
-%    \begin{subfigure}[b]{\textwidth}
-%        \centering 
-%        
-%        \includegraphics[clip, trim=0 0.2in 0 0.15in,
-%        width=0.8\textwidth]{figures/meancontquiv_SpalartAllmaras}
-%        
-%        \caption{Mean velocity at $x/D=1$ computed by the 3-D SA model.}
-%        
-%        \label{fig:meancontquiv-SA}
-%    \end{subfigure}
-    
+    \begin{subfigure}[b]{\textwidth}
+       \centering
+
+    %    \includegraphics[clip, trim=0 0.1in 0 0.2in,
+    %    width=0.75\textwidth]{figures/meancontquiv_exp}
+
+       \caption{Mean velocity field at $x/D=1$ from experiments
+           \cite{Bachant2015-RVAT-Re-dep-data}.}
+
+       \label{fig:meancontquiv-exp}
+   \end{subfigure}
+
+   \begin{subfigure}[b]{\textwidth}
+       \centering
+
+    %    \includegraphics[clip, trim=0 0.2in 0 0.15in,
+    %    width=0.8\textwidth]{figures/meancontquiv_kOmegaSST}
+
+       \caption{Mean velocity at $x/D=1$ computed by the 3-D SST model.}
+
+       \label{fig:meancontquiv-SST}
+   \end{subfigure}
+
+   \begin{subfigure}[b]{\textwidth}
+       \centering
+
+    %    \includegraphics[clip, trim=0 0.2in 0 0.15in,
+    %    width=0.8\textwidth]{figures/meancontquiv_SpalartAllmaras}
+
+       \caption{Mean velocity at $x/D=1$ computed by the 3-D SA model.}
+
+       \label{fig:meancontquiv-SA}
+   \end{subfigure}
+
     \caption{Mean velocity from experiments and 3-D CFD cases. Solid gray lines
         indicate turbine frontal area and dashed lines indicate experimental
         measurement plane.}
-    
+
     \label{fig:mean-velocity}
 \end{figure}
 
@@ -446,41 +446,41 @@ evolution rather than wake generation.
 \begin{figure}
     \centering
 %    \begin{subfigure}[b]{\textwidth}
-%        \centering 
-%        
+%        \centering
+%
 %%        \includegraphics[width=0.95\textwidth]{figures/kcont_exp}
-%        
+%
 %        \caption{Turbulence kinetic energy at $x/D=1$ from experiments
-%            \cite{Bachant2015-RVAT-Re-dep-data}.} 
-%        
+%            \cite{Bachant2015-RVAT-Re-dep-data}.}
+%
 %        \label{fig:kcont-exp}
 %    \end{subfigure}
-%    
+%
 %    \begin{subfigure}[b]{\textwidth}
-%        \centering 
-%        
+%        \centering
+%
 %%        \includegraphics[width=0.95\textwidth]{figures/kcont_kOmegaSST}
-%        
+%
 %        \caption{Turbulence kinetic energy at $x/D=1$ computed by the 3-D SST
 %            model.}
-%        
+%
 %        \label{fig:kcont-SST}
 %    \end{subfigure}
-%    
+%
 %    \begin{subfigure}[b]{\textwidth}
-%        \centering 
-%        
+%        \centering
+%
 %%        \includegraphics[width=0.95\textwidth]{figures/kcont_SpalartAllmaras}
-%        
+%
 %        \caption{Turbulence kinetic energy at $x/D=1$ computed by the 3-D SA
-%            model.} 
-%        
+%            model.}
+%
 %        \label{fig:kcont-SA}
 %    \end{subfigure}
-    
+
     \caption{Turbulence kinetic energy from experiments and 3-D CFD cases. Solid
         black lines indicate turbine frontal area.}
-    
+
     \label{fig:kcont}
 \end{figure}
 
@@ -499,8 +499,8 @@ We use the RANS models' eddy viscosity to calculate the turbulent transport via
 \end{equation}
 which is a different approach from those taken on the experiments, where Reynolds stresses were measured, but $x$-derivatives were not:
 \begin{equation}
-\text{Turb. trans. (exp.)} = 
--\left( 
+\text{Turb. trans. (exp.)} =
+-\left(
 \frac{\partial}{\partial y} \overline{u^\prime v^\prime}
 +
 \frac{\partial}{\partial z} \overline{u^\prime w^\prime}
@@ -534,12 +534,12 @@ though the 3-D delayed detached eddy simulation (DDES) of Boudreau and Dumas
 
 \begin{figure}[ht]
     \centering
-    
+
 %    \includegraphics[width=0.9\textwidth]{figures/mom_bar_graph}
-    
+
     \caption{Weighted sum normalized momentum recovery terms for each CFD case
         and experiments\cite{Bachant2015-RVAT-Re-dep-data} at $x/D=1$.}
-    
+
     \label{fig:recovery}
 \end{figure}
 
