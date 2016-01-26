@@ -1,7 +1,5 @@
 #!/usr/bin/env python
-"""
-This script copies my personal BibTeX file to the current directory.
-"""
+"""This script copies my personal BibTeX file to the current directory."""
 
 import os
 import shutil
