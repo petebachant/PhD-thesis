@@ -350,25 +350,11 @@ turbine array \cite{Krogstad2013}.
 
 \section{Goals and objectives}
 
-The main goal of this research is to develop a tool for predicting CFT array
-performance. The requirements of this tool are:
-
-\begin{itemize}
-    
-    \item Higher accuracy than vortex models. These are commonly used, but since
-    they solve for potential flow do not contain any information about
-    turbulence.
-    
-    \item Able to predict performance of a small array on a single PC with reasonable computation time per configuration, but easily portable to high performance computing for details simulations of large arrays.
-    
-    \item Easy to automate. 
-    
-    \item Cheaper than physical modeling. 
-    
-\end{itemize}
-
-
-The strategy for meeting these requirements includes the following objectives:
+At the most basic level, the goal this research is working towards is the
+ability to predict the performance of and flow though an array of cross-flow
+turbines, to allow for the evaluation of array layouts, and the prediction of
+overall power output and potential environmental effects.
+The strategy for meeting this goal includes the following objectives:
 
 \begin{enumerate}
 
@@ -382,7 +368,10 @@ The strategy for meeting these requirements includes the following objectives:
 	
 	\item To evaluate the ability of high-fidelity computational fluid dynamics and
 	high performance computing to supplement or even replace experimental work.
-
+    
+    \item To investigate the actuator line force parameterization to potentially
+    reduce the required computing power necessary for engineering work with
+    CFTs.
 \end{enumerate}
 
 To obtain a closer look at what is happening in the flow field around the RVAT,
