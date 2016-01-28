@@ -133,26 +133,26 @@ torque, and in turn the shaft power.
 
 The shaft's angular velocity is nondimensionalized as the tip speed ratio
 \begin{equation}
-\lambda = \frac{\omega R}{U_\infty},
-\label{eq:lambda}
+    \lambda = \frac{\omega R}{U_\infty},
+    \label{eq:lambda}
 \end{equation}
 where $U_\infty$ is the free stream velocity.
 Torque $T$ is characterized by the nondimensional torque coefficient 
 \begin{equation}
-C_T = \frac{T}{\frac{1}{2} \rho A R U_\infty^2},
-\label{eq:ct}
+    C_T = \frac{T}{\frac{1}{2} \rho A R U_\infty^2},
+    \label{eq:ct}
 \end{equation}
 where $\rho$ is the fluid density and $A$ is the turbine's frontal area.
 Similarly, the turbine power $P = T\omega$ and overall rotor drag $F_D$ are
 normalized as the power coefficient
 \begin{equation}
-C_P = \frac{T \omega}{\frac{1}{2} \rho A U_\infty^3},
-\label{eq:cp}
+    C_P = \frac{T \omega}{\frac{1}{2} \rho A U_\infty^3},
+    \label{eq:cp}
 \end{equation}
 and the rotor drag coefficient
 \begin{equation}
-C_D = \frac{F_D}{\frac{1}{2} \rho A U_\infty^2}.
-\label{eq:cd}
+    C_D = \frac{F_D}{\frac{1}{2} \rho A U_\infty^2}.
+    \label{eq:cd}
 \end{equation}
 It is also worth noting that $C_P = \lambda C_T$.
 
@@ -180,11 +180,11 @@ pitching moment) is difficult beyond the static stall angle, where boundary
 layer separation becomes dominant over most of the foil suction surface, which
 reduces lift and increases drag dramatically. For example,
 Figure~\ref{fig:S826-perf} shows measured lift and drag coefficients compared
-with 2-D and 3-D Navier--Stokes CFD simulations from Cakmakcioglu et
-al.\cite{Cakmakcioglu2014}. The linear lift slope region and static stall angle
-are predicted well enough, but the peak $C_l/C_d$ is massively overestimated.
-This may not be an issue for a machine designed to operate at relatively fixed
-and/or pre-stall $\alpha$, e.g., airplane wings, propellers, or axial-flow wind
+with 2-D and 3-D Navier--Stokes CFD simulations from Cakmakcioglu \etal
+\cite{Cakmakcioglu2014}. The linear lift slope region and static stall angle are
+predicted well enough, but the peak $C_l/C_d$ is massively overestimated. This
+may not be an issue for a machine designed to operate at relatively fixed and/or
+pre-stall $\alpha$, e.g., airplane wings, propellers, or axial-flow wind
 turbines, but a cross-flow turbine will most likely encounter post-stall
 regimes, making even high-fidelity CFD analysis an uncertain prospect for
 accurate blade load prediction.
