@@ -8,8 +8,8 @@ marine hydrokinetic (MHK) energy---can contribute. It is estimated that there is
 still \todo[inline]{Find how much untapped wind energy there is} W of wind power
 left untapped globally, while there is approximately 50 GW of technically
 available MHK power in the US \cite{Haas2011, Jacobson2012, Haas2013}. For
-reference, the US uses about 450 GW on average \todo[inline]{Get citation for US
-    energy use.}.
+reference, the US used about 450 GW of electricity on average in XXXX
+\todo[inline]{Get citation for US energy use and add a year.}.
 
 A turbine is the most common machine for extracting energy from these flows,
 converting the energy to shaft work by the fluid applying torque on the rotor.
@@ -27,19 +27,22 @@ example of a cross-flow turbine (CFT). Note that a cross-flow turbine can accept
 flow from any direction perpendicular to its rotation, meaning the axis can be
 horizontal, vertical, or anything in between.
 
-The most well-know CFT, the Darrieus vertical-axis wind turbine (VAWT) concept,
-was developed thoroughly in the late 1970s through the early 1990s by groups
-including Sandia National Laboratories (SNL) in the US and the National Research
-Council (NRC) in Canada \cite{Para2002}, examples of which are shown in
-Figure~\ref{fig:Darrieus}. The CFT concept has been nearly abandoned for
-large-scale onshore wind, but today is being applied or considered for floating
-offshore wind \cite{Sandia2012, Paulsen2011}, smaller-scale wind
-\cite{Giges2012}, and marine hydrokinetic (MHK) energy conversion, e.g., in
-tidal and river flows. \todo[inline]{Add the FlowWind or whatever turbine story}
+The most well-know CFT, the Darrieus vertical-axis wind turbine, examples of
+which are shown in Figure~\ref{fig:Darrieus}, was developed thoroughly in the
+late 1970s through the early 1990s by groups including Sandia National
+Laboratories (SNL) in the US and the National Research Council (NRC) in Canada
+\cite{Para2002}. Sandia's efforts culminated in their 34 m Test Bed, the lessons
+and knowledge gained from which were used to create a ``point design'' for
+commercialization \cite{Sutherland2012}. Turbine developer FloWind used the
+point design and technical guidance from SNL to develop three-bladed composite
+rotors for their fleet of VAWTs, resulting in moderate commercial success. The
+highest power output of any VAWT---in the 1--3 MW range---was achieved by the
+Canadian Lavalin Eole 64 m Research Turbine, constructed in 1986
+\cite{Para2002}. 
 
 \begin{figure}[ht]
-    \caption{The Sandia 34 m (left) and Eole (right) Darrieus vertical-axis wind
-        turbines.}
+    \caption{The Sandia 34 m Test Bed (left) and Eole 64 m (right) Darrieus
+        vertical-axis wind turbines.}
     
     \label{fig:Darrieus}
 \end{figure}
@@ -50,21 +53,21 @@ tidal and river flows. \todo[inline]{Add the FlowWind or whatever turbine story}
     \label{fig:FloWind}
 \end{figure}
 
-There are good reasons why the three-bladed, horizontal-axis propeller-type
-axial-flow turbine (AFT) concept---shown in Figure~\ref{fig:AFT} has become the
-design of choice for large scale onshore wind. Axial-flow turbines are easier to
-analyze since their operating principles can be though of as an essentially
-steady flow over a foil before stall. AFTs also have the benefit of research
-``inertia''---a lot has been invested and a lot of knowledge has accumulated
-already. As a result, the designs are quite mature, for wind energy at least. In
-contrast, the CFT has been studied and applied significantly less, though there
-have been cases where CFTs have performed nearly equivalently well as AFTs.
-However, CFTs are harder to design, since their blades are constantly changing
-their angles of attack throughout the turbine's rotation, often undergoing
-dynamic stall as part of normal operation \cite{Para2002}. Beside their
-unpredictability, the highly oscillatory blade loading presents significant
-design challenges for avoiding fatigue---a main cause for failure or premature
-retirement of the large Darrieus wind turbines.
+Ultimately the three-bladed, horizontal-axis propeller-type axial-flow turbine
+(AFT) concept---shown in Figure~\ref{fig:AFT} has became the design of choice
+for large scale onshore wind---and for good reasons. Axial-flow turbines are
+easier to analyze since their operating principles can be though of as an
+essentially steady flow over a foil before stall. AFTs also have the benefit of
+research ``inertia''---a lot has been invested and a lot of knowledge has
+accumulated already. As a result, the designs are quite mature, for wind energy
+at least. In contrast, the CFT has been studied and applied significantly less,
+though there have been cases where CFTs have performed nearly equivalently well
+as AFTs. However, CFTs are harder to design, since their blades are constantly
+changing their angles of attack throughout the turbine's rotation, often
+undergoing dynamic stall as part of normal operation \cite{Para2002}. Beside
+their unpredictability, the highly oscillatory blade loading presents
+significant design challenges for avoiding fatigue---a main cause for failure or
+premature retirement of the large Darrieus wind turbines.
 
 \begin{figure}[ht]
     \caption{Typical three-bladed axial-flow or horizontal-axis wind turbine.}
@@ -74,16 +77,21 @@ retirement of the large Darrieus wind turbines.
 
 Despite their shortcomings, CFTs still may be valuable in some cases. They are
 simpler, omni-directional machines, which negates the need for yawing and
-pitching mechanisms. In the wind field, CFTs show promise for projects where
-space is limited, e.g., urban environments, as adjacent turbines sometimes
-interact ``constructively'' to increase each other's power outputs
-\cite{Li2010}---a trait not possessed by AFTs. A group from the California
-Institute of Technology has shown that arrays of VAWTs can potentially provide
-an order-of-magnitude increase in the power output per land area of a wind
-turbine array, since the devices can be spaced more closely than HAWTs
-\cite{Dabiri2011}. Field measurements have shown that their wakes recover more
-quickly than those of AFTs, and this cannot be entirely attributed to higher
-turbulence generation \cite{Kinzel2012}.
+pitching mechanisms. There were considerations in the 2010s by DEEPWIND in
+Europe \cite{Paulsen2011} and SNL \cite{Sandia2012} in the US for using large
+scale floating VAWTs for offshore wind, since along with the
+omni-directionality, a vertical shaft allows placement of the generator and
+gearbox lower in the machine, which lowers center of gravity. In the onshore
+wind arena, CFTs show promise for projects where space is limited, e.g., urban
+environments, as adjacent turbines sometimes interact ``constructively'' to
+increase each other's power outputs \cite{Li2010}---a trait not possessed by
+AFTs. A group from the California Institute of Technology has shown that arrays
+of VAWTs can potentially provide an order-of-magnitude increase in the power
+output per land area of a wind turbine array, since the devices can be spaced
+more closely than HAWTs \cite{Dabiri2011}. Field measurements have shown that
+their wakes recover more quickly than those of AFTs, and this cannot be entirely
+attributed to higher turbulence generation \cite{Kinzel2012}. This phenomenon is
+investigated in later chapters.
 
 In the built, i.e., suburban and urban environments, wind resources are less
 understood, more variable in terms of direction, speed, and turbulence levels
