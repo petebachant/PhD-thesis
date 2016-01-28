@@ -78,3 +78,81 @@ an established group.
 Chapter~\ref{chap:CFD} and Chapter~\ref{chap:ALM} would probably not have been
 possible without the free availability of OpenFOAM thanks to the OpenFOAM
 foundation.
+
+
+%%% Stuff from data management plan in a proposal
+
+Data management will be based on the guiding principles of reproducibility,
+usability, and maintainability. Reproducibility means the origin of all data can
+be identified, and any derived data can be regenerated from the raw data, which
+should also be available. In practice this means providing processing software
+used to generate the derived datasets. It also means archiving specific versions
+of software used to generate figures for publications, and citing these therein
+via digital object identifier (DOI). Usability means that if possible, data
+should be provided in non-proprietary, standard formats, e.g., comma-separated
+value (CSV) text files, and code used for visualization should also be shared.
+Finally, the research products should be maintainable, i.e., there should be a
+mechanism for incorporating new analyses, corrections to derived datasets, etc.
+In practice this will be achieved by structuring each experiment around a
+version control repository, which will include code used to automate data
+collection (if applicable), processing, and visualization. This way, updates to
+derived datasets are linked to changes in software. Furthermore, the version
+control repository will be of a “distributed” nature, which will open up avenues
+for collaboration and continued enhancement of the research products beyond the
+initial release.
+
+In accordance with the principles of open data
+(http://opendatahandbook.org/guide/en/what-is-open-data/), all data from the
+experiment will be available and accessible, able to be reused and redistributed
+freely under the terms of a Creative Commons Attribution license. Code will be
+made available under the open-source MIT software license.
+
+
+\section{Content and Formats}
+
+The digital data, including metadata, will be stored in easily accessible (human
+and machine readable) formats, using a standard plain text format, e.g., CSV,
+JSON, YAML, wherever possible. Raw binary data will be saved in or converted to
+open formats such as HDF5 if possible. Software will be kept in a version
+control repository to document changes and the rationale behind them, which will
+also link software modifications to changes in derived datasets. Software
+dependencies will be noted, e.g., using text files to specify virtual
+environments, such that the analysis is reproducible. Free and open-source
+software will be used preferred to help maximize usability. File and directory
+structure/naming will be documented inside the version control repository. The
+processing code algorithms will also help identify data files and their usage.
+
+
+\section{Sharing and Preservation}
+
+Raw data and metadata will be both stored locally at UNH and uploaded to the
+online data repository figshare, which will provide persistent storage for
+approximately 10 years
+(https://figshare.zendesk.com/hc/en-us/articles/201953923-How-persistent-is-my-research-). CAD files of the turbine model will also be uploaded to figshare and be made openly available after completion of the design. Data recorded on paper, e.g. lab notebooks, will be kept in appropriate storage in the P.I.'s lab.
+
+Each experiment or project will have its own Git version control repository,
+which will contain code developed to process and visualize the data, and will be
+hosted via GitHub or similar service. This online repository will serve as the
+``home page'' for the project, and will provide the mechanism for both
+downloading, reporting issues with, and contributing to the project. Links for
+downloading other related research products that are not conducive to Git
+repositories, e.g., CAD files, will be provided in the README file, the content
+from which is also displayed on the repository's home page. Processed or derived
+data that take considerable time to generate will also be stored in the Git
+repository. If digital lab notebooks are used, these will also be included. The
+processing software will contain mechanisms or instructions for downloading raw
+data as needed to regenerate the derived datasets.
+
+After appropriate quality assurance and quality control, and typically
+concurrent with the submission of a manuscript to a journal, the version control
+repository will be made publicly available, and official releases will be
+archived via figshare or similar sites, which provide a DOI for a persistent
+citation in publications. Examples of this practice can be found in the datasets
+published by Bachant and Wosnik 2014c, 2015b and Bachant et al. 2015b. This
+helps with reproducibility since the data and code used to generate figures is
+cited in the containing publication.
+
+Archived versions of and links to the experimental repository will then be
+posted on data indexing and aggregation sites, such as OpenEI
+(http://openei.org). The releases will also be publicized via social media and
+organizational websites and newsletters.
