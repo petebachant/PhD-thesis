@@ -301,7 +301,27 @@ $c/R = 0.25$, operating at $\lambda = 2$, the reduced frequency is 0.25. It
 follows that unsteady effects will be significant for cross-flow turbines even
 in the absence of nonlinear effects such as stall.
 
+In the unsteady regime, when angle of attack is high enough to induce large
+separation it is called dynamic stall. The effects on foil loading are different
+from those of static stall in that they are time dependent and include
+hysteresis or lag effects. The dynamic stall process in general can be described
+as \cite{McCroskey1981}:
+\begin{enumerate}
+    \item A large leading edge vortex is formed, which causes an overshoot in
+    lift beyond the static case in a linear fashion.
+    
+    \item The vortex is advected downstream, causing additional lift.
+    
+    \item The vortex reaches the trailing edge and the lift decays rapidly.
+    
+    \item Lift slowly returns to the linear regime as flow reattaches.
+\end{enumerate}
 
+Based on Figure~\ref{fig:geom-alpha-urel}, we expect dynamic stall to play an
+important role in governing overall blade loading for a cross-flow turbine.
+Therefore, it is necessary to either accurately model dynamic stall, or employ
+CFD methods that can resolve unsteady effects in the foil boundary layer, both
+of which will be explored in later chapters.
 
 
 \section{The state of engineering tools for CFTs}
