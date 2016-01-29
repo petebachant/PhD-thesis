@@ -156,7 +156,8 @@ adequate, for both individual devices and arrays, which is a primary motivation
 for this research.
 
 
-\todo[inline]{Add more recent MHK stuff, e.g. Instream, Yakima, Gorlov, Lucid}
+\todo[inline]{Add more recent MHK stuff, e.g. Instream, Yakima, Gorlov, Lucid,
+    RivGen}
 
 
 \section{Principles of cross-flow turbine operation}
@@ -212,10 +213,12 @@ So why then, is it difficult to analyze these machines? A first glimpse can be
 seen in Figure~\ref{fig:geom-alpha-urel}, where the geometric angle of attack
 and relative velocity are plotted over one turbine revolution for various tip
 speed ratios. If we imagine a typical high solidity $\sigma = Nc/R$ turbine
-operating at $\lambda = 2$, for example \cite{Howell2010}, we see that angles of
-attack can be very high even in optimal conditions. Note that we are calculating
-geometric angle of attack---the ``true'' angle of attack will be reduced by a
-slowing of the inflow velocity, also known as induction. 
+operating at an optimal tip speed ratio $\lambda_0 = 2$, for example
+\cite{Howell2010} (note that solidity and $\lambda_0$ are inversely correlated
+\cite{Templin1974}), we see that angles of attack can be very high even in
+optimal conditions. Keep in mind that we are calculating geometric angle of
+attack---the ``true'' angle of attack will be reduced by a slowing of the inflow
+velocity, also known as induction. 
 
 \begin{figure}[ht]
     \caption{Geometric angle of attack and relative velocity versus azimuthal
@@ -262,16 +265,23 @@ due to the complex flow physics.
 
 \subsection{Unsteady aerodynamics and dynamic stall}
 
-Up until now we have only considered static stall, which introduces difficulty
-in accurately predicting foil performance. Now we will consider the oscillating
-angle of attack and relative velocity on the CFT blade element, which introduces
-dynamic loading and so-called dynamic stall (DS).
+Up until now we have only considered the static behavior of foils, which may be
+sufficient to model the steady performance of an axial-flow turbine, since rotor
+blade element angles of attack are meant to remain constant in ideal conditions.
+The rotation of a cross-flow turbine, however---with its constantly changing
+angle of attack (also the change in sign) and relative velocity---produces an
+unsteady environment for the blade elements, even in an idealized case.
 
 Unsteady foil behavior and dynamic stall have been studied extensively in
 rotorcraft research. In the absence of stall, even a helicopter rotor airfoil
-will deviate from static behavior due to cyclic pitching.\todo[inline]{Get some
-    background info from Leishman's book}
+will deviate from static behavior due to cyclic pitching, along with changes in
+relative velocity as the blade advances and retreats. Thus, the wealth of
+knowledge available from the helicopter literature provides insight into the
+cross-flow turbine case.
 
+The first consideration is the attached behavior of unsteady airfoils. As one
+might expect, in these cases either the angle of attack or relative velocity is
+varying, but flow separation, i.e. stall, is never encountered.
 
 
 \section{The state of engineering tools for CFTs}
