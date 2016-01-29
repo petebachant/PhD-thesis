@@ -489,34 +489,12 @@ goal includes the following objectives:
     required computing power necessary for engineering work with CFTs.
 \end{enumerate}
 
-To obtain a closer look at what is happening in the flow field around the RVAT,
-3-D RANS simulations of the actual turbine geometry are being performed using
-SNL's Red Mesa HPC cluster. If these simulations can correctly postdict the
-blade loading and near-wake measurements, they can be used to ``interpolate''
-the experimental results and provide more insight for validation of the ALM, or
-to possibly diagnose and remedy some of the flaws within the CACTUS code.
-Currently some test simulations have been run, showing promising results, and a
-2-D slice of the model is being used to check for grid convergence.
 
-As described in the previous section, the actuator line model is valuable in
-that it can be used to predict both the performance and wake of a turbine. It
-can also be applied to high fidelity modeling of turbine arrays thanks to its
-time-resolved nature. 
-
-The proposed model will have some of the drawbacks of momentum and vortex
-methods for predicting performance, namely the reliance on static foil data.
-However, the flow field, and therefore relative velocity and blade angle of
-attack will be predicted more accurately, and should therefore produce more
-accurate predictions of turbine performance and wake characteristics.
-
-In a way, this research plan is ``backwards,'' i.e., the results are acquired
-before the predictive models are implemented, which may produce a model with
-limited applicability. However, an attempt is made to test the robustness of the
-model by applying to two cases with disparate parameters.
+\section{Contributions to science and engineering}
 
 Despite CFTs being somewhat rare in industry, the flow problem is complex yet
 general enough to applicable to other unsteady turbomachinery and/or foil flows,
 e.g., Voith Schneider propellers, Cyclogyros, or even conventional helicopter
-rotors.
+rotors. 
 
 
