@@ -272,16 +272,34 @@ The rotation of a cross-flow turbine, however---with its constantly changing
 angle of attack (also the change in sign) and relative velocity---produces an
 unsteady environment for the blade elements, even in an idealized case.
 
-Unsteady foil behavior and dynamic stall have been studied extensively in
-rotorcraft research. In the absence of stall, even a helicopter rotor airfoil
-will deviate from static behavior due to cyclic pitching, along with changes in
-relative velocity as the blade advances and retreats. Thus, the wealth of
-knowledge available from the helicopter literature provides insight into the
-cross-flow turbine case.
+Unsteady foil behavior had been studied extensively in rotorcraft research. In
+the absence of stall, even a helicopter rotor airfoil will deviate from static
+behavior due to cyclic pitching, along with changes in relative velocity as the
+blade advances and retreats. Thus, the wealth of knowledge available from the
+helicopter literature provides insight into the cross-flow turbine case.
 
 The first consideration is the attached behavior of unsteady airfoils. As one
 might expect, in these cases either the angle of attack or relative velocity is
-varying, but flow separation, i.e. stall, is never encountered.
+varying, but large amounts of flow separation, i.e. stall, is never encountered.
+The unsteadiness is characterized by a reduced frequency~\cite{Leishman2006}
+\begin{equation}
+    k = \frac{\omega c}{2 U_\infty},
+\end{equation}
+which assumes the free stream velocity is constant. Unsteady effects begin to
+become significant for $k > 0.05$. For a cross-flow turbine this can be
+reformulated in terms of the tip speed ratio as
+\begin{equation}
+    k = \frac{\lambda c}{2R}.
+\end{equation}
+For a large scale Darrieus turbine such as the Sandia 34 m diameter Test Bed,
+with an equatorial blade chord of 0.91 m, a reduced frequency of 0.16 is
+encountered based solely on angle of attack oscillations at $\lambda=6$. For a
+smaller scale CFT, for example, with $c/R = 0.25$, operating at $\lambda = 2$,
+the reduced frequency is 0.25. It follows that unsteady effects will be
+significant for cross-flow turbines even in the absence of nonlinear effects
+such as stall.
+
+
 
 
 \section{The state of engineering tools for CFTs}
