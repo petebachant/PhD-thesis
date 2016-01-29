@@ -396,18 +396,18 @@ computing (HPC) clusters. Even with the high computational expense, these models
 are not perfect and results can deviate significantly from experimental
 measurements, especially when using RANS models \cite{Li2013}.
 
-Actuator line models (ALMs) are a mixture of the blade element and
-Navier--Stokes methods. The turbine is not part of the mesh, but is represented
-by lines that move through the flow, acting as momentum sinks, where the
-resultant force is computed using 2-D foil data. Negating the need for a
-body-fitted grid and resolving the boundary layer removes a significant amount
-of computational effort, but the flow field is still computed more accurately
-than with momentum or vortex methods, since nonlinear effects and turbulence are
-included in the RANS or LES equations. Removing the need for complex grids is
-also an advantage with respect to  mesh generation, which is arguably the
-largest impediment to automation in CFD \cite{Slotnick2014}. Computational
-effort is also significantly reduced since the ALM does not need a rotating
-mesh, and small cells near the turbine blade surface can be eliminated.
+Actuator line modeling (ALMs), first used by Sorensen and
+Shen~\cite{Sorensen2002}, is a hybrid of the blade element and Navier--Stokes
+methods. The turbine is not part of the mesh, but is represented by lines that
+move through the flow, acting as momentum sinks, where the resultant force is
+computed using 2-D foil data. Negating the needs for a body-fitted grid and
+resolving the boundary layer removes a significant amount of computational
+effort, but the flow field is still computed more accurately than with momentum
+or vortex methods, since nonlinear effects and turbulence are included in the
+RANS or LES equations. Removing the need for complex grids is also an advantage
+with respect to  mesh generation, which is arguably the largest impediment to
+automation in CFD \cite{Slotnick2014}. Computational effort is also
+significantly reduced since the ALM does not need a rotating mesh.
 
 To the author's knowledge, at the time of
 this writing there has only been one study in the literature investigating the
