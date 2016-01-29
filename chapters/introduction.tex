@@ -403,7 +403,13 @@ resultant force is computed using 2-D foil data. Negating the need for a
 body-fitted grid and resolving the boundary layer removes a significant amount
 of computational effort, but the flow field is still computed more accurately
 than with momentum or vortex methods, since nonlinear effects and turbulence are
-included in the RANS or LES equations. To the author's knowledge, at the time of
+included in the RANS or LES equations. Removing the need for complex grids is
+also an advantage with respect to  mesh generation, which is arguably the
+largest impediment to automation in CFD \cite{Slotnick2014}. Computational
+effort is also significantly reduced since the ALM does not need a rotating
+mesh, and small cells near the turbine blade surface can be eliminated.
+
+To the author's knowledge, at the time of
 this writing there has only been one study in the literature investigating the
 ALM for CFTs \cite{Shamsoddin2014}, which was performed for a 2-D rotor at very
 low Reynolds number, for which performance predictions were not reported.
@@ -479,9 +485,8 @@ goal includes the following objectives:
     fluid dynamics and high performance computing to supplement or possibly replace
     experimental work.
     
-    \item To investigate the actuator line force parameterization to potentially
-    reduce the required computing power necessary for engineering work with
-    CFTs.
+    \item To investigate actuator line modeling to potentially reduce the
+    required computing power necessary for engineering work with CFTs.
 \end{enumerate}
 
 To obtain a closer look at what is happening in the flow field around the RVAT,
@@ -496,11 +501,7 @@ Currently some test simulations have been run, showing promising results, and a
 As described in the previous section, the actuator line model is valuable in
 that it can be used to predict both the performance and wake of a turbine. It
 can also be applied to high fidelity modeling of turbine arrays thanks to its
-time-resolved nature. The ALM also eliminates the need for complex grids, which
-is a significant simplification since mesh generation is arguably the largest
-impediment to automation in CFD \cite{Slotnick2014}. Computational effort will
-also be significantly reduced since the ALM does not need a rotating mesh, and
-small cells near the turbine blade surface can be eliminated.
+time-resolved nature. 
 
 The proposed model will have some of the drawbacks of momentum and vortex
 methods for predicting performance, namely the reliance on static foil data.
