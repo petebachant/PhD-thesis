@@ -25,7 +25,7 @@ figlists = {"RVAT-baseline": [],
             "RVAT-Re-dep": ["cp_vs_tsr.pdf", "mean_u.pdf", "mean_upvp.pdf"],
             "AD": ["streamwise.pdf", "meancontquiv.pdf"],
             "CFD-pop": ["cfd-online.pdf"],
-            "CFT-vectors": ["cft-vectors.pdf"]}
+            "CFT-vectors": ["cft-vectors.pdf", "alpha_deg_urel_geom.pdf"]}
 
 
 for name, figlist in figlists.items():
