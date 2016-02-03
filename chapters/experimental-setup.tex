@@ -51,6 +51,9 @@ Department of Energy (DOE).
 
 \section{Modifications to the UNH tow tank}
 
+The ``foundation'' of the experimental setup was the tow tank, which was
+addressed first.
+
 \begin{table}
 \centering
 \begin{tabular}{c|c|c}
@@ -214,22 +217,6 @@ shown in Figure~\ref{fig:exp-setup}.
 \end{figure}
 
 
-\subsection{Calibrations}
-
-Before collecting data, traceable calibration certificates will be obtained for
-the Interface T8-200 torque transducer and NI 9405 and NI 9237 modules. The
-torque transducer calibration will be used directly in data processing, while
-the drag measurement load cells will be calibrated using an additional Sentran
-ZB S-beam load cell and indicator, a package which will also have its own
-calibration certificate. This load cell will be mounted to a fixture that allows
-varying load on each drag load cell---while the linear bearings are
-installed---by a lead screw.  The redundant torque measurement load cell/arm
-system will be calibrated in a similar fashion using the Sentran load cell and
-indicator, by attaching it to a fixture with a distance from the axis of
-rotation known to within approximately 0.005 inches.
-
-
-
 %%% End section from RM2
 
 
@@ -341,6 +328,8 @@ motors with approximately 0.001 inch resolution. These motors were driven by an
 ACS UDMlc EtherCAT drive, connected to the tow tank's main motion controller for
 integrated synchronous motion.
 
+\todo[inline]{Discuss seeding procedures and amounts.}
+
 
 \subsection{Software}
 
@@ -383,6 +372,34 @@ torque, drag, angular velocity), ensuring precise calculation of, e.g., power
 coefficient. Since there is also synchronization of the initial sample from each
 three subsystems, correlation of events in the performance and wake signals is
 also possible.
+
+
+\subsection{Calibrations}
+
+Factory calibrations for all instrumentation were used for the experiments
+described in Chapters~\ref{chap:RVAT-baseline} and \ref{chap:Re-dep}. The drag
+slide and torque arm assemblies were calibrated out of the tank using the
+fixtures shown in Figure~\ref{fig:calibration-fixtures}, in which a Sentran ZB3
+500 lbf capacity load cell and indicator were used for input values. The
+reference load cell and indicator were calibrated as a full system from the
+factory and remained connected to each other at all times. The drag slide and
+torque arm fixtures were loaded incrementally using a 3/4-16 inch threaded rod,
+nut, and self-lubricating thrust bearing.
+
+\begin{figure}
+    \caption{Torque arm and drag slide calibration fixtures.}
+    
+    \label{fig:calibration-fixtures}
+\end{figure}
+
+Before the RM2 experiment described later in Chapter~\ref{chap:RM2}, traceable
+calibration certificates were obtained for the Interface T8-200 torque
+transducer and NI 9405 and NI 9237 modules. The drag slide and torque arm
+assemblies were recalibrated using the same fixture and Sentran ZB3 load cell
+and indicator described above, for which a new traceable calibration certificate
+was obtained.
+
+\todo[inline]{How much did the calibrations change?}
 
 
 \section{Determining tank settling time}
