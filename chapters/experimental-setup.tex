@@ -1,7 +1,8 @@
 \chapter{Developing an experimental setup for measuring the performance and
 near-wake of cross-flow turbines at large laboratory scale}
 
-In 2011, a turbine test bed was developed for measuring large laboratory scale
+In 2011, a turbine test bed was developed for measuring the performance
+(mechanical power and overall rotor drag or thrust) of large laboratory scale
 ($O(1)$ m\textsuperscript{2} frontal area) cross-flow turbines in the University
 of New Hampshire (UNH) tow tank \cite{Bachant2011-MS}, a 36.6 m long, 3.66 m
 wide, and 2.44 m deep facility that was capable of towing up to approximately
@@ -10,9 +11,12 @@ built from NACA 0020 hydrofoil struts, a hydraulic disk brake for turbine
 loading, an Interface T8 200 Nm capacity rotary torque transducer, and a 54
 pulse per rev magnetic pickup for measuring shaft speed. The frame was mounted
 to the carriage via streamwise-oriented linear bearings and was held in place by
-a pair of Sentran ZB3 500 lbf load cells, to measure overall streamwise rotor
-drag (a.k.a. thrust).
+a pair of Sentran ZB3 500 lbf load cells, to measure the overall streamwise
+rotor drag.
 
+Despite its usefulness in producing a small amount of data for two helical
+cross-flow turbines~\cite{Bachant2015-RE}, the existing system had some issues
+to be addressed:
 \begin{itemize}
     \item No control over turbine shaft angular velocity. This made operation at
     tip speed ratio below peak torque impossible.
@@ -36,16 +40,13 @@ drag (a.k.a. thrust).
     the significant variation of streamwise forces from the turbine.
 \end{itemize}
 
-In order to acquire high quality experimental data to get a
-clear picture of what it is we were trying to predict. We were looking to
-acquire both performance data (mechanical power, drag force) and velocity data
-in the near-wake. To do this, it was necessary to upgrade the UNH tow tank's
-linear motion, control, and data acquisition systems, along with the turbine
-test bed instrumentation developed in \cite{Bachant2011-MS}.
-
-One important goal of the new system was complete automation. The previous
-generation turbine test bed required a lot of user input, which limited
-experiment scope and was a safety concern.
+In addition to the above issues, in order to meet the data acquisition goals, it
+was necessary to measure turbine wake flows. These concerns required major
+renovations, upgrades, and additions to the tow tank and turbine test bed
+motion, control, and data acquisition systems. Furthermore, it was desirable to
+automate the entire system to increase both data quality and quantity. These
+changes were made possible thanks to an infrastructure grant from the US
+Department of Energy (DOE).
 
 
 \section{Modifications to the UNH tow tank}
