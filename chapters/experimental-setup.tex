@@ -32,7 +32,7 @@ to be addressed:
     ends.
     
     \item Low carriage acceleration. The carriage acceleration was on the order
-    of 0.2 m/s\textsuperscript{2}, which limited the steady state turbine
+    of 0.1 m/s\textsuperscript{2}, which limited the steady state turbine
     operating duration to a few seconds.
     
     \item Low frequency resonance in the tow member. A long 0.25 inch diameter
@@ -53,9 +53,11 @@ Department of Energy (DOE).
 
 The ``foundation'' of the experimental setup was the tow tank, which was
 addressed first. The main goals for the tow tank upgrades were to increase max
-speed and acceleration, add closed-lop positioning and velocity control, stiffen
-tow member to reduce longitudinal resonance, and add on-board power and
-networking to the carriage for data acquisition and other peripherals.
+speed and acceleration, add closed-loop positioning and velocity control,
+stiffen the tow member to reduce longitudinal resonance, and add on-board power
+and networking to the carriage for data acquisition and other peripherals. A
+summary of the old system and new target specifications is shown in
+Table~\ref{tab:tow-tank-specs}.
 
 \begin{table}
 \centering
@@ -64,7 +66,7 @@ Spec & Old system & Target \\
 \hline
 Maximum speed & 1.4 m/s  & 3.0 m/s \\ 
 Maximum acceleration & 0.1 m/s$^2$ & 2.0 m/s$^2$ \\ 
-Control system & Open loop velocity only & Closed loop position \\ 
+Control system & Open loop velocity only & Closed loop position/velocity \\ 
 On-board power & $4\times12$ V batteries & Continuous 120 and 220 VAC \\ 
 \end{tabular}
 \caption{Specifications summary for existing and upgraded tow tank systems.} 
@@ -102,16 +104,20 @@ and in an open-loop manner. This meant positioning was done manually, which took
 a skilled operator, and reduced usable tank length further to allow for coasting
 to a stop.
 
-These issues were addressed by changing the motor to a permanent magnet servo
-motor, sized to tow turbines with 1 m$^2$ frontal area up to 3 m/s, while
-accelerating at 2 m/s$^2$. The motor was powered by a Kollmorgen S700 servo
-drive, controlled by an ACS NTM EtherCAT master controller, providing closed
-loop position (and velocity) control. A series of emergency stop buttons were
-installed to dramatically increase the safety of the system.
+These issues were addressed by changing the motor to a Kollmorgen AKM82
+permanent magnet servo motor and 10:1 gearbox, sized to tow turbines with 1
+m$^2$ frontal area up to 3 m/s, while accelerating at 2 m/s$^2$. The motor was
+powered by a Kollmorgen S700 servo drive, controlled by an 8-axis ACS NTM
+EtherCAT master controller, providing closed loop position and velocity control.
+A series of emergency stop buttons were also installed to increase the safety of
+the system.
 
-A steel-reinforced polyurethane timing belt was chosen as the new drive member.
-The most robust timing belt profile---an ATL20---was chosen for maximum
-stiffness per unit width, increasing the drive member spring constant roughly by a
+A 7 cm wide steel-reinforced polyurethane timing belt was chosen as the new
+drive member. The most robust timing belt profile---an ATL20---was chosen for
+maximum stiffness per unit width. Custom timing belt and pulley housings were
+designed to move both the upper and lower runs of the belt above the tank wall,
+shortening the overall length, which when combined with the higher specific
+stiffness belt increased the total drive member spring constant roughly by a
 factor of 7.
 
 
