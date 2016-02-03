@@ -1,7 +1,42 @@
 \chapter{Developing an experimental setup for measuring the performance and
 near-wake of cross-flow turbines at large laboratory scale}
 
-The first objective was to acquire high-fidelity experimental data to get a
+In 2011, a turbine test bed was developed for measuring large laboratory scale
+($O(1)$ m\textsuperscript{2} frontal area) cross-flow turbines in the University
+of New Hampshire (UNH) tow tank \cite{Bachant2011-MS}, a 36.6 m long, 3.66 m
+wide, and 2.44 m deep facility that was capable of towing up to approximately
+1.4 m/s. The turbine-specific instrumentation consisted of a mounting frame
+built from NACA 0020 hydrofoil struts, a hydraulic disk brake for turbine
+loading, an Interface T8 200 Nm capacity rotary torque transducer, and a 54
+pulse per rev magnetic pickup for measuring shaft speed. The frame was mounted
+to the carriage via streamwise-oriented linear bearings and was held in place by
+a pair of Sentran ZB3 500 lbf load cells, to measure overall streamwise rotor
+drag (a.k.a. thrust).
+
+\begin{itemize}
+    \item No control over turbine shaft angular velocity. This made operation at
+    tip speed ratio below peak torque impossible.
+    
+    \item Fully manual starting and load application. This limited resolution of
+    the applied torque, and took considerable effort to perform experiments on
+    the order of 100 tows, since a person had to ride on the carriage to adjust
+    and apply the load torque.
+    
+    \item Open loop speed and manual position control of the tow carriage. This
+    also took considerable effort to operate experiments, since the operator had
+    to estimate braking distance to ensure the carriage did not hit the tank
+    ends.
+    
+    \item Low carriage acceleration. The carriage acceleration was on the order
+    of 0.2 m/s\textsuperscript{2}, which limited the steady state turbine
+    operating duration to a few seconds.
+    
+    \item Low frequency resonance in the tow member. A long 0.25 inch diameter
+    wire rope was used to tow the carriage, which resonated longitudinally with
+    the significant variation of streamwise forces from the turbine.
+\end{itemize}
+
+In order to acquire high quality experimental data to get a
 clear picture of what it is we were trying to predict. We were looking to
 acquire both performance data (mechanical power, drag force) and velocity data
 in the near-wake. To do this, it was necessary to upgrade the UNH tow tank's
@@ -43,6 +78,7 @@ stainless steel linear shafts and super self-aligning linear bearings. The
 existing carriage was modified to retrofit the linear bearings, and a series of
 parts were designed to adapt the stainless shafts to the existing quasi-level
 mounting surfaces, which helped keep cost down.
+
 
 \subsection{Motion and control}
 
@@ -265,6 +301,10 @@ described in \cite{Bachant2015-JoT}.
 %%% End from RVAT-Re-dep
 
 
+To reduce low frequency resonance in the frame caused by turbine side forces,
+two pairs of steel guy wires were added.
+
+
 \subsection{Wake measurement system}
 
 In order to characterize turbine wakes, a Nortek Vectrino+ acoustic Doppler
@@ -450,11 +490,12 @@ will be hardcoat anodized per MIL-8625-A, type III, class 2 specifications.
 
 \section{Summary and conclusions}
 
-A test bed for large laboratory scale ($O(1)$ m) cross-flow turbines was
-developed for the UNH tow tank. To aquire adequate amounts of data and to
+An upgraded test bed for large laboratory scale ($O(1)$ m) cross-flow turbines
+was developed for the UNH tow tank. To acquire adequate amounts of data and to
 achieve significant lengths of steady state operation with a limited tank
 length, the tow tank's linear motion, control, and data acquisition systems had
 to be redesigned, rebuilt, and upgraded to allow fully automated operation,
 along with higher carriage speed and acceleration.
 
-
+The upgraded test bed increased the number of tows possible per experiment by
+essentially an order of magnitude.
