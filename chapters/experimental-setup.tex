@@ -239,17 +239,33 @@ least two interfaces to specify DAQ and motion parameters. This also made it
 difficult to synchronize motion with data acquisition, e.g., triggering data
 collection at a certain location.
 
-Requirements for upgrades were derived from the goal of fully automating both
-motion and data acquisition. It was also determined that the UNH ME department's
-high frame rate particle image velocimetry (HFR-PIV) system would be used on the
-carriage at some point, which included laser power supplies and a laser chiller
-that could not be powered by the previous generation's isolated battery/inverter
-system.
+A new DAQ system was designed based around a National Instruments (NI) 9188
+CompactDAQ Ethernet chassis. NI 9237, 9405, 9401, and 9411 modules were
+installed for analog bridge, analog voltage, digital, and quadrature encoder
+signals, respectively. A single CAT5e cable was dedicated for this system.
+Additional cables were run for the EtherCAT and Internet connectivity on the
+carriage. An 8-port Ethernet-serial server was installed for accessing serial
+devices, e.g., the Nortek Vectrino+, described later. For measuring carriage
+speed, and therefore inflow velocity, a Renishaw LM15 linear encoder with 10
+$\mu$m resolution was installed and connected to the NI 9411 module. Networking,
+power, and control signal cables were run through an igus cable carrier,
+installed along the ``slave'' or $+y$ side of the tank.
 
-\todo[inline]{Calculate how long the PIV system could run on batteries.}
+Requirements for on-board power were derived from the goal of fully automating
+both motion and data acquisition. It was also determined that the UNH ME
+department's high frame rate particle image velocimetry (HFR-PIV) system would
+be used on the carriage at some point, which included laser power supplies and a
+laser chiller that could not be powered by the previous generation's isolated
+battery/inverter system. 
 
-For measuring carriage speed, and therefore inflow velocity, a Renishaw LM15
-linear encoder with 10 $\mu$m resolution was installed.
+An on-board electronics cabinet was designed by Minarik, inc. as part of the
+upgraded motion system. A 45 amp, 120 VAC circuit and 20 amp, 240 VAC single
+phase power cable were run through the cable carrier to power outlets on the
+side of the on-board electronics cabinet. An additional 240 VAC three-phase
+supply was connected to a Kollmorgen AKD servo drive, also installed in the
+cabinet, which was sized to power a servo motor to control turbine shaft
+position and speed. The AKD drive's digital outputs were setup for triggering
+instrumentation, e.g., the NI 9188 chassis, via the main motion controller.
 
 
 \section{Upgraded turbine test bed}
@@ -268,15 +284,21 @@ added to the carriage for their connection.
 
 \subsection{Turbine loading, speed control, and torque measurement}
 
-In order to control turbine shaft angular velocity, a servo motor and gearhead
-were added with a custom retrofit mounting plate and housing. Two zero-backlash
-R+W EKH/300/B curved jaw couplings were added above and below the rotary torque
-transducer. An additional torque measurement system was added by mounting the
-servo/gearhead assembly to a slewing ring bearing, and holding its mounting
-housing in place by a Sentran ZB3 200 lbf load cell attached at a fixed distance
-by a 16 inch long arm. This system served as a redundant torque measurement for
-values up to 200 Nm, and extended the maximum torque range to approximately 360
-Nm.
+In order to control turbine shaft angular velocity, a Kollmorgen AKM62Q servo
+motor and 20:1 ratio gearhead were added with a custom retrofit mounting plate
+and housing. Two zero-backlash R+W EKH/300/B curved jaw couplings were added
+above and below the rotary torque transducer. An additional torque measurement
+system was added by mounting the servo/gearhead assembly to a slewing ring
+bearing, and holding its mounting housing in place by a Sentran ZB3 200 lbf load
+cell attached at a fixed distance by a 16 inch long arm. This system served as a
+redundant torque measurement for values up to 200 Nm, and extended the maximum
+torque range to approximately 360 Nm.
+
+Turbine shaft speed was measured via the AKD drive's emulated encoder output,
+set to $5 \times 10^3$ (pre-gearbox) or $1 \times 10^5$ (post-gearbox)
+lines-per-rev in an A-quad-B configuration. This signal was sampled by either
+the NI 9401 (Chapter~\ref{chap:RVAT-baseline}) or the NI 9411
+(Chapters~\ref{chap:Re-dep} and \ref{chap:RM2}) modules.
 
 
 %%% From RVAT-Re-dep
