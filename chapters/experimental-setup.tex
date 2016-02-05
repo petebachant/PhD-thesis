@@ -491,6 +491,11 @@ parameters, i.e., tip speed ratio. In order to for experiments to be relevant to
 others in the literature, blockage effects must either be corrected for, or the
 blockage ratio should be kept to a typical value seen in other studies.
 
+Most numerical models have the ability to include finite domains or walls, which
+makes results even in blocked case applicable to validation. Furthermore,
+blockage will be non-zero in most MHK cases, where turbines are placed in rivers
+or channels, the effects of which need to be predicted as well.
+
 
 \section{Turbine models}
 
@@ -514,61 +519,41 @@ the UNH-RVAT for testing the robustness of numerical models to varying solidity.
 A primary goal for the UNH-RVAT was geometric simplicity, for the sake of
 replication in numerical models. The turbine was model constructed from straight
 14 cm chord length NACA 0020 extrusions, used for both the blades and struts.
-Blades were mounted at mid-chord and mid-span, having a length of 1 m and placed
-at 1 m diameter.
+Blades were mounted at mid-chord, mid-span, and zero preset pitch, with a length
+or height of 1 m and placed at 1 m diameter, giving the rotor an aspect ratio of
+unity.
 
-% Below from JoT paper
-
-The turbine model was designed to be geometrically simple, in the spirit of, but
-not identical to the Sandia/DOE Reference Model 2 (RM2) CFT \cite{Neary2013,
-    Barone2011}. Compared to the full-scale Sandia/DOE RM2, it would be
-approximately a 1:6 scale model, albeit with higher solidity, or chord-to-radius
-ratio. The turbine rotor is $H=1$ m tall, has a $D=1$ m diameter and was
-constructed from three NACA 0020 section blades with constant $c=0.14$ m chord
-length, mounted at half-chord and half-span with zero preset blade pitch. The
-support struts are also NACA 0020 sections with 0.14 m chord length, and these
-are fixed to a $0.095$ m diameter shaft. A sketch of the turbine rotor is shown
-in Figure~\ref{fig:exp-setup} and CAD models are available from
+The support struts were also constructed from 14 cm chord NACA 0020 profiles,
+and attach the turbine to a 9.5 cm diameter shaft. A sketch of the turbine rotor
+is shown in Figure~\ref{fig:unh-rvat} and CAD models are available from
 \cite{Bachant2014-RVAT-CAD}.
 
-% Below from RVAT-Re-dep paper
+\todo[inline]{Add drawing of UNH-RVAT.}
+\begin{figure}[ht]
+    \caption{Drawing of the UNH-RVAT vertical-axis cross-flow turbine. Note that
+        the upper and lower mounting flanges have been excluded. These were included
+        in the tare drag measurements for the experiments in
+        Chapter~\ref{chap:re-dep}, but excluded for those in
+        Chapter~\ref{chap:RVAT-baseline}.}
+    
+    \label{fig:unh-rvat}
+\end{figure}
 
-The UNH-RVAT turbine has three blades made from NACA 0020 profiles with a 0.14 m
-chord. The~blades are mounted at mid-chord w.r.t. the turbine axis, and the
-turbine has a height (blade span) of 1 m and a diameter of 1 m; \textit{cf}.
-Figure~\ref{fig:turbine}. The blockage ratio produced by the rotor's frontal
-area is 11\%, which we decided not to correct for, as reliable methods are not
-yet agreed upon for CFTs \cite{Cavagnaro2014}. As such, blockage should be taken
-into account when using these data for model validation, \emph{i.e.}, the
-experimental domain should be mimicked. The rotor has a relatively high solidity
+The rotor has a relatively high solidity
 $Nc/(\pi D) = 0.13$ and a large chord-to-radius ratio $c/R = 0.28$. A CAD model
 of the turbine is available from \cite{Bachant2014-RVAT-CAD}.
-
-\begin{figure}[ht]
-    \centering
-    
-    %\includegraphics[width=0.4\textwidth]{figures/turbine}
-    
-    \caption{University of New Hampshire Reference Vertical Axis Turbine (UNH-RVAT)
-        turbine model. Turbine blades and struts made from NACA 0020 profiles with
-        0.14~m chord. Note that the upper and lower mounting flanges have been excluded,
-        as these were included in the tare drag measurements.}
-    
-    \label{fig:turbine}
-\end{figure}
 
 
 \subsection{DOE/SNL RM2}
 
-The turbine was designed as a 1:6 scale model of the RM2 rotor described in the
-RM2 ``rev 0'' design report \cite{Barone2011}, with the exception of the shaft
+The RM2 rotor was designed as a 1:6 scale model of that described in the RM2
+``rev 0'' design report \cite{Barone2011}, with the exception of the shaft
 diameter, which was scaled from the SAFL RM2 shaft \cite{Hill2014}. The hub
-design is also similar to the SAFL model, which may aid in comparison of the
-results, though this is not a top priority. Geometric parameters are shown in
+design is also similar to the SAFL model. Geometric parameters are shown in
 Table~\ref{tab:turb-geom} and a drawing of the turbine design is shown in
 Figure~\ref{fig:RM2-drawing}. The turbine model components---blades, struts,
-shaft, and center hub sections---will be fabricated from 6061-T6 aluminum, which
-will be hardcoat anodized per MIL-8625-A, type III, class 2 specifications.
+shaft, and center hub sections---were fabricated from 6061-T6 aluminum, which
+was hardcoat anodized per MIL-8625-A, type III, class 2 specifications.
 
 \begin{table}[ht]
     \centering
@@ -592,8 +577,8 @@ will be hardcoat anodized per MIL-8625-A, type III, class 2 specifications.
 
 \begin{figure}[ht]
     \centering
-%    \includegraphics[width=0.5\textwidth]{Figures/turbine}
-    \caption{Illustration of the UNH RM2 scaled physical model.}
+%    \includegraphics[width=0.5\textwidth]{figures/rm2}
+    \caption{Illustration of the 1:6 RM2 scaled physical model.}
     \label{fig:RM2-drawing}
 \end{figure}
 
