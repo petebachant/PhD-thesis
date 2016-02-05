@@ -426,59 +426,56 @@ for each tow speed, to be used by \textit{TurbineDAQ} as wait times between
 automated runs.
 
 
-\section{Uncertainty of experimental measurements}
+\section{Experimental uncertainty}
 
+\todo[inline]{Vary the wording of uncertainty section a bit more.}
 
-%%% Below from RVAT-Re-dep paper
+For each set of experimental measurements, it was imperative to estimate
+uncertainty. Both systematic and random errors were considered. Random error was
+inferred from the sample standard deviation (on a per-rotor-revolution basis)
+and the systematic error was estimated from the sensor calibrations or
+datasheets. Combination of both error sources and their propagation into derived
+quantities, which is described below, followed those by Coleman and Steele
+\cite{ColemanSteele}.
 
-
-Uncertainty was considered from a combination of systematic and random errors.
-The random error was inferred from the sample standard deviation (on a
-per-revolution basis) and the systematic error from the sensor calibrations or
-datasheets. Combining both sources of error, along with their propagation into
-quantities derived from multiple measurements, followed the procedures outlined
-in Coleman and Steele \cite{ColemanSteele}, described below.
-
-An expanded uncertainty interval with 95\% confidence was computed for
-$C_P$, $C_D$, and mean wake velocities:
+An expanded uncertainty interval with 95\% confidence was computed for mean
+power coefficient $C_P$, mean rotor drag coefficient $C_D$, and mean wake
+velocities
 \begin{equation}
-U_{95} = t_{95} u_c,
+    U_{95} = t_{95} u_c,
 \end{equation}
 where $t_{95}$ is the value from the Student $t$-distribution for a 95\%
-confidence interval and $u_c$ is the combined standard uncertainty. Combined
-standard uncertainty for a given quantity $X$ is calculated~by:
+confidence interval and $u_c$ is the combined standard uncertainty, which is
+given by
 \begin{equation}
-u_X^2 = s_{\bar{X}}^2 + b_X^2,
+    u_X^2 = s_{\bar{X}}^2 + b_X^2,
 \end{equation}
 where $s_{\bar{X}}$ is the sample standard deviation of the mean per turbine
-revolution, and $b_X$ is the systematic uncertainty, computed by:
+revolution. The systematic uncertainty $b_X$ is computed as
 \begin{equation}
-b_{X}^2 = \sum_{i=1}^J \left( \frac{\partial X}{\partial x_i} \right)^2
-b_{x_i}^2,
+    b_{X}^2 = \sum_{i=1}^J \left( \frac{\partial X}{\partial x_i} \right)^2
+    b_{x_i}^2,
 \end{equation}
 where $x_i$ is a primitive quantity used to calculate $X$ (e.g., $T$, $\omega$,
 and $U_\infty$ for calculating $C_P$), and $b_{x_i}$ is the primitive quantity's
 systematic uncertainty, estimated as half the value listed on the sensor
 manufacturer's documentation.
 
-Selecting $t_{95}$ requires an estimate for degrees of freedom $\nu_X$, which
-was obtained using the Welch--Satterthwaite formula:
+Selecting $t_{95}$ requires an estimate for the number of degrees of freedom
+$\nu_X$, which was obtained using the Welch--Satterthwaite formula:
 \begin{equation}
-\nu_X = \frac{\left(s_X^2 + \sum_{k=1}^M b_k^2 \right)^2} {s_X^4/\nu_{s_X} +
+    \nu_X = \frac{\left(s_X^2 + \sum_{k=1}^M b_k^2 \right)^2} {s_X^4/\nu_{s_X} +
     \sum_{k=1}^M b_k^4/\nu_{b_k}},
 \end{equation}
 where $\nu_{s_X}$ is the number of degrees of freedom associated with $s_X$ and
 $\nu_{b_k}$ is the number of degrees of freedom associated with $b_k$.
 $\nu_{s_X}$ is assumed to be $(N-1)$, where $N$ is the number of independent
-samples (or turbine revolutions). $\nu_{b_k}$ was estimated as:
+samples (or turbine revolutions). $\nu_{b_k}$ was estimated as
 \begin{equation}
-\nu_{b_k} = \frac{1}{2} \left( \frac{\Delta b_k}{b_k} \right)^{-2},
+    \nu_{b_k} = \frac{1}{2} \left( \frac{\Delta b_k}{b_k} \right)^{-2},
 \end{equation}
 where the quantity in parentheses is the relative uncertainty of $b_k$, assumed
 to be 0.25.
-
-
-%%% End from RVAT-Re-dep paper
 
 
 \section{Blockage}
