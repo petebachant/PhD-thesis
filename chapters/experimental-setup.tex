@@ -139,29 +139,6 @@ factor of 7.
 
 %%% From RM2 test plan %%%
 
-Experiments will be performed in the UNH tow/wave tank, a 36 m long facility
-with a 3.66 m wide by 2.44 m deep cross-section, capable of tow speeds up to 3
-m/s\footnote{Note that though 3 m/s is the technical limit, the practical limit
-    for achieving substantial tow durations is approximately 2 m/s.}, pictured in
-Figure~\ref{fig:tow-tank}. The turbine will be mounted in a frame built from
-NACA 0020 struts, attached to the tow carriage by four linear bearings, which
-transfer all streamwise force to a pair of S-beam load cells. The turbine shaft
-RPM will be controlled by a servo motor system, which allows prescription of the
-turbine tip speed ratio. The load torque will be measured by an inline rotary
-torque transducer and a load cell mounted at a fixed distance from the servo
-motor, providing a redundant measurement. Turbine shaft angle will be measured
-using the servo drive's emulated encoder output, set to $10^5$ counts per
-turbine shaft revolution. Carriage speed, and therefore inflow velocity will be
-measured using a linear encoder with 10 $\mu$m resolution. All of these
-performance-related quantities will be sampled as 2 kHz, while the tow tank's
-motion controller will provide redundant measurements of the carriage speed and
-turbine angular velocity sampled at 1 kHz. Turbine wake measurements at 1
-turbine diameter downstream will be measured with a Nortek Vectrino+ acoustic
-Doppler velocimeter, sampling at 200 Hz. A list of the sensors to be used in the
-experiment is shown in Table~\ref{tab:sensors}, instrumentation in
-Table~\ref{tab:instrumentation}, and a drawing of the experimental setup is
-shown in Figure~\ref{fig:exp-setup}.
-
 
 \begin{figure}[ht!]
     \centering 
@@ -265,7 +242,10 @@ carriage at some point, which included laser power supplies and a laser chiller
 that could not be powered by the previous generation's isolated battery/inverter
 system.
 
-\todo[inline]{Calculate how long the PIV system could run on batteries}
+\todo[inline]{Calculate how long the PIV system could run on batteries.}
+
+For measuring carriage speed, and therefore inflow velocity, a Renishaw LM15
+linear encoder with 10 $\mu$m resolution was installed.
 
 
 \section{Upgraded turbine test bed}
