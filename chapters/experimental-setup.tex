@@ -407,24 +407,43 @@ nut, and self-lubricating thrust bearing.
 
 Before the RM2 experiment described later in Chapter~\ref{chap:RM2}, traceable
 calibration certificates were obtained for the Interface T8-200 torque
-transducer and NI 9405 and NI 9237 modules. The drag slide and torque arm
-assemblies were recalibrated using the same fixture and Sentran ZB3 load cell
-and indicator described above, for which a new traceable calibration certificate
-was obtained.
+transducer and NI 9405 and NI 9237 modules. In 2014, the drag slide and torque
+arm assemblies were recalibrated using the same fixture and Sentran ZB3 load
+cell and indicator described above, for which a new traceable calibration
+certificate was obtained. Values before and after the recalibration are
+presented in Table~\ref{tab:calibrations}.
 
-\todo[inline]{How much did the calibrations change?}
+\begin{table}
+    \centering
+\begin{tabular}{c|c|c|c}
+    Signal & Calibration 1 & Calibration 2 & Difference \\ 
+    \hline 
+    Torque trans. & 40.0 Nm/V & 39.8380 Nm/V & -0.4 \% \\ 
+    Torque arm & 122531 Nm/V/V & 123437 Nm/V/V & 0.7 \% \\ 
+    Drag left & 743104 N/V/V & 742830 N/V/V & -0.1 \% \\ 
+    Drag right & 740137 N/V/V & 742400 N/V/V & 0.3 \% \\ 
+\end{tabular}
+    \caption{Calibration slopes used for experimental measurements. Calibration
+        1 was used in Chapter~\ref{chap:RVAT-baseline} and
+        Chapter~\ref{chap:Re-dep}. Calibration 2 was used in
+        Chapter~\ref{chap:RM2}.}
+    
+    \label{tab:calibrations}
+\end{table}
 
 
 \section{Determining tank settling time}
 
-Each experiment, sample tows were done to determine the amount of time taken
-between runs such that the tank has settled adequately, i.e., background
+Each experiment, sample tows were at each speed to determine the amount of time
+taken between runs such that the tank has settled adequately, i.e., background
 turbulence and any large scale mean flows have been dissipated. This was
 assessed by towing the turbine, then allowing the Vectrino to continue recording
 velocity data, monitoring the mean and standard deviation of the signals. The
 settling times were then included in the experiment configuration---one value
 for each tow speed, to be used by \textit{TurbineDAQ} as wait times between
 automated runs.
+
+\todo[inline]{Plot sample settling data.}
 
 
 \section{Experimental uncertainty}
