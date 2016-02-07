@@ -478,15 +478,20 @@ presented in Table~\ref{tab:calibrations}.
 
 \section{Determining tank settling time}
 
-Each experiment, sample tows were at each speed to determine the amount of time
-taken between runs such that the tank has settled adequately, i.e., background
-turbulence and any large scale mean flows have been dissipated. This was
-assessed by towing the turbine, bringing the carriage back to mid-tank, and
-allowing the Vectrino to continue recording velocity data, monitoring the mean
-and standard deviation of the signals. Settling times ranged from 140 seconds
-for tows at 0.3 m/s up to 360 seconds for those at 1.4 m/s. These values were
-then included in the experiment configuration---one value for each tow speed, to
-be used by \textit{TurbineDAQ} as wait times between automated runs.
+Each experiment, sample turbine tows were performed at each speed to determine
+the amount of time taken between runs such that the tank has settled adequately,
+i.e., background turbulence and any large scale mean flows have been dissipated.
+This was assessed by towing the turbine, bringing the carriage back to mid-tank,
+and allowing the Vectrino to continue recording velocity data, monitoring the
+mean and standard deviation of the signals. 
+
+Turbulence intensity tended to decay quickly, while the lower frequency
+fluctuations were damped with the help of the tank's ``beach,'' designed for
+absorbing waves created by the paddle-style wavemaker. Settling times ranged
+from 140 seconds for tows at 0.3 m/s up to 360 seconds for those at 1.4 m/s.
+These values were then included in the experiment configuration---one value for
+each tow speed, to be used by \textit{TurbineDAQ} as wait times between
+automated runs.
 
 
 \section{Experimental uncertainty}
