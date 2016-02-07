@@ -303,7 +303,7 @@ following sections.
 \end{figure}
 
 
-\subsection{Turbine loading, speed control, and torque measurement}
+\subsection{Turbine loading, speed control, torque, and drag measurement}
 
 In order to control turbine shaft angular velocity, a Kollmorgen AKM62Q servo
 motor and 20:1 ratio gearhead were added with a custom retrofit mounting plate
@@ -321,50 +321,10 @@ lines-per-rev in an A-quad-B configuration. This signal was sampled by either
 the NI 9401 (Chapter~\ref{chap:RVAT-baseline}) or the NI 9411
 (Chapters~\ref{chap:Re-dep} and \ref{chap:RM2}) modules.
 
-
-\todo[inline]{Remove or redistribute info from RVAT-Re-dep.}
-%%% From RVAT-Re-dep
-
-Experiments were performed in a turbine test bed specifically designed for
-cross-flow turbines. The test bed was integrated as part of the University of
-New Hampshire (UNH) tow tank, which is a 36 m-long facility with a 3.66 m-wide
-and 2.44 m-deep cross-section. The turbine model used in this study was the UNH
-Reference Vertical Axis Turbine (RVAT), which was designed to be a generic case
-for numerical model testing, similar to the Sandia National Labs/U.S. Department
-of Energy Reference Model 2 (RM2) River Turbine \cite{Neary2014}, but with a
-higher solidity or blade chord-to-radius ratio.
-
-The turbine was mounted in a frame constructed from NACA 0020 sections, shown in
-Figure~\ref{fig:exp-setup}. The turbine shaft ran up through the water surface,
-coupled to a Kollmorgen AKM permanent magnet servo motor (Kollmorgen, Radford,
-VA, USA) with a 20:1 gearbox, providing precise control over shaft angular
-velocity. This servo was controlled by the tow tank's main motion controller for
-high synchronization with the carriage motion, thereby giving precise
-measurement and control of the tip speed ratio. An Interface T8 200 Nm capacity
-rotary torque transducer (Interface, Scottsdale, AZ, USA) was installed inline
-between the servo and the turbine, and the servo was also mounted on a slewing
-ring bearing, which allowed a redundant measurement of torque via an arm and
-load cell used to counteract the turbine moment. The frame was mounted to the
-carriage via linear guides, such that the total streamwise drag force was
-transferred to a pair of Sentran ZB3 500 pound-force capacity S-beam load cells
-(Sentran, Santa Ana, CA, USA), providing the rotor drag measurements, after a
-separately measured tare drag was subtracted in post-processing. Similarly, a
-tare torque was measured by rotating the turbine shaft in air. Turbine angular
-and tow carriage linear position were measured using quadrature encoder signals,
-with $10^5$ counts-per-rev for the turbine and 10 ${\mu}$m resolution for the
-carriage position. These~signals, along with the torque and drag signals, were
-sampled at 2 kHz.
-
-Wake velocity was measured using a Nortek Vectrino+ acoustic Doppler velocimeter
-(ADV) (Nortek AS, Rud, Norway), which has an approximately 6~mm diameter
-sampling volume and sampled at 200 Hz. The probe was mounted on an automated
-positioning system, also controlled by the tow tank's main motion controller.
-The ADV and data acquisition systems' sampling times were synchronized by
-triggering the start of data acquisition via a pulse sent from the motion
-controller. Additional details of the turbine and experimental setup are
-described in \cite{Bachant2015-JoT}.
-
-%%% End from RVAT-Re-dep
+The two drag slide assemblies for overall streamwise drag or thrust measurement
+were retained from the previous setup, which is described in
+\cite{Bachant2011-MS}. All turbine performance related signals were sampled by
+modules in the NI 9188 CompactDAQ chassis at a 2 kHz sample rate.
 
 
 \subsection{Wake measurement system}
@@ -372,14 +332,14 @@ described in \cite{Bachant2015-JoT}.
 In order to characterize turbine wakes, a Nortek Vectrino+ acoustic Doppler
 velocimeter (ADV) was purchased as part of the upgraded tow tank
 instrumentation. An ADV is capable of measuring three components of velocity at
-a single point in space, and the Vectrino+ can sample at 200 Hz. This system is
-considered desirable compared with hot wire or hot film anemometry as there are
-no calibrations, and the sensor element is significantly more robust. Spatial
-resolution is typically lower---on the order of 1 cm \cite{NortekVectrino}---but
-this is still small compared with the typical length scale of a turbine model.
-ADV is also preferable to laser Doppler velocimetry (LDV) in this case since the
-tow carriage is a high vibration environment, which would make LDV alignment a
-challenge.
+a single point in space, and the Vectrino+ was set to sample at 200 Hz. This
+system was considered desirable compared with hot wire or hot film anemometry as
+it required no calibrations, and the sensor element is significantly more
+robust. Spatial resolution is typically lower---on the order of 1 cm
+\cite{NortekVectrino}---but this is still small compared with the typical length
+scale of a turbine model. ADV was also preferable to laser Doppler velocimetry
+(LDV) in this case since the tow carriage is a high vibration environment, which
+would make LDV alignment a challenge.
 
 A $y$--$z$ axis positioning system was designed for the Vectrino probe. This
 system consisted of two Velmex BiSlide linear stages---the $y$-axis driven by
@@ -431,13 +391,14 @@ all friction below the transducer along with the turbine shaft torque. To
 compensate, tare torque and drag runs were to be performed to measure the shaft
 bearing friction torque and turbine mounting frame drag, respectively. These
 data will be similar to the turbine performance data, omitting torque
-measurements for the tare drag runs and vice versa. Tare drag runs will be
-performed for each tow speed in the experiment, for which the mean value is used
-in data processing. Tare torque runs will be performed by rotating the turbine
-shaft (without blades) in air at constant angular velocity for a specified
-duration, over the range of angular velocities used throughout the experiment.
-Tare torque will then be fit with a linear regression versus shaft angular
-velocity, and added to the measured turbine torque in post-processing.
+measurements for the tare drag runs and vice versa. Tare drag runs were
+performed for each tow speed in each experiment, for which the mean value was
+subtracted in data processing to estimate rotor drag alone. Tare torque runs
+were performed by rotating the turbine shaft (without blades) in air at constant
+angular velocity for a specified duration, over the range of angular velocities
+used throughout the experiment. Tare was then fit with a linear regression
+versus shaft angular velocity, and added to the measured turbine torque in
+post-processing.
 
 
 \subsection{Synchronization of instrumentation subsystems}
