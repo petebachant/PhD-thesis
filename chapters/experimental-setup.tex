@@ -6,14 +6,14 @@ In 2011, a turbine test bed was developed for measuring the performance
 (mechanical power and overall rotor drag or thrust) of large laboratory scale
 ($O(1)$ m\textsuperscript{2} frontal area) cross-flow turbines in the University
 of New Hampshire (UNH) tow tank \cite{Bachant2011-MS}, a 36.6 m long, 3.66 m
-wide, and 2.44 m deep facility, pictured in Figure~\ref{fig:tow-tank}, that was
+wide, and 2.44 m deep facility, pictured in Figure~\ref{fig:tow-tank}, which was
 capable of towing up to approximately 1.4 m/s. The turbine-specific
 instrumentation consisted of a mounting frame built from NACA 0020 hydrofoil
 struts, a hydraulic disk brake for turbine loading, an Interface T8 200 Nm
 capacity rotary torque transducer, and a 54 pulse-per-rev magnetic pickup for
 measuring shaft speed. The frame was mounted to the carriage via
 streamwise-oriented linear bearings and was held in place by a pair of Sentran
-ZB3 500 lbf load cells, to measure the overall streamwise rotor drag.
+ZB3 500 lbf load cells that allowed measurement of total streamwise rotor drag.
 
 \begin{figure}[ht]
     \centering
@@ -26,7 +26,7 @@ ZB3 500 lbf load cells, to measure the overall streamwise rotor drag.
     \label{fig:tow-tank}
 \end{figure}
 
-Despite its usefulness in producing a relatively small amount of data for two
+Despite its usefulness in collecting a relatively small amount of data for two
 helical cross-flow turbines~\cite{Bachant2015-RE}, the existing system had some
 issues to be addressed:
 \begin{itemize}
@@ -578,13 +578,12 @@ the UNH-RVAT for testing the robustness of numerical models to varying solidity.
 
 \subsection{UNH-RVAT}
 
-A primary goal for the UNH-RVAT was geometric simplicity, for the sake of
-replication in numerical models. The turbine was model constructed from straight
-14 cm chord length NACA 0020 extrusions, used for both the blades and struts.
-Blades were mounted at mid-chord, mid-span, and zero preset pitch, with a length
-or height of 1 m and placed at 1 m diameter, giving the rotor an aspect ratio of
-unity. These parameters gave the rotor a relatively high solidity $Nc/(\pi D) =
-0.13$ and a large chord-to-radius ratio $c/R = 0.28$. 
+The UNH-RVAT turbine was constructed from straight 14 cm chord length NACA 0020
+extrusions, used for both the blades and struts. Blades were mounted at
+mid-chord, mid-span, and zero preset pitch, with a length or height of 1 m and
+placed at 1 m diameter, giving the rotor an aspect ratio of unity. These
+parameters gave the rotor a relatively high solidity $Nc/(\pi D) = 0.13$ and a
+large chord-to-radius ratio $c/R = 0.28$.
 
 The support struts were also constructed from 14 cm chord NACA 0020 profiles,
 and attach the turbine to a 9.5 cm diameter shaft. A drawing of the turbine
@@ -669,15 +668,17 @@ type III, class 2 specifications.
 
 \section{Summary and conclusions}
 
-An upgraded test bed for large laboratory scale ($O(1)$ m) cross-flow turbines
-was developed for the UNH tow tank. To acquire adequate amounts of data and to
-achieve significant lengths of steady state operation with a limited tank
-length, the tow tank's linear motion, control, and data acquisition systems had
-to be redesigned, rebuilt, and upgraded to allow fully automated operation,
-along with higher carriage speed and acceleration.
-
-The upgraded test bed increased the number of tows possible per experiment by
-essentially an order of magnitude.
+An upgraded test bed for measuring the performance and near-wake flows of large
+laboratory scale ($O(1)$ m) cross-flow turbines was developed for the UNH tow
+tank. To acquire adequate amounts of data and to achieve significant lengths of
+steady state operation with a limited tank length, the tow tank's linear motion,
+control, and data acquisition systems had to be redesigned, rebuilt, and
+upgraded to allow fully automated operation, along with higher carriage speed
+and acceleration. Integrating carriage, turbine, and Vectrino probe positioning,
+along with synchronized data acquisition from performance measurement, Vectrino,
+and motion controller systems increased the number of tows possible per
+experiment by essentially an order of magnitude, while simplifying data
+processing and increasing data quality and repeatability.
 
 Two turbine models were designed and fabricated. The UNH-RVAT turbine was
 designed to be more geometrically simple, but higher solidity, while the RM2
