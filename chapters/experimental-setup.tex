@@ -403,12 +403,24 @@ were re-enabled to position the probe before each run.
 Software was developed to automate the entire turbine testing process. Dubbed
 \textit{TurbineDAQ}, the desktop application was written in Python due to its
 reputation as a good ``glue'' language for systems integration. The graphical
-user interface (GUI) was built using the PyQt bindings to the Qt framework.
-Communication with the tow tank's motion controller, data acquisition system,
-and ADV were integrated into a single application. This combined with the
-ability to load and automatically execute test matrices in comma-separated value
-(CSV) format allowed for experiments consisting of thousands of tows, where the
-previous generation could only realistically achieve around 100.
+user interface (GUI), shown in Figure~\ref{fig:TurbineDAQ}, was built using the
+PyQt bindings to the Qt framework. Communication with the tow tank's motion
+controller, data acquisition system, and ADV were integrated into a single
+application. This combined with the ability to load and automatically execute
+test matrices in comma-separated value (CSV) format allowed for experiments
+consisting of thousands of tows, where the previous generation could only
+realistically achieve around 100.
+
+\begin{figure}[ht]
+    \centering
+    
+    \includegraphics[width=0.95\textwidth]{TurbineDAQ}
+    
+    \caption{\textit{TurbineDAQ} turbine test bed experiment automation software
+        graphical interface.}
+    
+    \label{fig:TurbineDAQ}
+\end{figure}
 
 
 \subsection{Tare drag and torque compensation} 
