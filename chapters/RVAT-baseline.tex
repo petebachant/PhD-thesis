@@ -286,12 +286,15 @@ interesting to compare with an axial-flow turbine in similar conditions.
 
 \begin{figure}
     \centering
-%    \includegraphics[clip, trim=0 0.25in 0 0.2in, width=0.8\textwidth]{Figures/mombargraph}
-    \caption{Estimates for the contributions to mean streamwise momentum recovery
-        in the streamwise direction, multiplied by two (due to assumed symmetry), 
-        averaged over the measurement plane, and
-        normalized by the average streamwise velocity, freestream velocity, and turbine 
-        diameter.}
+    
+%    \includegraphics[clip, trim=0 0.25in 0 0.2in,
+% width=0.8\textwidth]{Figures/mombargraph}
+    
+    \caption{Estimates for the contributions to mean streamwise momentum
+        recovery in the streamwise direction, multiplied by two (due to assumed
+        symmetry), averaged over the measurement plane, and normalized by the
+        average streamwise velocity, freestream velocity, and turbine diameter.}
+    
     \label{fig-mombargraph}
 \end{figure}
 
@@ -313,8 +316,8 @@ Spectral concentration $\Psi$ is quantified by normalizing the peak value of the
 spectral density by the total variance of the signal multiplied by the
 spectrum's Fourier frequency interval $\Delta f$, i.e.,
 \begin{equation}
-\Psi \equiv \frac{S_{\max} \Delta f}{\sigma^2},
-\label{eq-spec_cont}
+    \Psi \equiv \frac{S_{\max} \Delta f}{\sigma^2},
+    \label{eq-spec_cont}
 \end{equation}
 where $\Delta f \equiv 1/(N \Delta t)$, $N$ is the total number of samples, and
 $\Delta t$ is the sampling interval. For a pure harmonic $\Psi = 1$, indicating
@@ -338,24 +341,31 @@ at the blade passage frequency.
 
 \begin{figure}[h]
     \centering
+    
 %    \includegraphics[clip, trim=0 0.3in 0 0.5in, width=0.8\textwidth]{Figures/fpeak_v}
 %    \includegraphics[clip, trim=0 0.3in 0 0.3in, width=0.8\textwidth]{Figures/fstrength_v}
+
     \caption{Cross-stream velocity energy spectra peak frequency normalized by
-        turbine angular frequency (top) and spectral concentration (bottom). Note that white 
-        regions have values higher than the maximum value of the color bar, caused by both 
-        noise and wakes of the guy wire supports.}
+        turbine angular frequency (top) and spectral concentration (bottom). Note
+        that white regions have values higher than the maximum value of the color
+        bar, caused by both noise and wakes of the guy wire supports.}
+    
     \label{fig-fcont}
 \end{figure}
 
 \begin{figure}[h]
     \centering
+
 %    \includegraphics[width=0.98\textwidth]{Figures/multispec}
-    \caption{Spectral density for (a) torque coefficient, (b) cross-stream velocity at
-        $y/R = -1$; $z/H = 0.25$, and (c) cross-stream velocity at 
-        $y/R = 1.5$; $z/H = 0.25$. Dashed vertical lines indicate $[1, 3, 6, 9]$
-        times the turbine rotational frequency and the shaded gray region indicates the 
-        95\% confidence interval for a $\chi^2$ variable with 8 degrees of freedom---twice 
-        the number of frequencies over which spectral values were averaged to reduce noise.}
+
+    \caption{Spectral density for (a) torque coefficient, (b) cross-stream
+        velocity at $y/R = -1$; $z/H = 0.25$, and (c) cross-stream velocity at $y/R
+        = 1.5$; $z/H = 0.25$. Dashed vertical lines indicate $[1, 3, 6, 9]$ times
+        the turbine rotational frequency and the shaded gray region indicates the
+        95\% confidence interval for a $\chi^2$ variable with 8 degrees of
+        freedom---twice the number of frequencies over which spectral values were
+        averaged to reduce noise.}
+    
     \label{fig-multispec}
 \end{figure}
 
@@ -375,12 +385,13 @@ Modulating turbulence fields at the occurrence of dynamic stall.
 
 \begin{figure}
     \centering
-    %\includegraphics[clip, trim=0 0.25in 0 0.3in, width=0.8\textwidth]
-    %{Figures/meankcont}
-%    \includegraphics[clip, trim=0 0.25in 0 0.3in, width=0.8\textwidth]{Figures/kcont}
-    \caption{Contours of turbulence kinetic energy,
-        normalized by the mean freestream kinetic energy.
-        Turbine frontal area is indicated by solid black lines.}
+
+%    \includegraphics[clip, trim=0 0.25in 0 0.3in, width=0.8\textwidth]{kcont}
+
+    \caption{Contours of turbulence kinetic energy, normalized by the mean
+        freestream kinetic energy. Turbine frontal area is indicated by solid black
+        lines.}
+    
     \label{fig-kcont}
 \end{figure}
 
@@ -390,34 +401,33 @@ streamwise direction are now examined. The transport equation for the kinetic
 energy $K$ associated with the mean flow \cite{TennekesAndLumley}, rearranged to
 isolate the streamwise recovery can be written as
 \begin{equation}
-\begin{split}
-\frac{\p K}{\p x}
-=
-\frac{1}{U}
-\bigg{[}
-& - \underbrace{V \frac{\p K}{\p y}}_{y\text{-adv.}}
-- \underbrace{W \frac{\p K}{\p z}}_{z\text{-adv.}}
-% Pressure work:
-- \frac{1}{\rho}\frac{\p}{\p x_j} P U_i \delta_{ij}
-% Work by viscous forces
-+ \frac{\p}{\p x_j} 2 \nu U_i S_{ij} % Not sure if that's capital S...
-% Turbulent transport of K
-- \underbrace{
-    \frac{1}{2}\frac{\p}{\p x_j} \overline{u_i' u_j'} U_i
-}_{\text{Turb. trans.}} \\
-% Production of k
-& + 
-\underbrace{
-    \overline{u_i' u_j'} \frac{\p U_i}{\p x_j}
-}_{k\text{-prod.}}
-% Mean dissipation? Bar could be removed, or no? -- yes, capital letter, no bar.
-- 
-\underbrace{
-    2 \nu S_{ij}S_{ij}
-}_{\text{Mean diss.}}
-\bigg{]}.
-\label{eq-K_full}
-\end{split}
+    \begin{split}
+        \frac{\p K}{\p x}
+        =
+        \frac{1}{U}
+        \bigg{[}
+        & - \underbrace{V \frac{\p K}{\p y}}_{y\text{-adv.}}
+        - \underbrace{W \frac{\p K}{\p z}}_{z\text{-adv.}}
+        % Pressure work:
+        - \frac{1}{\rho}\frac{\p}{\p x_j} P U_i \delta_{ij}
+        % Work by viscous forces
+        + \frac{\p}{\p x_j} 2 \nu U_i S_{ij}
+        % Turbulent transport of K
+        - \underbrace{
+            \frac{1}{2}\frac{\p}{\p x_j} \overline{u_i' u_j'} U_i
+        }_{\text{Turb. trans.}} \\
+        % Production of k
+        & + 
+        \underbrace{
+            \overline{u_i' u_j'} \frac{\p U_i}{\p x_j}
+        }_{k\text{-prod.}}
+        - 
+        \underbrace{
+            2 \nu S_{ij}S_{ij}
+        }_{\text{Mean diss.}}
+        \bigg{]}.
+    \label{eq-K_full}
+    \end{split}
 \end{equation}
 The terms of interest are labeled---advection in the cross-stream and vertical
 directions, energy transport by turbulent fluctuations, production of turbulence
@@ -469,10 +479,13 @@ are similar on both.
 
 \begin{figure}
     \centering
+    
 %    \includegraphics[clip, trim=0 0.25in 0 0.3in, width=0.8\textwidth]{Figures/Kturbtrans}
+
     \caption{Contours of estimated mean kinetic energy transport by turbulent
-        fluctuations, where streamwise derivatives are omitted.
-        Turbine frontal area is indicated by solid black lines.}
+        fluctuations, where streamwise derivatives are omitted. Turbine frontal area
+        is indicated by solid black lines.}
+    
     \label{fig-Kturbtrans}
 \end{figure}
 
@@ -507,12 +520,15 @@ effects.
 
 \begin{figure}
     \centering
+    
 %    \includegraphics[clip, trim=0 0.25in 0 0.2in, width=0.8\textwidth]{Figures/Kbargraph}
-    \caption{Estimates for the contributions to mean kinetic energy recovery
-        in the streamwise direction, multiplied by two (due to assumed symmetry), 
-        averaged over the measurement plane, and
-        normalized by the average streamwise advection velocity, freestream kinetic 
-        energy, and turbine diameter.}
+
+    \caption{Estimates for the contributions to mean kinetic energy recovery in
+        the streamwise direction, multiplied by two (due to assumed symmetry),
+        averaged over the measurement plane, and normalized by the average
+        streamwise advection velocity, freestream kinetic energy, and turbine
+        diameter.}
+    
     \label{fig-Kbargraph}
 \end{figure}
 
@@ -548,7 +564,9 @@ previous sections, the asymmetry of the turbine's wake indicates that a uniform
 streamwise force from the actuator disk will likely not capture the wake
 accurately.
 
-The open source CFD package \textit{OpenFOAM} was used to solve the  RANS
+\todo[inline]{Check OpenFOAM version used for AD simulation.}
+
+The open source CFD package \textit{OpenFOAM} was used to solve the RANS
 equations with the turbine represented by an actuator disk, which is
 implemented as a force or sink in the momentum equation, applied over a selected
 volume of cells in the mesh.
@@ -568,15 +586,16 @@ reasonable approximation for low Froude numbers. Inputs to \textit{OpenFOAM}'s
 \texttt{actuationDiskSource} are given in Table~\ref{tab-AS}, and the case files
 for this simulation are available from \cite{Bachant2014_OF-AS}.
 
-
 \begin{figure}
     \centering
-%    \includegraphics[width=0.9\textwidth]{Figures/AD_mesh}
-    \caption{Snapshot of the computational mesh for the actuator disk RANS 
+
+    \includegraphics[width=0.9\textwidth]{AD_mesh}
+
+    \caption{Snapshot of the computational mesh for the actuator disk RANS
         simulation.}
+    
     \label{fig-AD_mesh}
 \end{figure}
-
 
 \begin{table}
     \begin{center}
@@ -625,7 +644,7 @@ We can see that the streamwise momentum recovers very slowly, only starting to
 recover around $x=7D$, which can be mostly attributed to the low inflow
 turbulence levels, chosen to mimic the tow tank environment. This can be further
 understood by looking at the transport terms plotted on the right in
-Figure~\ref{fig-AD_streamwise}, where we see all terms are quite small when
+Figure~\ref{fig:AD-streamwise}, where we see all terms are quite small when
 compared with the experimental results from the turbine. Rather than the
 advection terms, which contribute negatively, the turbulent transport---here
 modeled using the $k$--$\epsilon$ eddy viscosity $\nu_t$---is driving the
@@ -646,20 +665,27 @@ uncertainty if applied to cross-flow turbine installations.
 
 \begin{figure}
     \centering
-%    \includegraphics[clip, trim=0 0.25in 0 0.5in, width=0.75\textwidth]{Figures/meancomboquiv_AD}
-    \caption{Mean velocity predictions at $x/D=1$ from the RANS actuator disk 
-        numerical model. Vectors are cross-stream and
-        vertical velocities; contours are streamwise velocity.}
+    
+%    \includegraphics[clip, trim=0 0.25in 0 0.5in,
+% width=0.75\textwidth]{Figures/meancomboquiv_AD}
+
+    \caption{Mean velocity predictions at $x/D=1$ from the RANS actuator disk
+        numerical model. Vectors are cross-stream and vertical velocities; contours
+        are streamwise velocity.}
+    
     \label{fig-AD_contours}
 \end{figure}
 
 \begin{figure}
     \centering 
-    \includegraphics[width=\textwidth]{Figures/AD_streamwise}
-    \caption{Downstream evolution of the centerline streamwise velocity (left) and
-        normalized momentum transport terms (right) averaged over $y$--$z$ slices from  
-        the actuator disk RANS simulation.}
-    \label{fig-AD_streamwise}
+    
+    \includegraphics[width=\textwidth]{AD_streamwise}
+    
+    \caption{Downstream evolution of the centerline streamwise velocity (left)
+        and normalized momentum transport terms (right) averaged over $y$--$z$
+        slices from the actuator disk RANS simulation.} 
+    
+    \label{fig:AD-streamwise}
 \end{figure}
 
 \section{Conclusions}
