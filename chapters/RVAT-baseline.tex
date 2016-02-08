@@ -434,8 +434,8 @@ directions, energy transport by turbulent fluctuations, production of turbulence
 kinetic energy $k$ through mean shear, and the dissipation due to mean viscous
 shear forces. For the tensor terms, streamwise derivatives were ommitted, since
 the measurements were limited to a single streamwise distance.
-Table~\ref{tab-eqs} lists all components kept for the computation of each
-transport term.
+Table~\ref{tab:RVAT-baseline-eqs} lists all components kept for the computation
+of each transport term.
 
 \begin{table}
     \centering
@@ -466,16 +466,17 @@ transport term.
         \big{]} $ \\ 
     \end{tabular} 
     \caption{Terms used to compute contributions to mean kinetic energy recovery.}
-    \label{tab-eqs}
+    \label{tab:RVAT-baseline-eqs}
 \end{table}
 
-Figure~\ref{fig-Kturbtrans} shows estimates of mean kinetic energy transport by
-turbulent fluctuations. The structure of this plot indicates that the turbulent
-fluctuations transport mean kinetic energy inward towards regions of lower mean
-momentum and lower mean kinetic energy. The signs of the terms plotted here can
-be understood from Figures 6 and 4. Note that despite lower turbulence kinetic
-energy on the $+y$ side of the turbine, magnitudes of the turbulent transport
-are similar on both.
+Figure~\ref{fig:RVAT-baseline-Kturbtrans} shows estimates of mean kinetic energy
+transport by turbulent fluctuations. The structure of this plot indicates that
+the turbulent fluctuations transport mean kinetic energy inward towards regions
+of lower mean momentum and lower mean kinetic energy. The signs of the terms
+plotted here can be understood from Figures 6 and 4. Note that despite lower
+turbulence kinetic energy on the $+y$ side of the turbine, magnitudes of the
+turbulent transport are similar on both.
+
 
 \begin{figure}
     \centering
@@ -486,15 +487,15 @@ are similar on both.
         fluctuations, where streamwise derivatives are omitted. Turbine frontal area
         is indicated by solid black lines.}
     
-    \label{fig-Kturbtrans}
+    \label{fig:RVAT-baseline-Kturbtrans}
 \end{figure}
 
 Contributions to mean kinetic energy recovery from various mechanisms were
-averaged over the  measurement plane using the trapezoidal rule. Figure~\ref
-{fig-Kbargraph}  shows the normalized sum of each quantity to show their
-relative size. As with the momentum, the cross-stream mean advection contributes
-negatively since the flow is accelerating around the turbine due to its pressure
-disturbance, where streamlines diverge.
+averaged over the  measurement plane using the trapezoidal rule.
+Figure~\ref{fig:RVAT-baseline-Kbargraph} shows the normalized sum of each
+quantity to show their relative size. As with the momentum, the cross-stream
+mean advection contributes negatively since the flow is accelerating around the
+turbine due to its pressure disturbance, where streamlines diverge.
 
 Viscous dissipation due to mean shear is essentially negligible compared to
 the other terms, which is to be expected in a high Reynolds number shear flow a 
@@ -506,9 +507,10 @@ separated by the direction of their divergence, i.e., ``$y$-turb.'' is a sum of
 all terms with $\p / \p y$ in them and ``$z$-turb.'' is a sum of all terms with
 $\p / \p z$ in them, are about the same order of magnitude, both roughly an
 order of magnitude smaller than the vertical advection term, which is the
-largest. It should be re-stated that the terms in Figure~\ref{fig-Kbargraph}
-were evaluated in the near wake, in a measurement plane at $x/D=1$ shown in
-Figure~\ref{fig-coord}.
+largest. It should be re-stated that the terms in
+Figure~\ref{fig:RVAT-baseline-Kbargraph} were evaluated in the near wake, in a
+measurement plane at $x/D=1$ shown in
+Figure~\ref{fig:RVAT-baseline-wake-coordinates}.
 
 Compared to the observations of Kinzel et al. \cite{Kinzel2012}, where the
 turbulent transport terms were found to be not large enough to replenish turbine
@@ -518,6 +520,7 @@ quantities. This is likely a consequence of the unique vorticity generation and
 interaction from lift production, (dynamic) stall vortices, and blade end
 effects.
 
+\todo[inline]{Get RVAT-baseline Kbargraph fig.}
 \begin{figure}
     \centering
     
@@ -529,7 +532,7 @@ effects.
         streamwise advection velocity, freestream kinetic energy, and turbine
         diameter.}
     
-    \label{fig-Kbargraph}
+    \label{fig:RVAT-baseline-Kbargraph}
 \end{figure}
 
 
