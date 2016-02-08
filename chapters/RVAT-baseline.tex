@@ -578,13 +578,13 @@ extends 2 m upstream and 8 m downstream.  The background mesh consists of 96,
 64, and 48 points in the $x$, $y$, and $z$ directions, respectively. The cells
 in the volume enclosed by the actuator disk region are refined by a factor of
 two, giving a total of  approximately $3 \times 10^5$ hexahedral cells. A
-snapshot of the mesh is shown in Figure~\ref{fig-AD_mesh}. Boundary conditions
+snapshot of the mesh is shown in Figure~\ref{fig:AD_mesh}. Boundary conditions
 are set to approximate the tow tank environment, i.e., the velocity at the
 bottom and walls is set to the free stream value. The free surface was not
 modeled---the domain had a rigid lid with a slip velocity boundary condition---a
 reasonable approximation for low Froude numbers. Inputs to \textit{OpenFOAM}'s
-\texttt{actuationDiskSource} are given in Table~\ref{tab-AS}, and the case files
-for this simulation are available from \cite{Bachant2014_OF-AS}.
+\texttt{actuationDiskSource} are given in Table~\ref{tab:AS}, and the case files
+for this simulation are available from \cite{Bachant2014-OF-AS-case-files}.
 
 \begin{figure}
     \centering
@@ -594,7 +594,7 @@ for this simulation are available from \cite{Bachant2014_OF-AS}.
     \caption{Snapshot of the computational mesh for the actuator disk RANS
         simulation.}
     
-    \label{fig-AD_mesh}
+    \label{fig:AD_mesh}
 \end{figure}
 
 \begin{table}
@@ -608,7 +608,7 @@ for this simulation are available from \cite{Bachant2014_OF-AS}.
         \caption{Input parameters for the actuator surface using \textit{OpenFOAM}'s
             \texttt{actuationDiskSource}.}
     \end{center}
-    \label{tab-AS}
+    \label{tab:AS}
 \end{table}
 
 The turbulence is modeled with a standard $k$-$\epsilon$ closure, with
@@ -617,11 +617,11 @@ relatively low levels of inlet turbulence kinetic energy and dissipation, $2
 values were chosen to approximate the tow tank ambient conditions.
 
 Results for the mean velocity field are presented in
-Figure~\ref{fig-AD_contours}, in a manner similar to that of
-Figure~\ref{fig-meanvel}, for comparison. Clearly, the vertical mean flow, which
-was determined to be an important driver of near-wake dynamics in the
-experiments, is absent. In fact, it contributes negatively to streamwise wake
-recovery. This means that all momentum and energy transport back into the
+Figure~\ref{fig:AD-contours}, in a manner similar to that of
+Figure~\ref{fig:RVAT-baseline-meancontquiv}, for comparison. The vertical mean
+flow, which was determined to be an important driver of near-wake dynamics in
+the experiments, is absent. In fact, it contributes negatively to streamwise
+wake recovery. This means that all momentum and energy transport back into the
 deficit in the wake created by the turbine will need to be facilitated by
 turbulent transport (and viscous diffusion, to a much lesser degree). Note also
 how acceleration due to blockage is much lower compared to the experiments
@@ -673,7 +673,7 @@ uncertainty if applied to cross-flow turbine installations.
         numerical model. Vectors are cross-stream and vertical velocities; contours
         are streamwise velocity.}
     
-    \label{fig-AD_contours}
+    \label{fig:AD-contours}
 \end{figure}
 
 \begin{figure}
