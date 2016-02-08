@@ -21,7 +21,7 @@ figdirs = {"RVAT-baseline": join(expdir, "RVAT baseline", "Figures"),
                            "CFD popularity", "figures"),
            "CFT-vectors": join(gdrive, "research", "CFT-vectors", "figures")}
 
-figlists = {"RVAT-baseline": [],
+figlists = {"RVAT-baseline": ["perf.pdf"],
             "RVAT-Re-dep": ["cp_vs_tsr.pdf", "mean_u.pdf", "mean_upvp.pdf"],
             "AD": ["streamwise.pdf", "meancontquiv.pdf"],
             "CFD-pop": ["cfd-online.pdf"],
