@@ -2,8 +2,13 @@
 turbine}\label{chap:RVAT-baseline}
 
 For the higher solidity turbine---the UNH-RVAT---the performance and near-wake
-were measured in an initial experiment. The Reynolds number dependence,
-described in Chapter~\ref{chap:Re-dep}, was observed in a separate experiment.
+were measured at a single tow speed in an baseline initial experiment. Note the
+the results presented here have been published in \cite{Bachant2013,
+    Bachant2015-JoT}.
+
+The turbine performance was quantified by towing the turbine at a constant speed
+$U_\infty=1$ m/s, varying the prescribed tip speed ratio from 0.1 to 3.1 in
+increments of 0.1.
 
 In the present study the CFT's near-wake was examined in more detail, providing
 insight into the mechanisms that improve CFT wake recovery rates compared with
@@ -14,7 +19,7 @@ expensive. The ability of one such model---an actuator disk inside a
 Reynolds-Averaged Navier--Stokes (RANS) simulation---to predict those defining
 characteristics is also assessed.
 
-The dominant scales within the turbine's near-wake are evaluated for their
+The dominant scales within the turbine's near-wake were evaluated for their
 relative importance, loosely following the conceptual framework presented in
 Chamorro et al. \cite{Chamorro2012b}, where the turbine was treated as an
 ``active filter.'' However, by extending this concept it should be cautioned
@@ -45,20 +50,17 @@ remains as to why the CFT wake would recover more quickly than that of an AFT.
 The study reported here also examined the three-dimensionality of the wake, as
 turbine ``end effects'' will no doubt affect interaction with the free stream.
 
-To summarize, the goals of this study were:
+To summarize, the goals of this experiment were:
 \begin{enumerate}
-    
     \item To identify the essential features of the near-wake of a cross-flow
-    turbine from experimental measurements acquired at sufficiently high Reynolds
-    number.
+    turbine.
     
     \item To assess the relative importance of mean and turbulent dynamics on the
     transport of momentum and kinetic energy in the wake.
     
-    \item To compare the measured CFT wake to numerical predictions from a uniform
-    actuator disk force parameterization implemented inside a RANS model, and
-    identify the simulations shortcomings.
-    
+    \item To compare the measured CFT wake to numerical predictions from a
+    uniform actuator disk force parameterization implemented inside a RANS
+    model, to evaluate its prospects for representing CFTs in array simulations.
 \end{enumerate}
 
 
@@ -69,10 +71,9 @@ number based on turbine diameter of $Re_D = U_\infty D /\nu = 1 \times 10^6$, or
 an approximate blade chord Reynolds number of $Re_c \approx \lambda U_\infty
 c/\nu = 2.7 \times 10^5$ for $\lambda=1.9$, where tip speed ratio $\lambda
 \equiv \omega D / (2 U_\infty)$. Note that this Reynolds number is high enough
-to be considered operating in a $Re$-independent regime \cite{Bravo2007}
-\cite{Bachant2014}, which is important considering the relevance of the data to
-characterize full-scale behavior, and subsequent validation of simplified
-numerical models.
+to be considered operating in a $Re$-independent regime \cite{Bravo2007,
+    Bachant2014, Bachant2016-Energies}, which is examined in more detail in
+Chapter~\ref{chap:Re-dep}.
 
 
 \section{Results and discussion}
@@ -101,31 +102,32 @@ the measurement interval. For computing partial derivatives of velocity
 quantities, a central difference scheme was employed. For the boundaries of the
 measurement plane, an inward-facing second-order scheme was used. The data
 processing and plotting code, along with the reduced dataset are available from
-\cite{Bachant2014_data}.
+\cite{Bachant2014-RVAT-baseline}.
+
 
 \subsection{Turbine performance}
 
 Performance curves showing the overall power and drag coefficients of the
-turbine are shown in Figure~\ref{fig-perf}. The drag coefficient monotonically
-increases with increasing tip speed ratio over the entire range tested, and the
-power coefficient reaches a maximum of 26\% around a tip speed ratio
-$\lambda=1.8$--$1.9$, where the drag coefficient is 0.96.  These curves informed
-the selection of the tip speed ratio $\lambda = 1.9$ as the operating point for
-detailed near-wake characterization. We expect that at this tip speed ratio the
-turbine blades will be operating in dynamic stall over a part of the turbine
-rotation \cite{Scheurich2011}, reaching maximum angles of attack of
-approximately 35 degrees, and that this will be a significant contributor to the
-near-wake structure. Note that the maximum power coefficient could likely be
-improved with simple geometric modifications, e.g., changing the blade pitch
-\cite{Fiedler2009},  but for this study the geometry was meant to be as simple
-as possible,  therefore the blade pitch was left at zero.
+turbine are shown in Figure~\ref{fig:RVAT-baseline-perf}. The drag coefficient
+monotonically increases with increasing tip speed ratio over the entire range
+tested, and the power coefficient reaches a maximum of 26\% around a tip speed
+ratio $\lambda=1.8$--$1.9$, where the drag coefficient is 0.96. These curves
+informed the selection of the optimal tip speed ratio $\lambda_0 = 1.9$ as the
+operating point for detailed near-wake characterization. We expect that at this
+tip speed ratio the turbine blades will be operating in dynamic stall over a
+part of the turbine rotation \cite{Scheurich2011}, reaching maximum angles of
+attack of approximately 35 degrees, and that this will be a significant
+contributor to the near-wake structure. Note that the maximum power coefficient
+could likely be improved with simple geometric modifications, e.g., changing the
+blade pitch \cite{Fiedler2009},  but for this study the geometry was meant to be
+as simple as possible,  therefore the blade pitch was left at zero.
 
-\begin{figure}
+\begin{figure}[ht]
     \centering
-%    \includegraphics[width=1.0\textwidth]{Figures/perf}
+    \includegraphics[width=0.9\textwidth]{RVAT-baseline_perf}
     \caption{Mean turbine power (left) and drag (right) coefficients plotted
         versus tip speed ratio.}
-    \label{fig-perf}
+    \label{fig:RVAT-baseline-perf}
 \end{figure}
 
 
@@ -144,6 +146,7 @@ scales are identified and evaluated for their contribution to the turbulent
 spectra. Finally, the processes that lead to replenishment of momentum and
 energy in the wake are identified, with the goal of explaining the CFT's
 relatively fast wake recovery.
+
 
 \subsubsection{Momentum and vorticity}
 
@@ -225,21 +228,21 @@ contributing to its streamwise derivative. Assuming the flow is stationary in
 the mean and incompressible, the equation becomes
 
 \begin{equation}
-\begin{split}
-\frac{\p U}{\p x}  =  
-\frac{1}{U} \bigg{[}
-& - V\frac{\p U}{\p y}
-- W\frac{\p U}{\p z} \\
-& -\frac{1}{\rho}\frac{\p P}{\p x} \\
-& - \frac{\p}{\p x} \overline{u'u'}
-- \frac{\p}{\p y} \overline{u'v'}
-- \frac{\p}{\p z} \overline{u'w'} \\
-& + \nu\left(\frac{\p^2 U}{\p x^2}
-+ \frac{\p^2 U}{\p y^2}
-+ \frac{\p^2 U}{\p z^2} \right)
-\bigg{]}.
-\end{split}
-\label{eq-momentum}
+    \begin{split}
+        \frac{\p U}{\p x}  =  
+        \frac{1}{U} \bigg{[}
+        & - V\frac{\p U}{\p y}
+        - W\frac{\p U}{\p z} \\
+        & -\frac{1}{\rho}\frac{\p P}{\p x} \\
+        & - \frac{\p}{\p x} \overline{u'u'}
+        - \frac{\p}{\p y} \overline{u'v'}
+        - \frac{\p}{\p z} \overline{u'w'} \\
+        & + \nu\left(\frac{\p^2 U}{\p x^2}
+        + \frac{\p^2 U}{\p y^2}
+        + \frac{\p^2 U}{\p z^2} \right)
+        \bigg{]}.
+    \end{split}
+\label{eq:momentum}
 \end{equation}
 
 From the experimental measurements, all of the terms on the right hand side were
