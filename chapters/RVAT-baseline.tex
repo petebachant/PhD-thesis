@@ -578,7 +578,7 @@ extends 2 m upstream and 8 m downstream.  The background mesh consists of 96,
 64, and 48 points in the $x$, $y$, and $z$ directions, respectively. The cells
 in the volume enclosed by the actuator disk region are refined by a factor of
 two, giving a total of  approximately $3 \times 10^5$ hexahedral cells. A
-snapshot of the mesh is shown in Figure~\ref{fig:AD_mesh}. Boundary conditions
+snapshot of the mesh is shown in Figure~\ref{fig:AD-mesh}. Boundary conditions
 are set to approximate the tow tank environment, i.e., the velocity at the
 bottom and walls is set to the free stream value. The free surface was not
 modeled---the domain had a rigid lid with a slip velocity boundary condition---a
@@ -594,7 +594,7 @@ for this simulation are available from \cite{Bachant2014-OF-AS-case-files}.
     \caption{Snapshot of the computational mesh for the actuator disk RANS
         simulation.}
     
-    \label{fig:AD_mesh}
+    \label{fig:AD-mesh}
 \end{figure}
 
 \begin{table}
@@ -607,8 +607,8 @@ for this simulation are available from \cite{Bachant2014-OF-AS-case-files}.
         \end{tabular} 
         \caption{Input parameters for the actuator surface using \textit{OpenFOAM}'s
             \texttt{actuationDiskSource}.}
-    \end{center}
     \label{tab:AS}
+    \end{center}
 \end{table}
 
 The turbulence is modeled with a standard $k$-$\epsilon$ closure, with
