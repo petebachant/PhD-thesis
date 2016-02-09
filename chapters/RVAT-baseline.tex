@@ -546,6 +546,148 @@ effects.
 \end{figure}
 
 
+%%% Below from FEDSM paper
+
+
+\subsection{Effects of tip speed ratio}
+
+From our measurements we can observe how mean velocities at two fixed points
+downstream of the turbine axis vary with tip speed ratio. These velocity
+components are shown in Fig.~\ref{fig-meanuvstsr}. Mean streamwise velocity
+deficit at at $z/H = 0$ increases with tip speed ratio, which is expected in
+light of the drag measurements. However, mean velocity deficit at the quarter
+height is highest at tip speed ratios corresponding to high power coefficient,
+but decreases at higher values of $\lambda$. Mean vertical velocity at the
+turbine center remains relatively constant across the entire operating envelope,
+implying the wake is approximately symmetric about $z/H = 0$. However, mean
+vertical velocity at the quarter height shows a markedly higher downward
+component at higher $\lambda$, corresponding to the similar aforementioned trend
+of decreasing streamwise velocity deficit at that location. Since drag
+coefficient continuously increases with $\lambda$, we are led to believe the
+turbine is becoming more like a solid cylinder, letting less flow through,
+therefore more fluid must flow over the top. Asymmetry about $y/R=0$ is seen in
+the mean cross-stream velocity at values of $\lambda$ away from those of highest
+power output, with a mean component in the positive $y$-direction.
+
+% Mean velocity vs tsr
+\begin{figure}[t]
+%    \includegraphics[scale=0.42]{Figures/meanuvstsr.pdf}
+
+    \caption{NORMALIZED CENTER LINE MEAN VELOCITY COMPONENTS AT $x/D=1$ VERSUS
+        TIP SPEED RATIO. FILLED MARKERS INDICATE MEASUREMENTS AT $z/H=0$, WHILE OPEN
+        MARKERS INDICATE MEASUREMENTS AT $z/H=0.25$.}
+
+    \label{fig-meanuvstsr} 
+\end{figure}
+
+Next we want to look more closely at the effects of lowering $\lambda$, thereby
+increasing maximum blade angle of attack and inducing increased stalling
+behavior. Quarter height streamwise mean velocity profiles for the two tip speed
+ratios of interest are shown in Fig.~\ref{fig-meanu_2tsrs}. Some similarities
+can be identified with the study by Brochier et al., namely the assymetry of the
+wake and how its shape changes on the side of the turbine where the blade faces
+into the flow---positive $y$ for our experiments and negative for theirs
+\cite{brochier86}.
+
+Regarding turbulence intensity in the wake, we can make similar comparisons. The
+data in Brochier et al. shows two peaks on opposite sides of the turbine axis,
+with the lower tip speed ratio case having a relatively higher peak on one side
+\cite{brochier86}, which should correspond to negative $y$ values in our case.
+This is somewhat in agreement with our results, though the value at the origin
+for our case is relatively higher, which may be due to the larger shaft wake.
+However, when we compare our two profiles, we notice for the lower value of
+$\lambda$ there is higher average turbulence intensity throughout the center
+region. This appears to be caused by more intense blade stall, beginning earlier
+along the blade path, i.e. at higher positive values of $y$. This effect is seen
+in all three components of turbulence intensity, agreeing with our earlier
+observations of local isotropy.
+
+% Check above!
+Fig.~\ref{fig-meanw_2tsrs} shows mean vertical velocity profiles for the two tip
+speed ratios of interest. The large gradient appearing at negative values of
+$y$, suspected to be the result of blade tip vortices, remains a approximately
+the same location. However, the peak seen at $y/R = 1.2$ is decreased for the
+lower tip speed ratio case.
+
+Fig.~\ref{fig-meanv_2tsrs} shows profiles of mean cross-stream velocity. Unlike
+the streamwise and vertical profiles, these show relatively large differences at
+our two tip speed ratios of interest, indicating significant fluid motion---on
+the order of 10\% of the free stream velocity---to the left on the left edge of
+the rotor at $\lambda=1.9$ and to the right at the right edge of the rotor at
+$\lambda = 1.4$.
+
+Fig.~\ref{fig-uv_2tsrs} shows profiles of $\overline{u'v'}$ Reynolds stress.
+Similar to the profiles of $\sigma_u$ in Fig.~\ref{fig-stdu_2tsrs}, we see a
+rightward shift of the left peak from what we infer is earlier blade stall,
+while the right hand peaks are almost identical. In Fig.~\ref{fig-vw_2tsrs}, we
+see that profiles of $\overline{v'w'}$ Reynolds stress contain peaks once again
+on the left side of the turbine, but the correlations are opposite for the two
+tip speed ratios.
+
+% Mean streamwise velocity profiles for 2 tsrs
+\begin{figure}[t]
+%    \includegraphics[scale=0.42]{Figures/meanu_2tsrs.pdf}
+
+    \caption{STREAMWISE MEAN VELOCITY PROFILES FOR $\lambda = 1.9$ AND
+        $\lambda=1.4$ AT $x/D=1$ AND $z/H = 0.25$.}
+
+    \label{fig-meanu_2tsrs} 
+\end{figure}
+
+% Mean vertical velocity profiles for 2 tsrs
+\begin{figure}[t]
+%    \includegraphics[scale=0.42]{Figures/meanw_2tsrs.pdf}
+
+    \caption{MEAN VERTICAL VELOCITY PROFILES FOR $\lambda = 1.9$ AND
+        $\lambda=1.4$ AT $x/D=1$ AND $z/H = 0.25$.}
+
+    \label{fig-meanw_2tsrs} 
+\end{figure}
+
+% Mean cross-stream velocity profiles at 2 tsrs
+\begin{figure}[t]
+%    \includegraphics[scale=0.42]{Figures/meanv_2tsrs.pdf}
+
+    \caption{MEAN CROSS-STREAM VELOCITY PROFILES FOR $\lambda = 1.9$ AND
+        $\lambda=1.4$ AT $x/D=1$ AND $z/H = 0.25$.}
+
+    \label{fig-meanv_2tsrs} 
+\end{figure}
+
+% Std u profiles at 2 tsrs
+\begin{figure}[t]
+%    \includegraphics[scale=0.42]{Figures/stdu_2tsrs.pdf}
+
+    \caption{STREAMWISE VELOCITY STANDARD DEVIATION FOR $\lambda = 1.9$ AND
+        $\lambda=1.4$ AT $x/D=1$ AND $z/H = 0.25$.}
+
+    \label{fig-stdu_2tsrs} 
+\end{figure}
+
+% uv Re stress profiles at 2 tsrs
+\begin{figure}[t]
+%    \includegraphics[scale=0.42]{Figures/uv_2tsrs.pdf}
+
+    \caption{$\overline{u'v'}$ REYNOLDS STRESS PROFILES FOR $\lambda = 1.9$ AND
+        $\lambda=1.4$ AT $x/D=1$ AND $z/H = 0.25$.}
+
+    \label{fig-uv_2tsrs} 
+\end{figure}
+
+% vw Re stress profiles at 2 tsrs
+\begin{figure}[t]
+%    \includegraphics[scale=0.42]{Figures/vw_2tsrs.pdf}
+
+    \caption{$\overline{v'w'}$ REYNOLDS STRESS PROFILES FOR $\lambda = 1.9$ AND
+        $\lambda=1.4$ AT $x/D=1$ AND $z/H = 0.25$.}
+
+    \label{fig-vw_2tsrs} 
+\end{figure}
+
+
+%%% End FEDSM content
+
+
 \subsection{Comparison with an actuator disk}
 
 The actuator disk model, commonly used in modern large-eddy simulations of wind
