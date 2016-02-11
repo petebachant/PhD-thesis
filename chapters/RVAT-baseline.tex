@@ -571,33 +571,38 @@ effects.
 
 \subsection{Effects of tip speed ratio}
 
+Low tip speed ratio may occur temporarily during a gust if the turbine cannot
+adjust quickly enough.
+
 From our measurements we can observe how mean velocities at two fixed points
 downstream of the turbine axis vary with tip speed ratio. These velocity
-components are shown in Fig.~\ref{fig:meanuvstsr}. Mean streamwise velocity
-deficit at at $z/H = 0$ increases with tip speed ratio, which is expected in
-light of the drag measurements. However, mean velocity deficit at the quarter
-height is highest at tip speed ratios corresponding to high power coefficient,
-but decreases at higher values of $\lambda$. Mean vertical velocity at the
-turbine center remains relatively constant across the entire operating envelope,
-implying the wake is approximately symmetric about $z/H = 0$. However, mean
-vertical velocity at the quarter height shows a markedly higher downward
-component at higher $\lambda$, corresponding to the similar aforementioned trend
-of decreasing streamwise velocity deficit at that location. Since drag
-coefficient continuously increases with $\lambda$, we are led to believe the
-turbine is becoming more like a solid cylinder, letting less flow through,
-therefore more fluid must flow over the top. Asymmetry about $y/R=0$ is seen in
-the mean cross-stream velocity at values of $\lambda$ away from those of highest
-power output, with a mean component in the positive $y$-direction.
+components are shown in Fig.~\ref{fig:RVAT-baseline-mean-vel-vs-tsr}. Mean
+streamwise velocity deficit at at $z/H = 0$ increases with tip speed ratio,
+which is expected in light of the drag measurements. However, mean velocity
+deficit at the quarter height is highest at tip speed ratios corresponding to
+high power coefficient, but decreases at higher values of $\lambda$. Mean
+vertical velocity at the turbine center remains relatively constant across the
+entire operating envelope, implying the wake is approximately symmetric about
+$z/H = 0$. However, mean vertical velocity at the quarter height shows a
+markedly higher downward component at higher $\lambda$, corresponding to the
+similar aforementioned trend of decreasing streamwise velocity deficit at that
+location. Since drag coefficient continuously increases with $\lambda$, we are
+led to believe the turbine is becoming more like a solid cylinder, letting less
+flow through, therefore more fluid must flow over the top. Asymmetry about
+$y/R=0$ is seen in the mean cross-stream velocity at values of $\lambda$ away
+from those of highest power output, with a mean component in the positive
+$y$-direction.
 
-% Mean velocity vs tsr
-\begin{figure}[t]
-%    \includegraphics[scale=0.42]{Figures/meanuvstsr.pdf}
+\begin{figure}
+    \centering
+    
+    \includegraphics[width=0.75\textwidth]{RVAT-baseline_mean_vel_vs_tsr}
 
     \caption{Normalized centerline mean velocity components at $x/D=1$ versus
         tip speed ratio. Filled markers indicate measurements at $z/H=0$, while open
         markers indicate those at $z/H=0.25$.}
 
-    \label{fig:meanuvstsr} 
+    \label{fig:RVAT-baseline-mean-vel-vs-tsr} 
 \end{figure}
 
 Next we want to look more closely at the effects of lowering $\lambda$, thereby
@@ -644,39 +649,43 @@ see that profiles of $\overline{v'w'}$ Reynolds stress contain peaks once again
 on the left side of the turbine, but the correlations are opposite for the two
 tip speed ratios.
 
-% Mean streamwise velocity profiles for 2 tsrs
-\begin{figure}[t]
-%    \includegraphics[scale=0.42]{Figures/meanu_2tsrs.pdf}
+\begin{figure}
+    \centering
+    
+    \includegraphics[width=0.75\textwidth]{RVAT-baseline_meanu_2tsrs}
 
     \caption{Streamwise mean velocity profiles for $\lambda = 1.9$ and
         $\lambda=1.4$ at $x/D=1$ and $z/H = 0.25$.}
 
-    \label{fig:meanu_2tsrs} 
+    \label{fig:RVAT-baseline-meanu-2tsrs} 
 \end{figure}
 
-% Mean vertical velocity profiles for 2 tsrs
-\begin{figure}[t]
-%    \includegraphics[scale=0.42]{Figures/meanw_2tsrs.pdf}
+\begin{figure}
+    \centering
+    
+    \includegraphics[width=0.75\textwidth]{RVAT-baseline_meanw_2tsrs}
 
     \caption{Mean vertical velocity profiles for $\lambda = 1.9$ and
         $\lambda=1.4$ at $x/D=1$ and $z/H = 0.25$.}
 
-    \label{fig:meanw_2tsrs} 
+    \label{fig:RVAT-baseline-meanw-2tsrs} 
 \end{figure}
 
-% Mean cross-stream velocity profiles at 2 tsrs
-\begin{figure}[t]
-%    \includegraphics[scale=0.42]{Figures/meanv_2tsrs.pdf}
+\begin{figure}
+    \centering
+    
+    \includegraphics[width=0.75\textwidth]{RVAT-baseline_meanv_2tsrs}
 
     \caption{Mean cross-stream velocity profiles for $\lambda = 1.9$ and
         $\lambda=1.4$ at $x/D=1$ and $z/H = 0.25$.}
 
-    \label{fig:meanv_2tsrs} 
+    \label{fig:RVAT-baseline-meanv-2tsrs} 
 \end{figure}
 
-% k profiles at 2 tsrs
-\begin{figure}[t]
-%    \includegraphics[scale=0.42]{RVAT-baseline_k_2tsrs.pdf}
+\begin{figure}
+    \centering
+    
+    \includegraphics[width=0.75\textwidth]{RVAT-baseline_k_2tsrs}
 
     \caption{Turbulence kinetic energy for $\lambda = 1.9$ and
         $\lambda=1.4$ at $x/D=1$ and $z/H = 0.25$.}
@@ -833,7 +842,7 @@ uncertainty if applied to cross-flow turbine installations.
 \begin{figure}
     \centering 
     
-    \includegraphics[width=\textwidth]{AD_streamwise}
+    \includegraphics[width=0.9\textwidth]{AD_streamwise}
     
     \caption{Downstream evolution of the centerline streamwise velocity (left)
         and normalized momentum transport terms (right) averaged over $y$--$z$
