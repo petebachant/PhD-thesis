@@ -176,14 +176,15 @@ characteristics are the asymmetry and three-dimensionality of the flow field.
 The peak momentum deficit is shifted towards the right side of the turbine
 (looking upstream). We can also see the effects of blade tip vortex shedding,
 where flow is moving downward and to the left, creating strong streamwise mean
-vorticity near the blade tip at $y/R=-1$, contours for which are shown in 
-Figure~\ref{fig:xvorticity}. The asymmetry may explain observations of
-counter-rotating turbine pairs helping speed wake recovery \cite{Dabiri2011}.
+vorticity near the blade tip at $y/R=-1$, contours for which are shown in
+Figure~\ref{fig:RVAT-baseline-xvorticity}. The asymmetry may explain
+observations of counter-rotating turbine pairs helping speed wake recovery
+\cite{Dabiri2011}.
 
 \begin{figure}
     \centering
     
-    \includegraphics[clip, width=0.9\textwidth]{RVAT-baseline_meancontquiv}
+    \includegraphics[width=0.9\textwidth]{RVAT-baseline_meancontquiv}
     
     \caption{Mean velocity at $\lambda=1.9$. Vectors are cross-stream and
         vertical velocities; contours are streamwise velocity. View is looking
@@ -222,33 +223,46 @@ generation, where the CFT imparts a torque that is perpendicular to the flow.
 The AFT mean swirl only propels fluid away from its axis, while the CFT induces
 mean flow into its momentum deficit region, albeit in a asymmetric fashion.
 
-\todo[inline]{Get RVAT-baseline xvorticity fig.}
 \begin{figure}
     \centering
     
-%    \includegraphics[clip, trim=0 0.3in 0
-% 0.3in,width=0.8\textwidth]{RVAT-baseline_xvorticity}
+    \includegraphics[width=0.9\textwidth]{RVAT-baseline_xvorticitycont}
 
     \caption{Contours of mean streamwise vorticity. Note that this perspective
         is looking upstream and therefore negative values indicate clockwise
         rotation.}
     
-    \label{fig:xvorticity}
+    \label{fig:RVAT-baseline-xvorticity}
 \end{figure}
 
-Reynolds shear stress contours, shown in Figure~\ref{fig:restress}, quantify the
+Reynolds shear stress contours, shown in Figure~\ref{fig:Re-stress}, quantify the
 replenishment of mean momentum by turbulent transport. Regions of high
 $\overline{u'v'}$ as well as the observed asymmetry correspond to the regions of
 high gradients of streamwise velocity, indicating regions of high turbulence
 production.
 
-\todo[inline]{Get RVAT-baseline uvcont and uwcont figs.}
+
 \begin{figure}
     \centering
-%    \includegraphics[clip, trim=0 0.3in 0 0.5in, width=0.8\textwidth]{Figures/uvcont}
-%    \includegraphics[clip, trim=0 0.3in 0 0.5in, width=0.8\textwidth]{Figures/uwcont}
-    \caption{Contours of Reynolds shear stress.}
-    \label{fig:restress}
+
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{RVAT-baseline_meanupvpcont}
+        \caption{}
+        \label{fig:RVAT-baseline-uvcont}
+    \end{subfigure}
+    
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{RVAT-baseline_meanupwpcont}
+        \caption{}
+        \label{fig:RVAT-baseline-uwcont}
+    \end{subfigure}
+    
+    \caption{Contours of (a) streamwise--cross-stream and (b)
+        streamwise--vertical Reynolds shear stress.}
+    
+    \label{fig:Re-stress}
 \end{figure}
 
 To quantify the relative importance of mean and turbulent transport processes,
