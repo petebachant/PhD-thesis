@@ -402,29 +402,27 @@ peak in its spectrum at the blade passage frequency.
 
 \subsubsection{Kinetic energy}
 
-Contours of turbulence kinetic energy are shown in Figure~\ref{fig:kcont}. The
-turbulence kinetic energy is concentrated near the top and left side of the
-turbine, as a result of the blade tip and dynamic stall vortex shedding,
-respectively. The lower turbulence kinetic energy on the $+y$ side of the
-turbine corresponds with the more concentrated spectral energy of velocity
-unsteadiness in this area. This can be interpreted as the lift-induced vorticity
-being shed with less separation compared to the $-y$ side of the turbine, where
-turbulence is being generated and redistributing energy across a larger
-bandwidth. This brings up one potential improvement to actuator line models:
-Modulating turbulence fields at the occurrence of dynamic stall.
+Contours of turbulence kinetic energy are shown in
+Figure~\ref{fig:RVAT-baseline-kcont}. The turbulence kinetic energy is
+concentrated near the top and left side of the turbine, as a result of the blade
+tip and dynamic stall vortex shedding, respectively. The lower turbulence
+kinetic energy on the $+y$ side of the turbine corresponds with the more
+concentrated spectral energy of velocity unsteadiness in this area. This can be
+interpreted as the lift-induced vorticity being shed with less separation
+compared to the $-y$ side of the turbine, where turbulence is being generated
+and redistributing energy across a larger bandwidth. This brings up one
+potential improvement to actuator line models: Modulating turbulence fields at
+the occurrence of dynamic stall.
 
-\todo[inline]{Get RVAT-baseline kcont fig.}
 \begin{figure}
     \centering
 
-%    \includegraphics[clip, trim=0 0.25in 0 0.3in,
-% width=0.8\textwidth]{RVAT-baseline_kcont}
+    \includegraphics[width=0.9\textwidth]{RVAT-baseline_kcont}
 
-    \caption{Contours of turbulence kinetic energy, normalized by the mean
-        freestream kinetic energy. Turbine frontal area is indicated by solid black
-        lines.}
+    \caption{Contours of normalized turbulence kinetic energy. Turbine frontal
+        area is indicated by solid black lines.}
     
-    \label{fig:kcont}
+    \label{fig:RVAT-baseline-kcont}
 \end{figure}
 
 Like the analysis of the mean streamwise momentum, the mechanisms which play the
@@ -513,7 +511,7 @@ turbulent transport are similar on both.
 \begin{figure}
     \centering
     
-%    \includegraphics[clip, trim=0 0.25in 0 0.3in, width=0.8\textwidth]{Figures/Kturbtrans}
+    \includegraphics[width=0.9\textwidth]{RVAT-baseline_Kturbtranscont}
 
     \caption{Contours of estimated mean kinetic energy transport by turbulent
         fluctuations, where streamwise derivatives are omitted. Turbine frontal area
@@ -544,7 +542,7 @@ Figure~\ref{fig:RVAT-baseline-Kbargraph} were evaluated in the near wake, in a
 measurement plane at $x/D=1$ shown in
 Figure~\ref{fig:RVAT-baseline-wake-coordinates}.
 
-Compared to the observations of Kinzel et al. \cite{Kinzel2012}, where the
+Compared to the observations of Kinzel et al.~\cite{Kinzel2012}, where the
 turbulent transport terms were found to be not large enough to replenish turbine
 power output, it can be seen here that it is most likely vertical advection that
 plays the most important role in enhancing the wake recovery, not the turbulence
@@ -552,11 +550,10 @@ quantities. This is likely a consequence of the unique vorticity generation and
 interaction from lift production, (dynamic) stall vortices, and blade end
 effects.
 
-\todo[inline]{Get RVAT-baseline Kbargraph fig.}
 \begin{figure}
     \centering
     
-%    \includegraphics[clip, trim=0 0.25in 0 0.2in, width=0.8\textwidth]{Figures/Kbargraph}
+    \includegraphics[width=0.9\textwidth]{RVAT-baseline_Kbargraph}
 
     \caption{Estimates for the contributions to mean kinetic energy recovery in
         the streamwise direction, multiplied by two (due to assumed symmetry),
