@@ -565,33 +565,27 @@ effects.
 \end{figure}
 
 
-\todo[inline]{Tweak content from FEDSM paper.}
-%%% Below from FEDSM paper
-
-
 \subsection{Effects of tip speed ratio}
 
-Low tip speed ratio may occur temporarily during a gust if the turbine cannot
-adjust quickly enough.
-
-From our measurements we can observe how mean velocities at two fixed points
-downstream of the turbine axis vary with tip speed ratio. These velocity
-components are shown in Fig.~\ref{fig:RVAT-baseline-mean-vel-vs-tsr}. Mean
-streamwise velocity deficit at at $z/H = 0$ increases with tip speed ratio,
-which is expected in light of the drag measurements. However, mean velocity
-deficit at the quarter height is highest at tip speed ratios corresponding to
-high power coefficient, but decreases at higher values of $\lambda$. Mean
-vertical velocity at the turbine center remains relatively constant across the
-entire operating envelope, implying the wake is approximately symmetric about
-$z/H = 0$. However, mean vertical velocity at the quarter height shows a
-markedly higher downward component at higher $\lambda$, corresponding to the
-similar aforementioned trend of decreasing streamwise velocity deficit at that
-location. Since drag coefficient continuously increases with $\lambda$, we are
-led to believe the turbine is becoming more like a solid cylinder, letting less
-flow through, therefore more fluid must flow over the top. Asymmetry about
-$y/R=0$ is seen in the mean cross-stream velocity at values of $\lambda$ away
-from those of highest power output, with a mean component in the positive
-$y$-direction.
+Low tip speed ratio may occur temporarily during a gust inflow condition, may be
+caused by malfunctioning controls, or may be the optimal operating point for a
+high solidity turbine. From our measurements we can observe how mean velocities
+at two fixed points downstream of the turbine axis vary with tip speed ratio.
+These velocity components are plotted in
+Figure~\ref{fig:RVAT-baseline-mean-vel-vs-tsr}. Mean streamwise velocity deficit
+at $z/H = 0$ increases with tip speed ratio, which is expected in light of the
+drag measurements. However, mean velocity deficit at the quarter height is
+highest at tip speed ratios corresponding to high power coefficient, but
+decreases at higher values of $\lambda$. Mean vertical velocity at the turbine
+center remains relatively constant across the entire operating envelope.
+However, mean vertical velocity at the quarter height shows a markedly higher
+downward component at higher $\lambda$, corresponding to the similar
+aforementioned trend of decreasing streamwise velocity deficit at that location.
+Asymmetry about $y/R=0$ is seen in the mean cross-stream velocity at values of
+$\lambda$ away from those of highest power output, with a mean component in the
+positive $y$-direction. These effects may be attributed to a shift in the blade
+position at which maximum loading occurs, therefore changing the strength and
+orientation of the blade tip vortices.
 
 \begin{figure}
     \centering
@@ -609,45 +603,37 @@ Next we want to look more closely at the effects of lowering $\lambda$, thereby
 increasing maximum blade angle of attack and inducing increased stalling
 behavior. Quarter height streamwise mean velocity profiles for the two tip speed
 ratios of interest are shown in Fig.~\ref{fig:meanu_2tsrs}. Some similarities
-can be identified with the study by Brochier et al., namely the assymetry of the
-wake and how its shape changes on the side of the turbine where the blade faces
-into the flow---positive $y$ for our experiments and negative for theirs
-\cite{brochier86}.
+can be identified with the study by Brochier \etal, namely the assymetry of the
+mean velocity profile and how its shape changes on the side of the turbine where
+the blade faces into the flow---positive $y$ for our experiments and negative
+for theirs~\cite{Brochier1986}.
 
-Regarding turbulence intensity in the wake, we can make similar comparisons. The
-data in Brochier et al. shows two peaks on opposite sides of the turbine axis,
-with the lower tip speed ratio case having a relatively higher peak on one side
-\cite{brochier86}, which should correspond to negative $y$ values in our case.
-This is somewhat in agreement with our results, though the value at the origin
-for our case is relatively higher, which may be due to the larger shaft wake.
-However, when we compare our two profiles, we notice for the lower value of
-$\lambda$ there is higher average turbulence intensity throughout the center
-region. This appears to be caused by more intense blade stall, beginning earlier
-along the blade path, i.e. at higher positive values of $y$. This effect is seen
-in all three components of turbulence intensity, agreeing with our earlier
-observations of local isotropy.
+Figure~\ref{fig:RVAT-baseline-meanw-2tsrs} shows mean vertical velocity profiles
+for the two tip speed ratios of interest. The large gradient appearing at
+negative values of $y$, suspected to be the result of blade tip vortices,
+remains a approximately the same location. However, the peak seen at $y/R = 1.2$
+is decreased for the lower tip speed ratio case.
 
-% Check above!
-Fig.~\ref{fig:meanw_2tsrs} shows mean vertical velocity profiles for the two tip
-speed ratios of interest. The large gradient appearing at negative values of
-$y$, suspected to be the result of blade tip vortices, remains a approximately
-the same location. However, the peak seen at $y/R = 1.2$ is decreased for the
-lower tip speed ratio case.
+Figure~\ref{fig:RVAT-baseline-meanv-2tsrs} shows profiles of mean cross-stream
+velocity for both $\lambda$ values. Unlike the streamwise and vertical profiles,
+these show relatively large differences at our two tip speed ratios of interest,
+indicating significant fluid motion---on the order of 10\% of the free stream
+velocity---to the left on the left edge of the rotor at $\lambda=1.9$ and to the
+right at the right edge of the rotor at $\lambda = 1.4$. This shows the
+potential for control over diversion of the flow in the near-wake.
 
-Fig.~\ref{fig:meanv_2tsrs} shows profiles of mean cross-stream velocity. Unlike
-the streamwise and vertical profiles, these show relatively large differences at
-our two tip speed ratios of interest, indicating significant fluid motion---on
-the order of 10\% of the free stream velocity---to the left on the left edge of
-the rotor at $\lambda=1.9$ and to the right at the right edge of the rotor at
-$\lambda = 1.4$.
-
-Fig.~\ref{fig:uv_2tsrs} shows profiles of $\overline{u'v'}$ Reynolds stress.
-Similar to the profiles of $\sigma_u$ in Fig.~\ref{fig:stdu_2tsrs}, we see a
-rightward shift of the left peak from what we infer is earlier blade stall,
-while the right hand peaks are almost identical. In Fig.~\ref{fig:vw_2tsrs}, we
-see that profiles of $\overline{v'w'}$ Reynolds stress contain peaks once again
-on the left side of the turbine, but the correlations are opposite for the two
-tip speed ratios.
+Regarding turbulence kinetic energy in the wake, profiles of which for the two
+tip speed ratios are shown in Figure~\ref{fig:RVAT-baseline-k-2tsrs}, we can
+make similar comparisons with the very low $Re$ study of Brochier
+\etal~\cite{Brochier1986}. Their results show two peaks on opposite sides of the
+rotor axis, with the lower tip speed ratio case having a relatively higher peak
+on one side, which should correspond to negative $y$ values in our case. This is
+somewhat in agreement with our results, though the value at the origin for our
+case is relatively higher, which may be due to the larger shaft wake. However,
+when we compare our two profiles, we notice for the lower value of $\lambda$
+there is higher average turbulence levels throughout the center region. This
+appears to be caused by more intense blade stall, beginning earlier along the
+upstream blade path, i.e., at higher positive values of $y$.
 
 \begin{figure}
     \centering
@@ -692,8 +678,6 @@ tip speed ratios.
 
     \label{fig:RVAT-baseline-k-2tsrs} 
 \end{figure}
-
-%%% End FEDSM content
 
 
 \subsection{Comparison with an actuator disk}
