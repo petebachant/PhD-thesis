@@ -713,10 +713,8 @@ previous sections, the asymmetry of the turbine's wake indicates that a uniform
 streamwise force from the actuator disk will likely not capture the wake
 accurately.
 
-\todo[inline]{Check OpenFOAM version used for AD simulation.}
-
-The open source CFD package \textit{OpenFOAM} was used to solve the RANS
-equations with the turbine represented by an actuator disk, which is
+The open source CFD package \textit{OpenFOAM} (v2.3.x) was used to solve the
+RANS equations with the turbine represented by an actuator disk, which is
 implemented as a force or sink in the momentum equation, applied over a selected
 volume of cells in the mesh.
 
@@ -877,8 +875,8 @@ with end struts or end disks, as commonly done, may increase the performance of
 individual CFTs, however, free ends that produce tip vortices may be
 advantageous in an array setting to increase the wake recovery rate.
 Furthermore, it hints at the possibility of adding vortex generators to the
-nacelles of horizontal-axis or axial-flow turbines to help entrain more mean
-kinetic energy from above.
+nacelles of horizontal-axis or axial-flow turbines to help advect more mean
+kinetic energy downwards from above.
 
 A commonly used, simple turbine forcing parameterization---an actuator
 disk---was assessed for predicting the near-wake characteristics of this turbine
