@@ -290,17 +290,18 @@ the mean and incompressible, the equation becomes
 From the experimental measurements, all of the terms on the right hand side were
 computed except for the streamwise pressure gradient and the streamwise ($x$)
 derivatives of the Reynolds and viscous stresses; the latter two terms are
-expected to be small under a thin shear layer assumption. Totals for all these
-terms, normalized by $D/U_\infty$ to assess nondimensional mean momentum
-recovery per turbine diameter of downstream distance are plotted in
-Figure~\ref{fig:mombargraph}. We see that as expected, viscous diffusion is
-almost negligible. The two Reynolds stress transport terms are both significant,
-but the vertical advection term dominates, and the horizontal advection term
-contributes negatively, corresponding to streamlines diverging around the
-turbine. The flow essentially behaves like an inviscid three-dimensional,
-non-axisymmetric turbulent wake. If we sum all the terms we obtain a total wake
-recovery rate at $x/D=1$ of 12\% per turbine diameter, which would be
-interesting to compare with an axial-flow turbine in similar conditions.
+expected to be small under a thin shear layer assumption. Weighted averages for
+these terms, taken over the entire measurement plane and normalized by
+$D/U_\infty$ to assess nondimensional mean momentum recovery per turbine
+diameter of downstream distance, are plotted in Figure~\ref{fig:mombargraph}. We
+see that as expected, viscous diffusion is almost negligible. The two Reynolds
+stress transport terms are both significant, but the vertical advection term
+dominates, and the horizontal advection term contributes negatively,
+corresponding to streamlines diverging around the turbine. The flow essentially
+behaves like an inviscid three-dimensional, non-axisymmetric turbulent wake. If
+we sum all the terms we obtain a total wake recovery rate at $x/D=1$ of 12\% per
+turbine diameter, which would be interesting to compare with an axial-flow
+turbine in similar conditions.
 
 \begin{figure}
     \centering
@@ -507,7 +508,6 @@ plotted here can be understood from Figures 6 and 4. Note that despite lower
 turbulence kinetic energy on the $+y$ side of the turbine, magnitudes of the
 turbulent transport are similar on both.
 
-
 \begin{figure}
     \centering
     
@@ -520,8 +520,10 @@ turbulent transport are similar on both.
     \label{fig:RVAT-baseline-Kturbtrans}
 \end{figure}
 
-Contributions to mean kinetic energy recovery from various mechanisms were
-averaged over the  measurement plane using the trapezoidal rule.
+Like the streamwise momentum transport, contributions to mean kinetic energy
+recovery from various mechanisms were averaged over the  measurement plane using
+the trapezoidal rule, weighted by the local measurement plane grid size, which
+was nonuniform (see Figure~\ref{fig:RVAT-baseline-wake-coordinates}).
 Figure~\ref{fig:RVAT-baseline-Kbargraph} shows the normalized sum of each
 quantity to show their relative size. As with the momentum, the cross-stream
 mean advection contributes negatively since the flow is accelerating around the
