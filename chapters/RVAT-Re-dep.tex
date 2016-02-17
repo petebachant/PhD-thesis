@@ -598,8 +598,7 @@ and mean kinetic energy:
     =
     \frac{1}{U}
     \bigg{[}
-    & - \underbrace{V \frac{\p K}{\p y}}_{y\text{-adv.%please define/check the convention
-        }}
+    & - \underbrace{V \frac{\p K}{\p y}}_{y\text{-adv.}}
         - \underbrace{W \frac{\p K}{\p z}}_{z\text{-adv.}}
         % Pressure work:
         - \frac{1}{\rho}\frac{\p}{\p x_j} P U_i \delta_{ij}
@@ -608,20 +607,19 @@ and mean kinetic energy:
         % Turbulent transport of K
         - \underbrace{
             \frac{1}{2}\frac{\p}{\p x_j} \overline{u_i' u_j'} U_i
-        }_{\text{Turb.%please define/check the convention
-            trans.%please define/check the convention
+        }_{\text{Turb. trans.
         }} \\
         % Production of k
         & + 
         \underbrace{
             \overline{u_i' u_j'} \frac{\p U_i}{\p x_j}
-        }_{k\text{-prod.%please define/check the convention
+        }_{k\text{-prod.
         }}
         % Mean dissipation
         - 
         \underbrace{
             2 \nu S_{ij}S_{ij}
-        }_{\text{Mean diss.%please define/check the convention
+        }_{\text{Mean diss.
         }}
         \bigg{]},
         \label{eq:K-full}
