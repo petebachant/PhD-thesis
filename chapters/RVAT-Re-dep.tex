@@ -378,15 +378,16 @@ is associated with decreased foil performance at lower Reynolds number. The data
 and processing code for these calculations is available from
 \cite{Bachant2016-NACAXX20-XFOIL}.
 
-\begin{figure}[ht]
-\centering
-
-%\includegraphics[width=0.9\textwidth]{figures/all_foils_re_dep}
-
-\caption{Normalized maximum lift coefficient (a), drag coefficient (b), and
-    lift-to-drag ratio (c) computed by XFOIL at various $Re_c$  for each profile.}
-
-\label{fig:foil-Re-dep}
+\begin{figure}
+    \centering
+    
+    \includegraphics[width=0.95\textwidth]{NACAXX20-XFOIL_all_foils_re_dep}
+    
+    \caption{Normalized maximum (a) lift coefficient, (b) drag coefficient, and
+        (c) lift-to-drag ratio computed by XFOIL at various $Re_c$  for each
+        profile.}
+    
+    \label{fig:foil-Re-dep}
 \end{figure}
 
 In conjunction with the cross-flow turbine blade kinematics, the foil
@@ -395,14 +396,14 @@ peak torque coefficient on the upstream half of the blade path. The turbine
 torque coefficient $C_T$ can be related to the blade section chordwise force
 coefficient $C_c$ by:
 \begin{equation}
-C_T = \frac{C_c c}{2R} \frac{|U_\mathrm{rel}|^2}{U_\infty^2},
-\label{eq:ct}
+    C_T = \frac{C_c c}{2R} \frac{|U_\mathrm{rel}|^2}{U_\infty^2},
+    \label{eq:ct}
 \end{equation}
 where the blade section chordwise force coefficient (for zero preset pitch) is
 given by:
 \begin{equation}
-C_c = C_l \sin \alpha - C_d \cos \alpha.
-\label{eq:cc}
+    C_c = C_l \sin \alpha - C_d \cos \alpha.
+    \label{eq:cc}
 \end{equation}
 
 The relative blade velocity $U_\mathrm{rel}$ was calculated by vector addition

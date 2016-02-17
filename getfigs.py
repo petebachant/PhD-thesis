@@ -19,7 +19,9 @@ figdirs = {"RVAT-baseline": join(expdir, "RVAT baseline", "Figures"),
            "AD": join(foamrun_24x, "actuatorSurface", "figures"),
            "CFD-pop": join(homedir, "Google Drive", "Research",
                            "CFD popularity", "figures"),
-           "CFT-vectors": join(gdrive, "research", "CFT-vectors", "figures")}
+           "CFT-vectors": join(gdrive, "Research", "CFT-vectors", "figures"),
+           "NACAXX20-XFOIL": join(gdrive, "Research", "Foils", "Data",
+                                  "NACAXX20_QBlade", "figures")}
 
 figlists = {"RVAT-baseline": ["perf.pdf", "meancontquiv.pdf", "kcont.pdf",
                               "meanu_2tsrs.pdf", "meanv_2tsrs.pdf",
@@ -33,7 +35,8 @@ figlists = {"RVAT-baseline": ["perf.pdf", "meancontquiv.pdf", "kcont.pdf",
                             "perf_re_dep.pdf"],
             "AD": ["streamwise.pdf", "meancontquiv.pdf"],
             "CFD-pop": ["cfd-online.pdf"],
-            "CFT-vectors": ["cft-vectors.pdf", "alpha_deg_urel_geom.pdf"]}
+            "CFT-vectors": ["cft-vectors.pdf", "alpha_deg_urel_geom.pdf"],
+            "NACAXX20-XFOIL": ["all_foils_re_dep.pdf"]}
 
 
 for name, figlist in figlists.items():
