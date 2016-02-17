@@ -269,7 +269,6 @@ To quantify the relative importance of mean and turbulent transport processes,
 we rearrange the streamwise Reynolds-averaged momentum equation to isolate terms
 contributing to its streamwise derivative. Assuming the flow is stationary in
 the mean and incompressible, the equation becomes
-
 \begin{equation}
     \begin{split}
         \frac{\p U}{\p x}  =  
@@ -429,7 +428,7 @@ Like the analysis of the mean streamwise momentum, the mechanisms which play the
 most important role in mean kinetic energy recovery as the wake evolves in the
 streamwise direction are now examined. The transport equation for the kinetic
 energy $K$ associated with the mean flow \cite{TennekesAndLumley}, rearranged to
-isolate the streamwise recovery can be written as
+isolate the streamwise recovery ($\partial / \partial x$) can be written as
 \begin{equation}
     \begin{split}
         \frac{\p K}{\p x}
@@ -456,21 +455,22 @@ isolate the streamwise recovery can be written as
             2 \nu S_{ij}S_{ij}
         }_{\text{Mean diss.}}
         \bigg{]}.
-    \label{eq-K_full}
+    \label{eq:K-full}
     \end{split}
 \end{equation}
-The terms of interest are labeled---advection in the cross-stream and vertical
-directions, energy transport by turbulent fluctuations, production of turbulence
-kinetic energy $k$ through mean shear, and the dissipation due to mean viscous
-shear forces. For the tensor terms, streamwise derivatives were ommitted, since
-the measurements were limited to a single streamwise distance.
+The terms of interest are labeled---advection (``adv.'') in the cross-stream and
+vertical directions, energy transport by turbulent fluctuations (``Turb.
+trans.''), production of turbulence kinetic energy ($k$-prod.) through mean
+shear, and the dissipation due to mean viscous shear forces (``Mean diss.'').
+For the tensor terms, streamwise derivatives were ommitted, since the
+measurements were limited to a single streamwise distance.
 Table~\ref{tab:RVAT-baseline-eqs} lists all components kept for the computation
 of each transport term.
 
 \begin{table}
     \centering
     \begin{tabular}{c|c}
-        Term in Eq.~\ref{eq-K_full} & Implementation \\ 
+        Term in Eq.~\ref{eq:K-full} & Implementation \\ 
         \hline  
         $y$-adv. & $-\frac{V}{U}\frac{\p K}{\p y}$ \\ 
         $z$-adv.  & $-\frac{W}{U}\frac{\p K}{\p z}$ \\ 

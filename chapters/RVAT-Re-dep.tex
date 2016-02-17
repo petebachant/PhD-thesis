@@ -569,71 +569,12 @@ vorticity being less stable at higher $Re$.
 
 \subsubsection{Transport of mean momentum and kinetic energy}
 
-The relative importance of various physical processes on mean streamwise
+Similar to the baseline analysis performed in Chapter~\ref{chap:RVAT-baseline},
+the relative importance of various physical processes on mean streamwise
 momentum and kinetic energy transport/recovery in the streamwise direction were
-assessed by examining the governing equations rearranged to isolate the
-streamwise partial derivative ($\partial / \partial x$) for the quantities of
-interest~\cite{Bachant2015-JoT}, i.e., momentum:
-\begin{equation}
-\begin{split}
-    \frac{\p U}{\p x} = 
-    \frac{1}{U} \bigg{[}
-    & - V\frac{\p U}{\p y}
-    - W\frac{\p U}{\p z} \\
-    & -\frac{1}{\rho}\frac{\p P}{\p x} \\
-    & - \frac{\p}{\p x} \overline{u'u'}
-    - \frac{\p}{\p y} \overline{u'v'}
-    - \frac{\p}{\p z} \overline{u'w'} \\
-    & + \nu\left(\frac{\p^2 U}{\p x^2}
-    + \frac{\p^2 U}{\p y^2}
-    + \frac{\p^2 U}{\p z^2} \right)
-    \bigg{]},
-\end{split}
-\label{eq:momentum}
-\end{equation}
-and mean kinetic energy:
-\begin{equation}
-\begin{split}
-    \frac{\p K}{\p x}
-    =
-    \frac{1}{U}
-    \bigg{[}
-    & - \underbrace{V \frac{\p K}{\p y}}_{y\text{-adv.}}
-        - \underbrace{W \frac{\p K}{\p z}}_{z\text{-adv.}}
-        % Pressure work:
-        - \frac{1}{\rho}\frac{\p}{\p x_j} P U_i \delta_{ij}
-        % Work by viscous forces
-        + \frac{\p}{\p x_j} 2 \nu U_i S_{ij} % Not sure if that's capital S...
-        % Turbulent transport of K
-        - \underbrace{
-            \frac{1}{2}\frac{\p}{\p x_j} \overline{u_i' u_j'} U_i
-        }_{\text{Turb. trans.
-        }} \\
-        % Production of k
-        & + 
-        \underbrace{
-            \overline{u_i' u_j'} \frac{\p U_i}{\p x_j}
-        }_{k\text{-prod.
-        }}
-        % Mean dissipation
-        - 
-        \underbrace{
-            2 \nu S_{ij}S_{ij}
-        }_{\text{Mean diss.
-        }}
-        \bigg{]},
-        \label{eq:K-full}
-    \end{split}
-\end{equation}
-where advection is abbreviated by ``adv.,'' turbulent transport by ``turb.
-trans.,'' production by ``prod.,'' and dissipation by ``diss.''
-
-Note that Equations~(\ref{eq:momentum}) and (\ref{eq:K-full}) only differ from
-the typical forms of the mean momentum and mean kinetic energy equations by a
-factor of $1/U$, but importantly, the other convective terms ( $\partial
-U/\partial y$, $\partial U/\partial z$, and $\partial K/\partial y$, $\partial
-K/\partial z$ ) are moved to the right-hand sides of the equations to illustrate
-with what sign they add to the streamwise recovery of streamwise momentum or
+assessed at each Reynolds numbers. The governing equations were rearranged to
+isolate the streamwise partial derivative ($\partial / \partial x$) for the
+quantities of interest~\cite{Bachant2015-JoT}, i.e., streamwise momentum and
 mean kinetic energy.
 
 Results from the terms that can be computed from the experimental data i.e.,
