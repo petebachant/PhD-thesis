@@ -289,14 +289,14 @@ are listed in Table~\ref{tab:vel-unc}.
 \subsection{Performance}
 
 Complete power and rotor drag (also known as thrust) coefficient curves for
-various Reynolds numbers are plotted in Figures~\ref{fig:cp-curves} and
-\ref{fig:cd-curves}, respectively. In general, maximum $C_P$ increases with
-Reynolds number. The power coefficient curves also show a slight downward shift
-in the optimal tip speed ratio (peak~performance) with increasing Reynolds
-number, from about $\lambda \approx$ 2.0 to 1.9. This is caused by the stall
-delay from a more turbulent boundary layer on the blade suction side. There is
-essentially no change in the shape of the drag coefficient curves, merely a
-slight upward shift in $C_D$ with increasing~ $Re$.
+various Reynolds numbers are plotted in Figures~\ref{fig:RVAT-Re-dep-cp-curves}
+and \ref{fig:RVAT-Re-dep-cd-curves}, respectively. In general, maximum $C_P$
+increases with Reynolds number. The power coefficient curves also show a slight
+downward shift in the optimal tip speed ratio (peak~performance) with increasing
+Reynolds number, from about $\lambda \approx$ 2.0 to 1.9. This is caused by the
+stall delay from a more turbulent boundary layer on the blade suction side.
+There is essentially no change in the shape of the drag coefficient curves,
+merely a slight upward shift in $C_D$ with increasing~ $Re$.
 
 \begin{figure}
     \centering
@@ -305,7 +305,7 @@ slight upward shift in $C_D$ with increasing~ $Re$.
     
     \caption{Mean power coefficient curves plotted for multiple Reynolds numbers.}
     
-    \label{fig:cp-curves}
+    \label{fig:RVAT-Re-dep-cp-curves}
 \end{figure}
 
 \begin{figure}
@@ -316,18 +316,18 @@ slight upward shift in $C_D$ with increasing~ $Re$.
     \caption{Mean rotor drag coefficient curves plotted for multiple Reynolds
         numbers.}
     
-    \label{fig:cd-curves}
+    \label{fig:RVAT-Re-dep-cd-curves}
 \end{figure}
 
 Mean power and drag coefficients at $\lambda=1.9$ are plotted versus the
-Reynolds number in Figure~\ref{fig:perf-Re-dep}. Note that the large error bars
-for $C_P$ at low $Re$ are dominated by systematic error estimates for the torque
-transducer, since torque values are at the lower end of its measurement range.
-However, the uncertainty due to random error or repeatability remains relatively
-low. There is a drastic improvement in $C_P$ with increasing Reynolds number at
-the lower end of the $Re$ range. The power coefficient then becomes essentially
-$Re$-independent at $Re_D = 0.8 \times 10^6$, which corresponds to an
-approximate average blade chord Reynolds number $Re_{c, \mathrm{ave}} = 2.1
+Reynolds number in Figure~\ref{fig:RVAT-perf-Re-dep}. Note that the large error
+bars for $C_P$ at low $Re$ are dominated by systematic error estimates for the
+torque transducer, since torque values are at the lower end of its measurement
+range. However, the uncertainty due to random error or repeatability remains
+relatively low. There is a drastic improvement in $C_P$ with increasing Reynolds
+number at the lower end of the $Re$ range. The power coefficient then becomes
+essentially $Re$-independent at $Re_D = 0.8 \times 10^6$, which corresponds to
+an approximate average blade chord Reynolds number $Re_{c, \mathrm{ave}} = 2.1
 \times 10^5$. This threshold is consistent with the behavior of the blade
 boundary layer transitioning from laminar to turbulent, thereby promoting either
 the suppression or reattachment of the laminar separation bubble
@@ -345,7 +345,7 @@ the suppression or reattachment of the laminar separation bubble
         by systematic error estimates from the torque transducer operating at the lower
         end of its measurement range.}
     
-    \label{fig:perf-Re-dep}
+    \label{fig:RVAT-perf-Re-dep}
 \end{figure}
 
 The behavior of the mean rotor drag coefficient $C_D$ is similar, though the
@@ -485,7 +485,7 @@ kinetic energy balances at a $Re_D = 1.0 \times 10^6$ were discussed in
 \cite{Bachant2015-JoT}. Similar data were taken for the experiment here, and the
 results for the mean velocity field and turbulence kinetic energy calculated
 from wake maps of 270 individual measurements (tows) are shown in
-Figures~\ref{fig:meancontquiv} and \ref{fig:kcont}, respectively, looking
+Figures~\ref{fig:RVAT-Re-dep-meancontquiv} and \ref{fig:RVAT-Re-dep-kcont}, respectively, looking
 upstream towards the turbine. With respect to the mean velocity field, we see
 asymmetry and a mean vortex structure created by blade tip vortex shedding. The
 effects of the tip vortices are also seen in the turbulence kinetic energy
@@ -495,7 +495,7 @@ stall on the $-y$ side of the turbine.
 These same wake maps were measured for $Re_D = 0.4 \times 10^6$, $0.6 \times
 10^6$, $0.8 \times 10^6$, and $1.2 \times 10^6$. Qualitatively, these look very
 similar, so they have not been plotted here, though profiles at $z/H=0.0$ are
-compared in Figure~\ref{fig:profiles} to illustrate the subtlety of the
+compared in Figure~\ref{fig:RVAT-Re-dep-profiles} to illustrate the subtlety of the
 differences at different $Re$. We will instead compare and contrast the wake
 behavior by examining spectra and wake transport terms in the equations that
 govern the downstream evolution of mean momentum and kinetic energy.
@@ -508,7 +508,7 @@ govern the downstream evolution of mean momentum and kinetic energy.
     \caption{Mean velocity field at $x/D=1$, $\lambda=1.9$, and $Re_D=1.0 \times
         10^6$.}
     
-    \label{fig:meancontquiv}
+    \label{fig:RVAT-Re-dep-meancontquiv}
 \end{figure}
 
 \begin{figure}
@@ -519,7 +519,7 @@ govern the downstream evolution of mean momentum and kinetic energy.
     \caption{Turbulence kinetic energy at $x/D=1$, $\lambda=1.9$, and $Re_D=1.0
         \times 10^6$.}
     
-    \label{fig:kcont}
+    \label{fig:RVAT-Re-dep-kcont}
 \end{figure}
 
 \begin{figure}[ht]
@@ -531,7 +531,7 @@ govern the downstream evolution of mean momentum and kinetic energy.
         profiles at $z/H=0.0$. Turbine diameter Reynolds number $Re_D$ is indicated
         by the legend.}
     
-    \label{fig:profiles}
+    \label{fig:RVAT-Re-dep-profiles}
 \end{figure}
 
 \todo[inline]{Profiles fig should have legend in lower left.}
