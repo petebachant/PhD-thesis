@@ -37,7 +37,8 @@ figlists = {"RVAT-baseline": ["perf.pdf", "meancontquiv.pdf", "kcont.pdf",
             "CFD-pop": ["cfd-online.pdf"],
             "CFT-vectors": ["cft-vectors.pdf", "alpha_deg_urel_geom.pdf"],
             "NACAXX20-XFOIL": ["all_foils_re_dep.pdf",
-                               "foil_kinematics_ct.pdf"]}
+                               "foil_kinematics_ct.pdf",
+                               "cft_re_dep_foils.pdf"]}
 
 
 for name, figlist in figlists.items():
