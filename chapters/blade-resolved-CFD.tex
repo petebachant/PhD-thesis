@@ -517,7 +517,7 @@ though the 3-D delayed detached eddy simulation (DDES) of Boudreau and Dumas
 \section{Conclusions}
 
 A cross-flow turbine was modeled using the $k$--$\omega$ SST and
-Spalart--Allmaras Reynolds-averaged Navier--Stokes turbulence models to test
+Spalart--Allmaras (SA) Reynolds-averaged Navier--Stokes turbulence models to test
 their abilities to predict turbine performance and near-wake dynamics. It was
 observed that when modeled in 2-D, the performance is over-predicted compared to
 the data from the tow tank experiments, which was expected due to omission of
@@ -526,19 +526,34 @@ axial) wake dynamics were unresolved in the 2-D model, despite being identified
 as a significant contributor to streamwise wake recovery, which casts doubt on
 the 2-D model's applicability as a tool to study array spacing effects.
 
-These results may also help develop new tip loss corrections for blade element
-type models, which currently only exist for axial-flow rotors.
+The 3-D blade-resolved RANS simulations predicted turbine performance and
+near-wake quite well, where the SA model results were closest to the
+experimentally measured performance. Both the SST and SA models did a good job
+predicting the mean velocity field at one turbine diameter downstream, but the
+SST model was more effective at predicting turbulence kinetic energy, since it
+is solved for in the turbulence model equations. Streamwise momentum recovery
+terms were computed from the CFD results over an entire cross-section of the
+domain at $x/D=1$. Values for transport due to the mean pressure gradient and
+turbulent fluctuations varied a lot between the two turbulence models. Both
+models, however, we able to at least qualitatively resolve the vertical velocity
+field, which will be crucial to predicting the performance of closely spaced
+CFTs.
 
-%%% End from draft of CFD paper
+The effectiveness at predicting the mean velocity field gives credibility to the
+prospect of using the computed flow field to interpolate the experimental
+results, such that the CFD results can be used as a target for a low-order wake
+generator or force parameterization. These results may also help develop new tip
+loss corrections for blade element type models, which currently only exist for
+axial-flow rotors, since we have access to the pressure and shear forces over
+the entire blade surface, which were not measured experimentally. Ultimately,
+however the computational cost of 3-D simulations---about 10,000 CPU hours per
+operating case---may be too expensive to be used for CFT engineering work,
+especially considering the uncertainty involved compared with physical model
+studies.
 
 
-\section{Conclusions}
+\section{Acknowledgments}
 
-2-D blade-resolved RANS simulations have been shown to be a poor predictor of
-turbine performance.
-
-3-D blade-resolved RANS simulations have been shown to be a fair predictor of
-turbine performance and wake characteristics, though the computational cost is
-too expensive to be used for engineering work, especially considering the
-uncertainty involved compared with physical model studies.
+Thanks to Vincent S. Neary and Sandia National Labs for the use of their Red
+Mesa high performance computing cluster to run the simulations.
 
