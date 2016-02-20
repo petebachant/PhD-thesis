@@ -16,13 +16,6 @@ both eddy-viscosity type models, where the SA solves one additional scalar
 transport equation and the SST two.
 
 
-\section{Verification}
-
-To verify that the simulations had reached a grid-independent solution in both
-space and time, a 2-D slice of the model was run at various grid spacings, for
-both turbulence models.
-
-
 \section{Comparing cost with physical modeling}
 
 
@@ -217,16 +210,18 @@ match the tow tank case, while the top boundary condition was a slip velocity
 condition. Note that in 2-D the top and bottom boundary conditions are
 ``empty,'' which is an OpenFOAM convention.
 
+
 \section{Model verification}
 
-The $k$--$\omega$ SST and Spalart--Allmaras RANS model cases were verified for
-convergence of the turbine mean power coefficient with respect to grid spacing
-and timestep. The grid topology was fixed, but the number of cells per unit
-length were scaled proportionally, maintaining the same background mesh cell
-aspect ratio. Results for this parameter sweep are shown in
-Figure~\ref{fig:verification}, from which the final number of streamwise
-grid points $N_x = 70$ was chosen. This corresponds to a total cell count of
-approximately $5 \times 10^4$ for the 2-D cases and 16 million for the 3-D case.
+Both the $k$--$\omega$ SST and Spalart--Allmaras RANS model cases were verified
+for convergence of the turbine mean power coefficient with respect to grid
+spacing and time step using 2-D simulations. The grid topology was fixed, but
+the number of cells per domain length was scaled proportionally, maintaining the
+same background mesh cell aspect ratio. Results for this parameter sweep are
+shown in Figure~\ref{fig:verification}, from which the final number of
+streamwise grid points $N_x = 70$ was chosen. This corresponds to a total cell
+count of approximately $5 \times 10^4$ for the 2-D cases and 16 million for the
+3-D case.
 
 \begin{figure}[ht]
     \centering
