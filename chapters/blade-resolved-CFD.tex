@@ -1,29 +1,23 @@
 \chapter{On the use of blade-resolved computational fluid
     dynamics}\label{chap:CFD}
 
-Computing power has reached the level where it is feasible to simulate a
-cross-flow turbine by solving the 3-D Reynolds-averaged Navier--Stokes equations
-on a boundary layer-resolving body-fitted grid. It is of interest to determine
-the accuracy of such a simulation, since as previously discussed the flow
-physics of CFTs are very complex.
-
-
-
-%%% Below from draft of CFD paper
-
 Despite the development of many simple engineering models based on blade element
 momentum or vortex modeling, it remains difficult to predict the performance of
-cross-flow turbines in all cases---namely when solidity, or blade chord to
-radius ratio is high---a common characteristic of the smaller CFTs. With
-computing power becoming evermore available and affordable, computational fluid
-dynamics (CFD) presents an attractive method for simulating cross-flow turbines
-since it only requires turbulence modeling, i.e., the machine is described from
-first principles. However, CFD can be computationally expensive when done in
-three dimensions, which may be necessary in some cases. There are many examples
-in the literature of 2-D cross-flow turbine simulations with widely varying
-results. Balduzzi et al. provides a summary of recent computations and an
-attempt to standardize a methodology for using Reynolds-averaged Navier--Stokes
-(RANS) to correctly simulate performance of a 2-D CFT \cite{Balduzzi2016}.
+cross-flow turbines in all cases---namely when solidity, or blade
+chord-to-radius ratio is high---a common characteristic of the smaller CFTs.
+With computing power becoming evermore available and affordable, computational
+fluid dynamics (CFD) presents an attractive method for simulating cross-flow
+turbines since it only requires turbulence modeling, i.e., the physics can be
+described from first principles by solving the Navier--Stokes equation using a
+boundary layer resolving body-fitted grid. However, CFD can be computationally
+expensive when done in three dimensions, which may be necessary in some cases.
+
+There are many examples in the literature of 2-D cross-flow turbine simulations
+with widely varying results. Balduzzi \emph{et al.}~\cite{Balduzzi2016} provides
+a summary of recent computations and an attempt to standardize a methodology for
+using Reynolds-averaged Navier--Stokes (RANS) to correctly simulate performance
+of a 2-D CFT. 3-D simulations are less common \todo[inline]{Get some 3-D
+    simulation references.}
 
 Modeling the boundary layer flows on cross-flow turbine blades is very
 challenging due to the dynamically changing inflow and angle of attack---which
@@ -34,17 +28,16 @@ therefore the predicted turbine power output. These challenges cast significant
 doubt on the ability of high-fidelity CFD modeling to replace wind tunnel or
 tank testing of physical models.
 
-In this study we set out to model the wake of the University of New Hampshire's
-Reference Vertical-Axis (cross-flow) Turbine (UNH-RVAT) using a
-Reynolds-averaged Navier--Stokes numerical model. Though studies in the
+In this study we set out to model the performance and near-wake of the UNH-RVAT
+using a Reynolds-averaged Navier--Stokes numerical model. Though studies in the
 literature generally focus on predicting the turbine loading and the local blade
-boundary layer, we seek to model the larger scale flow produced by the rotor.
-The wake of this particular turbine is of interest since it has been shown
-experimentally that the near-wake's momentum and energy transport processes are
-dominated by vertical advection \cite{Bachant2015-JoT}. It logically follows
-that a 2-D simulation would not correctly predict wake recovery, but is of
-interest to what extent this is true, since the computational feasibility of 2-D
-simulations is attractive.
+boundary layer, we seek to model both this and the larger scale flow produced by
+the rotor. The wake of this particular turbine is of interest since it has been
+shown experimentally that the near-wake's momentum and energy transport
+processes are dominated by vertical advection \cite{Bachant2015-JoT}. It
+logically follows that a 2-D simulation would not correctly predict wake
+recovery, but is of interest to what extent this is true, since the
+computational feasibility of 2-D simulations is attractive.
 
 It is assumed that if the turbine power output and near-wake predictions from
 the numerical model match those of the experiments, the flow field can be
