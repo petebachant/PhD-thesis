@@ -239,26 +239,26 @@ for convergence of the turbine mean power coefficient with respect to grid
 spacing and time step using 2-D simulations. The grid topology was fixed, but
 the number of cells per domain length was scaled proportionally, maintaining the
 same background mesh cell aspect ratio. Results for this parameter sweep are
-shown in Figure~\ref{fig:verification}, from which the final number of
+shown in Figure~\ref{fig:2d-br-verification}, from which the final number of
 streamwise grid points $N_x = 70$ was chosen. This corresponds to a total cell
 count of approximately $5 \times 10^4$ for the 2-D cases and 16 million for the
 3-D case.
 
-\begin{figure}[ht]
+\begin{figure}
     \centering
 
-%    \includegraphics[width=0.9\textwidth]{figures/verification}
+    \includegraphics[width=0.9\textwidth]{2d-br-verification}
 
     \caption{Time step (left) and grid size (right) dependence for the 2-D case
         with both the SST and SA turbulence models. Time step dependence was carried
         out with $N_x=70$ and grid size dependence with the time steps annotated for
         each turbulence model.}
 
-    \label{fig:verification}
+    \label{fig:2d-br-verification}
 \end{figure}
 
 Time step dependence was studied using the $N_x=70$ grid, the results from which
-are shown in Figure~\ref{fig:verification}. It was seen that the
+are shown in Figure~\ref{fig:2d-br-verification}. It was seen that the
 Spalart--Allmaras model converged well with decreasing time step, leading to a
 final time step of 0.001 s. The results from the SST model show a local minimum
 at $\Delta t = 0.002$ s, with some divergence for smaller time steps. The local
