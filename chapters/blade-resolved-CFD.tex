@@ -280,9 +280,9 @@ a single processor and took on the order of one CPU hour per second.
 \subsection{Performance prediction}
 
 Predictions for both the mean rotor power and drag coefficients are shown in
-Figure~\ref{fig:perf-comp}. In general, the 2-D CFD cases both overpredict
-turbine loading, which is likely due to their increased blockage ratio,
-unresolved blade end effects, and lack of blade support struts.
+Figure~\ref{fig:br-cfd-perf-bar-chart}. In general, the 2-D CFD cases both
+overpredict turbine loading, which is likely due to their increased blockage
+ratio, unresolved blade end effects, and lack of blade support struts.
 
 The 3-D simulations fair better at predicting the experimental measurements,
 with the Spalart--Allmaras model performing relatively better. The apparent
@@ -292,15 +292,15 @@ measured without a turbine installed, then subtracted in post-processing.
 Technically the local flow field will have changed, and hence the tare drag will
 change as well.
 
-\begin{figure}[ht]
+\begin{figure}
     \centering
 
-%    \includegraphics[width=0.9\textwidth]{figures/perf_bar_chart}
+    \includegraphics[width=0.95\textwidth]{br-cfd-perf-bar-chart}
 
     \caption{Power (left) and drag (right) coefficient predictions from
         experiments and each numerical model.}
 
-    \label{fig:perf-comp}
+    \label{fig:br-cfd-perf-bar-chart}
 \end{figure}
 
 
