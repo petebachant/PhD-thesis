@@ -16,7 +16,12 @@ There are many examples in the literature of 2-D cross-flow turbine simulations
 with widely varying results. Balduzzi \emph{et al.}~\cite{Balduzzi2016} provides
 a summary of recent computations and an attempt to standardize a methodology for
 using Reynolds-averaged Navier--Stokes (RANS) to correctly simulate performance
-of a 2-D CFT. 3-D simulations are less common, but have begun to appear more
+of a 2-D CFT. Howell \emph{et al.}~\cite{Howell2010}, performed both 2-D and 3-D
+simulations of a high solidity cross-flow turbine using a $k$--$\epsilon$
+renormalization group (RNG) turbulence model. The results from the 2-D
+simulations over-predicted power coefficient, while the 3-D case matched well
+with wind tunnel measurements near the tip speed ratio of maximum power. In
+general, 3-D simulations are less common, but have begun to appear more
 frequently recently---a testament to the progress towards higher computing
 power.
 
@@ -27,12 +32,6 @@ pressure gradients and separation~\cite{Menter2003}. Higher fidelity methods
 that resolve the large scales of turbulence, such as large-eddy and
 detached-eddy simulation have also been used. Model validation was either not
 performed, or done for performance or wake predictions---not both.
-
-Howell \emph{et al.}~\cite{Howell2010}, performed both 2-D and 3-D simulations
-of a high solidity cross-flow turbine using a $k$--$\epsilon$ renormalization
-group (RNG) turbulence model. The results from the 2-D simulations
-over-predicted power coefficient, while the 3-D case matched well with wind
-tunnel measurements near the tip speed ratio of maximum power.
 
 \begin{table}
     \centering
@@ -72,10 +71,11 @@ literature generally focus on predicting the turbine loading and the local blade
 boundary layer, we seek to model both this and the larger scale flow produced by
 the rotor. The wake of this particular turbine is of interest since it has been
 shown experimentally that the near-wake's momentum and energy transport
-processes are dominated by vertical advection \cite{Bachant2015-JoT}. It
-logically follows that a 2-D simulation would not correctly predict wake
-recovery, but is of interest to what extent this is true, since the
-computational feasibility of 2-D simulations is attractive.
+processes are dominated by vertical advection \cite{Bachant2015-JoT}, an effect
+that was modeled by Boudreau and Dumas using delayed detached-eddy
+simulation~\cite{Boudreau2015}. It logically follows that a 2-D simulation would
+not correctly predict wake recovery, but is of interest to what extent this is
+true, since the computational feasibility of 2-D simulations is attractive.
 
 It is assumed that if the turbine power output and near-wake predictions from
 the numerical model match those of the experiments, the flow field can be
@@ -96,13 +96,14 @@ Agren used a 2-D vortex method to simulate a farm of cross-flow turbines
 \cite{Goude2010}, though this was not validated with experiments. Durrani et al.
 used 2-D CFD to model a group of cross-flow turbines, observing higher power
 output for a staggered configuration, but also did not compare with experimental
-results \cite{Durrani2011}. 
-\todo[inline]{Cite Giorgetti et al. for 2-D array analysis.}
-Li and Calisal \cite{Li2010} used a 3-D vortex line
-method to show mutually improved power output from two adjacent turbines, though
-the simulations over-predicted the effects compared with experiments. Antheaume
-et al. \cite{Antheaume2008} used a blade element approach coupled with a 3-D
-RANS solver to also show how close spacing can improve power output of CFTs.
+results \cite{Durrani2011}. Giorgetti \etal~\cite{Giorgetti2015} took a similar
+approach for 2-D array analysis using turbine pairs inspired by
+Dabiri~\cite{Dabiri2011}, but again experimental validation was not performed.
+Li and Calisal \cite{Li2010} used a 3-D vortex line method to show mutually
+improved power output from two adjacent turbines, though the simulations
+over-predicted the effects compared with experiments. Antheaume et al.
+\cite{Antheaume2008} used a blade element approach coupled with a 3-D RANS
+solver to also show how close spacing can improve power output of CFTs.
 
 To summarize, the questions we hope to answer here are:
 
