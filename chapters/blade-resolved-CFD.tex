@@ -16,12 +16,23 @@ There are many examples in the literature of 2-D cross-flow turbine simulations
 with widely varying results. Balduzzi \emph{et al.}~\cite{Balduzzi2016} provides
 a summary of recent computations and an attempt to standardize a methodology for
 using Reynolds-averaged Navier--Stokes (RANS) to correctly simulate performance
-of a 2-D CFT. 3-D simulations are less common \todo[inline]{Get some 3-D
-    simulation references.} Howell \emph{et al.}~\cite{Howell2010}, performed both
-2-D and 3-D simulations of a high solidity cross-flow turbine using a
-$k$--$\epsilon$ renormalization group (RNG) turbulence model. The results from
-the 2-D simulations over-predicted power coefficient, while the 3-D case matched
-well with wind tunnel measurements near the tip speed ratio of maximum power.
+of a 2-D CFT. 3-D simulations are less common, but have begun to appear more
+frequently recently---a testament to the progress towards higher computing
+power.
+
+An overview of 3-D blade-resolved cross-flow turbine simulations reported in the
+literature is presented in Table~\ref{tab:cfd-refs}. The SST RANS turbulence
+model is a popular choice due to its success in predicting flows with adverse
+pressure gradients and separation~\cite{Menter2003}. Higher fidelity methods
+that resolve the large scales of turbulence, such as large-eddy and
+detached-eddy simulation have also been used. Model validation was either not
+performed, or done for performance or wake predictions---not both.
+
+Howell \emph{et al.}~\cite{Howell2010}, performed both 2-D and 3-D simulations
+of a high solidity cross-flow turbine using a $k$--$\epsilon$ renormalization
+group (RNG) turbulence model. The results from the 2-D simulations
+over-predicted power coefficient, while the 3-D case matched well with wind
+tunnel measurements near the tip speed ratio of maximum power.
 
 \begin{table}
     \centering
@@ -38,8 +49,8 @@ well with wind tunnel measurements near the tip speed ratio of maximum power.
         Howell \etal~\cite{Howell2010} & $k$--$\epsilon$ RNG\tablefootnote{Renormalization group.} & \cite{Howell2010} & N/A
     \end{tabular}
     
-    \caption{Selected 3-D cross-flow turbine simulations reported in the
-        literature, turbulence modeling employed, and performance and/or wake
+    \caption{Selected 3-D blade-resolved cross-flow turbine simulations reported
+        in the literature, turbulence modeling employed, and performance and/or wake
         studies used for validation. Note the Li \etal study used periodic boundary
         conditions and is technically considered 2.5-D.}
     
