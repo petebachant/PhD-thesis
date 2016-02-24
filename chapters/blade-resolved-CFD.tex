@@ -89,20 +89,20 @@ field \cite{Shamsoddin2014}.
 
 To date, little computational work has been done to attempt to design arrays of
 CFTs, despite their prospects for closer spacing compared with axial-flow
-turbines (AFTs). For example, Araya et al. modeled the flow through a VAT array
-using ``leaky Rankine body'' potential flow singularities \cite{Araya2014},
+turbines (AFTs). For example, Araya \etal~\cite{Araya2014} modeled the flow
+through a VAT array using ``leaky Rankine body'' potential flow singularities,
 which was able to rank relative performance of array configurations. Goude and
-Agren used a 2-D vortex method to simulate a farm of cross-flow turbines
-\cite{Goude2010}, though this was not validated with experiments. Durrani et al.
-used 2-D CFD to model a group of cross-flow turbines, observing higher power
-output for a staggered configuration, but also did not compare with experimental
-results \cite{Durrani2011}. Giorgetti \etal~\cite{Giorgetti2015} took a similar
-approach for 2-D array analysis using turbine pairs inspired by
+Agren~\cite{Goude2010} used a 2-D vortex method to simulate a farm of cross-flow
+turbines, though this was not validated with experiments. Durrani \emph{et
+    al.}~\cite{Durrani2011} used 2-D CFD to model a group of cross-flow turbines,
+observing higher power output for a staggered configuration, but also did not
+compare with experimental results. Giorgetti \etal~\cite{Giorgetti2015} took a
+similar approach for 2-D array analysis using turbine pairs inspired by
 Dabiri~\cite{Dabiri2011}, but again experimental validation was not performed.
 Li and Calisal \cite{Li2010} used a 3-D vortex line method to show mutually
 improved power output from two adjacent turbines, though the simulations
-over-predicted the effects compared with experiments. Antheaume et al.
-\cite{Antheaume2008} used a blade element approach coupled with a 3-D RANS
+over-predicted the effects compared with experiments. Antheaume \emph{et
+    al.}~\cite{Antheaume2008} used a blade element approach coupled with a 3-D RANS
 solver to also show how close spacing can improve power output of CFTs.
 
 To summarize, the questions we hope to answer here are:
@@ -127,36 +127,28 @@ To summarize, the questions we hope to answer here are:
 \section{Turbine description}
 
 In this study we sought out to predict the near-wake of the UNH-RVAT turbine,
-shown in Figure~\ref{fig:RVAT-CAD}. Experimental performance curves for the
-UNH-RVAT are shown in Figure~\ref{fig:exp_perf}. The turbine was simulated at a
-tip speed ratio $\lambda=1.9$, which corresponds to the maximum power
-coefficient, and a turbine diameter Reynolds number $Re_D \approx 10^6$, which
-corresponds to a $Re$-independent state for both performance and near-wake
-characteristics, as determined from experimental measurements \cite{Bachant2014,
+for which experiments were performed in Chapter~\ref{chap:RVAT-baseline} and
+Chapter~\ref{chap:Re-dep}. The turbine was simulated at a tip speed ratio
+$\lambda=1.9$, which corresponds to the maximum power coefficient, and a turbine
+diameter Reynolds number $Re_D \approx 10^6$, which corresponds to the
+$Re$-independent state for both performance and near-wake characteristics, as
+determined from experimental measurements \cite{Bachant2014,
     Bachant2016-Energies}.
 
+Turbine geometry was prepared or ``cleaned'' for CFD by removing details
+determined to be unnecessary, e.g., screw heads and axial shaft grooves, which
+would complicate the meshing. A drawing of the physically and numerically
+modeled geometries is presented in Figure~\ref{fig:cfd-cad}.
 
-\begin{figure}[ht]
+\begin{figure}
     \centering
 
-%    \includegraphics[clip, trim=0 1in 0 1in, width=0.8\textwidth]{figures/CAD}
+    \includegraphics[clip, trim=0 1in 0 1in, width=0.8\textwidth]{cfd-cad}
 
     \caption{CAD drawings of the UNH-RVAT cross-flow turbine as designed (left)
         and cleaned for simulation (right).}
 
-    \label{fig:RVAT-CAD}
-\end{figure}
-
-
-\begin{figure}[ht]
-    \centering
-
-%    \includegraphics[width=0.9\textwidth]{figures/exp_perf}
-
-    \caption{Mean rotor power (left) and drag (right) coefficient curves from
-        the tow tank experiments\cite{Bachant2016-RVAT-Re-dep}.}
-
-    \label{fig:exp_perf}
+    \label{fig:cfd-cad}
 \end{figure}
 
 
