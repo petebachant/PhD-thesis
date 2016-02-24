@@ -389,32 +389,32 @@ which is likely due to exaggerated levels of the turbulent eddy viscosity.
 
 In order to visualize the mean velocity field, vector arrows for the mean
 cross-stream and vertical components are superimosed on top of contours of the
-streamwise component at $X/D=1$ in Figure~\ref{fig:mean-velocity}. Both CFD
-models predict the general structure of the mean velocity well, though the SA
-case has slightly larger vertical mean flows, which could be due to stronger tip
-vortex generation, or lower diffusivity compared with the SST model. Additional
-discrepancies between CFD and experiments may be due to the top slip boundary
-condition versus the experiment's free surface.
+streamwise component at $X/D=1$ in Figure~\ref{fig:br-cfd-mean-velocity}. Both
+CFD models predict the general structure of the mean velocity well, though the
+SA case has slightly larger vertical mean flows, which could be due to stronger
+tip vortex generation, or lower diffusivity compared with the SST model.
+Additional discrepancies between CFD and experiments may be due to the top slip
+boundary condition versus the experiment's free surface.
 
 \begin{figure}
     \centering
     \begin{subfigure}[b]{\textwidth}
        \centering
 
-    %    \includegraphics[clip, trim=0 0.1in 0 0.2in,
-    %    width=0.75\textwidth]{figures/meancontquiv_exp}
+        \includegraphics[clip, trim=0 0.1in 0.3in 0.2in,
+        width=0.72\textwidth]{RVAT-Re-dep_meancontquiv_10}
 
        \caption{Mean velocity field at $x/D=1$ from experiments
-           \cite{Bachant2015-RVAT-Re-dep-data}.}
+           \cite{Bachant2016-RVAT-Re-dep}.}
 
-       \label{fig:meancontquiv-exp}
+       \label{fig:br-cfd-meancontquiv-exp}
    \end{subfigure}
 
    \begin{subfigure}[b]{\textwidth}
        \centering
 
-    %    \includegraphics[clip, trim=0 0.2in 0 0.15in,
-    %    width=0.8\textwidth]{figures/meancontquiv_kOmegaSST}
+        \includegraphics[clip, trim=0 0.2in 0 0.15in,
+        width=0.8\textwidth]{meancontquiv_kOmegaSST}
 
        \caption{Mean velocity at $x/D=1$ computed by the 3-D SST model.}
 
@@ -424,8 +424,8 @@ condition versus the experiment's free surface.
    \begin{subfigure}[b]{\textwidth}
        \centering
 
-    %    \includegraphics[clip, trim=0 0.2in 0 0.15in,
-    %    width=0.8\textwidth]{figures/meancontquiv_SpalartAllmaras}
+        \includegraphics[clip, trim=0 0.2in 0 0.15in,
+        width=0.8\textwidth]{meancontquiv_SpalartAllmaras}
 
        \caption{Mean velocity at $x/D=1$ computed by the 3-D SA model.}
 
@@ -436,7 +436,7 @@ condition versus the experiment's free surface.
         indicate turbine frontal area and dashed lines indicate experimental
         measurement plane.}
 
-    \label{fig:mean-velocity}
+    \label{fig:br-cfd-mean-velocity}
 \end{figure}
 
 
