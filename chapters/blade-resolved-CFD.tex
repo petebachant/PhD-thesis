@@ -504,17 +504,18 @@ with the experimental results.
 
 We use the RANS models' eddy viscosity to calculate the turbulent transport via
 \begin{equation}
-\text{Turb. trans.} = \nu_t \nabla^2 \vec{U},
-\label{eq:turb-trans}
+    \text{Turb. trans.} = \nu_t \nabla^2 \vec{U},
+    \label{eq:turb-trans}
 \end{equation}
-which is a different approach from those taken on the experiments, where Reynolds stresses were measured, but $x$-derivatives were not:
+which is a different approach from those taken on the experiments, where
+Reynolds stresses were measured, but $x$-derivatives were not:
 \begin{equation}
-\text{Turb. trans. (exp.)} =
--\left(
-\frac{\partial}{\partial y} \overline{u^\prime v^\prime}
-+
-\frac{\partial}{\partial z} \overline{u^\prime w^\prime}
-\right).
+    \text{Turb. trans. (exp.)} =
+    -\left(
+    \frac{\partial}{\partial y} \overline{u^\prime v^\prime}
+    +
+    \frac{\partial}{\partial z} \overline{u^\prime w^\prime}
+    \right).
 \end{equation}
 As such, we should not be surprised if the CFD models predict higher levels of
 turbulent transport than the experiments.
