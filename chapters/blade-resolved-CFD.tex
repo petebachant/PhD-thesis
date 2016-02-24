@@ -25,21 +25,23 @@ well with wind tunnel measurements near the tip speed ratio of maximum power.
 
 \begin{table}
     \centering
-    \begin{tabular}{c|c|c|c|c}
-        Study & Dims & Turbulence & Perf. val. & Wake val. \\ 
+    \begin{tabular}{c|c|c|c}
+        Author & Turbulence modeling & Perf. val. & Wake val. \\ 
         \hline
-        &  &  &  &  \\ 
-        &  &  &  &  \\ 
-        &  &  &  &  \\ 
-        &  &  &  &  \\ 
-        &  &  &  &  \\ 
-        &  &  &  &  \\ 
-        &  &  &  &  \\ 
-        &  &  &  &  \\ 
-        &  &  &  & 
+        Alaimo \etal \cite{Alaimo2015} & $k$--$\epsilon$ & N/A & N/A \\ 
+        Marsh \etal \cite{Marsh2015} & SST & \cite{Rawlings2008} & N/A \\ 
+        Orlandi \etal \cite{Orlandi2015} & SST & \cite{Akins1989,Mertens2003} & N/A \\ 
+        Lam \& Peng \cite{Lam2016} & SST RANS \& IDDES\tablefootnote{Improved delayed detached-eddy simulation.} & N/A & \cite{Tescione2014} \\ 
+        Nini \etal \cite{Nini2014} & Spalart--Allmaras & N/A & \cite{Battisti2011} \\ 
+        Boudreau \& Dumas \cite{Boudreau2015} & DDES\tablefootnote{Delayed detached-eddy simulation.} & N/A & N/A \\ 
+        Li \etal \cite{Li2013} & SST \& Smagorinsky--Lilly LES & \cite{McLaren2011} & N/A \\ 
+        Howell \etal \cite{Howell2010} & $k$--$\epsilon$ RNG\tablefootnote{Renormalization group.} & \cite{Howell2010} & N/A
     \end{tabular}
     
-    \caption{Overview of cross-flow turbine simulations reported in the literature.}
+    \caption{Selected 3-D cross-flow turbine simulations reported in the
+        literature, turbulence modeling employed, and performance and/or wake
+        studies used for validation. Note the Li \etal study used periodic boundary
+        conditions and is technically considered 2.5-D.}
     
     \label{tab:cfd-refs}
 \end{table}
@@ -83,7 +85,9 @@ Agren used a 2-D vortex method to simulate a farm of cross-flow turbines
 \cite{Goude2010}, though this was not validated with experiments. Durrani et al.
 used 2-D CFD to model a group of cross-flow turbines, observing higher power
 output for a staggered configuration, but also did not compare with experimental
-results \cite{Durrani2011}. Li and Calisal \cite{Li2010} used a 3-D vortex line
+results \cite{Durrani2011}. 
+\todo[inline]{Cite Giorgetti et al. for 2-D array analysis.}
+Li and Calisal \cite{Li2010} used a 3-D vortex line
 method to show mutually improved power output from two adjacent turbines, though
 the simulations over-predicted the effects compared with experiments. Antheaume
 et al. \cite{Antheaume2008} used a blade element approach coupled with a 3-D
