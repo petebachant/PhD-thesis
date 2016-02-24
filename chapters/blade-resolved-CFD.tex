@@ -19,7 +19,7 @@ using Reynolds-averaged Navier--Stokes (RANS) to correctly simulate performance
 of a 2-D CFT. 3-D simulations are less common \todo[inline]{Get some 3-D
     simulation references.} Howell \emph{et al.}~\cite{Howell2010}, performed both
 2-D and 3-D simulations of a high solidity cross-flow turbine using a
-$k$-$\epsilon$ renormalization group (RNG) turbulence model. The results from
+$k$--$\epsilon$ renormalization group (RNG) turbulence model. The results from
 the 2-D simulations over-predicted power coefficient, while the 3-D case matched
 well with wind tunnel measurements near the tip speed ratio of maximum power.
 
@@ -151,7 +151,7 @@ characteristics, as determined from experimental measurements \cite{Bachant2014,
 \section{Numerical models}
 
 The flow field was modeled using the Reynolds-averaged Navier--Stokes equations,
-employing two different turbulence models---Menter's $k$-$\omega$ SST
+employing two different turbulence models---Menter's $k$--$\omega$ SST
 \cite{Menter1994} and the Spalart--Allmaras (SA) one equation model
 \cite{Spalart1992}. Both closures use the eddy-viscosity approach---the SA
 employing a single additional scalar transport equation and the SST two. The SST
@@ -226,7 +226,7 @@ condition. Note that in 2-D the top and bottom boundary conditions are
 
 \section{Model verification}
 
-Both the $k$-$\omega$ SST and Spalart--Allmaras RANS model cases were verified
+Both the $k$--$\omega$ SST and Spalart--Allmaras RANS model cases were verified
 for convergence of the turbine mean power coefficient with respect to grid
 spacing and time step using 2-D simulations. The grid topology was fixed, but
 the number of cells per domain length was scaled proportionally, maintaining the
@@ -545,7 +545,7 @@ though the 3-D delayed detached eddy simulation (DDES) of Boudreau and Dumas
 
 \section{Conclusions}
 
-A cross-flow turbine was modeled using the $k$-$\omega$ SST and
+A cross-flow turbine was modeled using the $k$--$\omega$ SST and
 Spalart--Allmaras (SA) Reynolds-averaged Navier--Stokes turbulence models to test
 their abilities to predict turbine performance and near-wake dynamics. It was
 observed that when modeled in 2-D, the performance is over-predicted compared to
