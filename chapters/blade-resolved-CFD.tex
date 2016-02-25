@@ -5,18 +5,18 @@ Despite the development of many simple engineering models based on blade element
 momentum or vortex methods, it remains difficult to predict the performance of
 cross-flow turbines (CFTs, often vertical-axis turbines or VATs) in all
 cases---namely when solidity, or blade chord-to-radius ratio is high---a common
-characteristic of smaller CFTs, and those designed for marine hydrokinetic (MHK)
-applications. With computing power becoming evermore available and affordable,
-computational fluid dynamics (CFD) has become an attractive method for
-simulating cross-flow turbines since it only requires turbulence modeling, i.e.,
-the physics can be described from first principles by solving the Navier--Stokes
-equations using a boundary layer resolving body-fitted grid. However, CFD can be
-computationally expensive when done in three dimensions, which may be necessary
-in some cases.
+characteristic of smaller rotors, and those designed for marine hydrokinetic
+(MHK) applications. With computing power becoming evermore available and
+affordable, computational fluid dynamics (CFD) has become an attractive method
+for predicting the performance of cross-flow turbines since it only requires
+that turbulence be modeled, i.e., the physics can be described from theoretical
+true first principles by solving the Navier--Stokes equations using a boundary
+layer resolving body-fitted grid. However, CFD can be computationally expensive
+when done in three dimensions, which may be necessary in some cases.
 
 There are many examples in the literature of 2-D cross-flow turbine simulations
 with widely varying results. Balduzzi \emph{et al.}~\cite{Balduzzi2016} provides
-a summary of recent computations and an attempt to standardize a methodology for
+a summary of recent efforts and an attempt to standardize a methodology for
 using Reynolds-averaged Navier--Stokes (RANS) to correctly predict performance
 of a 2-D CFT. Howell \emph{et al.}~\cite{Howell2010}, performed both 2-D and 3-D
 simulations of a high solidity cross-flow turbine using a $k$--$\epsilon$
@@ -60,14 +60,15 @@ entirely.
     \label{tab:cfd-refs}
 \end{table}
 
-Modeling the boundary layer flows on cross-flow turbine blades is very
-challenging due to the dynamically changing inflow velocity and angle of
-attack---which often exceeds static stall values and causes dynamic stall.
-Furthermore, the ability to predict the occurrence and interdependence of
-boundary layer transition to turbulence and separation can have dramatic
-influence on the blade loading and therefore the predicted turbine power output.
-These challenges present significant obstacles to the prospect of using CFD to
-replace wind tunnel or tank testing of physical models.
+Modeling the boundary layer flows on cross-flow turbine blades is essential to
+predicting the blade loading. This flow condition presents a challenge due to
+the dynamically changing inflow velocity and angle of attack---which often
+exceeds static stall values and causes dynamic stall. Furthermore, the ability
+to predict the occurrence and interdependence of boundary layer transition to
+turbulence and separation can have dramatic influence on the blade loading and
+therefore the predicted turbine power output. These challenges present
+significant obstacles to the prospect of using CFD to replace wind tunnel or
+tank testing of physical models.
 
 To date, little computational work has been done to attempt to design arrays of
 CFTs, despite their prospects for closer spacing compared with axial-flow
@@ -90,16 +91,17 @@ output of CFTs.
 
 In this study we set out to model the performance and near-wake of the high
 solidity University of New Hampshire Reference Vertical Axis Turbine (UNH-RVAT)
-using a Reynolds-averaged Navier--Stokes numerical model. Though studies in the
-literature generally focus on predicting the turbine loading and the local blade
-boundary layer, we seek to model both this and the larger scale flow produced by
-the rotor. The near-wake of this particular turbine is of interest since it has
-been shown experimentally that the near-wake's momentum and energy transport
-processes are dominated by vertical advection \cite{Bachant2015-JoT}. It
-logically follows that a 2-D simulation, which omits the vertical dimension,
-would not correctly predict wake recovery. However, it is of interest to
-determine how wrong a 2-D model may be, since the computational feasibility is
-attractive.
+using the Reynolds-averaged Navier--Stokes equations discretized via the finite
+volume method. Though studies in the literature generally focus on predicting
+the turbine loading and the local blade boundary layer, we seek to model both
+this and the larger scale flow produced by the rotor, i.e., the near-wake, which
+is of interest for this particular turbine since it has been shown
+experimentally that the near-wake's momentum and energy transport processes are
+dominated by vertical advection \cite{Bachant2015-JoT}. It logically follows
+that a 2-D simulation, which omits the vertical dimension, would not correctly
+predict wake recovery and turbine--turbine interaction. However, it is of
+interest to determine how wrong a 2-D model may be, since the computational
+feasibility is attractive.
 
 It is assumed that if the turbine power output and near-wake predictions from
 the numerical model match those of the experiments, the flow field can be
@@ -112,8 +114,7 @@ are:
 
 \begin{enumerate}
 
-    \item Can or should 2-D RANS be used for individual turbine and/or array
-    design?
+    \item Can 2-D RANS be used for individual turbine and/or array design?
 
     \item How accurately can 3-D RANS predict performance?
 
@@ -129,16 +130,18 @@ are:
 
 \section{Numerical setup}
 
-In this study the UNH-RVAT baseline tow tank experiment was simulated using a
-rotor tip speed ratio $\lambda=1.9$, which corresponds to the maximum power
-coefficient, and a turbine diameter Reynolds number $Re_D \approx 10^6$, which
-corresponds to the $Re$-independent state for both performance and near-wake
-characteristics, as determined from experimental measurements \cite{Bachant2014,
+In this study the UNH-RVAT baseline tow tank experiment at a tow speed
+$U_\infty=1.0$ m/s was simulated using a mean rotor tip speed ratio
+$\lambda=1.9$, which corresponds to the maximum power coefficient, and a turbine
+diameter Reynolds number $Re_D \approx 10^6$, which corresponds to the
+$Re$-independent state for both performance and near-wake characteristics, as
+determined from previous experimental measurements \cite{Bachant2014,
     Bachant2016-Energies}.
 
 The turbines CAD geometry was prepared or ``cleaned'' for CFD by removing
 details determined to be unnecessary, e.g., screw heads and axial shaft grooves,
-which would complicate the meshing. A drawing of the physically and numerically
+which would complicate the meshing process and contribute very little to the
+overall loading or flow modulation. A drawing of the physically and numerically
 modeled geometries is presented in Figure~\ref{fig:cfd-cad}.
 
 \begin{figure}
@@ -152,20 +155,20 @@ modeled geometries is presented in Figure~\ref{fig:cfd-cad}.
     \label{fig:cfd-cad}
 \end{figure}
 
-The flow field was modeled using the Reynolds-averaged Navier--Stokes equations,
-employing two different turbulence models---Menter's $k$--$\omega$ SST
-\cite{Menter1994} and the Spalart--Allmaras (SA) one equation model
-\cite{Spalart1992}. Both closures use the eddy-viscosity approach---the SA
-employing a single additional scalar transport equation and the SST two. The SST
-model was chosen due to its prominence in the literature for simulating
-separating flows, which we assumed to be present in the current problem in the
-form of dynamic stall. The SA model was shown by Ferreira et al.
-\cite{Ferreira2007} to match experimental particle image velocimetry (PIV)
-results for a CFT in dynamic stall, though this was a somewhat low Reynolds
-number case ($5 \times 10^4$). Further justification for using the SA model for
-this case comes from Crivellini and D'Alessandro \cite{Crivellini2014}, where
-they successfully modeled the laminar separation bubble and subsequent boundary
-layer transition to turbulence at Reynolds numbers similar to ours.
+To close the RANS equations, two different turbulence models were
+used---Menter's $k$--$\omega$ SST \cite{Menter1994} and the Spalart--Allmaras
+(SA) one equation model \cite{Spalart1992}. Both closures use the eddy-viscosity
+approach---the SA employing a single additional scalar transport equation and
+the SST two. The SST model was chosen due to its prominence in the literature
+for simulating separating flows, which we assumed to be present in the current
+problem in the form of dynamic stall. The SA model was shown by Ferreira
+\emph{et al.}~\cite{Ferreira2007} to match experimental particle image
+velocimetry (PIV) results for a CFT in dynamic stall, though this was a somewhat
+low Reynolds number case ($5 \times 10^4$). Further justification for using the
+SA model for this case comes from Crivellini and D'Alessandro
+\cite{Crivellini2014}, where they successfully modeled the laminar separation
+bubble and subsequent boundary layer transition to turbulence at Reynolds
+numbers similar to those investigated here.
 
 
 \subsection{Computational mesh}
@@ -178,7 +181,7 @@ located at the center of a cylindrical sliding mesh interface, which rotated at
 a mean tip speed ratio $\lambda=1.9$ with a sinusoidal oscillation at the blade
 passage frequency---with and amplitude of 0.19 and the first peak at 0.7
 radians---to mimic the experimental data. The 2-D mesh overview is shown in
-Figure~\ref{fig:2d-br-mesh} and the blade mesh is shown in
+Figure~\ref{fig:2d-br-mesh} and the blade mesh detail is shown in
 Figure~\ref{fig:blade-mesh}.
 
 Meshes were generated using \textit{OpenFOAM}'s \textit{blockMesh} and
@@ -220,24 +223,27 @@ Simulations were run using the \textit{pimpleDyMFoam} solver from the
 open-source finite volume CFD package \textit{OpenFOAM}, version 2.3.x.
 \textit{pimpleDyMFoam} uses a hybrid PISO-SIMPLE algorithm for pressure-velocity
 coupling and is compatible with dynamic meshes. An Euler scheme was used to
-advance the simulation forward in time.
+advance the simulation forward in time. The case files required to replicate the
+simulations are available from XXX and XXX. \todo[inline]{Add citation for case
+    files here. Should all be in one Figshare repo, or 4 different repos.}
 
 
 \subsection{Initial and boundary conditions}
 
 Initial and boundary conditions were set to match those of the tow tank as well
-as possible. The velocity at the bottom and side walls was fixed to 1 m/s to
-match the tow tank case, while the top boundary condition was a slip velocity
-condition. Note that in 2-D the top and bottom boundary conditions are
-``empty,'' which is an OpenFOAM convention to indicate two-dimensionality.
+as possible. The velocity at the inlet, bottom, and side walls was fixed to 1
+m/s to match the tow tank case, while the top boundary condition was a slip
+velocity condition. Pressure was held fixed at the outlet. Note that in 2-D the
+top and bottom boundary conditions are ``empty,'' which is an OpenFOAM
+convention to indicate two-dimensionality.
 
 
 \section{Model verification}
 
 Both the $k$--$\omega$ SST and Spalart--Allmaras RANS model cases were verified
 for convergence of the turbine mean power coefficient with respect to grid
-spacing and time step using 2-D simulations. The grid topology was fixed, but
-the number of cells per domain length was scaled proportionally, maintaining the
+spacing and time step using 2-D domains. The grid topology was fixed, but the
+number of cells per domain length was scaled proportionally, maintaining the
 same background mesh cell aspect ratio. Results for this parameter sweep are
 shown in Figure~\ref{fig:2d-br-verification}, from which the final number of
 streamwise grid points $N_x = 70$ was chosen. This corresponds to a total cell
@@ -257,8 +263,8 @@ count of approximately $5 \times 10^4$ for the 2-D cases and 16 million for the
     \label{fig:2d-br-verification}
 \end{figure}
 
-Time step dependence was studied using the $N_x=70$ grid, the results from which
-are shown in Figure~\ref{fig:2d-br-verification}. It was seen that the
+Time step dependence was evaluated using the 2-D $N_x=70$ grid, the results from
+which are shown in Figure~\ref{fig:2d-br-verification}. It was seen that the
 Spalart--Allmaras model converged well with decreasing time step, leading to a
 final time step of 0.001 s. The results from the SST model show a local minimum
 at $\Delta t = 0.002$ s, with some divergence for smaller time steps. The local
@@ -274,7 +280,14 @@ not common, though the final time step is comparable to others
 
 Computations for the 3-D cases were run on 192 processes and took on the order
 of 1,000 CPU hours per second of simulated time. The 2-D simulations were run on
-a single processor and took on the order of one CPU hour per second.
+a single processor and took on the order of one CPU hour per second. Mean
+performance was calculated from \todo[inline]{Describe how mean performance was
+    calculated, i.e., intervals.}
+
+Flow statistics were calculated from a time series starting from $t=xxx$ to
+$f=xxx$ \todo[inline]{Describe wake statistic calculations.} and downsampled to
+50 Hz. It is assumed that this is far enough from the blade passage frequency
+that differences from the variance in the original velocity will be negligible.
 
 
 \subsection{Performance prediction}
@@ -367,11 +380,7 @@ Figure~\ref{fig:br-cfd-profiles}. The turbulence kinetic energy is calculated as
     \label{eq:k}
 \end{equation}
 where $U^\prime = U - \overline{U}$ and $k_{\mathrm{RA}}$ is the kinetic energy
-calculated by the turbulence model, which is zero for the SA model. Note that
-the statistics of the Reynolds-averaged velocity are calculated from a time
-series that has been downsampled to 50 Hz. It is assumed that this is far enough
-from the blade passage frequency that differences from the variance in the
-original velocity will be negligible.
+calculated by the turbulence model, which is zero for the SA model.
 
 Both Spalart--Allmaras cases do a poor job predicting the turbulence kinetic
 energy in the flow, since it must be resolved as variance in the velocity field.
