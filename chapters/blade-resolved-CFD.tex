@@ -127,35 +127,30 @@ are:
 \end{enumerate}
 
 
-\section{Turbine description}
+\section{Numerical setup}
 
-In this study we sought out to predict the near-wake of the UNH-RVAT turbine,
-for which experiments were performed in Chapter~\ref{chap:RVAT-baseline} and
-Chapter~\ref{chap:Re-dep}. The turbine was simulated at a tip speed ratio
-$\lambda=1.9$, which corresponds to the maximum power coefficient, and a turbine
-diameter Reynolds number $Re_D \approx 10^6$, which corresponds to the
-$Re$-independent state for both performance and near-wake characteristics, as
-determined from experimental measurements \cite{Bachant2014,
+In this study the UNH-RVAT baseline tow tank experiment was simulated using a
+rotor tip speed ratio $\lambda=1.9$, which corresponds to the maximum power
+coefficient, and a turbine diameter Reynolds number $Re_D \approx 10^6$, which
+corresponds to the $Re$-independent state for both performance and near-wake
+characteristics, as determined from experimental measurements \cite{Bachant2014,
     Bachant2016-Energies}.
 
-Turbine geometry was prepared or ``cleaned'' for CFD by removing details
-determined to be unnecessary, e.g., screw heads and axial shaft grooves, which
-would complicate the meshing. A drawing of the physically and numerically
+The turbines CAD geometry was prepared or ``cleaned'' for CFD by removing
+details determined to be unnecessary, e.g., screw heads and axial shaft grooves,
+which would complicate the meshing. A drawing of the physically and numerically
 modeled geometries is presented in Figure~\ref{fig:cfd-cad}.
 
 \begin{figure}
     \centering
-
+    
     \includegraphics[clip, trim=0 1in 0 1in, width=0.8\textwidth]{cfd-cad}
-
+    
     \caption{CAD drawings of the UNH-RVAT cross-flow turbine as designed (left)
         and cleaned for simulation (right).}
-
+    
     \label{fig:cfd-cad}
 \end{figure}
-
-
-\section{Numerical models}
 
 The flow field was modeled using the Reynolds-averaged Navier--Stokes equations,
 employing two different turbulence models---Menter's $k$--$\omega$ SST
