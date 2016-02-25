@@ -296,11 +296,13 @@ original velocity will be negligible.
 
 Predictions for both the mean rotor power and drag coefficients are shown in
 Figure~\ref{fig:br-cfd-perf-bar-chart}. In general, the 2-D CFD cases both
-overpredict turbine loading, which is likely due to their increased blockage
-ratio, unresolved blade end effects, and lack of blade support struts.
+significantly overpredict turbine loading, which is likely due to their
+increased blockage ratio, unresolved blade end effects, and lack of blade
+support struts.
 
-The 3-D simulations fair better at predicting the experimental measurements,
-with the Spalart--Allmaras model performing better than the SST model. The
+The 3-D simulations fair better at predicting the experimental measurements. The Spalart--Allmaras model's mean power coefficient was 0.24 while the SST's was 0.33. 
+\todo[inline]{Get proper values for power coefficients.}
+The
 apparent overprediction of rotor drag coefficient could be an effect of the
 experimental procedure, where the ``tare drag'' from the turbine mounting
 structure was measured without a turbine installed, then subtracted in
@@ -580,16 +582,23 @@ the 2-D model's applicability as a tool to study array spacing effects.
 
 The 3-D blade-resolved RANS simulations predicted turbine performance and
 near-wake quite well, where the SA model results were closest to the
-experimentally measured performance. Both the SST and SA models did a good job
-predicting the mean velocity field at one turbine diameter downstream, but the
-SST model was more effective at predicting turbulence kinetic energy, since it
-is solved for in the turbulence model equations. Streamwise momentum recovery
-terms were computed from the CFD results over an entire cross-section of the
-domain at $x/D=1$. Values for transport due to the mean pressure gradient and
-turbulent fluctuations varied a lot between the two turbulence models. Both
-models, however, we able to at least qualitatively resolve the vertical velocity
-field, which will be crucial to predicting the performance of closely spaced
-CFTs.
+experimentally measured performance. The SA model's effectiveness gives hope for
+the prospect of replacing some physical modeling with blade-resolved CFD.
+However, the  overprediction of power coefficient by the SST model highlights
+the level of technological and economic risk involved with CFD. That is to say,
+the SST model, despite being considered relatively trustworthy in these flow
+conditions, would overestimate power output by \todo[inline]{Get percentage
+    overprediction of C_P.}\%.
+
+Both the SST and SA models did a good job predicting the mean velocity field at
+one turbine diameter downstream, but the SST model was more effective at
+predicting turbulence kinetic energy, since it is solved for in the turbulence
+model equations. Streamwise momentum recovery terms were computed from the CFD
+results over an entire cross-section of the domain at $x/D=1$. Values for
+transport due to the mean pressure gradient and turbulent fluctuations varied a
+lot between the two turbulence models. Both models, however, we able to at least
+qualitatively resolve the vertical velocity field, which will be crucial to
+predicting the performance of closely spaced CFTs.
 
 The effectiveness at predicting the mean velocity field gives credibility to the
 prospect of using the computed flow field to interpolate the experimental
