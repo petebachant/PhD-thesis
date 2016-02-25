@@ -219,7 +219,8 @@ of cells in the streamwise direction, $N_x$.
 Simulations were run using the \textit{pimpleDyMFoam} solver from the
 open-source finite volume CFD package \textit{OpenFOAM}, version 2.3.x.
 \textit{pimpleDyMFoam} uses a hybrid PISO-SIMPLE algorithm for pressure-velocity
-coupling and is compatible with dynamic meshes.
+coupling and is compatible with dynamic meshes. An Euler scheme was used to
+advance the simulation forward in time.
 
 
 \subsection{Initial and boundary conditions}
