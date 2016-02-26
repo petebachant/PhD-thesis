@@ -300,12 +300,13 @@ significantly overpredict turbine loading, which is likely due to their
 increased blockage ratio, unresolved blade end effects, and lack of blade
 support struts.
 
-The 3-D simulations fair better at predicting the experimental measurements. The Spalart--Allmaras model's mean power coefficient was 0.24 while the SST's was 0.33. 
-\todo[inline]{Get proper values for power coefficients.}
-The
-apparent overprediction of rotor drag coefficient could be an effect of the
-experimental procedure, where the ``tare drag'' from the turbine mounting
-structure was measured without a turbine installed, then subtracted in
+The 3-D simulations fair better at predicting the experimental measurements. The
+Spalart--Allmaras model's mean power coefficient was 0.24 while the SST's was
+0.33, \todo[inline]{Get proper values for power coefficients.}, which represent
+a XXX\% under- and XXX\% overprediction, respectively, compared with the
+experiments. The apparent overprediction of rotor drag coefficient could be an
+effect of the experimental procedure, where the ``tare drag'' from the turbine
+mounting structure was measured without a turbine installed, then subtracted in
 post-processing. Technically the local flow field will have changed, and hence
 the tare drag will change as well.
 
@@ -588,7 +589,7 @@ However, the  overprediction of power coefficient by the SST model highlights
 the level of technological and economic risk involved with CFD. That is to say,
 the SST model, despite being considered relatively trustworthy in these flow
 conditions, would overestimate power output by \todo[inline]{Get percentage
-    overprediction of C_P.}\%.
+    overprediction of $C_P$.}\%.
 
 Both the SST and SA models did a good job predicting the mean velocity field at
 one turbine diameter downstream, but the SST model was more effective at
