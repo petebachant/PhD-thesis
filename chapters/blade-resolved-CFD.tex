@@ -235,6 +235,11 @@ velocity condition. Pressure was held fixed at the outlet. Note that in 2-D the
 top and bottom boundary conditions are ``empty,'' which is an OpenFOAM
 convention to indicate two-dimensionality.
 
+Since the mesh was only refined next to the blade surfaces in order to resolve
+the boundary layer profile, no wall functions were used. However, wall functions
+were used for the other turbine surfaces, i.e., struts, hub, and shaft, and for
+the tank sidewalls, bottom, and top.
+
 
 \section{Model verification}
 
