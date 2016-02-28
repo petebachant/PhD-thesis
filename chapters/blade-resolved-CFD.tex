@@ -281,27 +281,29 @@ not common, though the final time step is comparable to others
 
 \section{Results}
 
-Turbine operation in all cases was simulated for 10 seconds. Computations for
-the 3-D cases were run on 192 processes (24 nodes $\times$ 8 cores each) and
-took on the order of 1,000 CPU hours per second of simulated time. The 2-D
-simulations were run on a single processor and took on the order of one CPU hour
-per second. Mean performance was calculated over the interval after the first
-full revolution onward.
+Turbine operation in all cases was simulated for 10 seconds, or approximately
+six rotor revolutions. Computations for the 3-D cases were run on 192 processes
+(24 nodes $\times$ 8 cores each) and took on the order of 1,000 CPU hours per
+second of simulated time. The 2-D simulations were run on a single processor and
+took on the order of one CPU hour per second.
 
 Flow statistics were calculated over the time interval spanning $5$--$10$
-seconds from time series downsampled to 50 Hz. It is assumed that the
-downsampling frequency is high enough above the blade passage frequency such
-that differences from the variance (for computing turbulence statistics) in the
-original velocity will be negligible.
+seconds, or approximately three rotor revolutions, from time series downsampled
+to 50 Hz. It is assumed that the downsampling frequency is high enough above the
+blade passage frequency such that differences from the variance (for computing
+turbulence statistics) in the original velocity will be negligible.
 
 
 \subsection{Performance prediction}
 
-Predictions for both the mean rotor power and drag coefficients are shown in
+Mean performance quantities---power and overall rotor drag coefficients---were
+calculated for the interval after two full rotor revolutions, beyond which
+values had reached an approximately periodic state. Predictions for both the
+mean rotor power and drag coefficients are shown in
 Figure~\ref{fig:br-cfd-perf-bar-chart}. In general, the 2-D CFD cases both
-significantly overpredict turbine loading, which is likely due to their
-increased blockage ratio, unresolved blade end effects, and lack of blade
-support struts.
+significantly overpredict turbine loading and therefore mechanical power output,
+which is likely due to their increased blockage ratio, unresolved blade end
+effects, and lack of blade support struts.
 
 The 3-D simulations fair better at predicting the experimental measurements. The
 Spalart--Allmaras model's mean power coefficient was 0.24 while the SST's was
