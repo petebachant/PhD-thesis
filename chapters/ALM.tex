@@ -261,8 +261,9 @@ The LB DS models can be summarized conceptually based on the following principle
 \section{Flow curvature corrections}
 
 The rotating blades of a cross-flow turbine will have varying angle of attack
-along their chords for any given azimuthal location due to the circular path.
-This makes it difficult to define a single angle of attack for use in the static
+along their chords for any given azimuthal location due to the circular
+path---producing so-called flow curvature effects~\cite{Migliore1980}. This
+makes it difficult to define a single angle of attack for use in the static
 coefficient lookup tables. Furthermore, this effect is more pronounced for high
 solidity ($c/R$) turbines. Two different flow curvature corrections were
 considered; one by Goude \cite{Goude2012} and one by Mandal and Burton
@@ -285,12 +286,15 @@ normalized blade attachment point along the chord, $c$ is the blade chord
 length, and $V_\mathrm{ref}$ is the reference flow velocity for calculating
 angle of attack.
 
-Note that we will be using vector objects and their associated arithmetic in
+Note that the code uses vector objects and their associated arithmetic in
 software (thanks to OpenFOAM's \texttt{vector} class), which means the first two
 terms in Equation~\ref{eq:Goude-curvature} are taken care of automatically given
 the inflow velocity, chord direction, and element velocity vectors. Therefore,
-the last two terms in Equation~\ref{eq:Goude-curvature} can be simply added to
-the scalar angle of attack.
+the last two terms in Equation~\ref{eq:Goude-curvature} was simply added to the
+scalar angle of attack. Note that for a cross-flow turbine, this correction
+effectively offsets the angle of attack, which therefore increases its magnitude
+on the upstream half of the blade path, and decreases its magnitude on the
+downstream half, where the angle of attack is negative.
 
 The Mandal--Burton flow curvature correction assumes that since the blade is
 encountering a curvilinear flow, it can be treated as having virtual camber.
@@ -312,10 +316,10 @@ An incidence correction factor
         \alpha / 2)} \right)
     \label{eq:Mandal-Burton-alpha-corr}
 \end{equation}
-is introduced and added to the uncorrected angle of attack. Note that $\alpha_c$
-is positive on the upstream half of the turbine rotation and negative on the
-downstream half, which is consistent with the Goude model. Both implementations
-are shown in Listing~\ref{lst:flow-curvature}.
+is introduced and added to the uncorrected angle of attack. Like the Goude
+model, $\alpha_c$ is positive on the upstream half of the turbine rotation and
+negative on the downstream half. Both implementations are shown in
+Listing~\ref{lst:flow-curvature}.
 
 \begin{lstlisting}[float,caption=Flow curvature model implementation.,label=lst:flow-curvature]
     if (flowCurvatureModelName_ == "Goude")
