@@ -21,7 +21,9 @@ figdirs = {"RVAT-baseline": join(expdir, "RVAT baseline", "Figures"),
                            "CFD popularity", "figures"),
            "CFT-vectors": join(gdrive, "Research", "CFT-vectors", "figures"),
            "NACAXX20-XFOIL": join(gdrive, "Research", "Foils", "Data",
-                                  "NACAXX20_QBlade", "figures")}
+                                  "NACAXX20_QBlade", "figures"),
+           "BR-CFD": join(gdrive, "Research", "Papers", "CFT wake modeling",
+                          "figures")}
 
 figlists = {"RVAT-baseline": ["perf.pdf", "meancontquiv.pdf", "kcont.pdf",
                               "meanu_2tsrs.pdf", "meanv_2tsrs.pdf",
@@ -41,7 +43,15 @@ figlists = {"RVAT-baseline": ["perf.pdf", "meancontquiv.pdf", "kcont.pdf",
             "CFT-vectors": ["cft-vectors.pdf", "alpha_deg_urel_geom.pdf"],
             "NACAXX20-XFOIL": ["all_foils_re_dep.pdf",
                                "foil_kinematics_ct.pdf",
-                               "cft_re_dep_foils.pdf"]}
+                               "cft_re_dep_foils.pdf"],
+            "BR-CFD": ["CAD.pdf", "2D_blade_mesh_closeup.png", "2D_mesh.png",
+                       "2D_vorticity_SA_964.png",
+                       "3D_vorticity_SA_964_10-threshold.png",
+                       "kcont_kOmegaSST.pdf", "kcont_SpalartAllmaras.pdf",
+                       "meancontquiv_kOmegaSST.pdf",
+                       "meancontquiv_SpalartAllmaras.pdf", "mom_bar_graph.pdf",
+                       "perf_bar_chart.pdf", "profiles.pdf",
+                       "verification.pdf"]}
 
 
 for name, figlist in figlists.items():
