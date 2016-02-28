@@ -654,6 +654,8 @@ to aid in parallelization.
 In this section results are presented for cases used to verify various
 sub-models, and finally test the ALM against the experimental targets.
 
+\todo[inline]{Discuss verification}
+
 
 \subsection{High solidity cross-flow turbine}
 
@@ -783,7 +785,9 @@ corrections to obtain accurate results.
 \end{figure}
 
 
-\subsection{Cross-flow turbine LES}
+\subsection{UNH-RVAT LES}
+
+\todo[inline]{Discuss mesh resolution determination.}
 
 Thanks to the ALM's general implementation as a source term, we are not tied to
 any specific turbulence model. This means that as turbulence modeling and
@@ -792,6 +796,23 @@ the future prospect of simulating large CFT arrays in great detail, a single CFT
 was placed in a large eddy simulation (LES). Turbine geometry was identical to
 the UNH-RVAT case, but the domain was extended to look at wake evolution father
 downstream.
+
+To perform the LES, the spatio-temporal grid was refined in order to resolve
+more of the turbulent energy spectrum. Pope \cite{Pope2000} recommends 10--20
+Kolmogorov length/time scales, which can be estimated as
+\begin{equation}
+    \eta = ( \nu^3 / \epsilon )^{1/4},
+    \label{eq:Kolmogorov-length}
+\end{equation}
+and
+\begin{equation}
+    \tau = ( \nu / \epsilon )^{1/2},
+    \label{eq:Kolmogorov-time}
+\end{equation}
+respectively. The dissipation $\epsilon$ was estimated as $\sigma_u^3/l$, where
+$\sigma_u$ is the velocity standard deviation, estimated from a low inflow
+turbulence intensity of XXX \todo[inline]{Estimate inflow turbulence}, and $l$,
+the turbulent length scale, was estimated to be 10 cm.
 
 \begin{figure}
     \caption{Snapshot of vorticity contours for the UNH-RVAT LES case.}
@@ -805,6 +826,9 @@ downstream.
 
 
 \section{Computational cost}
+
+\todo[inline]{Move this section to conclusions or top-level results section like
+    CFD chapter.}
 
 Compared to blade-resolved RANS, the ALM can solve a standalone turbine case on
 the order of CPU minutes per second of simulated time versus 1,000 CPU hours per
