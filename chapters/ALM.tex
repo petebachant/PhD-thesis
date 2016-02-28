@@ -123,21 +123,29 @@ Chapter~\ref{chap:CFD}'s blade-resolved CFD simulations.
 
 In the ALM, a turbine is a collection of actuator lines, which themselves are
 collections of actuator line elements (ALEs). The position of each ALE is a
-point in space indicating the quarter-chord location of the element
-cross-section. The element is further defined by its chord direction vector,
-chord length, span direction vector, span length, and velocity vector.
+point in space indicating its quarter-chord location. The element is further
+defined by its chord direction vector, chord length, span direction vector, span
+length, and velocity vector.
 
-Each element has a rectangular planform centered at the element position.
+An actuator line is created from defined geometry points, between which ALE
+parameters are interpolated linearly. This way, an actuator line can be defined
+by fewer geometry points than element locations. For example, an AL with
+straight planform boundaries---e.g. a straight or tapered wing---only needs two
+geometry points to be fully defined. Figure~\ref{fig:AL-geom} shows and example
+schematic of a tapered actuator line with three geometry points at the
+half-chord locations and six total elements. Note that the middle geometry point
+is technically redundant, but is shown for illustrative purposes. For actuator
+lines that represent bluff bodies, e.g., shafts, the chord mount offset is set
+to 1/4, such that the element location is centered along the line of geometry
+points.
 
-An actuator line is created from defined geometry points, which are not
-necessarily ALE locations, but rather where ALE parameters are interpolated
-from. This way, an actuator line can be defined by fewer geometry points than
-element locations. For example, an AL with straight planform boundaries---e.g. a
-straight or tapered wing---only needs two geometry points to be fully defined.
-See Figure~\ref{fig:AL-geom} for a schematic.
-
-\begin{figure}[ht]
-    \caption{Actuator line geometry definitions.}
+\begin{figure}
+    \centering
+    
+    \includegraphics[width=0.9\textwidth]{alm-geometry}
+    
+    \caption{Actuator line geometry. Filled circles indicate geometry points
+        whereas squares indicate actuator line element locations.}
     
     \label{fig:AL-geom}
 \end{figure}
