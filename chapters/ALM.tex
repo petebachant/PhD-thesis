@@ -175,29 +175,14 @@ blade-resolved CFD for a NACA 0012 foil and are not assumed to be universal.
 
 The EVM, despite showing robustness for its chosen validation case,
 unfortunately involves determination of two unknown tuning parameters. To avoid
-the additional work necessary to determine these, a new inflow velocity
-detection algorithm was sought based on the assumption that there is some point
-relative to the actuator line element location with a velocity vector close
-enough to that of the free stream, yet will still include the effect of
-induction when used in a turbine.
-
-Velocity at a prescribed point in the mesh is determined using OpenFOAM's
+the additional effort and uncertainty in determining these, the inflow velocity
+was sampled at the element quarter-chord location using OpenFOAM's
 \texttt{interpolationCellPoint} class, which provides a linear weighted
-interpolation using cell values. The description from the class documentation is
-quoted below:
-
-\begin{quote}
-    Given cell centre values and point (vertex) values decompose into
-    tetrahedra and linear interpolate within them.
-\end{quote}
-
-The inflow velocity detection point was determined by an iterative process,
-simulating a single actuator line in a steady flow---both with stationary and
-harmonic pitching motion. The ``correct'' angle of attack and relative velocity
-would therefore be equal to the geometric values. Note that this test was redone
-as additional sub-models were added, as these affect the flow and therefore the
-inflow velocity vector angle and magnitude. Results are shown later in this
-chapter after all such sub-models are described.
+interpolation using cell values. This algorithm helps keep the sampled velocity
+``smooth'' compared with using the cell values themselves, especially when
+elements are moving in space as they are in a turbine, since meshes will likely
+have a cell size on the same order as the chord length, and will move on the
+order of one cell length per time step.
 
 
 \section{Force projection}
