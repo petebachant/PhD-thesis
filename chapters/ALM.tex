@@ -203,20 +203,47 @@ The width of this function $\eta$ is controlled by a single parameter
 $\epsilon$, which is then multiplied by the actuator line element force and
 imparted on a cell with distance $| \vec{r} |$ from the actuator line element
 quarter chord location:
-
 \begin{equation}
     \eta = \frac{1}{\epsilon^3 \pi^{3/2}} \exp 
     \left[ - \left( \frac{| \vec{r} |}{\epsilon} \right)^2 \right].
     \label{eq:projection}
 \end{equation}
 
-Jha et al. \cite{Jha2014} provides guidelines for choosing a projection width.
+Jha \emph{et al.}~\cite{Jha2014} provides guidelines for choosing a projection
+width.
 
 Schito and Zasso \cite{Schito2014} found that a projection $\epsilon$ equal to
 the local mesh length was optimal.
 
+Martinez-Tossas and Meneveau \cite{Martinez-Tossas2015b} used a 2-D potential
+flow analysis to determine that the optimal projection width for a lifting
+surface is 14--25\% of the chord length. The width due to the wake caused by the
+foil drag force was recommended to be on the order of the momentum thickness.
+
+Using these guidelines, three length scales were determined: one relative to the
+chord length, one to the mesh size, and one to the momentum thickness due to
+drag force.
+
+For a bluff body or foil at large angle of attack, drag coefficients are $O(1)$.
+The momentum thickness $\theta$ is related to the drag coefficient by
+\cite{TennekesAndLumley}
+\begin{equation}
+    C_d = 2 \theta / l,
+    \label{eq:mom-thickness}
+\end{equation}
+where $l$ is a reference length, e.g., diameter for a cylinder or chord length
+for a foil.
+
+Local mesh length was determined as 
+\begin{equation}
+    \Delta r = 2C_\mathrm{mesh} \sqrt[3]{V_\mathrm{cell}},
+\end{equation}
+where $V_\mathrm{cell}$ is the volume of the cell containing the actuator line
+element, and $C_\mathrm{mesh}$, by default set to 2.0, is a factor to
+accommodate cells of non-unity aspect ratio.
+
 Ultimately, an adaptive $\epsilon$ was chosen such that it would be either equal
-to $c/2$, or twice the cube root of the volume of the containing cell in the
+to $c/4$, or twice the cube root of the volume of the containing cell in the
 mesh (roughly equivalent to the $2\Delta r$ recommended by Troldborg
 \cite{Troldborg2008}), whichever was larger. This way, fine meshes could benefit
 from the increased accuracy of more concentrated momentum sources, and coarse
