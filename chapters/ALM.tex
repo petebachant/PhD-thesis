@@ -499,13 +499,14 @@ Figure~\ref{fig:Re-corrections} shows the results of the chosen Reynolds number
 correction compared with foil data taken at multiple $Re$.
 
 \begin{figure}
-\caption{Reynolds number corrections compared with foil data acquired at
-multiple Reynolds numbers.}
-\label{fig:Re-corrections}
+    \caption{Reynolds number corrections compared with foil data acquired at
+        multiple Reynolds numbers.}
+
+    \label{fig:Re-corrections}
 \end{figure}
 
 Note that these Reynolds number corrections are applied before the dynamic stall
-model, such that the changes in e.g. the Kirchoff flow equation fit parameters
+model, such that the changes in e.g., the Kirchoff flow equation fit parameters
 $S_1$ and $S_2$ will be changed automatically as well.
 
 
@@ -676,7 +677,13 @@ moment coefficient data, these were taken from the same database's $Re_c = 3.6
 The UNH-RVAT was chosen as a high solidity CFT case for model validation, thanks
 to our earlier experimental and numerical investigations.
 
-\todo[inline]{Describe end effects model settings for RVAT.}
+For this case, the lifting line based end effects model was active, as was the
+Leishman--Beddoes dynamic stall model modified by Sheng \emph{et al.}
+\cite{Sheng2008}, the added mass model from Strickland \cite{Strickland1981},
+the flow curvature model from Goude \cite{Goude2012}, and the foil coefficient
+Reynolds number effects model of Yamauchi and Johnston \cite{Yamauchi1983}. All
+these models worked in concert to match the experimental results as well as
+possible.
 
 
 \subsubsection{Performance prediction}
