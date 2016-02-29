@@ -656,8 +656,16 @@ sub-models, and finally test the ALM against the experimental targets.
 
 \todo[inline]{Discuss verification}
 
+Bot the UNH-RVAT and RM2 turbines were simulated using a $k$--$\epsilon$
+Reynolds-averaged Navier--Stokes (RANS) turbulence model, using a domain
+identical in size to that used in Chapter~\ref{chap:CFD}.
 
-\subsection{High solidity cross-flow turbine}
+The UNH-RVAT was then modeled using the Smagorinsky large-eddy simulation (LES)
+turbulence model \cite{Smagorinsky1963} in a domain that was extended slightly
+to allow for further wake development.
+
+
+\subsection{UNH-RVAT RANS}
 
 The UNH-RVAT was chosen as a high solidity CFT case for model validation, thanks
 to our earlier experimental and numerical investigations.
@@ -724,6 +732,19 @@ turbine---caused by dynamic stall---is missing.
     \label{fig:RVAT-ALM-kcont}
 \end{figure}
 
+Profiles of mean streamwise velocity and turbulence kinetic energy are shown in
+Figure~\ref{fig:RVAT-ALM-profiles}.
+
+\begin{figure}
+    \centering
+    
+    \caption{Mean streamwise velocity (left) and turbulence kinetic energy
+        (right) profiles at $z/H=0$ for the UNH-RVAT ALM.}
+    
+    \label{fig:RVAT-ALM-profiles}
+\end{figure}
+
+
 Weighted averages for the momentum recovery terms are tallied in
 Figure~\ref{fig:RVAT-ALM-recovery}.
 
@@ -735,12 +756,18 @@ Figure~\ref{fig:RVAT-ALM-recovery}.
 \end{figure}
 
 
-\subsection{Low solidity cross-flow turbine}
+\subsection{RM2 RANS}
 
 The RM2 low solidity cross-flow turbine is another good validation case given
-its differences from the UNH-RVAT. 
+its differences from the UNH-RVAT.
 
-\todo[inline]{Describe end effects model settings for RM2.}
+The end effects model was deactivated as it was observed to reduce the mean
+power coefficient too drastically. The flow curvature model was also not used
+since it caused asymmetry in the mean flow field that did not match as well with
+experimental measurements.
+
+\todo[inline]{Describe end effects model settings for
+    RM2.}
 
 Figure~\ref{fig:RM2-ALM-perf-curves} presents
 the performance curves computed by the ALM, and those from the tow tank
@@ -787,7 +814,14 @@ corrections to obtain accurate results.
 
 \subsection{UNH-RVAT LES}
 
-\todo[inline]{Discuss mesh resolution determination.}
+Since this was the most interesting wake structure...
+
+Since the computational cost of LES is significantly higher than RANS,
+verification was not performed. Instead, mesh resolution was chosen relative to
+similar studies of turbine wake ALM. If the studies surveyed, the mesh
+resolution ranged from 18--64 points per turbine diameter. The mesh here was set
+accordingly by using a 16 point per meter base mesh, and refining twice in a
+region containing the turbine.
 
 Thanks to the ALM's general implementation as a source term, we are not tied to
 any specific turbulence model. This means that as turbulence modeling and
@@ -813,6 +847,9 @@ respectively. The dissipation $\epsilon$ was estimated as $\sigma_u^3/l$, where
 $\sigma_u$ is the velocity standard deviation, estimated from a low inflow
 turbulence intensity of XXX \todo[inline]{Estimate inflow turbulence}, and $l$,
 the turbulent length scale, was estimated to be 10 cm.
+
+\todo[inline]{Add Smagorinsky model details.}
+The Smagorinsky model was used.
 
 \begin{figure}
     \caption{Snapshot of vorticity contours for the UNH-RVAT LES case.}
