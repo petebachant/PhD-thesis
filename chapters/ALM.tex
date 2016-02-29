@@ -510,66 +510,6 @@ model, such that the changes in e.g., the Kirchoff flow equation fit parameters
 $S_1$ and $S_2$ will be changed automatically as well.
 
 
-\section{Effects on turbulence modeling}
-
-Conventional blade element simulations use either momentum or vortex methods to
-solve for the incident flow field, and these methods do not model the effects of
-turbulence. With the actuator line model, there is the opportunity to improve
-the physical realism by not only adding a source to the momentum equations, but
-also to the turbulence model equations.
-
-James et al. implemented an actuator disk model in a RANS model with a
-$k$--$\epsilon$ closure, which ``injected'' $k$ and $\epsilon$ from the actuator
-disks to more realistically simulate the turbine's turbulent wake and enhance
-momentum transport \cite{James2010}. However, to the author's knowledge
-injecting turbulence quantities has never been done in an actuator line model.
-
-In this case, we seek to inject turbulence dependent on blade loading, both
-for the $k$--$\epsilon$ RANS model and the
-\todo[inline]{Pick LES model to work with.}
-
-Turbulence sources were calibrated by simulating a 2-D symmetrical NACA airfoil
-using the $k$--$\omega$ SST turbulence model, given its strength at predicting
-stall. We seek a turbulence injection rate as a function of drag coefficient, as
-this should be a good indicator of flow separation, where production of
-turbulence will be greatly increased.
-
-An automated OpenFOAM case was developed to perform the turbulence injection
-calibration. This case automatically created a \texttt{blockMeshDict} for a
-given NACA foil at specified angle of attack, ran the simulation until
-convergence, then sampled and logged the lift, drag, moment coefficients, along
-with the maximum values and locations of $k$, $\omega$, and $\epsilon$ 1.25
-chords downstream of the leading edge.
-
-\begin{figure}[ht]
-    \centering
-    
-    \caption{2-D NACA 0021 foil mesh at 20 degrees angle of attack.}
-    
-    \label{fig:NACA-foil-mesh}
-\end{figure}
-
-
-\begin{figure}[ht]
-    \centering
-    
-    \caption{Turbulence kinetic energy computed around the 2-D NACA 0021 foil at
-        20 degrees angle of attack.}
-    
-    \label{fig:NACA-foil-k}
-\end{figure}
-
-
-\begin{figure}[ht]
-    \centering
-    
-    \caption{Simulated drag coefficient and turbulence quantities plotted versus
-        angle of attack for a 2-D NACA 0021.}
-    
-    \label{fig:NACA-foil-turbulence}
-\end{figure}
-
-
 \section{Software implementation}
 
 The ALM was written as an extension library for the OpenFOAM free and
@@ -890,3 +830,65 @@ performance data, one possible strategy for improving accuracy is to generate
 foil coefficient databases with more dimensions, e.g., blade pitch rate or local
 turbulence levels. It may also be possible to modify the dynamic loading models
 based on insight from the body-fitted grid simulations.
+
+
+\section{Future work}
+
+\subsection{Turbulence injection}
+
+Conventional blade element simulations use either momentum or vortex methods to
+solve for the incident flow field, and these methods do not model the effects of
+turbulence. With the actuator line model, there is the opportunity to improve
+the physical realism by not only adding a source to the momentum equations, but
+also to the turbulence model equations.
+
+James et al. implemented an actuator disk model in a RANS model with a
+$k$--$\epsilon$ closure, which ``injected'' $k$ and $\epsilon$ from the actuator
+disks to more realistically simulate the turbine's turbulent wake and enhance
+momentum transport \cite{James2010}. However, to the author's knowledge
+injecting turbulence quantities has never been done in an actuator line model.
+
+In this case, we seek to inject turbulence dependent on blade loading, both
+for the $k$--$\epsilon$ RANS model and the
+\todo[inline]{Pick LES model to work with.}
+
+Turbulence sources were calibrated by simulating a 2-D symmetrical NACA airfoil
+using the $k$--$\omega$ SST turbulence model, given its strength at predicting
+stall. We seek a turbulence injection rate as a function of drag coefficient, as
+this should be a good indicator of flow separation, where production of
+turbulence will be greatly increased.
+
+An automated OpenFOAM case was developed to perform the turbulence injection
+calibration. This case automatically created a \texttt{blockMeshDict} for a
+given NACA foil at specified angle of attack, ran the simulation until
+convergence, then sampled and logged the lift, drag, moment coefficients, along
+with the maximum values and locations of $k$, $\omega$, and $\epsilon$ 1.25
+chords downstream of the leading edge.
+
+\begin{figure}[ht]
+    \centering
+    
+    \caption{2-D NACA 0021 foil mesh at 20 degrees angle of attack.}
+    
+    \label{fig:NACA-foil-mesh}
+\end{figure}
+
+
+\begin{figure}[ht]
+    \centering
+    
+    \caption{Turbulence kinetic energy computed around the 2-D NACA 0021 foil at
+        20 degrees angle of attack.}
+    
+    \label{fig:NACA-foil-k}
+\end{figure}
+
+
+\begin{figure}[ht]
+    \centering
+    
+    \caption{Simulated drag coefficient and turbulence quantities plotted versus
+        angle of attack for a 2-D NACA 0021.}
+    
+    \label{fig:NACA-foil-turbulence}
+\end{figure}
