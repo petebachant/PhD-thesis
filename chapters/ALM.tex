@@ -818,10 +818,14 @@ Since this was the most interesting wake structure...
 
 Since the computational cost of LES is significantly higher than RANS,
 verification was not performed. Instead, mesh resolution was chosen relative to
-similar studies of turbine wake ALM. If the studies surveyed, the mesh
+similar studies of turbine wake ALM. Of the studies surveyed
+\cite{Shamsoddin2014,Archer2013,Martinez-Tossas2015a,Troldborg2007}, the mesh
 resolution ranged from 18--64 points per turbine diameter. The mesh here was set
 accordingly by using a 16 point per meter base mesh, and refining twice in a
-region containing the turbine.
+region containing the turbine to produce a 64 point per turbine diameter/height
+resolution. The solver was run with a 0.002 second time step, which is
+significantly within the limit described by \cite{Martinez-Tossas2015}, where an
+actuator line element may not pass through more than one cell per time step.
 
 Thanks to the ALM's general implementation as a source term, we are not tied to
 any specific turbulence model. This means that as turbulence modeling and
