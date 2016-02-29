@@ -664,6 +664,12 @@ The UNH-RVAT was then modeled using the Smagorinsky large-eddy simulation (LES)
 turbulence model \cite{Smagorinsky1963} in a domain that was extended slightly
 to allow for further wake development.
 
+The same foil coefficient data were used for all three simulations---that for a
+NACA 0021 taken at $Re_c = 1.6 \times 10^5$ by Sheldahl and Klimas
+\cite{Sheldahl1981}. Since this particular dataset did not include section
+moment coefficient data, these were taken from the same database's $Re_c = 3.6
+\times 10^5$ dataset.
+
 
 \subsection{UNH-RVAT RANS}
 
@@ -766,8 +772,7 @@ power coefficient too drastically. The flow curvature model was also not used
 since it caused asymmetry in the mean flow field that did not match as well with
 experimental measurements.
 
-\todo[inline]{Describe end effects model settings for
-    RM2.}
+\todo[inline]{Describe end effects model settings for RM2.}
 
 Figure~\ref{fig:RM2-ALM-perf-curves} presents
 the performance curves computed by the ALM, and those from the tow tank
