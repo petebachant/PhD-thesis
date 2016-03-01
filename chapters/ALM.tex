@@ -767,6 +767,17 @@ downstream.
 
 \todo[inline]{Add meancontquiv for RVAT LES case?}
 
+
+The planar weighted sum of streamwise momentum recovery terms was computed in
+the same was as for the RANS cases with the exception of the turbulent transport
+term, which for the LES was computed from the $x$-component of the divergence of
+the Reynolds stress tensor:
+\begin{equation}
+    \text{Turb. trans.} = -\frac{\partial}{\partial x_j}
+    \overline{u^\prime u^\prime_j},
+\end{equation}
+where $U$ and $u$ (without subscripts) indicate streamwise components.
+
 \todo[inline]{Add recovery terms for RVAT LES case?}
 
 
