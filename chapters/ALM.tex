@@ -7,45 +7,14 @@ it must be performed in three dimensions, which will preclude its use for array
 analysis until the availability of computational power increases sufficiently.
 It is therefore necessary to explore simpler models.
 
-To recap, the overarching goal of this work was to find or develop a model for
-predicting the performance of arrays of turbines, with a focus on the less
-common cross-flow concept. The requirements for this model were:
-
-\begin{enumerate}
-    \item Must be able to obtain results for a small array of turbines on a
-    typical PC using simulation time on the order of hours per operating
-    condition.\label{req:solution-time}
-    
-    \item Should reasonably match experimental near-wake results for both high
-    and low solidity cross-flow turbines with respect to the mean velocity and
-    turbulence kinetic energy structure, as well as the relative strengths of
-    wake recovery mechanisms. This will ensure our forcing model is a good wake
-    generator, and the flow evolution can then be predicted by an accurate flow
-    solver and turbulence model.\label{req:wake}
-    
-    \item Should be able to predict the average performance of a standalone
-    turbine to within the accuracy established by blade-resolved 3-D CFD or
-    blade element methods.
-    
-    \item Should match experimental results for the augmented performance of
-    turbines in proximity to each other. This is similar to
-    requirement~\ref{req:wake}, though from the perspective of turbine's
-    response to the flow rather than the flow's response to the turbine.
-    
-    \item Software should be open-source and not rely on closed-source software,
-    if possible.
-    
-    \item Must be cheaper than physical models for a 3 turbine array. 
-\end{enumerate}
-
-With respect to requirement~\ref{req:solution-time}, fast solution times could
-be obtained by both momentum and vortex models. However, their poor performance
-for high solidity turbines precludes their use \cite{Joo2015}. Furthermore, it
-is theoretically impossible for a potential flow vortex method to properly
-realize the wake dynamics (requirement~\ref{req:wake})---most importantly the
-turbulent transport, which has been shown in both experiment and blade-resolved
-CFD to be on the same order of magnitude as the vertical advection. We are
-therefore left with Navier--Stokes models.
+Fast solution times could be obtained by both momentum and vortex models.
+However, their poor performance for high solidity turbines precludes their use
+\cite{Joo2015}. Furthermore, it is theoretically impossible for a potential flow
+vortex method to properly realize the wake dynamics
+(requirement~\ref{req:wake})---most importantly the turbulent transport, which
+has been shown in both experiment and blade-resolved CFD to be on the same order
+of magnitude as the vertical advection. We are therefore left with
+Navier--Stokes models.
 
 As we have also seen in Chapter~\ref{chap:CFD}, 2-D blade-resolved CFD could
 fulfill solution time requirements, but will never capture vertical advection,
@@ -806,8 +775,6 @@ is occurring) is not captured by the ALM.
 
 In this chapter the actuator line model has been developed and tested against
 the cross-flow turbine validation datasets acquired in previous chapters.
-
-With respect to the model's goals...
 
 Despite a small loss in accuracy, the ALM can do a reasonable job predicting the
 performance and wake of a cross-flow turbine. It is therefore expected that this
