@@ -73,14 +73,12 @@ costs of simulating turbines by negating the need for complicated meshing, and
 the subsequent boundary layer resolution.
 
 The actuator line model, originally developed by Sorensen and Shen
-\cite{Sorensen2002}, is based on the classical blade element theory of ???
-\todo[inline]{Find citation for creator of blade element theory}
-combined with a Navier--Stokes description of the flow field.
-The ALM treats turbine blades as lines of blade elements, for which
-2-D profile lift and drag coefficients are given. For each blade element,
-relative flow velocity and angle of attack are computed by adding the vectors
-of relative blade motion and the local fluid velocity. The blade lift and drag
-forces are calculated as
+\cite{Sorensen2002}, is based on the classical blade element theory combined
+with a Navier--Stokes description of the flow field. The ALM treats turbine
+blades as lines of blade elements, for which 2-D profile lift and drag
+coefficients are given. For each blade element, relative flow velocity and angle
+of attack are computed by adding the vectors of relative blade motion and the
+local fluid velocity. The blade lift and drag forces are calculated as
 \begin{equation}
     F_l = \frac{1}{2} \rho A_\mathrm{elem} C_l |\vec{U}_\mathrm{rel}|^2,
 \end{equation}
