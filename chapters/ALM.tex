@@ -27,26 +27,27 @@ However, since the flow is governed by the Laplace equation, nonlinear effects
 such as the turbulent transport will not be included, which we have determined
 in experiments to be the same order of magnitude as the mean vertical advection.
 
-We are therefore left with Navier--Stokes models.
+It is therefore desirable to retain a Navier--Stokes description of the flow
+field and use an actuator-type model for parameterizing the turbine loading,
+which dramatically drives down computational expense by removing the need for
+complicated meshes with many fine cells to resolve the boundary layers near the
+blade surfaces. As shown in Chapter~\ref{chap:RVAT-baseline}, the conventional
+uniform actuator disk is not a good candidate for a cross-flow turbine wake
+generator, never mind the fact that it does not typically compute performance
+predictions. There are then two actuator methods that use blade element theory
+to compute blade loading and therefore generate a wake that more closely
+resembles that of an actual turbine. These are the actuator cylinder or
+swept-surface model (ASSM) and the actuator line model. The ASSM solves for the
+average blade loading along its path and applies this as a constant body force
+term in the momentum equation. The ALM takes a similar approach but is an
+unsteady method, resolving the blade element locations in time.
 
-As we have also seen in Chapter~\ref{chap:CFD}, 2-D blade-resolved CFD could
-fulfill solution time requirements, but will never capture vertical advection,
-meaning it will also fail to model the performance in an array. Furthermore, 2-D
-CFD would not allow for mixed-turbine arrays (AFTs and CFTs). 3-D CFD on the
-other hand, would allow for mixed-turbine arrays, could be accurate enough, but
-the processing power required would not meet
-requirement~\ref{req:solution-time}.
-
-We are then left with actuator-type methods inside Navier--Stokes solvers. As
-shown in Chapter~\ref{chap:RVAT-baseline}, the conventional uniform actuator
-disk is not a good candidate for a cross-flow turbine wake generator, never mind
-the fact that it does not typically compute performance predictions. There are
-modified verssions---such as the actuator cylinder---which have been developed
-for CFTs \cite{Shamsoddin2014}, though their effectiveness is unknown for 3-D
-cases. Finally, the actuator line model (ALM) provides a potential candidate for
-meeting all requirements, with the prospect of leveraging continued progress on
-improved Navier--Stokes turbulence models. Thus the ALM was chosen for the
-present work.
+The ASSM and ALM were implemented to model a very low Reynolds number 2-D
+cross-flow turbine experiment in a flume using large-eddy simulation
+(LES)~\cite{Shamsoddin2014}. Performance predictions for this case were not
+reported, but the ALM was shown to be more effective at postdicting the wake
+characteristics measured in the experiments by Brochier \emph{et
+    al.}~\cite{Brochier1986}.
 
 After getting a sense for how two different turbines perform, and how they
 affect the flow in which they are placed, the goal is to now develop a way to
