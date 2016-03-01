@@ -38,10 +38,20 @@ generator, never mind the fact that it does not typically compute performance
 predictions. There are then two actuator methods that use blade element theory
 to compute blade loading and therefore generate a wake that more closely
 resembles that of an actual turbine. These are the actuator cylinder or
-swept-surface model (ASSM) and the actuator line model. The ASSM solves for the
-average blade loading along its path and applies this as a constant body force
-term in the momentum equation. The ALM takes a similar approach but is an
+swept-surface model (ASSM) and the actuator line model (ALM). The ASSM solves
+for the average blade loading along its path and applies this as a constant body
+force term in the momentum equation. The ALM takes a similar approach but is an
 unsteady method, resolving the blade element locations in time.
+
+The ALM, originally developed by Sorensen and Shen \cite{Sorensen2002}, has
+become popular for modeling axial-flow or horizontal-axis turbines, and has been
+shown in blind tests to be competitive with blade-resolved
+CFD~\cite{Krogstad2013, Pierella2014}. The ALM combined with large-eddy
+simulation has become the state-of-the-art for modeling entire wind
+farms~\cite{Archer2013, Churchfield2012, Sorensen2015, Fleming2013,
+    Fleming2014}. Like other blade element techniques, the effectiveness of the ALM
+for AFTs is in part due to the quasi-steady nature of the flow in the blade
+reference frame, and the relatively rare occurrence of stall.
 
 The ASSM and ALM were implemented to model a very low Reynolds number 2-D
 cross-flow turbine experiment in a flume using large-eddy simulation
@@ -56,16 +66,14 @@ predictions, but with reduced computational expense. Here we will develop and
 evaluate its effectiveness for cross-flow turbines.
 
 
-\section{Theory and background}
+\section{Theory}
 
-The actuator line model, originally developed by Sorensen and Shen
-\cite{Sorensen2002} for modeling axial-flow or horizontal-axis turbines, is
-based on the classical blade element theory combined with a Navier--Stokes
-description of the flow field. The ALM treats turbine blades as lines of blade
-elements, for which 2-D profile lift and drag coefficients are given. For each
-blade element, relative flow velocity and angle of attack are computed by adding
-the vectors of relative blade motion and the local fluid velocity. The blade
-lift and drag forces are calculated as
+The actuator line model is based on the classical blade element theory combined
+with a Navier--Stokes description of the flow field. The ALM treats turbine
+blades as lines of blade elements, for which 2-D profile lift and drag
+coefficients are given. For each blade element, relative flow velocity and angle
+of attack are computed by adding the vectors of relative blade motion and the
+local fluid velocity. The blade lift and drag forces are calculated as
 \begin{equation}
     F_l = \frac{1}{2} \rho A_\mathrm{elem} C_l |\vec{U}_\mathrm{rel}|^2,
 \end{equation}
@@ -79,7 +87,13 @@ relative velocity, and $C_l$ and $C_d$ are the sectional lift and drag
 coefficients, chosen from a table per the local angle of attack. The forces are
 then projected onto the rotor coordinate system to calculate torque, overall
 drag, etc. Forces from the turbine shaft and blade support struts are computed
-in a similar way.
+in a similar way. After the force on the actuator lines from the flow is
+computed, it is then added to the Navier--Stokes equations as a body force or
+momentum source (per unit density, assuming incompressible flow):
+\begin{equation}
+    \frac{\mathrm{D} \vec{u}}{\mathrm{D} t} = - \frac{1}{\rho} \nabla p + \nu
+    \nabla^2 \vec{u} + F_\mathrm{turbine}.
+\end{equation}
 
 The use of static foil data necessitates corrections for various dynamic effects
 induced by the actuator lines rotating within the flow field. Dynamic stall may
