@@ -95,17 +95,6 @@ momentum source (per unit density, assuming incompressible flow):
     \nabla^2 \vec{u} + F_\mathrm{turbine}.
 \end{equation}
 
-The use of static foil data necessitates corrections for various dynamic effects
-induced by the actuator lines rotating within the flow field. Dynamic stall may
-be encountered when the blade angle of attack increases past a certain
-threshold, and is characterized by an initial increase in lift as a vortex is
-shed from the foil's leading edge, after which a drop in lift occurs as the
-vortex is advected downstream. Dynamic stall has been shown to be a significant
-positive contributor to performance in CFTs \cite{Para2002, Urbina2013},
-therefore an accurate model is key. Other dynamic loading considerations stem
-from the blade rotation and acceleration---so-called pitching circulation, flow
-curvature, and added-mass effects.
-
 
 \section{Model inputs}
 
@@ -251,7 +240,20 @@ meshes would be protected from numerical instability.
 \todo[inline]{Add final width of Gaussian projection}
 
 
-\section{Unsteady aerodynamics and dynamic stall}
+\section{Unsteady effects}
+
+\todo[inline]{Clean up this section a lot.}
+
+The use of static foil data necessitates corrections for various dynamic effects
+induced by the actuator lines rotating within the flow field. Dynamic stall may
+be encountered when the blade angle of attack increases past a certain
+threshold, and is characterized by an initial increase in lift as a vortex is
+shed from the foil's leading edge, after which a drop in lift occurs as the
+vortex is advected downstream. Dynamic stall has been shown to be a significant
+positive contributor to performance in CFTs \cite{Para2002, Urbina2013},
+therefore an accurate model is key. Other dynamic loading considerations stem
+from the blade rotation and acceleration---so-called pitching circulation, flow
+curvature, and added-mass effects.
 
 In the context of a turbine---especially a cross-flow turbine---the actuator
 lines will encounter unsteady conditions, both in their angle of attack and
@@ -261,17 +263,17 @@ attack encountered by a CFT blade will often be high enough to encounter dynamic
 stall (DS). It is therefore necessary to model both unsteady attached and
 detached flow to obtain accurate loading predictions.
 
-\todo[inline]{Discuss Gormont model}
+\todo[inline]{Discuss Gormont/MIT model and why it wasn't used here.}
 
 Leishman and Beddoes (LB) developed a semi-empirical model for unsteady
 aerodynamics and dynamic stall, which is derived from the phenomenology of the
 physics instead rather than pure empiricism \cite{Leishman1989}. Beddoes then
-updated the model to the so-called ``3G'' version \cite{Beddoes1993}. Three
-variations of this dynamic stall model were tested for cross-flow turbines by
-Dyachuk et al. \cite{Dyachuk2014}, with the conclusion that the Sheng et al. low
-Mach number modified version \cite{Sheng2008} provided the best results.
-Nevertheless, all three models will be implemented and tested in a similar
-fashion.
+updated the model to the so-called third generation or ``3G'' version
+\cite{Beddoes1993}. Three variations of this dynamic stall model were tested for
+cross-flow turbines by Dyachuk et al. \cite{Dyachuk2014}, with the conclusion
+that the Sheng et al. low Mach number modified version \cite{Sheng2008} provided
+the best results. Nevertheless, all three models will be implemented and tested
+in a similar fashion.
 
 The LB DS models can be summarized conceptually based on the following principles:
 \begin{itemize}
@@ -290,6 +292,9 @@ The LB DS models can be summarized conceptually based on the following principle
     overshoot and subsequent undershoot in lift before returning to an attached
     flow condition.
 \end{itemize}
+
+
+\subsection{Added mass}
 
 
 \section{Flow curvature corrections}
