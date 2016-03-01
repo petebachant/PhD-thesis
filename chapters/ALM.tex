@@ -1,20 +1,33 @@
 \chapter{Development and evaluation of an actuator line model for cross-flow
     turbines}\label{chap:ALM}
 
-Despite its tentative effectiveness for predicting the performance and wake of a
-single turbine, blade-resolved CFD presents a huge computational expense since
-it must be performed in three dimensions, which will preclude its use for array
-analysis until the availability of computational power increases sufficiently.
-It is therefore necessary to explore simpler models.
+Despite its apparent---but not completely certain---effectiveness for predicting
+the performance and wake of a single turbine, blade-resolved CFD presents a huge
+computational expense since it must be performed in three dimensions, which will
+preclude its use for array analysis until the availability of computing power
+increases sufficiently. It is therefore necessary to explore simpler models that
+can predict the turbine loading and flow field with acceptable fidelity, but
+that are economical enough to not require high performance computing, at least
+for individual devices.
 
-Fast solution times could be obtained by both momentum and vortex models.
-However, their poor performance for high solidity turbines precludes their use
-\cite{Joo2015}. Furthermore, it is theoretically impossible for a potential flow
-vortex method to properly realize the wake dynamics
-(requirement~\ref{req:wake})---most importantly the turbulent transport, which
-has been shown in both experiment and blade-resolved CFD to be on the same order
-of magnitude as the vertical advection. We are therefore left with
-Navier--Stokes models.
+Very fast solution times can be obtained with blade element momentum (BEM)
+models, such as the double multiple streamtube (DMST) approached developed by
+Paraschivoiu~\cite{Para1988}. However, their poor performance for high solidity
+turbines \cite{Joo2015}, makes them less attractive, particular for marine
+hydrokinetic applications. Their description of the flow field is very crude as
+well, simply computing the momemtum contained within discretized streamtubes,
+which cannot resolve any of the complicated flow structures shed by the rotor.
+
+Blade element based vortex line methods can be computationally
+feasible---ranging from an expense close to BEM up to that of 2-D blade-resolved
+CFD. The cost is a function of the number of vortex elements, which for free
+vortex methods increases at each time step, slowing down the calculation as it
+marches forward in time. Vortex methods can resolve more flow details than BEM.
+However, since the flow is governed by the Laplace equation, nonlinear effects
+such as the turbulent transport will not be included, which we have determined
+in experiments to be the same order of magnitude as the mean vertical advection.
+
+We are therefore left with Navier--Stokes models.
 
 As we have also seen in Chapter~\ref{chap:CFD}, 2-D blade-resolved CFD could
 fulfill solution time requirements, but will never capture vertical advection,
