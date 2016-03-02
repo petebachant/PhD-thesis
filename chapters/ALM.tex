@@ -296,6 +296,45 @@ The LB DS models can be summarized conceptually based on the following principle
 
 \subsection{Added mass}
 
+A correction for added mass effects, or the effects due to accelerating the
+fluid, was taken from Strickland \emph{et al.}~\cite{Strickland1981}, which was
+derived by considering a pitching flat plate in potential flow. In the blade
+element coordinate system, the normal and chordwise (pointing from trailing to
+leading edge, which is opposite the $x$-direction used by Strickland \emph{et
+    al.}) coefficients due to added mass are
+\begin{equation}
+    C_{n_\mathrm{AM}} = -\frac{\pi c \dot{U_n}}{8 | U_\mathrm{rel} |^2}, 
+\end{equation}
+and
+\begin{equation}
+    C_{c_\mathrm{AM}} = \frac{\pi c \dot{\alpha} U_n }{8 | U_\mathrm{rel} |^2}, 
+\end{equation}
+respectively, where $U_n$ is the normal component of the relative velocity, and
+dotted variables indicate time derivatives, which were calculated using a simple
+first order backward finite difference. Similarly, the quarter-chord moment
+coefficient due to added mass was calculated as
+\begin{equation}
+    C_{m_\mathrm{AM}} = -\frac{C_{n_\mathrm{AM}}}{4} 
+        - \frac{U_n U_c}{8 | U_\mathrm{rel} |^2},
+\end{equation}
+where $U_c$ is the chordwise component of relative velocity. Note that the
+direction of positive moment is ``nose-up,'' which is opposite that used by
+Strickland \emph{et al.}.
+
+The normal and chordwise added mass coefficients translate to lift and drag
+coefficients by
+\begin{equation}
+    C_{l_\mathrm{AM}} = C_{n_\mathrm{AM}} \cos \alpha + C_{c_\mathrm{AM}} \sin
+    \alpha,
+\end{equation}
+and
+\begin{equation}
+    C_{d_\mathrm{AM}} = C_{n_\mathrm{AM}} \sin \alpha - C_{c_\mathrm{AM}} \cos
+    \alpha,
+\end{equation}
+respectively. The added mass coefficients were then added to those calculated by
+the dynamic stall model.
+
 
 \section{Flow curvature corrections}
 
