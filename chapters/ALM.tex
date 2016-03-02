@@ -911,6 +911,11 @@ stall. We seek a turbulence injection rate as a function of drag coefficient, as
 this should be a good indicator of flow separation, where production of
 turbulence will be greatly increased.
 
+The goal here was not necessarily to find injection rates that would correspond
+to experiments, but rather those that would occur in a blade-resolved RANS case,
+though our results from Chapter~\ref{chap:CFD} indicate that for the
+$k$--$\omega$ RANS model these may be equivalent.
+
 An automated OpenFOAM case was developed to perform the turbulence injection
 calibration. This case automatically created a \texttt{blockMeshDict} for a
 given NACA foil at specified angle of attack, ran the simulation until
