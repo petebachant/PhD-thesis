@@ -910,11 +910,11 @@ has never been done in an actuator line model.
 
 The primary goal was to develop a simple model that use blade loading to compute
 turbulence values to inject locally into the $k$--$\epsilon$ RANS model scalar
-fields. Initial targets for local turbulence levels were observed by simulating
-a 2-D symmetrical NACA 0021 airfoil using the $k$--$\omega$ SST turbulence
-model, given its favorable reputation for predicting stall. The model results
-for the specific dissipation $\omega$ were converted to $\epsilon$ by
-\cite{Wilcox1994}
+fields. Initial targets for local turbulence levels were established by
+simulating a 2-D symmetrical NACA 0021 airfoil at $Re_c = 2 \times 10^5$ using
+the $k$--$\omega$ SST turbulence model, given its favorable reputation for
+predicting stall. The model results for the specific dissipation $\omega$ were
+converted to $\epsilon$ by \cite{Wilcox1994}
 \begin{equation}
     \epsilon = \beta^* \frac{k}{\omega c}.
 \end{equation}
