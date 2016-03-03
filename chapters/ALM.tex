@@ -903,35 +903,35 @@ turbulence. With the actuator line model, there is the opportunity to improve
 the physical realism by not only adding a source to the momentum equations, but
 also to the turbulence model equations.
 
-James et al. implemented an actuator disk model in a RANS model with a
-$k$--$\epsilon$ closure, which ``injected'' $k$ and $\epsilon$ from the actuator
-disks to more realistically simulate the turbine's turbulent wake and enhance
-momentum transport \cite{James2010}. However, to the author's knowledge
+James \emph{et al.} \cite{James2010} implemented an actuator disk model in a
+RANS model with a $k$--$\epsilon$ closure, which ``injected'' $k$ and $\epsilon$
+from the actuator disks to more realistically simulate the turbine's turbulent
+wake and enhance momentum transport. However, to the author's knowledge
 injecting turbulence quantities has never been done in an actuator line model.
 
-In this case, we seek to inject turbulence dependent on blade loading, both
-for the $k$--$\epsilon$ RANS model and the
-\todo[inline]{Pick LES model to work with.}
+The primary goal was to develop a simple model that use blade loading to compute
+turbulence values to inject locally into the $k$--$\epsilon$ RANS model scalar
+fields. Initial targets for local turbulence levels were observed by simulating
+a 2-D symmetrical NACA 0021 airfoil using the $k$--$\omega$ SST turbulence
+model, given its favorable reputation for predicting stall. The model results
+for the specific dissipation $\omega$ were converted to $\epsilon$ by
+\cite{Wilcox1994}
+\begin{equation}
+    \epsilon = \beta^* \frac{k}{\omega c}.
+\end{equation}
 
-Turbulence sources were calibrated by simulating a 2-D symmetrical NACA airfoil
-using the $k$--$\omega$ SST turbulence model, given its strength at predicting
-stall. We seek a turbulence injection rate as a function of drag coefficient, as
-this should be a good indicator of flow separation, where production of
-turbulence will be greatly increased.
+A snapshot of the mesh for the 2-D blade-resolved static foil case is shown in
+Figure~\ref{fig:NACA-foil-mesh}. 30 seconds of unsteady flow over the foil were
+simulated using OpenFOAM's \textit{pimpleFoam} solver and averages were
+calculated over the final 20 seconds. Mean turbulence quantities were sampled
+along a vertical line at one chord length behind the quarter chord, and the
+maximum turbulence scalar value was stored. The goal here was not necessarily to
+find injection rates that would correspond to experiments, but rather those that
+would occur in a blade-resolved RANS case, though our results from
+Chapter~\ref{chap:CFD} indicate that for the $k$--$\omega$ RANS model these may
+be equivalent.
 
-The goal here was not necessarily to find injection rates that would correspond
-to experiments, but rather those that would occur in a blade-resolved RANS case,
-though our results from Chapter~\ref{chap:CFD} indicate that for the
-$k$--$\omega$ RANS model these may be equivalent.
-
-An automated OpenFOAM case was developed to perform the turbulence injection
-calibration. This case automatically created a \texttt{blockMeshDict} for a
-given NACA foil at specified angle of attack, ran the simulation until
-convergence, then sampled and logged the lift, drag, moment coefficients, along
-with the maximum values and locations of $k$, $\omega$, and $\epsilon$ 1.25
-chords downstream of the leading edge.
-
-\begin{figure}[ht]
+\begin{figure}
     \centering
     
     \caption{2-D NACA 0021 foil mesh at 20 degrees angle of attack.}
@@ -939,22 +939,64 @@ chords downstream of the leading edge.
     \label{fig:NACA-foil-mesh}
 \end{figure}
 
+Mean turbulence kinetic energy contours next to the foil are shown in
+Figure~\ref{fig:NACA-foil-k} and the foil force coefficients and sampled mean
+turbulence values are shown in Figure~\ref{fig:NACA-foil-coeffs}. There is a
+clear correlation between drag and turbulence in the foil wake, though
+turbulence levels seem to saturate around the static stall angle. These features
+motivated the development of a simple linear model for turbulence injection rate
+as a function of drag coefficient.
 
-\begin{figure}[ht]
+\begin{figure}
     \centering
     
-    \caption{Turbulence kinetic energy computed around the 2-D NACA 0021 foil at
-        20 degrees angle of attack.}
+    \caption{Mean turbulence kinetic energy computed around the 2-D NACA 0021
+        foil at 20 degrees angle of attack.}
     
     \label{fig:NACA-foil-k}
 \end{figure}
 
-
-\begin{figure}[ht]
+\begin{figure}
     \centering
     
-    \caption{Simulated drag coefficient and turbulence quantities plotted versus
-        angle of attack for a 2-D NACA 0021.}
+    \caption{Simulated force coefficients and turbulence quantities plotted
+        versus angle of attack for a 2-D NACA 0021.}
     
-    \label{fig:NACA-foil-turbulence}
+    \label{fig:NACA-foil-coeffs}
+\end{figure}
+
+Turbulence kinetic energy was regressed linearly against the drag coefficient up
+to the static stall angle, which was determined numerically as the angle of
+attack at which $C_d$ first increased at more than 0.02 per degree. For angles
+above static stall, the average value of $k$ was taken to be the limit for
+turbulence injection. The turbulent dissipation $\epsilon$ was regressed
+linearly against $k^{3/2}$, which was motivated by the relationship from the
+standard $k$--$\epsilon$ model \cite{Wilcox1994}:
+\begin{equation}
+    \epsilon = C_\mu \frac{k^{3/2}}{l},
+\end{equation}
+where $C_\mu$ is a closure coefficient, typically 0.09.
+
+Figure~\ref{fig:NACA-foil-fits} shows the simulation results plotted along with
+their associated fit lines. The regressions and their resulting parameters
+inspired injection rates for $k$ and $\epsilon$ of the form
+\begin{equation}
+    k_s = C_k \frac{U^3}{c} \min \left[ k_{\max} ,\, | m_k C_d +
+    b_k | \right],
+\end{equation}
+and
+\begin{equation}
+    \epsilon_s = C_\epsilon \frac{k_s^{3/2}}{c},
+\end{equation}
+respectively, where $C_k$ and $C_\epsilon$ are tuning constants, $U$ is the
+relative velocity magnitude, and $m_k$ and $b_k$ are the slope and intercept of
+the $k$ versus $C_d$ regression.
+
+\begin{figure}
+    \centering 
+    
+    \caption{Simulation results and linear regression models plotted for the 2-D
+        NACA 0021 blade-resolved CFD simulation.}
+    
+    \label{fig:NACA-foil-fits}
 \end{figure}
