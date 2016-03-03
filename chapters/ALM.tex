@@ -898,16 +898,15 @@ operating in proximity of each other.
 \subsection{Turbulence injection}
 
 Conventional blade element simulations use either momentum or vortex methods to
-solve for the incident flow field, and these methods do not model the effects of
+solve for the incident flow field, but these methods do not model the effects of
 turbulence. With the actuator line model, there is the opportunity to improve
-the physical realism by not only adding a source to the momentum equations, but
-also to the turbulence model equations.
-
-James \emph{et al.} \cite{James2010} implemented an actuator disk model in a
-RANS model with a $k$--$\epsilon$ closure, which ``injected'' $k$ and $\epsilon$
-from the actuator disks to more realistically simulate the turbine's turbulent
-wake and enhance momentum transport. However, to the author's knowledge
-injecting turbulence quantities has never been done in an actuator line model.
+the physical realism by not only adding a source term to the momentum equation,
+but also to the turbulence model equations. James \emph{et al.} \cite{James2010}
+implemented an actuator disk model in a RANS model with a $k$--$\epsilon$
+closure, which ``injected'' $k$ and $\epsilon$ from the actuator disks to more
+realistically simulate the turbine's turbulent wake and enhance momentum
+transport. However, to the author's knowledge injecting turbulence quantities
+has never been done in an actuator line model.
 
 The primary goal was to develop a simple model that use blade loading to compute
 turbulence values to inject locally into the $k$--$\epsilon$ RANS model scalar
