@@ -876,6 +876,14 @@ vortex models, at a reasonable cost. It also drastically reduces computational
 effort compared to blade-resolved CFD, while maintaining the unsteadiness of the
 wake not resolved by a conventional actuator disk.
 
+However, the mean flow structure and turbulence generation due to blade tip and
+dynamic stall vortex shedding shows some discrepancy with experimental and
+blade-resolved CFD. Extensions to the ALM to deal with these shortcomings should
+be developed, e.g., a turbulence injection model as developed by James \emph{et
+    al.} \cite{James2010} or a model that will ``turn'' the ALM body force vectors
+to approach the effects of leading and trailing edge separation during dynamic
+stall.
+
 %%% Below from proposal introduction
 
 If the proposed body force model is inadequate for postdicting our experimental
@@ -901,6 +909,18 @@ worth developing, since stall delay could affect loading significantly.
 
 The ALM should next be validated with far-wake data and/or data from two CFTs
 operating in proximity of each other.
+
+A better Reynolds number correction for foil data could be developed---one that
+can successfully reshape the coefficient curves for the shifting stall point.
+
+Rotor angular speed control via generator models could be included to test the
+effectiveness of various control schemes.
+
+The ALM should be evaluated for its use in modeling CFT arrays.
+
+The ALM and its associated loading models could be used to develop dynamic wall
+functions for coarse blade-resolved RANS, which would provide yet another option
+for reduced computational expense.
 
 
 \subsection{Turbulence injection}
