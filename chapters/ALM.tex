@@ -856,6 +856,9 @@ second---a savings of 4 orders of magnitude. However, the results for the ALM
 are not quite as detailed. For example, the $-y$ tip vortex (where dynamic stall
 is occurring) is not captured by the ALM.
 
+The RANS simulations took "$O(0.1)$ CPU hours per second of simulated time,
+while the LES took $O(10)$.
+
 
 \section{Conclusions}
 
@@ -884,6 +887,11 @@ based on insight from the body-fitted grid simulations.
 At the very least, the prospect of using ALM simulations to drive down
 computational cost of RANS by nearly five orders of magnitude justifies further
 development.
+
+At contemporary levels of computing power, the ALM is a useful tool when HPC is
+not feasible. Furthermore, if arrays of CFTs become make it to commercial scale,
+the ALM combined with LES represents one of the highest fidelity tools
+available.
 
 
 \section{Future work}
