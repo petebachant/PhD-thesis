@@ -181,6 +181,21 @@ have a cell size on the same order as the chord length, and will move on the
 order of one cell length per time step.
 
 
+\section{Static foil coefficient data}
+
+Static input foil coefficient data were taken from Sheldahl and
+Klimas~\cite{Sheldahl1981}---a popular database developed for CFTs, which
+contains values over a wide range of Reynolds numbers. NACA 0021 coefficients
+were used for both turbines, despite the fact that the UNH-RVAT is constructed
+from NACA 0020 foils, as a NACA 0020 dataset is not available---it is assumed
+the small difference in foil thickness is negligible. Since pitching moment data
+were only available at limited Reynolds numbers, two datasets were used: The
+lowest for $Re_c \leq 3.6 \times 10^5$ and highest $Re_c \geq 6.8 \times 10^5$.
+For each actuator line element, blade chord Reynolds number is computed based on
+the sampled inflow velocity, and the static coefficients are then interpolated
+linearly within the database.
+
+
 \section{Force projection}
 
 After the force on the ALE from the flow is calculated, it is then projected
@@ -292,6 +307,12 @@ The LB DS models can be summarized conceptually based on the following principle
     overshoot and subsequent undershoot in lift before returning to an attached
     flow condition.
 \end{itemize}
+
+Before the dynamic stall subroutine is executed, the static profile data for
+each element is interpolated linearly based on local chord Reynolds number. The
+profile data characteristics---static stall angle, zero-lift drag coefficient,
+and separation point curve fit parameters---are then recomputed each time step
+such that the effects of Reynolds number on the static data are included.
 
 
 \subsection{Added mass}
