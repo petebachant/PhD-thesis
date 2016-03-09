@@ -99,9 +99,7 @@ momentum source (per unit density, assuming incompressible flow):
 \section{Model inputs}
 
 A turbine can be fully described by its geometry, number of elements and their
-associated 2-D profiles, and their corresponding coefficient data. Mean tip
-speed ratio was prescribed, without the oscillation used in
-Chapter~\ref{chap:CFD}.
+associated 2-D profiles, and their corresponding coefficient data.
 
 
 
@@ -607,6 +605,14 @@ NACA 0021 taken at $Re_c = 1.6 \times 10^5$ by Sheldahl and Klimas
 moment coefficient data, these were taken from the same database's $Re_c = 3.6
 \times 10^5$ dataset.
 
+Since the ALM is intended to be an engineering tool, it was assumed that
+information about tip speed ratio due to control details would not be known a
+priori, and was excluded, unlike the 3-D blade-resolved cases in
+Chapter~\ref{chap:CFD}. Note that a systematic investigation of the effects of
+sinusoidal $\lambda$ was not undertaken, but for the UNH-RVAT a 1--2 percentage
+point increase in $C_P$ was observed when running with similar parameters as the
+blade-resolved simulation.
+
 
 \subsection{UNH-RVAT RANS}
 
@@ -886,7 +892,10 @@ A better Reynolds number correction for foil data could be developed---one that
 can successfully reshape the coefficient curves for the shifting stall point.
 
 Rotor angular speed control via generator models could be included to test the
-effectiveness of various control schemes.
+effectiveness of various control schemes, e.g., sinusoidal $\lambda$ set points,
+which have been shown in some cases to improve mean power coefficient.
+\todo[inline]{Get some information and a citation about UW's work on CFT
+    controls.}
 
 The ALM should be evaluated for its use in modeling CFT arrays.
 
