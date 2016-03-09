@@ -513,82 +513,63 @@ is compared in Figure~\ref{fig:end-effects}.
 
 \section{Software implementation}
 
-The ALM was written as an extension library for the OpenFOAM free and
-open-source CFD library. OpenFOAM is in general a package for solving partial
-differential equations using the finite volume method. However, it contains many
-pre-built applications for meshing, pre-processing, solving, and post-processing
-CFD simulations. The library contains implementations of models for compressible
-and incompressible flow, turbulence via RANS, LES, and detached eddy simulation
-(DES), multiphase flows, dynamic mesh handling, and more, making it a very
-powerful general purpose simulation framework, capable of easily scaling to
-massively parallel high performance computing clusters. OpenFOAM is also widely
-used throughout industry and academia. As shown in Figure~\ref{fig:cfd-online},
-OpenFOAM has the second highest number of discussion threads, but a much higher
-post-per-thread count compared to other popular discussion forums on
-CFD-online.com. This greater community involvement makes OpenFOAM a perfect
-library in which to integrate this model, with respect to potential impact,
-adoption, and collaboration.
+The actuator line model developed here, dubbed \textit{turbinesFoam}, was
+written as an extension library for the OpenFOAM finite volume CFD library.
+OpenFOAM is a free and open-source, and is widely used throughout industry and
+academia. \textit{turbinesFoam} was also developed freely and openly from the
+start in order to increase community engagement and research efficiency by
+allowing other researchers to incrementally improve the model, rather than
+starting from nothing.
 
-\begin{figure}[ht]
-    \centering
-    
-    \includegraphics[width=0.95\textwidth]{figures/CFD-pop_cfd-online}
-    
-    \caption{Total number of threads (left) and posts-per-thread for the four
-        most popular forums on CFD-online.com as of September 27, 2015.}
-    
-    \label{fig:cfd-online}
-\end{figure}
+The code was written in OpenFOAM's style, similar to NREL's SOWFA, but uses
+OpenFOAM's \texttt{fvOptions} framework for adding source terms to equations at
+runtime---see Listing~\ref{lst:fvOptions} for an example implementation within
+the Navier--Stokes' momentum equation. Using the \texttt{fvOptions} framework
+allows the CFT-ALM to be added to many of the solvers included in OpenFOAM,
+meaning it can be readily used with RANS or LES, multiphase models (e.g., for
+simulating the free surface in MHK installations), and even with heat transfer.
+Furthermore, unlike SOWFA, custom solvers do not need to be developed and
+maintained to include the CFT-ALM.
 
-The code will be written in OpenFOAM's style, similar to NREL's SOWFA, but will
-use OpenFOAM's \texttt{fvOptions} framework for adding source terms to equations
-at runtime---see Listing~\ref{lst:fvOptions} for an example implementation with
-the momentum equation. This strategy will allow the CFT-ALM to be added to many
-of the solvers included in OpenFOAM, meaning it can be readily used with RANS or
-LES, multiphase models (e.g. for simulating the free surface in MHK
-installations), and even with heat transfer. Furthermore, unlike SOWFA, custom
-solvers will not need to be developed to include the CFT-ALM. It is also likely
-that the extension library developed here will be expanded to include axial flow
-turbine models similar to SOWFA.
+\begin{lstlisting}[float,caption=Adding source terms to the momentum equation in OpenFOAM.,label=lst:fvOptions]
+    tmp<fvVectorMatrix> UEqn
+    (
+        fvm::ddt(U)
+        + fvm::div(phi, U)
+        + turbulence->divDevReff(U)
+        ==
+        fvOptions(U)
+    );
+\end{lstlisting}
+
+OpenFOAM and \textit{turbinesFoam} are written in the C++ programming language,
+which follows the object oriented programming paradigm. This characteristic
+helped modularize the ALM code for increased readability and reuse. In
+\textit{turbinesFoam}, a turbine is a software object that is composed of
+actuator line objects, which themselves are composed of actuator line element
+objects. Structuring the code this way allows isolation and reuse of the
+functionality of individual components. For example, the actuator line object
+was written such that is could be used outside the turbine context to ensure is
+produces the correct forcing, without adding the complexity of rotation, other
+actuator lines, etc. that would be present in a turbine rotor. The very same
+actuator line objects can be used in both axial-flow and cross-flow rotors,
+without having to copy code from one to the other. In contrast, the actuator
+line model in \textit{SOWFA} uses a single software object to represent an
+entire array of turbines, which necessitates iterating through many nested lists
+down to the element level, which can be confusing to read. Furthermore, adapting
+\textit{SOWFA} for CFTs would nearly double the amount of code to debug and
+maintain.
+
+OpenFOAM's data structures are designed to be inherently parallel via message
+passing interface (MPI). By working within the library infrastructure the ALM
+code was easily parallelized.
 
 Since all applications are run from a command line and all input data is text
 based, automation and integration with other tools is relatively
-straightforward. Future enhancements could include cooperation with software for
+straightforward. Future enhancements could include coupling with software for
 generating static foil data, e.g., XFOIL or other OpenFOAM solvers, turbine
 controller models, structural analysis codes, and optimization tools, e.g.,
 SNL's DAKOTA, for both individual turbines and array layouts.
-
-\begin{lstlisting}[float,caption=Adding source terms to the momentum equation in OpenFOAM.,label=lst:fvOptions]
-tmp<fvVectorMatrix> UEqn
-(
-    fvm::ddt(U)
-    + fvm::div(phi, U)
-    + turbulence->divDevReff(U)
-    ==
-    fvOptions(U)
-);
-\end{lstlisting}
-
-
-\subsection{Object orientation}
-
-C++ permits the object oriented programming paradigm, which helps modularize
-code for increased readability and reuse. In \textit{turbinesFoam}, a turbine is
-a software object that is composed of actuator line objects, which themselves
-are composed of actuator line element objects. Structuring the code this way
-allows testing of the functionality of individual components. For example, an
-actuator line can be tested outside the turbine context to ensure is produces
-the correct forcing, without adding the complexity of rotation, other actuator
-lines, etc. that would be present in a turbine rotor. In contrast, the actuator
-line model in \textit{SOWFA} uses a single software object to represent an
-entire array of turbines. This architecture necessitates iterating through many
-nested lists down to the element level, which can be confusing to read.
-
-
-\subsection{Parallelization}
-
-OpenFOAM's custom container classes and loop macros were used wherever possible
-to aid in parallelization.
 
 
 \section{Results}
