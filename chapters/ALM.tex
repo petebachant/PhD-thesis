@@ -212,6 +212,9 @@ quarter chord location:
     \label{eq:projection}
 \end{equation}
 
+Troldborg~\cite{Troldborg2008} proposed that the Gaussian width should be set to
+twice the local cell length $\Delta x$ in order to maintain numerical stability.
+
 Jha \emph{et al.}~\cite{Jha2014} provides guidelines for choosing a projection
 width.
 
@@ -221,15 +224,9 @@ the local mesh length was optimal.
 Martinez-Tossas and Meneveau \cite{Martinez-Tossas2015b} used a 2-D potential
 flow analysis to determine that the optimal projection width for a lifting
 surface is 14--25\% of the chord length. The width due to the wake caused by the
-foil drag force was recommended to be on the order of the momentum thickness.
-
-Using these guidelines, three length scales were determined: one relative to the
-chord length, one to the mesh size, and one to the momentum thickness due to
-drag force.
-
-For a bluff body or foil at large angle of attack, drag coefficients are $O(1)$.
-The momentum thickness $\theta$ is related to the drag coefficient by
-\cite{TennekesAndLumley}
+foil drag force was recommended to be on the order of the momentum thickness
+$\theta$, which for a bluff body or foil at large angle of attack is related to
+the drag coefficient ($O(1)$) by \cite{TennekesAndLumley}
 \begin{equation}
     C_d = 2 \theta / l,
     \label{eq:mom-thickness}
@@ -237,22 +234,24 @@ The momentum thickness $\theta$ is related to the drag coefficient by
 where $l$ is a reference length, e.g., diameter for a cylinder or chord length
 for a foil.
 
-Local mesh length was determined as 
+Using these guidelines, three Gaussian width values were determined: one
+relative to the chord length, one to the mesh size, and one to the momentum
+thickness due to drag force. Each three were computed for all elements at each
+time step, and the largest was chosen for the force projection algorithm. Using
+this adaptive strategy, fine meshes could benefit from the increased accuracy of
+more concentrated momentum sources, and coarse meshes would be protected from
+numerical instability.
+
+The Gaussian width due to mesh size $\epsilon_{\mathrm{mesh}}$ was determined
+locally on an element-wise basis by estimating the size of the cell containing
+the element as
 \begin{equation}
-    \Delta r = 2C_\mathrm{mesh} \sqrt[3]{V_\mathrm{cell}},
+    \Delta x \approx \sqrt[3]{V_\mathrm{cell}},
 \end{equation}
-where $V_\mathrm{cell}$ is the volume of the cell containing the actuator line
-element, and $C_\mathrm{mesh}$, by default set to 2.0, is a factor to
-accommodate cells of non-unity aspect ratio.
-
-Ultimately, an adaptive $\epsilon$ was chosen such that it would be either equal
-to $c/4$, or twice the cube root of the volume of the containing cell in the
-mesh (roughly equivalent to the $2\Delta r$ recommended by Troldborg
-\cite{Troldborg2008}), whichever was larger. This way, fine meshes could benefit
-from the increased accuracy of more concentrated momentum sources, and coarse
-meshes would be protected from numerical instability.
-
-\todo[inline]{Add final width of Gaussian projection}
+where $V_\mathrm{cell}$ is the cell volume. To account for the possibility of non-unity aspect ratio cells, an additional factor $C_\mathrm{mesh}$, 2.0 by default, was introduced, giving
+\begin{equation}
+    \epsilon_{\mathrm{mesh}} = 2C_\mathrm{mesh} \Delta x.
+\end{equation}
 
 
 \section{Unsteady effects}
