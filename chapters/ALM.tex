@@ -846,6 +846,8 @@ foil coefficient databases with more dimensions, e.g., blade pitch rate or local
 turbulence levels. It may also be possible to modify the dynamic loading models
 based on insight from the body-fitted grid simulations.
 
+%%% End from proposal introduction
+
 At the very least, the prospect of using ALM simulations to drive down
 computational cost of RANS by nearly five orders of magnitude justifies further
 development.
@@ -854,6 +856,14 @@ At contemporary levels of computing power, the ALM is a useful tool when HPC is
 not feasible. Furthermore, if arrays of CFTs become make it to commercial scale,
 the ALM combined with LES represents one of the highest fidelity tools
 available.
+
+From an engineering standpoint, the ALM was successful at ranking the two
+turbines' performance. $\lambda_0$ was identified well for the UNH-RVAT, as well
+as its maximum $C_P$. For the RM2, which was expected to be easier to model
+thanks to its lower $c/R$ ratio, $C_P_\max$ was computed well, though
+$\lambda_0$ was not. However, it may be desirable to operate the RM2 at slightly
+higher $\lambda \approx 3.5$ to mitigate the fatigue loading due to stall, where
+$C_P$ is close to $C_P_\max$, and the ALM was more successful.
 
 
 \section{Future work}
