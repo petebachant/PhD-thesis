@@ -453,13 +453,18 @@ Listing~\ref{lst:flow-curvature}.
 
 \section{End effects}
 
-Foils of finite span will not have uniform load distributions.
+Helmholtz's second vortex theorem states that vortex lines may not end in a
+fluid, but must either form closed loops or extend to boundaries. Consequently
+the lift distribution due to the bound vortex from foils of finite span must
+drop to zero at the tips.
 
 Glauert used Prandtl's lifting line theory to develop a tip loss correction
-factor for an axial-flow rotor. This has been further developed by Shen et al.
-\cite{Shen2005a}. However, we seek a correction model that does not depend on
-the rotor context, such that the model could be used for axial- and cross-flow
-turbines, along with standalone actuator lines, e.g. wings.
+factor for the blade element analysis of an axial-flow rotor. This was further
+developed for horizontal-axis wind turbines by Shen et al. \cite{Shen2005a}.
+However, these corrections both depend on the axial-flow rotor tip speed ratio,
+number of blades, and tip flow angle, which do not necessarily directly
+correspond to cross-flow rotor parameters. Therefore, a more general end effects
+model was sought.
 
 From Prandtl's lifting line theory, the geometric angle of attack $\alpha$ of a
 foil with an arbitrary circulation distribution can be expressed as a function
