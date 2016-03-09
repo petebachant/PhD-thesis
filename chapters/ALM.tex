@@ -522,15 +522,15 @@ is compared in Figure~\ref{fig:end-effects}.
 The USA National Renewable Energy Laboratory (NREL) has developed and released
 an actuator line modeling library, SOFWA~\cite{Churchfield2014b}, for simulating
 horizontal-axis wind turbine arrays using the OpenFOAM finite volume CFD
-library. OpenFOAM is a free and open-source, and is widely used throughout
-industry and academia. Though SOWFA is also open-source, its procedural style
-would have required significant effort and duplicate code to adapt for
-cross-flow turbines. Thus, a new and more general ALM library was developed from
-the ground up that could model both cross- and axial-flow turbines, as well as
-standalone actuator lines. The actuator line model developed here, dubbed
-\textit{turbinesFoam}, was also written as an extension library for OpenFOAM,
-and was developed freely and openly from the start in order to increase
-community engagement and research efficiency.
+library. OpenFOAM is free, open-source, and widely used throughout industry and
+academia. Though SOWFA is also open-source, its procedural style would have
+required significant effort and duplicate code to adapt for cross-flow turbines.
+Thus, a new and more general ALM library was developed from the ground up that
+could model both cross- and axial-flow turbines, as well as standalone actuator
+lines. The actuator line model developed here, dubbed \textit{turbinesFoam}, was
+also written as an extension library for OpenFOAM, and was developed freely and
+openly from the start in order to increase community engagement and research
+efficiency.
 
 \textit{turbinesFoam} was written in OpenFOAM's style, using OpenFOAM's
 \texttt{fvOptions} framework for adding source terms to equations at
