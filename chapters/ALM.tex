@@ -513,23 +513,28 @@ is compared in Figure~\ref{fig:end-effects}.
 
 \section{Software implementation}
 
-The actuator line model developed here, dubbed \textit{turbinesFoam}, was
-written as an extension library for the OpenFOAM finite volume CFD library.
-OpenFOAM is a free and open-source, and is widely used throughout industry and
-academia. \textit{turbinesFoam} was also developed freely and openly from the
-start in order to increase community engagement and research efficiency by
-allowing other researchers to incrementally improve the model, rather than
-starting from nothing.
+The USA National Renewable Energy Laboratory (NREL) has developed and released
+an actuator line modeling library, SOFWA~\cite{Churchfield2014b}, for simulating
+horizontal-axis wind turbine arrays using the OpenFOAM finite volume CFD
+library. OpenFOAM is a free and open-source, and is widely used throughout
+industry and academia. Though SOWFA is also open-source, its procedural style
+would have required significant effort and duplicate code to adapt for
+cross-flow turbines. Thus, a new and more general ALM library was developed from
+the ground up that could model both cross- and axial-flow turbines, as well as
+standalone actuator lines. The actuator line model developed here, dubbed
+\textit{turbinesFoam}, was also written as an extension library for OpenFOAM,
+and was developed freely and openly from the start in order to increase
+community engagement and research efficiency.
 
-The code was written in OpenFOAM's style, similar to NREL's SOWFA, but uses
-OpenFOAM's \texttt{fvOptions} framework for adding source terms to equations at
+\textit{turbinesFoam} was written in OpenFOAM's style, using OpenFOAM's
+\texttt{fvOptions} framework for adding source terms to equations at
 runtime---see Listing~\ref{lst:fvOptions} for an example implementation within
 the Navier--Stokes' momentum equation. Using the \texttt{fvOptions} framework
 allows the CFT-ALM to be added to many of the solvers included in OpenFOAM,
 meaning it can be readily used with RANS or LES, multiphase models (e.g., for
 simulating the free surface in MHK installations), and even with heat transfer.
-Furthermore, unlike SOWFA, custom solvers do not need to be developed and
-maintained to include the CFT-ALM.
+This is in contrast to SOWFA's implementation, which requires custom flow
+solvers to be developed and maintained.
 
 \begin{lstlisting}[float,caption=Adding source terms to the momentum equation in OpenFOAM.,label=lst:fvOptions]
     tmp<fvVectorMatrix> UEqn
@@ -556,9 +561,7 @@ actuator line objects can be used in both axial-flow and cross-flow rotors,
 without having to copy code from one to the other. In contrast, the actuator
 line model in \textit{SOWFA} uses a single software object to represent an
 entire array of turbines, which necessitates iterating through many nested lists
-down to the element level, which can be confusing to read. Furthermore, adapting
-\textit{SOWFA} for CFTs would nearly double the amount of code to debug and
-maintain.
+down to the element level, which can be confusing to read.
 
 OpenFOAM's data structures are designed to be inherently parallel via message
 passing interface (MPI). By working within the library infrastructure the ALM
@@ -569,7 +572,8 @@ based, automation and integration with other tools is relatively
 straightforward. Future enhancements could include coupling with software for
 generating static foil data, e.g., XFOIL or other OpenFOAM solvers, turbine
 controller models, structural analysis codes, and optimization tools, e.g.,
-SNL's DAKOTA, for both individual turbines and array layouts.
+SNL's DAKOTA \todo[inline]{Get citation for DAKOTA.}, for both individual
+turbines and array layouts.
 
 
 \section{Results}
