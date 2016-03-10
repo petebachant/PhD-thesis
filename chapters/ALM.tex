@@ -258,35 +258,39 @@ loading predictions.
 
 \subsection{Dynamic stall}
 
-Dynamic stall is encountered when the blade angle of attack is changing
-significantly in time and exceeds a certain threshold (near the static stall
-angle). The stall is characterized by an initial increase in lift as a vortex is
-shed from the foil's leading edge, after which a drop in lift occurs as the
-vortex is advected downstream. Dynamic stall has been shown to be a significant
-positive contributor to performance in CFTs \cite{Para2002, Urbina2013},
-therefore an accurate model is key.
+Dynamic stall is encountered when the blade angle of attack changes rapidly in
+time and exceeds a certain threshold, often near the static stall angle
+\cite{McCroskey1981}. The stall is characterized by an initial increase in lift
+beyond static values as a vortex is shed from the foil's leading edge, after
+which a drop in lift and large nose-down pitching moment occurs as the vortex is
+advected downstream. As the angle of attack drops below the critical value, flow
+reattaches, closing the so-called hysteresis loop. Dynamic stall has been shown
+to be a significant positive contributor to performance in CFTs \cite{Para2002,
+    Urbina2013}, therefore an accurate model is key.
 
-\todo[inline]{Discuss Gormont/MIT model and why it wasn't used here.}
+\todo[inline]{Add figure showing dynamic stall cycle.}
+
+DS models were first developed to improve predictive capability for helicopter
+rotors, on which DS has significant effects on maneuverability and operational
+envelope \cite{Bousman2000}. A summary of dynamic stall models developed for
+helicopter rotors is presented in \cite{Leishman2006}. The simplest dynamic
+stall models rely on semi-empirical correlations, e.g., the Gormont model
+\cite{Gormont1973}, developed at the Boeing--Vertol Company. Several variants of
+the Gormont model were developed for vertical-axis wind turbines, with varying
+degrees of success; a summary is presented in \cite{Para2002}.
 
 Leishman and Beddoes (LB) developed a semi-empirical model for unsteady
 aerodynamics and dynamic stall, which is derived from the phenomenology of the
 physics instead rather than pure empiricism \cite{Leishman1989}. Beddoes then
 updated the model to the so-called third generation or ``3G'' version
-\cite{Beddoes1993}. Three variations of this dynamic stall model were tested for
-cross-flow turbines by Dyachuk \emph{et al.}~\cite{Dyachuk2014}, with the conclusion
-that the Sheng \emph{et al.} low Mach number modified version \cite{Sheng2008} provided
-the best results. Therefore this dynamic stall model was used here.
-
-The LB DS models can be summarized conceptually based on the following principles:
+\cite{Beddoes1993}. The LB DS models can be summarized conceptually based on the
+following principles:
 \begin{itemize}
     \item Dynamic conditions cause a time lag in effective angle of attack and
     lift force.
     
-    \item Dynamic motion can cause an impulsive loading due to added mass
-    effects.
-    
-    \item Separation can be determined by the Kirchoff flow approximation, which
-    is also used to parameterize the normal force coefficient table based on the
+    \item Separation is determined by the Kirchoff flow approximation, which is
+    also used to parameterize the normal force coefficient table based on the
     trailing edge separation point. This separation point also encounters a time
     lag.
     
@@ -295,14 +299,26 @@ The LB DS models can be summarized conceptually based on the following principle
     flow condition.
 \end{itemize}
 
+Sheng et al. \cite{Sheng2008} developed an LB DS model variant targeted at low
+Mach numbers. This model, along with the original and 3G LB DS model variants,
+was tested for its effectiveness in cross-flow turbine conditions by Dyachuk et
+al.~\cite{Dyachuk2014}, who concluded that the Sheng et al. variant results
+matched most closely with experiments. In a similar study, the Sheng et al.
+model also faired better than the Gormont model \cite{Dyachuk2015}, which
+inspired its adoption here for the ALM.
+
 Before the dynamic stall subroutine is executed, the static profile data for
 each element is interpolated linearly based on local chord Reynolds number. The
 profile data characteristics---static stall angle, zero-lift drag coefficient,
 and separation point curve fit parameters---are then recomputed each time step
 such that the effects of Reynolds number on the static data are included.
 
-\todo[inline]{Note how alpha equiv was not calculated in this model, since that
-    lag implied geometric values.}
+Inside the ALM, angle of attack is sampled from the flow field rather than
+calculated based on the geometric angle of attack. Therefore, the implementation
+of the LB DS model was such that the equivalent angle of attack
+$\alpha_\mathrm{equiv}$ was taken as the sampled rather than the lagged
+geometric value. A similar implementation was used by Dyachuk et al.
+\cite{Dyachuk2015a} inside a vortex model.
 
 
 \subsection{Added mass}
