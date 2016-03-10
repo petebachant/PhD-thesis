@@ -12,6 +12,8 @@ foamrun_24x = foamrun_23x.replace("2.3.x", "2.4.x")
 foamrun_ext1 = join("media", "pete", "Data1", "OpenFOAM", "pete-2.3.x", "run")
 foamrun_ext2 = foamrun_ext1.replace("Data1", "Data2")
 gdrive = join(homedir, "Google Drive")
+foamrun_30x = foamrun_23x.replace("2.3.x", "3.0.x")
+foamrun_dev_ext2 = foamrun_ext2.replace("2.3.x", "dev")
 
 
 figdirs = {"RVAT-baseline": join(expdir, "RVAT baseline", "Figures"),
@@ -23,7 +25,11 @@ figdirs = {"RVAT-baseline": join(expdir, "RVAT baseline", "Figures"),
            "NACAXX20-XFOIL": join(gdrive, "Research", "Foils", "Data",
                                   "NACAXX20_QBlade", "figures"),
            "BR-CFD": join(gdrive, "Research", "Papers", "CFT wake modeling",
-                          "figures")}
+                          "figures"),
+           "RVAT-ALM": join(foamrun_30x, "UNH-RVAT-turbinesFoam", "figures"),
+           "RM2-ALM": join(foamrun_30x, "RM2-turbinesFoam", "figures"),
+           "RVAT-ALM-LES": join(foamrun_dev_ext2, "UNH-RVAT-turbinesFoam",
+                                "figures")}
 
 figlists = {"RVAT-baseline": ["perf.pdf", "meancontquiv.pdf", "kcont.pdf",
                               "meanu_2tsrs.pdf", "meanv_2tsrs.pdf",
@@ -51,7 +57,16 @@ figlists = {"RVAT-baseline": ["perf.pdf", "meancontquiv.pdf", "kcont.pdf",
                        "meancontquiv_kOmegaSST.pdf",
                        "meancontquiv_SpalartAllmaras.pdf", "mom_bar_graph.pdf",
                        "perf_bar_chart.pdf", "profiles.pdf",
-                       "verification.pdf"]}
+                       "verification.pdf"],
+            "RVAT-ALM": ["verification.pdf", "wake-profiles.pdf",
+                         "perf-curves.pdf", "meancontquiv.pdf", "kcont.pdf",
+                         "recovery-bar-chart.pdf"],
+            "RM2-ALM": ["verification.pdf", "wake-profiles.pdf",
+                        "perf-curves.pdf", "meancontquiv.pdf", "kcont.pdf",
+                        "recovery-bar-chart.pdf"],
+            "RVAT-ALM-LES": ["wake-profiles.pdf", "meancontquiv.pdf",
+                             "kcont.pdf", "recovery-bar-chart.pdf",
+                             "vorticity-snapshot.png"]}
 
 
 for name, figlist in figlists.items():
