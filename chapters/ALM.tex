@@ -252,26 +252,26 @@ where $V_\mathrm{cell}$ is the cell volume. To account for the possibility of no
 
 \section{Unsteady effects}
 
-\todo[inline]{Clean up this section a lot.}
-
-The use of static foil data necessitates corrections for various dynamic effects
-induced by the actuator lines rotating within the flow field. Dynamic stall may
-be encountered when the blade angle of attack increases past a certain
-threshold, and is characterized by an initial increase in lift as a vortex is
-shed from the foil's leading edge, after which a drop in lift occurs as the
-vortex is advected downstream. Dynamic stall has been shown to be a significant
-positive contributor to performance in CFTs \cite{Para2002, Urbina2013},
-therefore an accurate model is key. Other dynamic loading considerations stem
-from the blade rotation and acceleration---so-called pitching circulation, flow
-curvature, and added-mass effects.
-
 In the context of a turbine---especially a cross-flow turbine---the actuator
 lines will encounter unsteady conditions, both in their angle of attack and
 relative velocity. These conditions necessitate the use of unsteady aerodynamic
-models to augment the static foil characteristics. Furthermore, the angles of
-attack encountered by a CFT blade will often be high enough to encounter dynamic
-stall (DS). It is therefore necessary to model both unsteady attached and
-detached flow to obtain accurate loading predictions.
+models to augment the static foil characteristics, both to capture the time
+resolved response of the attached flow loading and effects of flow acceleration,
+also know as added mass. Furthermore, the angles of attack encountered by a CFT
+blade will often be high enough to encounter dynamic stall (DS). It is therefore
+necessary to model both unsteady attached and detached flow to obtain accurate
+loading predictions.
+
+
+\subsection{Dynamic stall}
+
+Dynamic stall is encountered when the blade angle of attack is changing
+significantly in time and exceeds a certain threshold (near the static stall
+angle). The stall is characterized by an initial increase in lift as a vortex is
+shed from the foil's leading edge, after which a drop in lift occurs as the
+vortex is advected downstream. Dynamic stall has been shown to be a significant
+positive contributor to performance in CFTs \cite{Para2002, Urbina2013},
+therefore an accurate model is key.
 
 \todo[inline]{Discuss Gormont/MIT model and why it wasn't used here.}
 
