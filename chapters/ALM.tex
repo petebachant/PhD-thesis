@@ -390,15 +390,16 @@ normalized blade attachment point along the chord, $c$ is the blade chord
 length, and $V_\mathrm{ref}$ is the reference flow velocity for calculating
 angle of attack.
 
-In the actuator line model, angle of attack is calculated using vector
-operations, which means the first two terms in Equation~\ref{eq:Goude-curvature}
-are taken care of automatically since each element's inflow velocity, chord
-direction, and element velocity vectors are tracked. Therefore, the last two
-terms in Equation~\ref{eq:Goude-curvature} were simply added to the scalar angle
-of attack value. Note that for a cross-flow turbine, this correction effectively
-offsets the angle of attack, which therefore increases its magnitude on the
-upstream half of the blade path, and decreases its magnitude on the downstream
-half, where the angle of attack is negative.
+In the actuator line model, each element's angle of attack is calculated using
+vector operations, which means the first two terms in
+Equation~\ref{eq:Goude-curvature} are taken care of automatically since each
+element's inflow velocity, chord direction, and element velocity vectors are
+tracked. Therefore, the last two terms in Equation~\ref{eq:Goude-curvature} were
+simply added to the scalar angle of attack value. Note that for a cross-flow
+turbine, this correction effectively offsets the angle of attack, which
+therefore increases its magnitude on the upstream half of the blade path, and
+decreases its magnitude on the downstream half, where the angle of attack is
+negative.
 
 The Mandal--Burton flow curvature correction assumes that since the blade is
 encountering a curvilinear flow, it can be treated as having virtual camber.
