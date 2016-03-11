@@ -514,14 +514,24 @@ We can therefore compute a correction function
     F = C_l(\theta)/C_l(\theta)_{\max},
 \end{equation}
 which will be in the range $[0, 1]$, similar to the Glauert corrections, but
-does not contain rotor parameters. The correction function for various methods
-is compared in Figure~\ref{fig:end-effects}.
+does not contain rotor parameters. 
+
+The correction functions for the standard Glauert and lifting line methods are
+plotted for comparison in Figure~\ref{fig:end-effects}. Function values were
+computed using the UNH-RVAT geometry, $\lambda = \lambda_0 = 1.9$, and a 20
+degree tip angle of attack. Both end effects corrections produce similar results
+for this specific case, which gives confidence that the lifting line method will
+produce reasonable results without the uncertainty of translating axial-flow to
+cross-flow rotor parameters.
 
 \begin{figure}
     \centering
     
-    \caption{End effect correction function values for the Glauert, Shen et al.,
-        and lifting line methods.}
+    \includegraphics[width=0.75\textwidth]{end-effects_rvat-20-deg}
+    
+    \caption{End effect correction function values for the Glauert and lifting
+        line methods using UNH-RVAT parameters at 20 degrees tip angle of attack and
+        $\lambda=1.9$.}
     
     \label{fig:end-effects}
 \end{figure}
