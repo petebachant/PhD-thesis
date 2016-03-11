@@ -673,12 +673,6 @@ Compared to blade-resolved RANS, the ALM can solve a standalone turbine case on
 the order of CPU minutes per second of simulated time versus 1,000 CPU hours per
 second---a savings of 4 orders of magnitude.
 
-To evaluate the ALM's ability to predict wake characteristics in a high fidelity
-simulation, the UNH-RVAT was also modeled using the Smagorinsky large-eddy
-simulation (LES) turbulence model \cite{Smagorinsky1963} in a domain that was
-extended slightly to allow for further wake development. Spatial and temporal
-grid resolution modifications are discussed below.
-
 
 \subsection{Verification}
 
@@ -922,11 +916,27 @@ transport due to the eddy viscosity was also relatively large.
 
 \subsection{UNH-RVAT LES}
 
-Since this was the most interesting wake structure...
+The state-of-the-art in high fidelity turbine array modeling uses the actuator
+line method inside large-eddy simulation, which allows more of the turbulent
+energy spectrum to be directly resolved, only requiring the dynamics of the
+smallest scales to be computed by the so-called subgrid-scale (SGS) model. Since
+the ALM LES approach has only been reported in the literature for a very low
+Reynolds number 2-D CFT \cite{Shamsoddin2014}, and CFTs may provide unique
+opportunities to array optimization, which could be explored with LES, it was of
+interest to determine how well the ALM coupled with LES might predict wake
+dynamics of a higher $Re$ 3-D CFT rotor.
+
+Thus, the UNH-RVAT baseline case was simulated using the Smagorinsky LES
+turbulence model \cite{Smagorinsky1963}, which was the first of its kind, and
+serves as a good standard for LES modeling since its behavior is well-reported
+in the literature. Default Smagorinsky model coefficients were used, and the
+computational domain was extended slightly to allow for further wake
+development.
 
 Since the computational cost of LES is significantly higher than RANS,
-verification was not performed. Instead, mesh resolution was chosen relative to
-similar studies of turbine wake ALM. Of the studies surveyed
+verification with respect to grid dependence was not performed. Instead, mesh
+resolution was chosen relative to similar studies of turbine wake ALM LES. Of
+the studies surveyed
 \cite{Shamsoddin2014,Archer2013,Martinez-Tossas2015a,Troldborg2007}, the mesh
 resolution ranged from 18--64 points per turbine diameter. The mesh here was set
 accordingly by using a 16 point per meter base mesh, and refining twice in a
@@ -934,16 +944,9 @@ region containing the turbine to produce a 64 point per turbine diameter/height
 resolution. The solver was run with a 0.002 second time step, which is
 significantly within the limit described by \cite{Martinez-Tossas2015}, where an
 actuator line element may not pass through more than one cell per time step.
-
-Computation times were $O(10)$ CPU hours per second of simulated time, which is
-approximately two orders of magnitude lower than for blade-resolved RANS.
-
-For the LES, the default Smagorinsky model coefficients were used. 
-
-As a look towards the future prospect of simulating large CFT arrays in great
-detail, a single CFT was placed in a large eddy simulation (LES). Turbine
-geometry was identical to the UNH-RVAT case, but the domain was extended to look
-at wake evolution father downstream.
+With these resolutions computation times were $O(10)$ CPU hours per second of
+simulated time, which is approximately two orders of magnitude lower than for
+blade-resolved RANS.
 
 \todo[inline]{Mention LES performance.}
 
