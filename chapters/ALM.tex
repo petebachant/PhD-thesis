@@ -1041,7 +1041,10 @@ for reduced computational expense.
 
 Flow curvature corrections should be examined in more detail, and it may be
 beneficial to develop models to transform entire foil datasets to match their
-virtual camber, as suggested by Migliore \emph{et al.}~\cite{Migliore1980}.
+virtual camber, as suggested by Migliore \emph{et al.}~\cite{Migliore1980}. It
+also may be advantageous to implement a complementary model to adjust the
+direction of the resultant force vector to more accurately generate the blade's
+shed vorticity.
 
 Since \textit{turbinesFoam} is compatible with OpenFOAM's volume of fluid (VOF)
 multiphase flow solver \textit{interFoam}, the ALM's effectiveness should be
