@@ -795,7 +795,12 @@ captured.
 
 Figure~\ref{fig:RM2-ALM-perf-curves} shows the performance curves computed for
 the RM2 by the ALM, and those from the tow tank experiments. As with the high
-solidity RVAT, the drop in $C_P$ comes at higher $\lambda$.
+solidity RVAT, $C_P$ is overpredicted at high $\lambda$. However, $\lambda_0$,
+the tip speed ratio of peak power coefficient, is also shifted to the right.
+This is indicative of inaccurate dynamic stall modeling, which could possibly be
+attributed to one of the models' tuning constants, e.g., $\Delta
+\alpha_\mathrm{DS_0}$, the difference in the static and dynamic stall reference
+angles. \todo[inline]{Test changing this constant.}
 
 \begin{figure}
     \centering
