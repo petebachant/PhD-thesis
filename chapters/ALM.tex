@@ -871,13 +871,10 @@ actuator line element may not pass through more than one cell per time step.
 
 For the LES, the default Smagorinsky model coefficients were used. 
 
-Thanks to the ALM's general implementation as a source term, we are not tied to
-any specific turbulence model. This means that as turbulence modeling and
-computational power advance, the ALM can continue to be used. As a look towards
-the future prospect of simulating large CFT arrays in great detail, a single CFT
-was placed in a large eddy simulation (LES). Turbine geometry was identical to
-the UNH-RVAT case, but the domain was extended to look at wake evolution father
-downstream.
+As a look towards the future prospect of simulating large CFT arrays in great
+detail, a single CFT was placed in a large eddy simulation (LES). Turbine
+geometry was identical to the UNH-RVAT case, but the domain was extended to look
+at wake evolution father downstream.
 
 \begin{figure}
     \caption{Snapshot of vorticity contours for the UNH-RVAT LES case.}
@@ -945,6 +942,12 @@ be developed, e.g., a turbulence injection model as developed by James \emph{et
     al.} \cite{James2010} or a model that will ``turn'' the ALM body force vectors
 to approach the effects of leading and trailing edge separation during dynamic
 stall.
+
+Thanks to the ALM's general implementation as a source term in OpenFOAM flow
+solvers, the same model was run inside a higher fidelity large-eddy simulation.
+The modular nature of the ALM using OpenFOAM's \texttt{fvOptions} framework
+means that as turbulence modeling and computational power advance, the ALM can
+continue to be used.
 
 %%% Below from proposal introduction
 
