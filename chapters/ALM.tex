@@ -590,43 +590,49 @@ turbines and array layouts.
 
 \section{Results}
 
-In this section results are presented for cases used to verify various
-sub-models, and finally test the ALM against the experimental targets.
+Both the high solidity UNH-RVAT and low to medium solidity RM2 turbines were
+simulated using a $k$--$\epsilon$ Reynolds-averaged Navier--Stokes (RANS)
+turbulence model, using a domain identical in size to that used in
+Chapter~\ref{chap:CFD}, with similar boundary conditions. A slice of the mesh in
+the $x$--$y$ plane is shown in Figure~\ref{fig:ALM-mesh}.
 
-\todo[inline]{Discuss verification}
+\begin{figure}
+    
+    \caption{$x$--$y$ planar slice of the mesh used for the ALM RANS
+        simulations.}
+    
+    \label{fig:ALM-mesh}
+\end{figure}
 
-Having validation datasets for two turbines with significantly different
-geometry helped to prevent ``over-tuning'' towards one type. Bot the UNH-RVAT
-and RM2 turbines were simulated using a $k$--$\epsilon$ Reynolds-averaged
-Navier--Stokes (RANS) turbulence model, using a domain identical in size to that
-used in Chapter~\ref{chap:CFD}.
+Similar numerical settings were used for each turbine as well. The Sheng et al.
+DS model was used with the default coefficients given in \cite{Sheng2008}. A
+second order backward difference was used for advancing the simulation in time,
+and second order linear schemes were used for the majority of the terms' spatial
+discretizations. Case files for the UNH-RVAT and RM2 ALM simulations are
+available from XXX and XXX, respectively. \todo[inline]{Cite ALM case files.}
 
-\todo[inline]{Put mesh figure in here and ensure the RVAT and RM2 meshes were
-    identical.}
+The same foil coefficient data were used for all simulations---those for a NACA
+0021 as reported by Sheldahl and Klimas \cite{Sheldahl1981}. Each rotor's shaft
+was assumed to have a drag coefficient $C_d = 1.1$, and the blade support strut
+end element drag coefficients were set to 0.05, to approximate the effects of
+separation in the corners of the blade--strut connections.
 
-The UNH-RVAT was then modeled using the Smagorinsky large-eddy simulation (LES)
-turbulence model \cite{Smagorinsky1963} in a domain that was extended slightly
-to allow for further wake development.
-
-The same foil coefficient data were used for all three simulations---that for a
-NACA 0021 taken at $Re_c = 1.6 \times 10^5$ by Sheldahl and Klimas
-\cite{Sheldahl1981}. Since this particular dataset did not include section
-moment coefficient data, these were taken from the same database's $Re_c = 3.6
-\times 10^5$ dataset.
-
-Since the ALM is intended to be an engineering tool, it was assumed that
-information about tip speed ratio due to control details would not be known a
-priori, and was excluded, unlike the 3-D blade-resolved cases in
+Since the ALM is intended to be an engineering tool when coupled with RANS, it
+was assumed that information about tip speed ratio due to control details would
+not be known a priori, and was excluded, unlike the 3-D blade-resolved cases in
 Chapter~\ref{chap:CFD}. Note that a systematic investigation of the effects of
 sinusoidal $\lambda$ was not undertaken, but for the UNH-RVAT a 1--2 percentage
 point increase in $C_P$ was observed when running with similar parameters as the
 blade-resolved simulation.
 
+To evaluate the ALM's ability to predict wake characteristics in a high fidelity
+simulation, the UNH-RVAT was also modeled using the Smagorinsky large-eddy
+simulation (LES) turbulence model \cite{Smagorinsky1963} in a domain that was
+extended slightly to allow for further wake development. Spatial and temporal
+grid resolution modifications are discussed below.
+
 
 \subsection{UNH-RVAT RANS}
-
-The UNH-RVAT was chosen as a high solidity CFT case for model validation, thanks
-to our earlier experimental and numerical investigations.
 
 For this case, the lifting line based end effects model was active, as was the
 Leishman--Beddoes dynamic stall model modified by Sheng \emph{et al.}
