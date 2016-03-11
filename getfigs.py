@@ -29,7 +29,9 @@ figdirs = {"RVAT-baseline": join(expdir, "RVAT baseline", "Figures"),
            "RVAT-ALM": join(foamrun_30x, "UNH-RVAT-turbinesFoam", "figures"),
            "RM2-ALM": join(foamrun_30x, "RM2-turbinesFoam", "figures"),
            "RVAT-ALM-LES": join(foamrun_dev_ext2, "UNH-RVAT-turbinesFoam",
-                                "figures")}
+                                "figures"),
+           "end-effects": join(gdrive, "Research", "OpenFOAM", "turbinesFoam",
+                               "End effects", "figures")}
 
 figlists = {"RVAT-baseline": ["perf.pdf", "meancontquiv.pdf", "kcont.pdf",
                               "meanu_2tsrs.pdf", "meanv_2tsrs.pdf",
@@ -66,7 +68,8 @@ figlists = {"RVAT-baseline": ["perf.pdf", "meancontquiv.pdf", "kcont.pdf",
                         "recovery-bar-chart.pdf"],
             "RVAT-ALM-LES": ["wake-profiles.pdf", "meancontquiv.pdf",
                              "kcont.pdf", "recovery-bar-chart.pdf",
-                             "vorticity-snapshot.png"]}
+                             "vorticity-snapshot.png"],
+            "end-effects": ["rvat-20-deg.pdf"]}
 
 
 for name, figlist in figlists.items():
