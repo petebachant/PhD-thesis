@@ -637,6 +637,10 @@ sinusoidal $\lambda$ was not undertaken, but for the UNH-RVAT a one to two
 percentage point increase in $C_P$ was observed when running with similar
 parameters as the blade-resolved simulation.
 
+Compared to blade-resolved RANS, the ALM can solve a standalone turbine case on
+the order of CPU minutes per second of simulated time versus 1,000 CPU hours per
+second---a savings of 4 orders of magnitude.
+
 To evaluate the ALM's ability to predict wake characteristics in a high fidelity
 simulation, the UNH-RVAT was also modeled using the Smagorinsky large-eddy
 simulation (LES) turbulence model \cite{Smagorinsky1963} in a domain that was
@@ -874,6 +878,9 @@ resolution. The solver was run with a 0.002 second time step, which is
 significantly within the limit described by \cite{Martinez-Tossas2015}, where an
 actuator line element may not pass through more than one cell per time step.
 
+Computation times were $O(10)$ CPU hours per second of simulated time, which is
+approximately two orders of magnitude lower than for blade-resolved RANS.
+
 For the LES, the default Smagorinsky model coefficients were used. 
 
 As a look towards the future prospect of simulating large CFT arrays in great
@@ -929,25 +936,14 @@ where $U$ and $u$ (without subscripts) indicate streamwise components.
 \todo[inline]{Add recovery terms for RVAT LES case?}
 
 
-\section{Computational cost}
-
-\todo[inline]{Move this section to conclusions or top-level results section like
-    CFD chapter.}
-
-Compared to blade-resolved RANS, the ALM can solve a standalone turbine case on
-the order of CPU minutes per second of simulated time versus 1,000 CPU hours per
-second---a savings of 4 orders of magnitude. However, the results for the ALM
-are not quite as detailed. For example, the $-y$ tip vortex (where dynamic stall
-is occurring) is not captured by the ALM.
-
-The RANS simulations took $O(0.1)$ CPU hours per second of simulated time, while
-the LES took $O(10)$.
-
-
 \section{Conclusions}
 
 In this chapter the actuator line model has been developed and tested against
 the cross-flow turbine validation datasets acquired in previous chapters.
+
+The RANS simulations took $O(0.1)$ CPU hours per second of simulated time, while
+the LES took $O(10)$, which represent a four and two order of magnitude decrease
+versus blade-resolved RANS, respectively.
 
 Despite a small loss in accuracy, the ALM can do a reasonable job predicting the
 performance and wake of a cross-flow turbine. It is therefore expected that this
