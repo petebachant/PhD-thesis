@@ -592,9 +592,11 @@ turbines and array layouts.
 
 Both the high solidity UNH-RVAT and low to medium solidity RM2 turbines were
 simulated using a $k$--$\epsilon$ Reynolds-averaged Navier--Stokes (RANS)
-turbulence model, using a domain identical in size to that used in
-Chapter~\ref{chap:CFD}, with similar boundary conditions. A slice of the mesh in
-the $x$--$y$ plane is shown in Figure~\ref{fig:ALM-mesh}.
+turbulence model. These rotors provide diverse parameters, which helped evaluate
+the robustness of the ALM. The simulations were performed inside a domain
+similar in size to that used in Chapter~\ref{chap:CFD}, with similar boundary
+conditions. A slice of the mesh in the $x$--$y$ plane is shown in
+Figure~\ref{fig:ALM-mesh}.
 
 \begin{figure}
     
@@ -782,42 +784,25 @@ captured.
 
 \subsection{RM2 RANS}
 
-The RM2 low solidity cross-flow turbine is another good validation case given
-its differences from the UNH-RVAT.
-
-The end effects model was deactivated as it was observed to reduce the mean
-power coefficient too drastically. The flow curvature model was also not used
-since it caused asymmetry in the mean flow field that did not match as well with
-experimental measurements.
-
-\todo[inline]{Describe end effects model settings for RM2.}
-
-Figure~\ref{fig:RM2-ALM-perf-curves} presents
-the performance curves computed by the ALM, and those from the tow tank
-experiments. As with the high solidity RVAT, the drop in $C_P$ comes at higher
-$\lambda$.
+Figure~\ref{fig:RM2-ALM-perf-curves} shows the performance curves computed for
+the RM2 by the ALM, and those from the tow tank experiments. As with the high
+solidity RVAT, the drop in $C_P$ comes at higher $\lambda$.
 
 \begin{figure}
     \caption{Power and drag coefficient curves computed for the RM2 using the
-        LB-SGC model.}
+        ALM.}
     
     \label{fig:RM2-ALM-perf-curves}
 \end{figure}
 
-Figure~\ref{fig:RM2-ALM-flow-curvature} shows the mean velocity field computed
-for the low solidity RM2 cross-flow turbine with the two different flow
-curvature corrections. We see that with the Goude correction, the location of
-the maximum streamwise velocity deficit is shifted rightward, whereas the
-experimental results showed that the profile was more-or-less symmetrical. This
-essentially tells us that the Goude model is more effective for the high
-solidity RVAT, though the low solidity RM2 may not need flow curvature
-corrections to obtain accurate results.
+Figure~\ref{fig:RM2-ALM-meancontquiv} shows the mean velocity field computed
+by the ALM for the RM2.
 
 \begin{figure}
-    \caption{Mean velocity field at $x/D=0.93$ for the RM2, with the Goude and
-        Mandal--Burton flow curvature corrections.}
+    \caption{Mean velocity field at $x/D=0.93$ for the RM2 predicted by the
+        ALM.}
     
-    \label{fig:RM2-ALM-flow-curvature}
+    \label{fig:RM2-ALM-meancontquiv}
 \end{figure}
 
 
