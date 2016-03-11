@@ -605,15 +605,16 @@ the $x$--$y$ plane is shown in Figure~\ref{fig:ALM-mesh}.
 \end{figure}
 
 Similar numerical settings were used for each turbine as well. The Sheng et al.
-DS model was used with the default coefficients given in \cite{Sheng2008}. A
-second order backward difference was used for advancing the simulation in time,
-and second order linear schemes were used for the majority of the terms' spatial
-discretizations. The only major difference between the two simulation
-configurations was that the end effects model was deactivated for the RM2, since
-it reduced $C_P$ far below the experimental measurements. This modification is
-at least consistent with the RM2 blades' higher aspect ratio and tapered
-planform. Case files for the UNH-RVAT and RM2 ALM simulations are available from
-XXX and XXX, respectively. \todo[inline]{Cite ALM case files.}
+DS model was used with the default coefficients given in \cite{Sheng2008}, and
+the Goude flow curvature correction was employed. A second order backward
+difference was used for advancing the simulation in time, and second order
+linear schemes were used for the majority of the terms' spatial discretizations.
+The only major difference between the two simulation configurations was that the
+end effects model was deactivated for the RM2, since it reduced $C_P$ far below
+the experimental measurements. This modification is at least consistent with the
+RM2 blades' higher aspect ratio and tapered planform. Case files for the
+UNH-RVAT and RM2 ALM simulations are available from XXX and XXX, respectively.
+\todo[inline]{Cite ALM case files.}
 
 The same foil coefficient data were used for all simulations---those for a NACA
 0021 as reported by Sheldahl and Klimas \cite{Sheldahl1981}. Each rotor's shaft
@@ -667,12 +668,6 @@ however, was more dramatic.
 
 
 \subsection{UNH-RVAT RANS}
-
-For this case, the lifting line based end effects model was active, as was the
-Leishman--Beddoes dynamic stall model modified by Sheng et al. \cite{Sheng2008},
-the added mass model from Strickland \cite{Strickland1981}, and the flow
-curvature model from Goude \cite{Goude2012}. All these models worked in concert
-to match the experimental results as well as possible.
 
 Power and drag coefficient curves are plotted for the UNH-RVAT in
 Figure~\ref{fig:RVAT-ALM-perf-curves}. The ALM was successful at predicting the
