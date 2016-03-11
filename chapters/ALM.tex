@@ -1058,6 +1058,19 @@ not feasible. Furthermore, if arrays of CFTs become make it to commercial scale,
 the ALM combined with LES represents one of the highest fidelity tools
 available.
 
+The RANS ALM predicted the UNH-RVAT performance well at tip speed ratios up to
+that of max power coefficient. The RM2 power coefficient on the other hand was
+underpredicted at lower $\lambda$. Both models overestimate $C_P$ at the highest
+tip speed ratios, which has been observed in other simulations using
+Leishman--Beddoes type dynamic stall models. Possible explanations include
+underestimation of added mass effects or blade--strut connection corner drag, or
+inaccuracy due to the virtual camber effect. In the present flow curvature
+model, the angle of attack is corrected, but the foil coefficient data is not
+transformed, meaning the LB DS separation point curve fit parameters are equal
+for both positive and negative angles of attack. A foil data transformation
+algorithm based on virtual camber should be investigated for future improvement
+of the ALM.
+
 From an engineering standpoint, the ALM was successful at ranking the two
 turbines' performance. $\lambda_0$ was identified well for the UNH-RVAT, as well
 as its maximum $C_P$. For the RM2, which was expected to be easier to model
