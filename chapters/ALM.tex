@@ -468,13 +468,34 @@ fluid, but must either form closed loops or extend to boundaries. Consequently
 the lift distribution due to the bound vortex from foils of finite span must
 drop to zero at the tips.
 
-Glauert used Prandtl's lifting line theory to develop a tip loss correction
-factor for the blade element analysis of an axial-flow rotor. This was further
-developed for horizontal-axis wind turbines by Shen et al. \cite{Shen2005a}.
-However, these corrections both depend on the axial-flow rotor tip speed ratio,
-number of blades, and tip flow angle, which do not necessarily directly
-correspond to cross-flow rotor parameters. Therefore, a more general end effects
-model was sought.
+Glauert\cite{Glauert1935} used Prandtl's lifting line theory \cite{Prandtl1927}
+to develop a tip loss correction factor $F$ to be applied to the local lift of
+an axial-flow rotor blade element:
+\begin{equation}
+    F = \frac{2}{\pi} \cos^{-1} \left[ \exp \left( - \frac{N (R-r)}{2R \sin
+        \phi_R} \right) \right],
+\end{equation}
+where $F$ is the correction factor applied to the local lift, $N$ is number of
+blades, $R$ is the rotor radius, $r$ is the local blade element radius, and
+$\phi_R$ is the flow angle at the tip.
+
+The Glauert correction was further refined for horizontal-axis wind turbines by
+Shen et al. \cite{Shen2005a} as
+\begin{equation}
+    F_1 = \frac{2}{\pi} \cos^{-1} \left[ \exp \left( -g \frac{N (R-r)}{2R \sin
+    \phi_R} \right) \right],
+\end{equation}
+where $g$ is an additional function depending on the tip speed ratio and two
+tuning constants:
+\begin{equation}
+    g = \exp [ -c_1 (B \lambda - c_2) ].
+\end{equation}
+
+Despite their success for the blade element analysis of axial-flow rotors, these
+corrections both depend on rotor parameters---tip speed ratio, number of blades,
+element radius, tip flow angle---that do no necessarily translate directly to
+the geometry and flow environment of a cross-flow rotor. Therefore, a more
+general end effects model was sought.
 
 From Prandtl's lifting line theory, the geometric angle of attack $\alpha$ of a
 foil with an arbitrary circulation distribution can be expressed as a function
