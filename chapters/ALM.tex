@@ -876,14 +876,40 @@ detail, a single CFT was placed in a large eddy simulation (LES). Turbine
 geometry was identical to the UNH-RVAT case, but the domain was extended to look
 at wake evolution father downstream.
 
+\todo[inline]{Mention LES performance.}
+
 \begin{figure}
     \caption{Snapshot of vorticity contours for the UNH-RVAT LES case.}
     
-    \label{RVAT-LES}
+    \label{RVAT-ALM-LES-vorticity}
 \end{figure}
 
-\todo[inline]{Add meancontquiv for RVAT LES case?}
+\begin{figure}
+    \centering
+    
+    \caption{Mean velocity field in the UNH-RVAT near-wake at $x/D=1$ computed
+        with the Smagorinsky LES model.}
+    
+    \label{fig:RVAT-ALM-LES-meancontquiv}
+\end{figure}
 
+\begin{figure}
+    \centering
+    
+    \caption{Turbulence kinetic energy in the UNH-RVAT near-wake at $x/D=1$
+        computed with the Smagorinsky LES model.}
+    
+    \label{fig:RVAT-ALM-LES-kcont}
+\end{figure}
+
+\begin{figure}
+    \centering
+    
+    \caption{Mean velocity profiles in the UNH-RVAT near-wake at $x/D=1$ and
+        $z/H=0$ computed with the Smagorinsky LES model.}
+    
+    \label{fig:RVAT-ALM-LES-profiles}
+\end{figure}
 
 The planar weighted sum of streamwise momentum recovery terms was computed in
 the same was as for the RANS cases with the exception of the turbulent transport
