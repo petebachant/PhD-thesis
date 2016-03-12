@@ -835,9 +835,10 @@ the RM2 by the ALM, and those from the tow tank experiments. As with the high
 solidity RVAT, $C_P$ is overpredicted at high $\lambda$. However, $\lambda_0$,
 the tip speed ratio of peak power coefficient, is also shifted to the right.
 This is indicative of inaccurate dynamic stall modeling, which could possibly be
-attributed to one of the models' tuning constants, e.g., the difference in the
-static and dynamic stall reference angles. \todo[inline]{Test changing this
-    constant.}
+attributed to one of the models' tuning constants, e.g., the time constant for
+the lagged angle of attack. Limited ad hoc testing revealed that $C_P$ at
+$\lambda_0$ was more accurately predicted with a lagged angle of attack time
+constant roughly double the default value.
 
 \begin{figure}
     \centering
@@ -1036,13 +1037,13 @@ that of max power coefficient. The RM2 power coefficient on the other hand was
 underpredicted at lower $\lambda$. Both models overestimate $C_P$ at the highest
 tip speed ratios, which has been observed in other simulations using
 Leishman--Beddoes type dynamic stall models. Possible explanations include
-underestimation of added mass effects or blade--strut connection corner drag, or
-inaccuracy due to the virtual camber effect. In the present flow curvature
-model, the angle of attack is corrected, but the foil coefficient data is not
-transformed, meaning the LB DS separation point curve fit parameters are equal
-for both positive and negative angles of attack. A foil data transformation
-algorithm based on virtual camber should be investigated for future improvement
-of the ALM.
+underestimation of added mass effects or blade--strut connection corner drag,
+incorrect time constants in the LB DS model, and/or inaccuracy due to the
+virtual camber effect. In the present flow curvature model, the angle of attack
+is corrected, but the foil coefficient data is not transformed, meaning the LB
+DS separation point curve fit parameters are equal for both positive and
+negative angles of attack. A foil data transformation algorithm based on virtual
+camber should be investigated for future improvement of the ALM.
 
 From an engineering standpoint, the ALM was successful at ranking the two
 turbines' performance. $\lambda_0$ was identified well for the UNH-RVAT, as well
