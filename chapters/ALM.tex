@@ -635,7 +635,9 @@ similar in size to that used in Chapter~\ref{chap:CFD}, with similar boundary
 conditions. A slice of the mesh in the $x$--$y$ plane is shown in
 Figure~\ref{fig:ALM-mesh}.
 
+\todo[inline]{Add slice of the ALM mesh.}
 \begin{figure}
+    \centering
     
     \caption{$x$--$y$ planar slice of the mesh used for the ALM RANS
         simulations.}
@@ -669,27 +671,32 @@ sinusoidal $\lambda$ was not undertaken, but for the UNH-RVAT a one to two
 percentage point increase in $C_P$ was observed when running with similar
 parameters as the blade-resolved simulation.
 
-Compared to blade-resolved RANS, the ALM can solve a standalone turbine case on
-the order of CPU minutes per second of simulated time versus 1,000 CPU hours per
-second---a savings of 4 orders of magnitude.
+Compared to 3-D blade-resolved RANS, the ALM can solve a standalone turbine case
+on the order of CPU minutes per second of simulated time versus 1,000 CPU hours
+per second---a savings of 4 orders of magnitude.
 
 
 \subsection{Verification}
 
 Verification for sensitivity to spatial and temporal grid resolution was
-performed for both the UNH-RVAT and RM2 RANS cases, the results from which are
-plotted in Figure~\ref{fig:RVAT-ALM-verification} and
-Figure~\ref{fig:RM2-ALM-verification}, respectively. Both models displayed low
+performed for both the UNH-RVAT and RM2 RANS cases at their optimal tip speed
+rations, the results from which are plotted in
+Figure~\ref{fig:RVAT-ALM-verification} and
+Figure~\ref{fig:RM2-ALM-verification}, respectively. Similar to the verification
+strategy employed in Chapter~\ref{chap:CFD}, the mesh topology was kept
+constant, and the resolution was scaled proportional to the number of cells in
+the $x$-direction $N_x$ for the base hexahedral mesh. Both models displayed low
 sensitivity to the number of time steps per revolution. Spatial grid dependence,
-however, was more dramatic.
+however, was more important.
 
-Final grid resolutions were chosen as...
-
-These values should provide $C_P$ predictions within one percentage point of the
-true solution, which is on the order of the expanded uncertainty of the
-experimental measurements.
-
-\todo[inline]{Make quantitative statements about verification studies.}
+Final spatial grid resolutions were chosen as $N_x=48$ for both the UNH-RVAT and
+RM2 cases. Time steps were chosen as $\Deltat = 0.01$ and $\Delta t = 0.005$
+seconds for the UNH-RVAT and RM2 respectively, which correspond to approximately
+200 steps per revolution. The chosen values should provide $C_P$ predictions
+within one percentage point of the true solution, which is on the order of the
+expanded uncertainty of the experimental measurements. Note that for computing
+performance curves, the number of steps per revolution was kept constant, i.e.,
+the time step was adjusted to $\Delta t = \Delta t_0 \lambda_0 / \lambda$.
 
 \begin{figure}
     \centering
