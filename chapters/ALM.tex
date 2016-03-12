@@ -386,9 +386,10 @@ where $\delta$ is the blade pitch angle, $V_\mathrm{abs}$ is the magnitude of
 the local inflow velocity at the blade, $\theta_b$ is the blade azimuthal
 position, $\beta$ is the direction of the inflow velocity, $\Omega$ is the
 turbine's angular velocity, $R$ is the blade element radius, $x_{0r}$ is a
-normalized blade attachment point along the chord, $c$ is the blade chord
-length, and $V_\mathrm{ref}$ is the reference flow velocity for calculating
-angle of attack.
+normalized blade attachment point along the chord (or fractional chord distance
+of the mounting point from the quarter-chord), $c$ is the blade chord length,
+and $V_\mathrm{ref}$ is the reference flow velocity for calculating angle of
+attack.
 
 In the actuator line model, each element's angle of attack is calculated using
 vector operations, which means the first two terms in
@@ -425,40 +426,10 @@ is introduced and added to the uncorrected angle of attack. Like the Goude
 model, $\alpha_c$ is positive on the upstream half of the turbine rotation and
 negative on the downstream half. 
 
-Both flow curvature model implementations are shown in
-Listing~\ref{lst:flow-curvature}. It was determined that the Goude model
-performed best with respect to near-wake predictions, while performance
-predictions from both models were similar. \todo[inline]{Check that
-    Mandal--Burton perf predictions are similar.}
-
-\begin{lstlisting}[float,caption=Flow curvature model implementation.,label=lst:flow-curvature]
-    if (flowCurvatureModelName_ == "Goude")
-    {
-        angleOfAttackRad += omega_*(chordMount_ - 0.25)
-                         * chordLength_/mag(relativeVelocity_);
-        angleOfAttackRad += omega_*chordLength_/(4*mag(relativeVelocity_));
-    }
-    else if (flowCurvatureModelName_ == "MandalBurton")
-    {
-        // Calculate relative velocity at leading and trailing edge
-        vector relativeVelocityLE = inflowVelocity_ - velocityLE_;
-        vector relativeVelocityTE = inflowVelocity_ - velocityTE_;
-    
-        // Calculate vector normal to chord--span plane
-        vector planformNormal = -chordDirection_ ^ spanDirection_;
-        planformNormal /= mag(planformNormal);
-        
-        // Calculate angle of attack at leading and trailing edge
-        scalar alphaLE = asin((planformNormal & relativeVelocityLE)
-                       / (mag(planformNormal)*mag(relativeVelocityLE)));
-        scalar alphaTE = asin((planformNormal & relativeVelocityTE)
-                       / (mag(planformNormal)*mag(relativeVelocityTE)));
-        
-        scalar beta = alphaTE - alphaLE;
-        
-        angleOfAttackRad += atan2((1.0 - cos(beta/2.0)), sin(beta/2.0));
-    }
-\end{lstlisting}
+It was determined that the Goude model performed best with respect to near-wake
+predictions, while performance predictions from both models were similar. Thus,
+the Goude model was used for all simulations reported here. \todo[inline]{Check
+    that Mandal--Burton perf predictions are similar.}
 
 
 \section{End effects}
