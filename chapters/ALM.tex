@@ -926,7 +926,10 @@ turbulence model \cite{Smagorinsky1963}, which was the first of its kind, and
 serves as a good standard for LES modeling since its behavior is well-reported
 in the literature. Default Smagorinsky model coefficients were used, and the
 computational domain was extended by 1 m downstream to allow for further wake
-development.
+development. The tip speed ratio was set to oscillate sinusoidally about
+$\lambda_0$ with a 0.19 magnitude and the angle of the first peak at 1.4
+radians---similar to the rotation presribed in the blade-resolved RANS
+simulations discussed in Chapter~\ref{chap:CFD}.
 
 Since the computational cost of LES is significantly higher than RANS,
 verification with respect to grid dependence was not performed. Instead, mesh
@@ -943,7 +946,8 @@ With these resolutions computation times were $O(10)$ CPU hours per second of
 simulated time, which is approximately two orders of magnitude lower than for
 blade-resolved RANS.
 
-\todo[inline]{Mention LES performance.}
+Mean power coefficient predictions for the UNH-RVAT at its optimal mean tip
+speed ratio dropped to 0.19 using the ALM within LES.
 
 \begin{figure}
     \caption{Snapshot of vorticity contours for the UNH-RVAT LES case.}
