@@ -1150,7 +1150,10 @@ optimal values within the cross-flow turbine context. Though the
 Leishman--Beddoes type models are formulated in terms of a nondimensional time,
 there may be a dependence of the various time constants on the pitch rate, as
 indicated by the improvement in predictions for the RM2 at optimal tip speed
-ratio when using a higher angle of attack lag time constant.
+ratio when using a higher angle of attack lag time constant. Machine learning
+techniques could be employed to ``train'' the constants (and/or their
+$\lambda$-dependence) to one turbine's power curve, and they could be validated
+against the other turbine's data.
 
 Since \textit{turbinesFoam} is compatible with OpenFOAM's volume of fluid (VOF)
 multiphase flow solver \textit{interFoam}, the ALM's effectiveness should be
