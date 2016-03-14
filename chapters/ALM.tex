@@ -1001,14 +1001,19 @@ the $+y$ side of the rotor was not resolved.
 Mean velocity profiles at the turbine center plane, plotted in
 Figure~\ref{fig:RVAT-ALM-LES-profiles}, were predicted more accurately using LES
 versus RANS, and rival those of the 3-D blade-resolved models. However,
-turbulence kinetic energy profiles did not match as closely with experiments,
-though the qualitative shape was resolved better than that by the RANS ALM
-simulation.
-
-\todo[inline]{Discuss LES $k$ profiles.}
+turbulence kinetic energy profiles did not match as closely with experiments.
+Though the qualitative shape was resolved better than that by the RANS ALM
+simulation, notably the asymmetric peaks around $y/R = \pm 1$, the turbulence
+generated in the large-eddy simulation was approximately an order of magnitude
+too low. This may be a similar effect as with the Spalart--Allmaras RANS model,
+where subgrid-scale $k$ is not calculated, which also indicates the LES may be
+under-resolved, despite using a grid resolution relatively as fine or finer than
+typical studies in the literature.
 
 \begin{figure}
     \centering
+    
+    \includegraphics[width=0.85\textwidth]{RVAT-ALM-LES_wake-profiles}
     
     \caption{Mean velocity profiles in the UNH-RVAT near-wake at $x/D=1$ and
         $z/H=0$ computed with the Smagorinsky LES model.}
