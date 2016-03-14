@@ -1027,17 +1027,18 @@ computational effort compared to blade-resolved CFD, while maintaining the
 unsteadiness of the wake not resolved by a conventional actuator disk.
 
 The RANS ALM predicted the UNH-RVAT performance well at tip speed ratios up to
-that of max power coefficient. The RM2 power coefficient on the other hand was
-underpredicted at lower $\lambda$. Both models overestimate $C_P$ at the highest
-tip speed ratios, which has been observed in other simulations using
-Leishman--Beddoes type dynamic stall models. Possible explanations include
-underestimation of added mass effects or blade--strut connection corner drag,
-incorrect time constants in the LB DS model, and/or inaccuracy due to the
-virtual camber effect. In the present flow curvature model, the angle of attack
-is corrected, but the foil coefficient data is not transformed, meaning the LB
-DS separation point curve fit parameters are equal for both positive and
-negative angles of attack. A foil data transformation algorithm based on virtual
-camber should be investigated for future improvement of the ALM.
+and including that of max power coefficient. The RM2 power coefficient on the
+other hand was underpredicted at lower $\lambda$. Both models overestimated
+$C_P$ at the highest tip speed ratios, which has been observed in other
+simulations using Leishman--Beddoes type dynamic stall models. Possible
+explanations include underestimation of added mass effects or blade--strut
+connection corner drag, incorrect time constants in the LB DS model, and/or
+inaccuracy due to the virtual camber effect. In the present flow curvature
+model, the angle of attack is corrected, but the foil coefficient data is not
+transformed, meaning the LB DS separation point curve fit parameters are equal
+for both positive and negative angles of attack. A foil data transformation
+algorithm based on virtual camber should be investigated for future improvement
+of the ALM.
 
 From an engineering standpoint, the ALM was successful at ranking the two
 turbines' performance. $\lambda_0$ was identified well for the UNH-RVAT, as well
@@ -1087,10 +1088,11 @@ cost of RANS by nearly five orders of magnitude, enabling 3-D unsteady
 Navier--Stokes simulations to be performed on a typical PC, itself justifies
 further development.
 
-At contemporary levels of computing power, the ALM is a useful tool when HPC is
-not feasible. Furthermore, if arrays of CFTs become make it to commercial scale,
-the ALM combined with LES represents one of the highest fidelity tools
-available.
+At contemporary levels of computing power, the ALM is a useful tool for studying
+individual turbines when HPC is not feasible---requiring similar resources as
+2-D blade-resolved RANS, but with improved performance predictions. Furthermore,
+if arrays of CFTs become make it to commercial scale, the ALM combined with LES
+represents one of the highest fidelity tools available.
 
 Despite a small loss in accuracy, the ALM can do a reasonable job predicting the
 performance and wake of a cross-flow turbine. It is therefore expected that this
