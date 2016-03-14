@@ -955,9 +955,11 @@ isosurfaces of vorticity produced by the actuator lines.
 
 \begin{figure}
     \centering
+    
+    \includegraphics[width=\textwidth]{RVAT-ALM-LES_vorticity-snapshot}
 
     \caption{Snapshot of vorticity isosurfaces (colored by their streamwise
-        component) for the UNH-RVAT LES case.}
+        component) at $t=10$ s for the UNH-RVAT LES case.}
     
     \label{RVAT-ALM-LES-vorticity}
 \end{figure}
@@ -968,6 +970,8 @@ looks much more like the blade-resolved and experimental results.
 
 \begin{figure}
     \centering
+    
+    \includegraphics[width=0.9\textwidth]{RVAT-ALM-LES_meancontquiv}
     
     \caption{Mean velocity field in the UNH-RVAT near-wake at $x/D=1$ computed
         with the Smagorinsky LES model.}
@@ -985,6 +989,8 @@ the $+y$ side of the rotor was not resolved.
 
 \begin{figure}
     \centering
+    
+    \includegraphics[width=0.85\textwidth]{RVAT-ALM-LES_kcont}
     
     \caption{Turbulence kinetic energy in the UNH-RVAT near-wake at $x/D=1$
         computed with the Smagorinsky LES model.}
@@ -1012,18 +1018,32 @@ simulation.
 
 The planar weighted sums of streamwise momentum recovery terms were computed in
 the same way as for the RANS cases with the exception of the turbulent transport
-term, which for the LES was computed from the $x$-component of the divergence of
-the Reynolds stress tensor:
+term, which for the LES was computed from the $x$-components of the divergence
+of the resolved and SGS Reynolds stress tensors:
 \begin{equation}
-    \text{Turb. trans.} = -\frac{\partial}{\partial x_j}
-    \overline{u^\prime u^\prime_j},
+    \text{Turb. trans.} = - \left( \frac{\partial}{\partial x_j}
+    \overline{u^\prime_x u^\prime_j} 
+    + \frac{\partial}{\partial x_j} R_{xj}
+    \right),
 \end{equation}
-where $u$ (without subscript) indicates the streamwise component of the
-velocity.
+where $u$ indicates the resolved or filtered velocity, and $R$ is the
+subgrid-scale Reynolds stress.
 
-\todo[inline]{Verify calculation of LES turbulent transport. May only use SGS.}
+Results for transport term totals are shown in
+Figure~\ref{fig:RVAT-ALM-LES-recovery}.
 
-\todo[inline]{Add recovery terms for RVAT LES case?}
+\todo[inline]{Write about LES recovery terms.}
+
+\begin{figure}
+    \centering
+    
+    \includegraphics[width=0.85\textwidth]{RVAT-ALM-LES_recovery-bar-chart}
+    
+    \caption{Weighted average momentum recovery terms at $x/D=1$ for the RVAT
+        ALM LES using the Smagorinsky SGS model}.
+    
+    \label{fig:RVAT-ALM-LES-recovery}
+\end{figure}
 
 
 \section{Conclusions}
