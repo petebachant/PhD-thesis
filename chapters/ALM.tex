@@ -1037,10 +1037,19 @@ of the resolved and SGS Reynolds stress tensors:
 where $u$ indicates the resolved or filtered velocity, and $R$ is the
 subgrid-scale Reynolds stress.
 
-Results for transport term totals are shown in
-Figure~\ref{fig:RVAT-ALM-LES-recovery}.
-
-\todo[inline]{Write about LES recovery terms.}
+Transport term weighted sums computed from the LES results are shown in
+Figure~\ref{fig:RVAT-ALM-LES-recovery}. Unlike the RANS ALM cases, the
+cross-stream advection contributions are negative, as they are in the
+experiment. However, the vertical advection term is also slightly negative
+overall, despite looking qualitatively more like the experimental measurements
+than the RANS ALM case. The slightly negative vertical advection appears to be
+balanced by a positive contribution by a favorable pressure gradient along with
+low levels of turbulent transport. These discrepancies highlight the difficulty
+of predicting the near-wake dynamics and the need for data further downstream to
+test and refine predictions for wake evolution. For example, setting the
+Smagorinsky coefficient higher may induce greater levels of turbulent transport
+and dissipation, which may lower the pressure gradient, and raise the mean
+vertical advection.
 
 \begin{figure}
     \centering
