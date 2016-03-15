@@ -1149,54 +1149,23 @@ and MHK turbines.
 
 \section{Future work}
 
-Actuator line modeling is a valuable...
+The actuator line model shows great potential for use in cross-flow turbine
+engineering, and this study has inspired many avenues for its improvement.
 
+Firstly, since the fundamental premise of the ALM relies on accurate static foil
+coefficient data, it is crucial that more be measured and published openly, to
+allow the exploration of new rotor designs with various profiles. There is some
+doubt regarding the veracity of the Sheldahl and Klimas NACA foil data
+\cite{Bedon2014}. However, competing datasets at large laboratory scale Reynolds
+numbers are rare, even for the standard symmetrical foils. CFD may play a role
+in generating new data, but models must be rigorously validated, given the
+difficulty in predicting stall and its importance on CFT blade loading.
 
-There is a clear potential for improvements to the actuator line model for cross-flow turbines, 
-
-Since the ALM relies on static foil coefficient data, it is crucial that more be
-measured and published openly, to allow the exploration of new turbine designs.
-There is some doubt regarding the veracity of the Sheldahl and Klimas NACA foil
-data \cite{Bedon2014}. However, competing datasets at large laboratory scale
-Reynolds numbers are rare, even for the standard symmetrical foils. CFD may play
-a role in generating new data, but models must be rigorously validated, given
-the difficulty in predicting stall and its importance on CFT blade loading.
-
-The effects of local turbulence levels on foil coefficient data could be a model
-worth developing, since stall delay could affect loading significantly.
-
-One possible strategy for improving accuracy is to generate foil coefficient
-databases with more dimensions, e.g., blade pitch rate or local turbulence
-levels. It may also be possible to modify the dynamic loading models based on
-insight from the body-fitted grid simulations.
-
-The ALM should next be validated with far-wake data and/or data from two CFTs
-operating in proximity of each other.
-
-A better Reynolds number correction for foil data could be developed---one that
-can successfully reshape the coefficient curves for the shifting stall point.
-
-Rotor angular speed control via generator models could be included to test the
-effectiveness of various control schemes, e.g., sinusoidal $\lambda$ set points,
-which have been shown in some cases to improve mean power coefficient.
-\todo[inline]{Get some information and a citation about UW's work on CFT
-    controls.}
-
-The ALM should be evaluated for its use in modeling CFT arrays using both RANS
-and LES. If RANS can successfully postdict experimentally measured performance
-of closely-spaced physical model CFTs, it will provide a relatively low
-computational cost mid-fidelity tool to be coupled with optimization algorithms.
-
-The ALM and its associated loading models could be used to develop dynamic wall
-functions for coarse blade-resolved RANS, which would provide yet another option
-for reduced computational expense.
-
-Flow curvature corrections should be examined in more detail, and it may be
-beneficial to develop models to transform entire foil datasets to match their
-virtual camber, as suggested by Migliore \emph{et al.}~\cite{Migliore1980}. It
-also may be advantageous to implement a complementary model to adjust the
-direction of the resultant force vector to more accurately generate the blade's
-shed vorticity.
+Profile coefficient databases could be expanded to include more dimensions. For
+example, since the ALM will almost always involve turbulence modeling, the
+effects of local turbulence levels on foil coefficient data could be included,
+since stall delay could affect loading significantly, especially for a
+cross-flow turbine.
 
 Dynamic stall model empirical constants should be further investigated for their
 optimal values within the cross-flow turbine context. Though the
@@ -1208,6 +1177,21 @@ techniques could be employed to ``train'' the constants (and/or their
 $\lambda$-dependence) to one turbine's power curve, and they could be validated
 against the other turbine's data.
 
+Flow curvature corrections should be examined in more detail, and it may be
+beneficial to develop models to transform entire foil datasets to match their
+virtual camber, as suggested by Migliore et al.~\cite{Migliore1980}. It
+also may be advantageous to implement a complementary model to adjust the
+direction of the resultant force vector to more accurately generate the blade's
+shed vorticity.
+
+Rotor angular speed control via generator models could be included to test the
+effectiveness of various control schemes, e.g., sinusoidal $\lambda$ set points,
+which have been shown in some cases to improve mean power coefficient
+\cite{Strom2015}. Free stream velocity sampling could be implemented to
+determine the optimal location for sensing reference velocity used to compute
+tip speed ratio and power coefficient, which can become difficult in sheared or
+otherwise nonuniform flows \cite{Forbush2015}.
+
 Since \textit{turbinesFoam} is compatible with OpenFOAM's volume of fluid (VOF)
 multiphase flow solver \textit{interFoam}, the ALM's effectiveness should be
 assessed for predicting the generation and interaction of turbines with surface
@@ -1216,12 +1200,11 @@ could be retrofitted with a wave staff to measure and validate the free surface
 disturbance, which could be key to predicting the effects of placing turbines in
 channels at high blockage ratio.
 
-The effects of separation at blade--strut attachment points should be further
-studied. This may be one reason the turbine performance is overestimated at high
-$\lambda$, since these effects scale approximately with
-$\lambda^2$--$\lambda^3$.
-
-Ultimately, the \textit{turbinesFoam} ALM library for OpenFOAM should provide a
-solid platform for advancing the state-of-the-art for both cross- and axial-flow
-turbines.
+Possibly most importantly, the ALM should be validated with far-wake velocity
+measurements and/or performance data from two CFTs operating in proximity of
+each other. Next, the ALM should be evaluated for its use in modeling CFT arrays
+using both RANS and LES. If either can successfully postdict experimentally
+measured performance of closely-spaced physical model CFTs, they should then be
+coupled with optimization algorithms to automatically explore the design space,
+and ultimately drive down the cost of energy.
 
