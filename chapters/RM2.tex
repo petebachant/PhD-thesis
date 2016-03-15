@@ -42,7 +42,7 @@ strut connections were more streamlined.
 %%% Below copied from RM2 paper
 
 
-\section*{Introduction}
+\section{Introduction}
 
 The Reference Model Project (RMP), sponsored by the US Department of Energy
 (DOE), produced six marine hydrokinetic (MHK) technology point designs as
@@ -129,7 +129,7 @@ CC-BY for data and MIT license for code) as a Git repository on GitHub
 digital object identifier (DOI) \cite{Bachant2016-RM2-data}.
 
 
-\subsection*{Survey of Validation Data and Usage}
+\subsection{Survey of Validation Data and Usage}
 
 A selection of measured performance data in the literature and its usage in
 numerical model validation is presented in Table~\ref{tab:validation-data}.
@@ -193,15 +193,15 @@ interesting comparison for the near-wake dynamics of a rotor similar in size to
 the 1:6 scale RM2, but with non-tapered blades and a high solidity $c/R = 0.28$.
 
 
-\section*{Materials and Methods}
+\section{Materials and Methods}
 
-\subsection*{Turbine Model}
+\subsection{Turbine Model}
 
 Geometric parameters for the 1:6 scale RM2 rotor were taken from the RM2 design
 report \cite{Barone2011}, with the exception of the shaft diameter, which was
 scaled from the SAFL RM2 model \cite{Hill2014}. Values for both the 1:6 and
 full-scale designs are presented in Tab.~\ref{tab:turb-geom} and a drawing of
-the turbine is shown in Fig.~\ref{fig:turbine-drawing}. The rotor
+the turbine is shown in Figure~\ref{fig:turbine-drawing}. The rotor
 components---blades, struts, shaft, and center hub sections---were fabricated
 from 6061-T6 aluminum, which was hardcoat anodized per MIL-8625-A, type III,
 class 2 specifications. CAD models of the turbine are available from
@@ -227,8 +227,10 @@ class 2 specifications. CAD models of the turbine are available from
     \label{tab:turb-geom}
 \end{table}
 
-\begin{figure}[h]
-    \includegraphics[width=0.65\textwidth]{figures/turbine.eps}
+\begin{figure}
+    \centering
+
+    \includegraphics[width=0.65\textwidth]{rm2-drawing}
     
     \caption{{\bf Turbine Model.} A drawing of the turbine model.}
     
@@ -249,10 +251,11 @@ For investigating the effects of support strut drag losses, a set of cylindrical
 covers were designed to slip over the struts, which provided a deliberate and
 significant increase in strut drag. Endcaps were also fabricated to allow the
 high drag strut cover configuration to be operated without blades. A drawing of
-the strut covers is shown in Fig.~\ref{fig:covers}.
+the strut covers is shown in Figure~\ref{fig:covers}.
 
+\todo[inline]{Get RM2 strut covers Figure}
 \begin{figure}
-    \includegraphics[width=0.95\textwidth]{figures/strut_covers.eps}
+%    \includegraphics[width=0.95\textwidth]{strut_covers.eps}
     
     \caption{{\bf Strut Covers.} A drawing of the high drag strut cover
         configuration with and without blades.}
@@ -261,10 +264,10 @@ the strut covers is shown in Fig.~\ref{fig:covers}.
 \end{figure}
 
 
-\subsection*{Facility and instrumentation}
+\subsection{Facility and instrumentation}
 
 Measurements were conducted in the UNH tow/wave tank, pictured in
-Fig.~\ref{fig:exp-setup}, a 36 m long facility with a 3.66 m wide by 2.44 m deep
+Figure~\ref{fig:exp-setup}, a 36 m long facility with a 3.66 m wide by 2.44 m deep
 cross-section, capable of tow speeds up to 3 m/s. The blockage ratio based on
 the rotor frontal and tank cross-sectional area was 10\%. The turbine was
 mounted in a frame built from NACA 0020 struts, attached to the tow carriage by
@@ -286,12 +289,12 @@ the carriage speed turbine angular velocity sampled at 1 kHz. Turbine wake
 measurements at 1 meter downstream were measured with a Nortek Vectrino+
 acoustic Doppler velocimeter \cite{NortekVectrino}, sampling at 200 Hz. A photo
 and drawing of the experimental setup are shown in
-Fig.~\ref{fig:exp-setup-photo} and Fig.~\ref{fig:exp-setup}, respectively.
+Figure~\ref{fig:exp-setup-photo} and Figure~\ref{fig:exp-setup}, respectively.
 
 \begin{figure}
     \centering
     
-    \includegraphics[width=0.95\textwidth]{figures/exp-setup-photo}
+%    \includegraphics[width=0.95\textwidth]{turbine-test-bed-photo}
     
     \caption{\textbf{Experimental setup.} Photo of the UNH tow tank and turbine
         test bed with RM2 installed.}
@@ -302,8 +305,7 @@ Fig.~\ref{fig:exp-setup-photo} and Fig.~\ref{fig:exp-setup}, respectively.
 \begin{figure}
     \centering
     
-    \includegraphics[clip,trim=0.01in 0 0 0,
-    width=\textwidth]{figures/tank_cross_section}
+%    \includegraphics[clip,trim=0.01in 0 0 0, width=\textwidth]{figures/tank_cross_section}
     
     \caption{{\bf Experimental setup.} Illustration of the experimental setup.}
     
@@ -334,7 +336,7 @@ with a linear regression versus shaft angular velocity, and added to the
 measured turbine torque in post-processing.
 
 
-\subsection*{Test parameters}
+\subsection{Test parameters}
 
 Data collection runs were separated into individual tows, for which all
 independent variables---tow speed, tip speed ratio, velocity probe
@@ -366,11 +368,11 @@ numbers are presented in Tab.~\ref{tab:re}.
 
 Wake measurements were all performed at 1 m downstream, which corresponds to
 $x/D = 0.93$. The cross-stream and vertical coordinates are shown in
-Fig.~\ref{fig:coordinates}. Altogether 750 tows were performed and included in
+Figure~\ref{fig:coordinates}. Altogether 750 tows were performed and included in
 the experimental database.
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{figures/turbine_coordinate_system.eps}
+%    \includegraphics[width=\textwidth]{figures/turbine_coordinate_system.eps}
     
     \caption{{\bf Coordinate system.} Wake measurement coordinate system and
         cross-stream/vertical coordinates. All dimensions are in meters.}
@@ -379,26 +381,26 @@ the experimental database.
 \end{figure}
 
 
-\subsection*{Uncertainty Analysis}
+\subsection{Uncertainty Analysis}
 
 For the mean rotor power and drag coefficients an expanded uncertainty interval
 with 95\% confidence
 \begin{equation}
-U_{95} = t_{95} u_c,
+    U_{95} = t_{95} u_c,
 \end{equation}
 was computed, where $t_{95}$ is the value from the Student-$t$ distribution for
 a 95\% confidence interval and $u_c$ is the combined standard uncertainty
 \cite{ColemanSteele}. Combined standard uncertainty for the sample mean of a
 given quantity $X$ is calculated by
 \begin{equation}
-u_X^2 = s_{\bar{X}}^2 + b_X^2,
+    u_X^2 = s_{\bar{X}}^2 + b_X^2,
 \end{equation}
 where $s_{\bar{X}}$ is the sample standard deviation of the mean per turbine
 revolution ($s_{\bar{X}} = s_X/\sqrt{N}$), and $b_X$ is the systematic
 uncertainty, computed as
 \begin{equation}
-b_{X}^2 = \sum_{i=1}^J \left( \frac{\partial X}{\partial x_i} \right)^2
-b_{x_i}^2,
+    b_{X}^2 = \sum_{i=1}^J \left( \frac{\partial X}{\partial x_i} \right)^2
+    b_{x_i}^2,
 \end{equation}
 where $x_i$ is a primitive quantity used to calculate $X$ (e.g. $T$, $\omega$,
 and $U_\infty$ for calculating $C_P$), and $b_{x_i}$ is the primitive quantity's
@@ -408,7 +410,7 @@ manufacturer's calibration or datasheet.
 Selecting $t_{95}$ requires an estimate for degrees of freedom $\nu_X$, which
 was obtained using the Welch--Satterthwaite formula
 \begin{equation}
-\nu_X = \frac{\left(s_X^2 + \sum_{k=1}^M b_k^2 \right)^2} {s_X^4/\nu_{s_X} +
+    \nu_X = \frac{\left(s_X^2 + \sum_{k=1}^M b_k^2 \right)^2} {s_X^4/\nu_{s_X} +
     \sum_{k=1}^M b_k^4/\nu_{b_k}},
 \end{equation}
 where $\nu_{s_X}$ is the number of degrees of freedom associated with $s_X$ and
@@ -417,13 +419,13 @@ $\nu_{s_X}$ is assumed to be $(N-1)$, where $N$ is the number of independent
 samples (or turbine revolutions). The degrees of freedom parameter $\nu_{b_k}$
 was estimated as
 \begin{equation}
-\nu_{b_k} = \frac{1}{2} \left( \frac{\Delta b_k}{b_k} \right)^{-2},
+    \nu_{b_k} = \frac{1}{2} \left( \frac{\Delta b_k}{b_k} \right)^{-2},
 \end{equation}
 where the quantity in parentheses is the relative uncertainty of $b_k$, assumed
 to be 0.25.
 
 
-\subsection*{Data Processing}
+\subsection{Data Processing}
 
 For each tow speed, a relevant quasi-steady duration was selected by manually
 inspecting a plot of the $C_P$ time series. This interval was then truncated to
@@ -445,11 +447,11 @@ position measurements. Power and drag coefficients are calculated as
 instantaneous quantities from the carriage speed as
 
 \begin{equation}
-C_P = \frac{T \omega}{\frac{1}{2} \rho A U_\infty^3}
+    C_P = \frac{T \omega}{\frac{1}{2} \rho A U_\infty^3}
 \end{equation}
 and
 \begin{equation}
-C_D = \frac{F_\mathrm{drag}}{\frac{1}{2} \rho A U_\infty^2},
+    C_D = \frac{F_\mathrm{drag}}{\frac{1}{2} \rho A U_\infty^2},
 \end{equation}
 where $\rho$ is the fluid density (assumed to be a nominal 1000
 kg/m\textsuperscript{3}) and $A$ is the turbine frontal area $DH$.
@@ -460,12 +462,12 @@ automatically download raw data as necessary so users can perform a full
 reanalysis of the measurements presented here.
 
 
-\section*{Results and Discussion}
+\section{Results and Discussion}
 
-\subsection*{Performance}
+\subsection{Performance}
 
 Mean rotor power coefficients for multiple Reynolds numbers are plotted versus
-tip speed ratio in Fig.~\ref{fig:cp-curves}. In general, $C_P$ increases with
+tip speed ratio in Figure~\ref{fig:cp-curves}. In general, $C_P$ increases with
 $Re$, along with a reduction in the optimal tip speed ratio, due to the tendency
 of foils to stall at higher angles of attack at higher $Re$, and the higher
 angle of attack ranges seen by the blades at lower $\lambda$. These effects
@@ -480,16 +482,16 @@ thanks to the speed control of the experimental setup's servo motor applying
 negative torque to the rotor.
 
 \begin{figure}
-    \includegraphics[width=0.9\textwidth]{figures/cp_curves.eps}
+    \includegraphics[width=0.9\textwidth]{RM2-tow-tank_cp_curves}
     
-    \caption{{\bf Power Coefficient Curves.} Mean rotor power coefficient
-        plotted versus mean tip speed ratio for multiple Reynolds numbers.}
+    \caption{Mean rotor power coefficient plotted versus mean tip speed ratio
+        for multiple Reynolds numbers.}
     
     \label{fig:cp-curves}
 \end{figure}
 
 Mean rotor drag coefficients are plotted versus tip speed ratio in
-Fig.~\ref{fig:cd-curves}. These $C_D$ curves show little difference compared to
+Figure~\ref{fig:cd-curves}. These $C_D$ curves show little difference compared to
 the power coefficient curves, which is most noticeable at low $\lambda$ and low
 $Re$. The relative similarity could be attributed to the effects of stall, where
 the lift-to-drag ratio on the blades may drop, decreasing rotor torque, though
@@ -499,10 +501,10 @@ $\lambda_0=3.1$, and $Re_D=1.3 \times 10^6$, a rotor drag coefficient $C_D=0.84$
 was measured.
 
 \begin{figure}
-    \includegraphics[width=0.9\textwidth]{figures/cd_curves.eps}
+    \includegraphics[width=0.9\textwidth]{RM2-tow-tank_cd_curves}
     
-    \caption{{\bf Drag Coefficient Curves.} Mean rotor drag coefficient plotted
-        versus mean tip speed ratio for multiple Reynolds numbers.}
+    \caption{Mean rotor drag coefficient plotted versus mean tip speed ratio for
+        multiple Reynolds numbers.}
     
     \label{fig:cd-curves}
 \end{figure}
@@ -516,7 +518,7 @@ coefficient curves nearly collapse onto each other for $Re_D \ge 0.6 \times
 10^6$.
 
 The effects of Reynolds number on the power and drag coefficients at
-$\lambda=3.1$ are shown in Fig.~\ref{fig:perf-re-dep}. The rotor drag
+$\lambda=3.1$ are shown in Figure~\ref{fig:perf-re-dep}. The rotor drag
 coefficient $C_D$ became more or less Reynolds number independent for $Re_D \ge
 0.6 \times 10^6$. The power coefficient of the turbine increased dramatically
 below $Re_D = 1 \times 10^6$ or $Re_c \equiv \lambda U_\infty c / \nu \approx 2
@@ -542,20 +544,19 @@ coefficients given by a viscous panel method, whereas characteristics like
 lift-to-drag ratio do not converge as strongly \cite{Bachant2016-RVAT-Re-dep}.
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{figures/perf_re_dep.eps}
+    \includegraphics[width=\textwidth]{RM2-tow-tank_perf_re_dep}
     
-    \caption{{\bf Reynolds Number effects on performance.} Power and drag
-        coefficient at $\lambda=3.1$ plotted versus turbine diameter and approximate
-        average blade root chord Reynolds number.}
+    \caption{Power and drag coefficient at $\lambda=3.1$ plotted versus turbine
+        diameter and approximate average blade root chord Reynolds number.}
     
     \label{fig:perf-re-dep}
 \end{figure}
 
 
-\subsection*{Strut drag losses}
+\subsection{Strut drag losses}
 
 Performance curves for the rotor with both NACA 0021 and cylindrical struts are
-shown in Fig.~\ref{fig:perf-covers}. As expected, the high drag cylindrical
+shown in Figure~\ref{fig:perf-covers}. As expected, the high drag cylindrical
 struts reduce performance dramatically, producing an entirely negative $C_P$
 curve. The detrimental effects of the strut drag were more pronounced at higher
 $\lambda$. This is in accordance with the measurements of Rawlings
@@ -565,28 +566,28 @@ had on $C_P$, overall rotor drag measurements were relatively similar for both
 the cylindrical and NACA 0021 strut cases.
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{figures/perf_covers.eps}
+    \includegraphics[width=\textwidth]{RM2-tow-tank_perf_covers}
     
-    \caption{{\bf High drag strut performance.} Turbine performance and rotor
-        drag coefficient curves with both NACA 0021 and cylindrical struts.}
+    \caption{Turbine performance and rotor drag coefficient curves with both
+        NACA 0021 and cylindrical struts.}
     
     \label{fig:perf-covers}
 \end{figure}
 
 Measurements for the power coefficient contributions of the strut drag losses
-are presented in Fig.~\ref{fig:no-blades} for NACA 0021 and cylindrical
+are presented in Figure~\ref{fig:no-blades} for NACA 0021 and cylindrical
 struts---both in towed and stationary conditions. These are computed in the same
-fashion as the curves in Fig.~\ref{fig:cp-curves}, but with the rotor blades
+fashion as the curves in Figure~\ref{fig:cp-curves}, but with the rotor blades
 removed. We see that strut drag losses increase with tip speed ratio to the
 power 2--3, which makes streamlined struts much more important for low solidity
 turbines, given the inverse correlation between solidity and $\lambda_0$
 \cite{Templin1974}.
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{figures/no_blades_all.eps}
+    \includegraphics[width=\textwidth]{RM2-tow-tank_no_blades_all}
     
-    \caption{{\bf Strut drag losses.} Measurements of the strut drag losses for
-        (a) NACA 0021 and (b) cylindrical struts, both stationary and towed.}
+    \caption{Measurements of the strut drag losses for (a) NACA 0021 and (b)
+        cylindrical struts, both stationary and towed.}
     
     \label{fig:no-blades}
 \end{figure}
@@ -605,67 +606,65 @@ independent of the blade loading by modeling combinations of the rotor with the
 high/low drag struts and with/without blades.
 
 
-\subsection*{Near-wake characteristics}
+\subsection{Near-wake characteristics}
 
 The mean velocity field at the chosen optimal tip speed ratio $\lambda_0=3.1$, 1
 m downstream ($x/D=0.93$) from the rotor axis is plotted in
-Fig.~\ref{fig:meancontquiv}. The mean streamwise velocity deficit is markedly
+Figure~\ref{fig:meancontquiv}. The mean streamwise velocity deficit is markedly
 more symmetric than that of the higher solidity UNH-RVAT, shown in
-Fig.~\ref{fig:rvat-meancontquiv}, with the RM2 inducing lower acceleration
+Figure~\ref{fig:rvat-meancontquiv}, with the RM2 inducing lower acceleration
 around the turbine due to the lower rotor drag coefficient and a slightly lower
 blockage ratio \cite{Bachant2015-JoT}. Tip vortex shedding is relatively weaker,
 which is likely an effect of the RM2's smaller blade chord length and tapered
 blades.
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{figures/RVAT-Re-dep-meancontquiv_10.eps}
+    \includegraphics[width=\textwidth]{RVAT-Re-dep_meancontquiv_10}
     
-    \caption{{\bf UNH-RVAT Near-Wake Mean Velocity.} UNH-RVAT near-wake mean
-        velocity field (looking upstream) at 1 m downstream ($x/D=1.0$),
-        $U_\infty=1.0$ m/s, and $\lambda=1.9$, from \cite{Bachant2016-Energies}.
-        Solid dark gray lines indicate turbine frontal area.}
+    \caption{UNH-RVAT near-wake mean velocity field (looking upstream) at 1 m
+        downstream ($x/D=1.0$), $U_\infty=1.0$ m/s, and $\lambda=1.9$, from
+        \cite{Bachant2016-Energies}. Solid dark gray lines indicate turbine frontal
+        area.}
     
     \label{fig:rvat-meancontquiv}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{figures/meancontquiv.eps}
+    \includegraphics[width=\textwidth]{RM2-tow-tank_meancontquiv}
     
-    \caption{{\bf RM2 Near-Wake Mean Velocity.} RM2 near-wake mean velocity
-        field (looking upstream) at 1 m downstream ($x/D=0.93$), $U_\infty=1.0$ m/s,
-        and $\lambda=3.1$. Refer to Fig.~\ref{fig:coordinates} for turbine axis
-        orientation. Solid dark gray lines indicate turbine frontal area.}
+    \caption{RM2 near-wake mean velocity field (looking upstream) at 1 m
+        downstream ($x/D=0.93$), $U_\infty=1.0$ m/s, and $\lambda=3.1$. Refer to
+        Figure~\ref{fig:coordinates} for turbine axis orientation. Solid dark gray
+        lines indicate turbine frontal area.}
     
     \label{fig:meancontquiv}
 \end{figure}
 
-Fig.~\ref{fig:kcont} shows the turbulence kinetic energy in the turbine wake. We
+Figure~\ref{fig:kcont} shows the turbulence kinetic energy in the turbine wake. We
 mainly see unsteadiness in the flow generated by the blade tip vortex shedding
 (the horizontal band around $z/H=0.5$). Compared with the UNH-RVAT, shown in
-Fig.~\ref{fig:rvat-kcont}, turbulence generation is lower overall, without the
+Figure~\ref{fig:rvat-kcont}, turbulence generation is lower overall, without the
 intense vertical band around $y/R=-1$, which indicates that the RM2 blades are
 operating further from stall---consistent with its higher optimal tip speed
 ratio.
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{figures/RVAT-Re-dep-k_contours_10.eps}
+    \includegraphics[width=\textwidth]{RVAT-Re-dep_k_contours_10}
     
-    \caption{{\bf UNH-RVAT Near-Wake Turbulence Kinetic Energy.} Turbulence
-        kinetic energy in the UNH-RVAT's near-wake (looking upstream) at 1 m
-        downstream ($x/D=1.0$), $U_\infty=1.0$ m/s, and $\lambda=1.9$, from
-        \cite{Bachant2016-Energies}. Solid black lines indicate turbine frontal
-        area.}
+    \caption{Turbulence kinetic energy in the UNH-RVAT's near-wake (looking
+        upstream) at 1 m downstream ($x/D=1.0$), $U_\infty=1.0$ m/s, and
+        $\lambda=1.9$, from \cite{Bachant2016-Energies}. Solid black lines indicate
+        turbine frontal area.}
     
     \label{fig:rvat-kcont}
 \end{figure}
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{figures/k_contours.eps}
+    \includegraphics[width=\textwidth]{RM2-tow-tank_k_contours}
     
-    \caption{{\bf RM2 Near-Wake Turbulence Kinetic Energy.} Turbulence kinetic
-        energy in the RM2's near-wake (looking upstream) at 1 m downstream
-        ($x/D=0.93$), $U_\infty=1.0$ m/s, and $\lambda=3.1$. Solid black lines
-        indicate turbine frontal area.}
+    \caption{Turbulence kinetic energy in the RM2's near-wake (looking upstream)
+        at 1 m downstream ($x/D=0.93$), $U_\infty=1.0$ m/s, and $\lambda=3.1$. Solid
+        black lines indicate turbine frontal area.}
     
     \label{fig:kcont}
 \end{figure}
@@ -679,31 +678,31 @@ energy, rearranged to isolate the streamwise partial derivative (indices follow
 the Einstein summation convention):
 \begin{equation}
 \begin{split}
-\frac{\p K}{\p x}
-=
-\frac{1}{U}
-\bigg{[}
-& - \underbrace{V \frac{\p K}{\p y}}_{y\text{-adv.}}
-- \underbrace{W \frac{\p K}{\p z}}_{z\text{-adv.}}
-% Pressure work:
-- \frac{1}{\rho}\frac{\p}{\p x_j} P U_i \delta_{ij}
-% Work by viscous forces
-+ \frac{\p}{\p x_j} 2 \nu U_i S_{ij}
-% Turbulent transport of K
-- \underbrace{
-    \frac{1}{2}\frac{\p}{\p x_j} \overline{u_i' u_j'} U_i
-}_{\text{Turb. trans.}} \\
-% Production of k
-& + 
-\underbrace{
-    \overline{u_i' u_j'} \frac{\p U_i}{\p x_j}
-}_{k\text{-prod.}}
-% Mean dissipation
-- 
-\underbrace{
-    2 \nu S_{ij}S_{ij}
-}_{\text{Mean diss.}}
-\bigg{]}.
+    \frac{\p K}{\p x}
+    =
+    \frac{1}{U}
+    \bigg{[}
+    & - \underbrace{V \frac{\p K}{\p y}}_{y\text{-adv.}}
+    - \underbrace{W \frac{\p K}{\p z}}_{z\text{-adv.}}
+    % Pressure work:
+    - \frac{1}{\rho}\frac{\p}{\p x_j} P U_i \delta_{ij}
+    % Work by viscous forces
+    + \frac{\p}{\p x_j} 2 \nu U_i S_{ij}
+    % Turbulent transport of K
+    - \underbrace{
+        \frac{1}{2}\frac{\p}{\p x_j} \overline{u_i' u_j'} U_i
+    }_{\text{Turb. trans.}} \\
+    % Production of k
+    & + 
+    \underbrace{
+        \overline{u_i' u_j'} \frac{\p U_i}{\p x_j}
+    }_{k\text{-prod.}}
+    % Mean dissipation
+    - 
+    \underbrace{
+        2 \nu S_{ij}S_{ij}
+    }_{\text{Mean diss.}}
+    \bigg{]}.
 \end{split}
 \label{eq:K-full}
 \end{equation}
@@ -719,7 +718,7 @@ dissipation due to the mean velocity gradient (Mean diss.).
 Derivatives were computed with a second order central difference scheme for
 interior points, and a second order inward-facing scheme for the edges,
 following the methodology in \cite{Bachant2015-JoT}. Weighted averages for these
-calculations are shown in Fig.~\ref{fig:Ktransport}. Due to the weaker blade
+calculations are shown in Figure~\ref{fig:Ktransport}. Due to the weaker blade
 vortex shedding, transport due to vertical advection at this point in the wake
 was approximately 3 times lower than the higher solidity UNH-RVAT. Note that
 direct comparison is somewhat invalid, since the total measurement plane area
@@ -733,17 +732,16 @@ stream, though evaluating these trade-offs will require a detailed analysis of
 the downstream evolution and turbine--wake interaction.
 
 \begin{figure}
-    \includegraphics[width=0.9\textwidth]{figures/K_trans_bar_graph.eps}
+    \includegraphics[width=0.9\textwidth]{RM2-tow-tank_K_trans_bar_graph}
     
-    \caption{{\bf Mean Kinetic Energy Transport.} Weighted average estimates for
-        terms contributing to streamwise recovery of mean kinetic energy, multiplied
-        by two due to implied symmetry.}
+    \caption{Weighted average estimates for terms contributing to streamwise
+        recovery of mean kinetic energy, multiplied by two due to implied symmetry.}
     
     \label{fig:Ktransport}
 \end{figure}
 
 
-\subsection*{Conclusions}
+\subsection{Conclusions}
 
 The performance and near-wake velocity of a 1:6 scale DOE Reference Model 2
 cross-flow turbine were measured in a towing tank. A maximum power coefficient
@@ -791,7 +789,7 @@ as a Git repository from \url{http://github.com/UNH-CORE/RM2-tow-tank} or a
 citable archive \cite{Bachant2016-RM2-data}.
 
 
-\section*{Acknowledgments}
+\section{Acknowledgments}
 
 This study was supported by the Department of Energy (DOE), Office of Energy
 Efficiency and Renewable Energy (EERE), Wind and Water Power Technologies Office
