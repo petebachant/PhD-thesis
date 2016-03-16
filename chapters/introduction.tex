@@ -266,7 +266,7 @@ load prediction.
     
     \includegraphics[width=\textwidth]{Cakmak-et-al-2014-fig8}
     
-    \caption{Characteristics of an S826 airfoil at $Re=145,000$, from
+    \caption{Characteristics of an S826 airfoil at $Re_c=145,000$, from
         \cite{Cakmakcioglu2014}.}
     
     \label{fig:S826-perf}
@@ -276,22 +276,25 @@ load prediction.
 \subsection{Unsteady aerodynamics and dynamic stall}
 
 Up until now we have only considered the static behavior of foils, which may be
-sufficient to model the steady performance of an axial-flow turbine, since rotor
-blade element angles of attack are meant to remain constant in ideal conditions.
-The rotation of a cross-flow turbine, however---with its constantly changing
-angle of attack (also the change in sign) and relative velocity---produces an
-unsteady environment for the blade elements, even in an idealized case.
+sufficient to model the steady performance of an axial-flow turbine, since
+angles of attack for all rotor blade elements are meant to remain constant in
+ideal conditions. The rotation of a cross-flow turbine, however---with its
+constantly changing angle of attack (also the change in sign) and relative
+velocity---produces an unsteady environment for the blade elements, even in an
+idealized case.
 
-Unsteady foil behavior has been studied extensively in rotorcraft research. In
-the absence of stall, even a helicopter rotor airfoil will deviate from static
-behavior due to cyclic pitching, along with changes in relative velocity as the
-blade advances and retreats. Thus, the wealth of knowledge available from the
-helicopter literature provides insight into the cross-flow turbine case.
+Unsteady foil behavior has been studied extensively in rotorcraft research
+\cite{Leishman2006}. In the absence of stall, even a helicopter rotor airfoil
+will deviate from static behavior due to cyclic pitching, along with changes in
+relative velocity as the blade advances and retreats. Thus, the wealth of
+knowledge available from the helicopter literature provides insight into the
+cross-flow turbine case.
 
 The first consideration is the attached behavior of unsteady airfoils. As one
 might expect, in these cases either the angle of attack or relative velocity is
-varying, but large amounts of flow separation, i.e. stall, is never encountered.
-The unsteadiness is characterized by a reduced frequency~\cite{Leishman2006}
+varying, but large amounts of flow separation, i.e., stall, is never
+encountered. The unsteadiness is characterized by a reduced
+frequency~\cite{Leishman2006}
 \begin{equation}
     k = \frac{\omega c}{2 U_\infty},
 \end{equation}
@@ -301,19 +304,20 @@ become significant for $k > 0.05$, and can become dominant for $k \ge 0.2$.
 For a cross-flow turbine reduced frequency can be reformulated in terms of the
 tip speed ratio as
 \begin{equation}
-    k = \frac{\lambda c}{2R}.
+    k = \frac{\lambda c}{2R},
 \end{equation}
-As an example, a large scale, relatively low solidity Darrieus turbine such as
-the Sandia 34 m diameter Test Bed, with an equatorial blade chord of 0.91 m
-\cite{Murray2011}, a reduced frequency of 0.16 is encountered based solely on
+which is then also a function of solidity or chord-to-radius ratio $c/R$. As an
+example, a large scale, relatively low solidity Darrieus turbine such as the
+Sandia 34 m diameter Test Bed, with an equatorial blade chord of 0.91 m
+\cite{Murray2011}, a reduced frequency $k=0.16$ is encountered based solely on
 angle of attack oscillations at $\lambda=6$. For a smaller scale CFT, e.g., with
 $c/R = 0.25$, operating at $\lambda = 2$, the reduced frequency is 0.25. It
 follows that unsteady effects will be significant for cross-flow turbines even
 in the absence of nonlinear effects such as stall.
 
-In the unsteady regime, when angle of attack is high enough to induce large
-separation it is called dynamic stall. The effects on foil loading are different
-from those of static stall in that they are time dependent and include
+In the unsteady regime, when a foil's angle of attack is high enough to induce
+large separation it is called dynamic stall. The effects on foil loading are
+different from those of static stall in that they are time dependent and include
 hysteresis or lag effects. The dynamic stall process in general can be described
 as \cite{McCroskey1981}, depicted in Figure~\ref{fig:McCroskey}:
 \begin{enumerate}
