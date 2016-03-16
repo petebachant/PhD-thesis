@@ -366,34 +366,35 @@ field-tested), so long as important dynamical scales (Reynolds number, mainly)
 are sufficiently matched. It has been shown that performance becomes essentially
 Reynolds number independent at an approximate blade chord Reynolds number $Re_c
 \approx \lambda U_\infty c / \nu = O(10^5)$ \cite{Bravo2007}, which is
-investigated further in later chapters. However, experiments at this scale can
-be quite expensive. For example, a turbine with a 1 m diameter and 10 cm chord
-would need to be tested in a flow on the order of 1 m/s in water and 10 m/s in
-air. For a turbine this large it is typically impractical to manufacture many
-prototypes to find the optimal design, so numerical modeling is preferred. There
-exists a large spectrum of numerical modeling techniques with widely varying
-computational cost and fidelity, and sometimes only the most complex and
+investigated further in Chapter~\ref{chap:Re-dep}. However, experiments at this
+scale can be quite expensive. For example, a turbine with a 1 m diameter and 10
+cm chord would need to be tested in a flow on the order of 1 m/s in water and 10
+m/s in air. For a turbine this large it is typically impractical to manufacture
+many prototypes to find the optimal design, so numerical modeling is preferred.
+There exists a large spectrum of numerical modeling techniques with widely
+varying computational cost and fidelity, and sometimes only the most complex and
 computationally expensive are trustworthy.
 
-Momentum models are the simplest and cheapest, where the turbine blades are
-discretized into blade elements, for which 2-D static lift and drag data are
-tabulated. The relative velocity and angle of attack for a blade element are
-calculated by seeking a balance between forces computed from the static foil
-data and the rate of change of momentum of the fluid passing by the blade
-element. Momentum methods break down for large streamwise forces, i.e.,
-``induction factors''---common in water and high solidity turbines---and must be
-corrected empirically. Despite their deficiencies, these models can do a
-reasonable job for low solidity rotors when combined with corrections for
-dynamic loading, the most prominent cause of which is dynamic stall
-\cite{Para2002}, but fail for high solidity~\cite{Joo2015}. A double multiple
-streamtube (DMS) momentum model can compute a full turbine performance curve in
-seconds on a modern desktop computer.
+Momentum models are the simplest and computationally least expensive, where the
+turbine blades are discretized into blade elements, for which 2-D static lift
+and drag data are tabulated. The relative velocity and angle of attack for a
+blade element are calculated by seeking a balance between forces computed from
+the static foil data and the rate of change of momentum of the fluid passing by
+the blade element, computed within a single or multiple ``streamtubes.''
+Momentum methods break down for large streamwise forces, i.e., ``induction
+factors''---common in water and high solidity turbines---and must be corrected
+empirically. Despite their deficiencies, these models can do a reasonable job
+for low solidity rotors when combined with corrections for dynamic loading, the
+most prominent cause of which is dynamic stall \cite{Para2002}, but fail for
+high solidity~\cite{Joo2015}. A double multiple streamtube (DMS) momentum model
+can compute a full turbine performance curve in seconds on a modern desktop
+computer.
 
 Vortex line methods are similar to momentum models, except blade element local
 velocity is computed using potential flow theory, where lifting bodies are bound
 vortex lines that shed vortex wake elements whose influences are combined via
-the Biot--Savart law \cite{Strickland1979}. Sandia National Labs' CACTUS is an
-example of a vortex method \cite{Murray2011}. CACTUS has been tested against
+the Biot--Savart law \cite{Strickland1979}. Sandia National Labs' CACTUS is one
+example of a vortex line code \cite{Murray2011}. CACTUS has been tested against
 experimental data from large, low-solidity wind turbines (those for which
 momentum models do well), but has been shown to fail for smaller turbines in
 water, which are typically higher solidity \cite{Michelen2014}. Regarding
@@ -421,17 +422,19 @@ larger portion of the energy spectrum of turbulence. If a body-fitted grid is
 used, the actual turbine geometry is included as part of the computational
 domain, and the mesh is generally refined next to the solid surfaces to resolve
 the boundary layer, i.e., with cells adjacent to walls having a nondimensional
-wall distance $y^+ \sim 1$. When only run in two dimensions, RANS methods are
-affordable enough to be run on a single CPU, computing a single turbine
-operating point in hours. However, 3-D effects are important enough that 2-D
-simulations are not reliable, at least as predictors of absolute performance
-\cite{Li2013}. 3-D simulations with a body-fitted grid are very expensive
-(especially for LES), therefore are practically limited to high performance
-computing (HPC) clusters. Even with the high computational expense, these models
-are not perfect and results can deviate significantly from experimental
-measurements, especially when using RANS models \cite{Li2013}.
+wall distance $y^+ = u^* y / \nu \sim 1$, where $u^*$ is the friction velocity,
+defined as $u^*=\sqrt{\tau_w / \rho}$, where $\tau_w$ is the wall shear stress.
+When only run in two dimensions, RANS methods are affordable enough to be run on
+a single CPU, computing a single turbine operating point in hours. However, 3-D
+effects are important enough that 2-D simulations are not reliable, at least as
+predictors of absolute performance \cite{Li2013}. 3-D simulations with a
+body-fitted grid are very expensive (especially for LES), therefore are
+practically limited to high performance computing (HPC) clusters. Even with the
+high computational expense, these models are not perfect and results can deviate
+significantly from experimental measurements, especially when using RANS models
+\cite{Li2013}.
 
-Actuator line modeling (ALMs), first used by Sorensen and
+Actuator line modeling (ALM), first used by Sorensen and
 Shen~\cite{Sorensen2002}, is a hybrid of the blade element and Navier--Stokes
 methods. The turbine is not part of the mesh, but is represented by lines that
 move through the flow, acting as momentum sinks, where the resultant force is
