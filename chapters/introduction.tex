@@ -469,20 +469,21 @@ involves the superposition of prescribed wakes \cite{Stevens2014b}. Evolution
 can be dependent on a single expansion coefficient chosen by the free stream
 turbulence intensity \cite{Jensen1983, Choi2013} or computed by a solution of
 the linearized RANS equations with an empirically derived constant eddy
-viscosity closure \cite{Ainslie1988}. In light of the CFT's unique near-wake
-dynamics, the valitidy of these models is questionable. At the very least they
-would need to be recalibrated for CFTs, though their applicability is limited in
-the near-wake of any turbine, meaning they are generally inappropriate for
-closely-spaced arrays.
+viscosity closure \cite{Ainslie1988}. While these models may be acceptable for
+analyzing HAWT farms, in light of the CFT's unique near-wake dynamics, the
+validity of these models for application to CFT arrays is questionable. At the
+very least they would need to be recalibrated for CFTs, though their
+applicability is limited in the near-wake of any turbine, meaning they are
+generally inappropriate for closely-spaced arrays.
 	
 The next step up in complexity is the actuator disk method, where a constant
 body force is added to the Navier--Stokes equations. This method can be
 computationally cheap with RANS, or quite expensive and thorough with LES. The
-ORPC turbine array is being laid out using the SNL-EFDC code, which uses a
-constant uniform force applied to the RANS equations, where the turbine injects
-turbulence kinetic energy and dissipation for the model's $k$--$\epsilon$
-closure \cite{Nelson2013}. The ability of actuator disk models to predict the
-near-wakes of CFTs is of interest in this work.
+ORPC turbine array in Cobscook Bay, Maine is being laid out using the SNL-EFDC
+code, which uses a constant uniform force applied to the RANS equations, where
+the turbine injects turbulence kinetic energy and dissipation for the model's
+$k$--$\epsilon$ closure \cite{Nelson2013}. The ability of actuator disk models
+to predict the near-wakes of CFTs is of interest in this work.
 	
 At present simulations with body-fitted grids are limited to one or two turbines
 due to computational cost, which means they are impractical for full array
@@ -506,9 +507,9 @@ goal includes the following objectives:
 
 \begin{enumerate}
 	\item To improve the understanding of both high and low solidity cross-flow
-    turbine wakes, most importantly the apparent increased rate of recovery
-    compared with axial-flow turbines. This will establish our flow modeling
-    targets.
+    turbine wakes, most importantly the apparent increased rate of momentum and
+    energy recovery compared with axial-flow turbines. This will establish our flow
+    modeling targets.
     
     \begin{enumerate}
         \item To evaluate the ability of actuator disk models to predict the
@@ -524,19 +525,24 @@ goal includes the following objectives:
     
     \item To investigate actuator line modeling to potentially reduce the
     required computing power necessary for engineering work with CFTs.
+    
+    \item To release all research products---data, code, CAD models, simulation
+    case files---as openly as possible to enable reproducibility and maximize
+    reuse.
 \end{enumerate}
 
 
 \section{Contributions to science and engineering}
 
-Cross-flow turbines are simple machines made from common shapes, but they can
-produce very complex flows. Despite their failure in the large scale wind
-industry, and beyond their contemporary adoption in marine hydrokinetics, there
-is scientific and engineering value to better understanding their behavior. The
-flow problem---unsteady foil behavior involving dynamic stall, finite blade span
-end effects in curvilinear flows---is complex yet general enough to be
-applicable to other unsteady turbomachinery and/or foil flows, e.g., Voith
-Schneider propellers, Cyclogyros, or even conventional helicopter rotors.
+Cross-flow turbines are simple machines made from common shapes, i.e., foils,
+but they can produce very complex flows. Despite their failure in the large
+scale wind industry, and beyond their contemporary adoption in marine
+hydrokinetics, there is scientific and engineering value to better understanding
+their behavior. The flow problem---unsteady foil behavior involving dynamic
+stall, finite blade span end effects in curvilinear flows---is complex yet
+general enough to be applicable to other unsteady turbomachinery and/or foil
+flows, e.g., Voith Schneider propellers, Cyclogyros, or even conventional
+helicopter rotors.
 
 This work will increase the amount of experimental data available for device
 comparison and numerical model validation. This is especially important for CFTs
@@ -548,12 +554,18 @@ respectively. There is a danger that validating against the most ubiquitous
 Darrieus turbine experiments may result in models that fail with newer, more
 unique designs.
 
-From this work, open datasets have been generated and published. These datasets
-will help others evaluate their numerical models, and since their availability
-will also include processing code, other researchers may find new knowledge to
-glean from them. 
+From this work, open datasets have been generated and published
+\cite{Bachant2014-RVAT-baseline, Bachant2016-RVAT-Re-dep, Bachant2016-RM2-data},
+both for a high and low-to-medium solidity turbine. These datasets will help
+others evaluate their numerical models, and since their availability also
+includes processing code, other researchers may find new knowledge to glean from
+them. Open-source software tools have also been developed
+\cite{Bachant2016-turbinesFoam}, which have been made available to the public
+throughout all phases of development, and have benefited from open collaboration
+as well.
 
 In summary, this research will elucidate the unique wake properties of
-cross-flow turbines, establish scaling guidelines for physical modeling, and
-inform designers on the trustworthiness of state-of-the-art numerical modeling
-techniques.
+cross-flow turbines, establish scaling guidelines for physical modeling, inform
+designers on the trustworthiness of state-of-the-art numerical modeling
+techniques, and introduce (to our knowledge) the first 3-D actuator line model
+for CFTs.
