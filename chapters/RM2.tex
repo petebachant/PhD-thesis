@@ -382,50 +382,6 @@ the experimental database.
 \end{figure}
 
 
-\subsection{Uncertainty Analysis}
-
-For the mean rotor power and drag coefficients an expanded uncertainty interval
-with 95\% confidence
-\begin{equation}
-    U_{95} = t_{95} u_c,
-\end{equation}
-was computed, where $t_{95}$ is the value from the Student-$t$ distribution for
-a 95\% confidence interval and $u_c$ is the combined standard uncertainty
-\cite{ColemanSteele}. Combined standard uncertainty for the sample mean of a
-given quantity $X$ is calculated by
-\begin{equation}
-    u_X^2 = s_{\bar{X}}^2 + b_X^2,
-\end{equation}
-where $s_{\bar{X}}$ is the sample standard deviation of the mean per turbine
-revolution ($s_{\bar{X}} = s_X/\sqrt{N}$), and $b_X$ is the systematic
-uncertainty, computed as
-\begin{equation}
-    b_{X}^2 = \sum_{i=1}^J \left( \frac{\partial X}{\partial x_i} \right)^2
-    b_{x_i}^2,
-\end{equation}
-where $x_i$ is a primitive quantity used to calculate $X$ (e.g. $T$, $\omega$,
-and $U_\infty$ for calculating $C_P$), and $b_{x_i}$ is the primitive quantity's
-systematic uncertainty, estimated as half the value listed on the sensor
-manufacturer's calibration or datasheet.
-
-Selecting $t_{95}$ requires an estimate for degrees of freedom $\nu_X$, which
-was obtained using the Welch--Satterthwaite formula
-\begin{equation}
-    \nu_X = \frac{\left(s_X^2 + \sum_{k=1}^M b_k^2 \right)^2} {s_X^4/\nu_{s_X} +
-    \sum_{k=1}^M b_k^4/\nu_{b_k}},
-\end{equation}
-where $\nu_{s_X}$ is the number of degrees of freedom associated with $s_X$ and
-$\nu_{b_k}$ is the number of degrees of freedom associated with $b_k$.
-$\nu_{s_X}$ is assumed to be $(N-1)$, where $N$ is the number of independent
-samples (or turbine revolutions). The degrees of freedom parameter $\nu_{b_k}$
-was estimated as
-\begin{equation}
-    \nu_{b_k} = \frac{1}{2} \left( \frac{\Delta b_k}{b_k} \right)^{-2},
-\end{equation}
-where the quantity in parentheses is the relative uncertainty of $b_k$, assumed
-to be 0.25.
-
-
 \subsection{Data Processing}
 
 For each tow speed, a relevant quasi-steady duration was selected by manually
