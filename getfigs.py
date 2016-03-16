@@ -71,12 +71,9 @@ figlists = {"RVAT-baseline": ["perf.pdf", "meancontquiv.pdf", "kcont.pdf",
                              "kcont.pdf", "recovery-bar-chart.pdf",
                              "vorticity-snapshot.png"],
             "end-effects": ["rvat-20-deg.pdf"],
-            "RM2-tow-tank": ["turbine_coordinate_system.pdf", "turbine.pdf",
-                             "strut_covers.pdf", "cp_curves.pdf",
-                             "cd_curves.pdf", "perf_re_dep.pdf",
-                             "perf_covers.pdf", "no_blades_all.pdf", 
-                             "meancontquiv.pdf", "k_contours.pdf",
-                             "K_trans_bar_graph.pdf"]}
+            "RM2-tow-tank": ["cp_curves.pdf", "cd_curves.pdf",
+                             "perf_re_dep.pdf", "perf_covers.pdf",
+                             "no_blades_all.pdf", "meancontquiv.pdf", "k_contours.pdf", "K_trans_bar_graph.pdf"]}
 
 
 for name, figlist in figlists.items():
