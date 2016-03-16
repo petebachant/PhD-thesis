@@ -312,17 +312,35 @@ In the unsteady regime, when angle of attack is high enough to induce large
 separation it is called dynamic stall. The effects on foil loading are different
 from those of static stall in that they are time dependent and include
 hysteresis or lag effects. The dynamic stall process in general can be described
-as \cite{McCroskey1981}:
+as \cite{McCroskey1981}, depicted in Figure~\ref{fig:McCroskey}:
 \begin{enumerate}
-    \item A large leading edge vortex is formed, which causes an overshoot in
-    lift beyond the static case in a linear fashion.
+    \item Attached flow with thin boundary layer.
+
+    \item Separation begins. A large leading edge vortex is formed, which causes
+    an overshoot in lift beyond the static case in a linear fashion.
     
-    \item The vortex is advected downstream, causing additional lift.
+    \item The vortex is advected downstream, causing additional lift and
+    negative pitching moment.
     
-    \item The vortex reaches the trailing edge and the lift decays rapidly.
+    \item The vortex advects towards the trailing edge. Lift and moment decay
+    rapidly after reaching peak values.
     
-    \item Lift slowly returns to the linear regime as flow reattaches.
+    \item Secondary vortices may be shed, leading to additional lift and moment
+    peaks.
+    
+    \item Forces slowly return to the linear regime as flow reattaches.
 \end{enumerate}
+
+\begin{figure}
+    \centering
+    
+    \includegraphics[height=0.9\textheight]{McCroskey-1981}
+    
+    \caption{Dynamic stall events for a Vertol VR-7 airfoil, taken from
+        \cite{McCroskey1981}.}
+
+    \label{fig:McCroskey}
+\end{figure}
 
 Based on Figure~\ref{fig:geom-alpha-urel}, we expect dynamic stall to play an
 important role in governing overall blade loading for a cross-flow turbine.
