@@ -27,16 +27,16 @@ ZB3 500 lbf load cells that allowed measurement of total streamwise rotor drag.
 \end{figure}
 
 Despite its usefulness in collecting a relatively small amount of data for two
-helical cross-flow turbines~\cite{Bachant2015-RE}, the existing system had some
-issues to be addressed:
+helical cross-flow turbines~\cite{Bachant2015-RE}, this ``first generation''
+system had some issues to be addressed:
 \begin{itemize}
     \item No control over turbine shaft angular velocity. This made operation at
     tip speed ratio below peak torque impossible.
     
     \item Fully manual starting and load application. This limited resolution of
     the applied torque, and took considerable effort to perform experiments on
-    the order of 100 tows, since a person had to ride on the carriage to adjust
-    and apply the load torque.
+    the order of 100 tows, since a person had to ride on the tow carriage to
+    adjust and apply the load torque.
     
     \item Open loop speed and manual position control of the tow carriage. This
     also took considerable effort to operate experiments, since the operator had
@@ -93,7 +93,8 @@ consisted of a ``master'' guide constructed from $4 \times 4$ inch fiberglass
 tubing, and a ``slave'' guide constructed from aluminum angle, on which plastic
 wheels rode. Over time, the fiberglass tubing had failed structurally and was
 covered with stainless steel bars fixed with double-sided tape. These bars
-shifted around considerably during towing and were a source of noise.
+shifted around considerably during towing and were a source of noise in the
+measurements.
 
 A new set of linear guides was designed from 1.25 inch diameter Thomson 440C
 stainless steel linear shafts and super self-aligning linear bearings, shown in
@@ -124,7 +125,7 @@ inches~\cite{Darnell1996}.
         \label{fig:new-linear-guides}
     \end{subfigure}
     
-    \caption{Linear guide system (on ``master'' side) before and after
+    \caption{Linear guide system (on ``master'' side) (a) before and (b) after
         upgrades.}
 \end{figure}
 
@@ -143,13 +144,14 @@ and in an open-loop manner. This meant positioning was done manually, which took
 a skilled operator, and reduced usable tank length further to allow for coasting
 to a stop.
 
-These issues were addressed by changing the motor to a Kollmorgen AKM82
-permanent magnet servo motor and 10:1 gearbox, shown installed in
-Figure~\ref{fig:tow-servo}, which was sized to tow turbines with 1 m$^2$ frontal
-area up to 3 m/s, while accelerating at 2 m/s$^2$. The motor was powered by a
-Kollmorgen S700 servo drive, controlled by an 8-axis ACS NTM EtherCAT master
-controller, providing closed loop position and velocity control. A series of
-emergency stop buttons were also installed to increase the safety of the system.
+These issues were addressed by changing the motor to a 26.1 maximum horsepower
+Kollmorgen AKM82 permanent magnet servo motor and 10:1 gearbox, shown installed
+in Figure~\ref{fig:tow-servo}, which was sized to tow turbines with 1 m$^2$
+frontal area up to 3 m/s, while accelerating at 2 m/s$^2$. The motor was powered
+by a Kollmorgen S700 servo drive, controlled by an 8-axis ACS NTM EtherCAT
+master controller, providing closed loop position and velocity control. A series
+of emergency stop buttons were also installed to increase the safety of the
+system.
 
 \begin{figure}
     \centering
@@ -174,14 +176,14 @@ factor of 7.
 \subsection{Data acquisition and onboard accessories}
 
 The previous generation tow tank data acquisition (DAQ) system was based around
-an onboard PC, powered by a set of four 12 V automotive batteries. This was
-done to avoid the complexity of running power out to the carriage
-\cite{Darnell1996}. The DAQ PC was accessed via Windows Remote Desktop to
-control any DAQ applications. The PC that sent the control signal to the
-inverter drive was a separate machine, which meant users had to work with at
-least two interfaces to specify DAQ and motion parameters. This also made it
-difficult to synchronize motion with data acquisition, e.g., triggering data
-collection at a certain location.
+an onboard PC, powered by a set of four 12 V automotive batteries. This was done
+to avoid the complexity of running power out to the carriage \cite{Darnell1996}.
+The DAQ PC was accessed wirelessly via Windows Remote Desktop to control any DAQ
+applications. The PC that sent the control signal to the inverter drive was a
+separate machine, which meant users had to work with at least two interfaces to
+specify DAQ and motion parameters. This also made it difficult to synchronize
+motion with data acquisition, e.g., triggering data collection at a certain
+location.
 
 A new DAQ system was designed based around a National Instruments (NI) 9188
 CompactDAQ Ethernet chassis. NI 9237, 9205, 9401, and 9411 modules were
@@ -202,7 +204,7 @@ be used on the carriage at some point, which included laser power supplies and a
 laser chiller that could not be powered by the previous generation's isolated
 battery/inverter system. 
 
-An onboard electronics cabinet was designed by Minarik, inc. as part of the
+An onboard electronics cabinet was designed by Minarik, Inc. as part of the
 upgraded motion system. A 45 amp, 120 VAC circuit and 20 amp, 240 VAC single
 phase power cable were run through the cable carrier to power outlets on the
 side of the onboard electronics cabinet. An additional 240 VAC three-phase
@@ -228,7 +230,7 @@ added to the carriage for their connection.
 Summaries of turbine test bed sensors and instrumentation are presented in
 Table~\ref{tab:sensors} and Table~\ref{tab:instrumentation}, respectively. A
 drawing and photo of the test bed are shown in
-Figure~\ref{turbine-test-bed}. Details on each subsystem are presented in
+Figure~\ref{fig:turbine-test-bed}. Details on each subsystem are presented in
 following sections.
 
 \begin{table}
@@ -318,13 +320,13 @@ torque range to approximately 360 Nm.
 Turbine shaft angle was measured via the AKD drive's emulated encoder output,
 set to $5 \times 10^3$ (pre-gearbox) or $1 \times 10^5$ (post-gearbox)
 lines-per-rev in an A-quad-B configuration. This signal was sampled by either
-the NI 9401 (Chapter~\ref{chap:RVAT-baseline}) or the NI 9411
-(Chapters~\ref{chap:Re-dep} and \ref{chap:RM2}) modules. Shaft speed was
-computed by differentiating the angle time series with a second order central
-difference scheme. A moving average filter $\sim$10 samples wide was applied to
-smooth the resulting $\omega$ time series such that it agreed nearly identically
-with the shaft RPM measured by the servo motor's resolver feedback as sampled by
-the motion controller.
+the NI 9401 (experiments reported in Chapter~\ref{chap:RVAT-baseline}) or the NI
+9411 (experiments reported in Chapters~\ref{chap:Re-dep} and \ref{chap:RM2})
+modules. Shaft speed was computed by differentiating the angle time series with
+a second order central difference scheme. A moving average filter $\sim$10
+samples wide was applied to smooth the resulting $\omega$ time series such that
+it agreed nearly identically with the shaft RPM measured by the servo motor's
+resolver feedback as sampled by the motion controller.
 
 The two drag slide assemblies for overall streamwise drag or thrust measurement
 were retained from the previous setup, which is described in
