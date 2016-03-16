@@ -177,11 +177,11 @@ employed to obtain a simplified view of the kinematics and dynamics of a CFT.
 Figure~\ref{fig:vectors} shows the relevant velocity and and force vectors on a
 CFT blade element. The relative velocity and angle of attack $\alpha$ are
 calculated by adding the inflow velocity vector to the opposite of the blade
-element velocity $\omega R$, where $\omega$ is the shaft angular velocity and
-$R$ is the element radius. In the relative velocity coordinate system, the lift
-and drag are then oriented normal and tangential to the relative velocity,
-respectively. These forces ultimately produce the shaft torque, and in turn the
-shaft power.
+element velocity $\omega r$, where $\omega$ is the shaft angular velocity and
+$r$ is the element radius, which for a straight-bladed turbine is equal to the
+rotor radius $R$. In the relative velocity coordinate system, the lift and drag
+are then oriented normal and tangential to the relative velocity, respectively.
+These forces ultimately produce the shaft torque, and in turn the shaft power.
 
 \begin{figure}
     \centering
@@ -213,15 +213,15 @@ normalized as the power coefficient
     C_P = \frac{T \omega}{\frac{1}{2} \rho A U_\infty^3},
     \label{eq:cp}
 \end{equation}
-and the rotor drag coefficient
+and the rotor drag (a.k.a. thrust) coefficient
 \begin{equation}
     C_D = \frac{F_D}{\frac{1}{2} \rho A U_\infty^2}.
     \label{eq:cd}
 \end{equation}
 It is also worth noting that $C_P = \lambda C_T$.
 
-So why then, is it difficult to analyze these machines? A first glimpse can be
-seen in Figure~\ref{fig:geom-alpha-urel}, where the geometric angle of attack
+So why then, is it so difficult to analyze these machines? A first glimpse can
+be seen in Figure~\ref{fig:geom-alpha-urel}, where the geometric angle of attack
 and relative velocity are plotted over one turbine revolution for various tip
 speed ratios. If we imagine a typical high solidity $\sigma = Nc/R$ turbine
 operating at an optimal tip speed ratio $\lambda_0 = 2$, for example
@@ -249,15 +249,17 @@ stall angle, $C_l/C_d$ drops. Predicting foil characteristics (lift, drag,
 pitching moment) is difficult beyond the static stall angle, where boundary
 layer separation becomes dominant over most of the foil suction surface, which
 reduces lift and increases drag dramatically. For example,
-Figure~\ref{fig:S826-perf} shows measured lift and drag coefficients compared
-with 2-D and 3-D Navier--Stokes CFD simulations from Cakmakcioglu et al.
-\cite{Cakmakcioglu2014}. The linear lift slope region and static stall angle are
-predicted well enough, but the peak $C_l/C_d$ is massively overestimated. This
-may not be an issue for a machine designed to operate at relatively fixed and/or
-pre-stall $\alpha$, e.g., airplane wings, propellers, or axial-flow wind
-turbines, but a cross-flow turbine will most likely encounter post-stall
-regimes, making even high-fidelity CFD analysis an uncertain prospect for
-accurate blade load prediction.
+Figure~\ref{fig:S826-perf} shows measured lift and drag coefficients for an S826
+airfoil at $Re_c=145,000$ compared with 2-D and 3-D Navier--Stokes CFD
+simulations from Cakmakcioglu et al. \cite{Cakmakcioglu2014}. The linear lift
+slope region and static stall angle are predicted well enough, but the peak
+$C_l/C_d$ is massively overestimated, due to both an overprediction of lift and
+underprediction of drag. This may not be an issue for a machine designed to
+operate at relatively fixed and/or pre-stall $\alpha$, e.g., airplane wings,
+propellers, or axial-flow wind turbines, but a cross-flow turbine will most
+likely encounter post-stall regimes, cf. Figure~\ref{fig:geom-alpha-urel},
+making even high-fidelity CFD analysis an uncertain prospect for accurate blade
+load prediction.
 
 \begin{figure}
     \centering
