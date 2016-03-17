@@ -73,44 +73,40 @@ facing side of the rotor. Neither of these matched perfectly with experiments,
 but did a much better job representing a CFT wake than a simple actuator disk,
 with minimal additional computational effort.
 
-The UNH-RVAT was also modeled using a Smagorinsky large eddy simulation. Inside
-the LES, the ALM's mean performance coefficient predictions at
-$\lambda=\lambda_0=1.9$ dropped about five percentage points compared with RANS.
-However, the LES was able to resolve some of the important qualitative features
-of the near-wake's mean velocity field, i.e., the apparent mean vortex pair
-created by the blade tip vortex shedding. On the other hand, levels of
-turbulence were significantly lower than those measured in the experiment, which
-is thought to be an effect of the subgrid-scale modeling delaying vortex
-breakdown. Therefore, it is recommended that wake measurements be taken further
-downstream, and deeper investigation of SGS modeling be undertaken in order to
-recommend which LES model might be most effective for modeling arrays of
-cross-flow turbines.
+The UNH-RVAT was also modeled using large eddy simulation with a typical
+Smagorinsky subgrid-scale model. Inside the LES, the ALM's mean performance
+coefficient predictions at $\lambda=\lambda_0=1.9$ dropped about five percentage
+points compared with RANS. However, the LES was able to resolve some of the
+important qualitative features of the near-wake's mean velocity field, i.e., the
+apparent mean vortex pair created by the blade tip vortex shedding. On the other
+hand, levels of turbulence were significantly lower than those measured in the
+experiment, which is thought to be an effect of the subgrid-scale modeling
+delaying vortex breakdown. Therefore, it is recommended that wake measurements
+be taken further downstream, and deeper investigation of SGS modeling be
+undertaken in order to recommend which LES model might be most effective for
+modeling arrays of cross-flow turbines.
 
-It is argued that the research community and industry alike would benefit from
-the development of an open-source actuator line model to represent cross-flow
-turbines in Navier--Stokes simulations---written as an extension to OpenFOAM, in
-particular. It is proposed that this method will use a combination of the
-standard ALM used for axial-flow turbines, with dynamic corrections similar to
-SNL's CACTUS vortex line model, and the typical Gaussian projection of body
-force onto the flow field.
+On the whole, the work described here helps engineers better select initial CFT
+rotor concepts, along with which methods should be used to predict their
+suitability. Full scale prototyping is still the ``gold standard,'' while
+physical modeling at $Re_D \sim 10^6$ can be effective. Both of these methods
+are expensive, so it may be desirable to use 3-D blade-resolved RANS, despite
+also being expensive, and its uncertainty with respect to turbulence modeling.
+The actuator line model presents a good alternative when budgets are
+constrained, allowing turbines to be simulated in a 3-D Navier--Stokes model
+with typical computing resources, i.e., dropping the expense by two to four
+orders of magnitude versus blade-resolved CFD for LES and RANS, respectively.
+For designing arrays of turbines, the ALM at present is probably the best
+balance between cost and accuracy, as its computational expense can be adjusted
+by the turbulence modeling fidelity. Furthermore, the effects of, e.g., a free
+surface or temperature/density stratification can easily be incorporated into
+ALM simulations, opening up many opportunities for future investigation.
 
-In order to understand and validate the model, detailed experimental work has
-been undertaken with a simple reference model turbine. Thus far these
-measurements have revealed important mechanisms in the CFT near-wake that help
-contribute to its relatively fast wake recovery, which will need to be captured
-by the ALM. Experiments have also shown the consequences of scaled physical
-models, confirming that we are likely operating in a Reynolds-number independent
-regime, therefore model validation can be assumed to be approximately true for
-full-scale applications. Acquiring another validation dataset for a turbine
-with significantly different geometric parameters is planned, ensuring broad
-applicability of the model.
-
-Ultimately, the proposed work will produce a versatile engineering tool, which
-can be used for individual turbine design on a few computing cores using
-Reynold-averaged Navier--Stokes turbulence models, as well as for state of the
-art research and design for turbine arrays with large eddy simulation and high
-performance computing.
-
-Ideas for improving the ALM include modifying ALE force coefficients based on
-local turbulence and/or vorticity levels, to provide a more accurate
-representation of foil behavior in turbulence flows.
+The products of this research---datasets, processing code, CAD files, simulation
+case files, and the newly developed ALM software library
+\textit{turbinesFoam}---have been made freely and openly available. Besides
+improving transparency and reproducibility, the open research paradigm also
+accelerates progress through collaboration, allowing researchers to build on
+each other's work rather than start anew. Working openly has already improved
+this research thanks to external contributions, and it will hopefully improve
+others' as time goes on.
