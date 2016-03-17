@@ -94,7 +94,7 @@ digital object identifier (DOI) \cite{Bachant2016-RM2-data}.
 
 \section{Survey of validation data and usage}
 
-To provide perspective on where this study fits among previous studies,
+To provide perspective on where this investigation fits amongst past studies,
 including those in previous chapters, a selection of measured performance data
 in the literature and its usage in numerical model validation is presented in
 Table~\ref{tab:validation-data}. Turbine diameter Reynolds numbers spanned from
@@ -174,7 +174,7 @@ speeds.
 Geometric parameters for the 1:6 scale RM2 rotor were taken from the RM2 design
 report \cite{Barone2011}, with the exception of the shaft diameter, which was
 scaled from the SAFL RM2 model \cite{Hill2014}. Values for both the 1:6 and
-full-scale designs are presented in Tab.~\ref{tab:rm2-geom} and a drawing and
+full-scale designs are presented in Table~\ref{tab:rm2-geom} and a drawing and
 photo of the turbine is shown in Figure~\ref{fig:rm2}. The rotor
 components---blades, struts, shaft, and center hub sections---were fabricated
 from 6061-T6 aluminum, which was hardcoat anodized per MIL-8625-A, type III,
@@ -234,14 +234,15 @@ the strut covers is shown in Figure~\ref{fig:covers}.
 
 \section{Test parameters}
 
-Data collection runs were separated into individual tows, for which all
-independent variables---tow speed, tip speed ratio, velocity probe
-position---were held constant. These runs were grouped into logical test matrix
-``sections,'' in which typically a single independent variable was varied. Test
-matrix section names and descriptions are provided in the \texttt{README.md}
-file of the experimental data and code repository \cite{Bachant2016-RM2-data}.
-Tow speed and their corresponding turbine diameter and blade chord Reynolds
-numbers are presented in Tab.~\ref{tab:re}.
+Like the experiments described in Chapter~\ref{chap:RVAT-baseline} and
+Chapter~\ref{chap:Re-dep}, data collection runs were separated into individual
+tows, for which all independent variables---tow speed, tip speed ratio, velocity
+probe position---were held constant. These runs were grouped into logical test
+matrix ``sections,'' in which typically a single independent variable was
+varied. Test matrix section names and descriptions are provided in the
+\texttt{README.md} file of the experimental data and code repository
+\cite{Bachant2016-RM2-data}. Tow speed and their corresponding turbine diameter
+and blade chord Reynolds numbers are presented in Table~\ref{tab:re}.
 
 \begin{table}
     \centering
@@ -277,43 +278,6 @@ the experimental database.
     
     \label{fig:coordinates}
 \end{figure}
-
-
-\section{Data processing}
-
-For each tow speed, a relevant quasi-steady duration was selected by manually
-inspecting a plot of the $C_P$ time series. This interval was then truncated to
-include a whole number of blade passages. Relevant statistics were then
-calculated over this duration.
-
-Since the blockage ratio was relatively low (10\%), and a definitive blockage
-correction for cross-flow turbines has not been established \cite{Cavagnaro2014}
-blockage effects were not corrected for. Furthermore, most numerical modeling
-efforts can easily incorporate finite domains. Therefore, applying blockage
-corrections to experimental data could actually complicate validation efforts.
-
-To calculate turbine RPM from shaft angle, the encoder signal was differentiated
-using a second order central difference scheme, after which an 8 sample wide
-moving average smoothing filter was applied to match the noise level present in
-the redundant turbine RPM measurement from the motion controller. A similar
-approach was used for calculating tow carriage speed $U_\infty$ from carriage
-position measurements. Power and drag coefficients are calculated as
-instantaneous quantities from the carriage speed as
-
-\begin{equation}
-    C_P = \frac{T \omega}{\frac{1}{2} \rho A U_\infty^3}
-\end{equation}
-and
-\begin{equation}
-    C_D = \frac{F_\mathrm{drag}}{\frac{1}{2} \rho A U_\infty^2},
-\end{equation}
-where $\rho$ is the fluid density (assumed to be a nominal 1000
-kg/m\textsuperscript{3}) and $A$ is the turbine frontal area $DH$.
-
-All data processing and plotting code, along with the reduced dataset, are
-available from \cite{Bachant2016-RM2-data}. Note that this code will
-automatically download raw data as necessary so users can perform a full
-reanalysis of the measurements presented here.
 
 
 \section{Results and discussion}
@@ -604,7 +568,9 @@ considering optimal array layouts.
 This dataset, along with the code for processing and visualization, is provided
 openly via a Creative Commons license (MIT license for code), and is available
 as a Git repository from \url{http://github.com/UNH-CORE/RM2-tow-tank} or a
-citable archive \cite{Bachant2016-RM2-data}.
+citable archive \cite{Bachant2016-RM2-data}. Note that the processing code will
+automatically download raw data as necessary so users can perform a full
+reanalysis of the measurements presented here.
 
 
 \section{Acknowledgments}
