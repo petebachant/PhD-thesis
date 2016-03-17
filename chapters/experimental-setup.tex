@@ -337,16 +337,17 @@ modules in the NI 9188 CompactDAQ chassis at a 2 kHz sample rate.
 \subsection{Wake measurement system}
 
 In order to characterize turbine wakes, a Nortek Vectrino+ acoustic Doppler
-velocimeter (ADV) was purchased as part of the upgraded tow tank
-instrumentation. An ADV is capable of measuring three components of velocity at
-a single point in space, and the Vectrino+ was set to sample at 200 Hz. This
-system was considered desirable compared with hot wire or hot film anemometry as
-it required no calibrations, and the sensor element is significantly more
-robust. Spatial resolution is typically lower---on the order of 1 cm
-\cite{NortekVectrino}---but this is still small compared with the typical length
-scale of a turbine model. ADV was also preferable to laser Doppler velocimetry
-(LDV) in this case since the tow carriage is a high vibration environment, which
-would make LDV alignment a challenge.
+velocimeter (ADV) was purchased with a Hubbard Fund grant from UNH. An ADV is
+capable of measuring three components of velocity at a single point in space
+(technically over a small volume), and the Vectrino+ was set to sample at 200
+Hz. This system was considered desirable compared with hot wire or hot film
+anemometry as it required no calibrations, and the sensor element is
+significantly more robust. Spatial resolution is typically lower---the
+Vectrino's measurement volume is 6 mm in diameter \cite{NortekVectrino}---but
+this is still small compared with the typical length scale of a turbine model.
+ADV was also preferable to laser Doppler velocimetry (LDV) in this case since
+the tow carriage is a high vibration environment, which would make LDV alignment
+a challenge.
 
 A $y$--$z$ axis positioning system was designed for the Vectrino probe. This
 system consisted of two Velmex BiSlide linear stages---the $y$-axis driven by
@@ -355,14 +356,14 @@ motors with approximately 0.001 inch resolution. These motors were driven by an
 ACS UDMlc EtherCAT drive, connected to the tow tank's main motion controller for
 integrated synchronous motion.
 
-When operating the Vectrino, the tank was seeded with 11 micron mean diameter
-hollow glass spheres. Seeding was added along the tank length, generally at the
-surface, and was mixed by towing the turbine through the tank. This process was
-repeated until the Vectrino's signal-to-noise ratio (SNR) was approximately
-above 12 dB. Seeding was added throughout experiments as necessary---totaling
-approximately 1--5 cups (dry) per day. Note that while acquiring ADV data the
-$y$- and $z$-axis stepper drive had to be disabled to reduce noise. The axes
-were re-enabled to position the probe before each run.
+When operating the Vectrino, the tank was seeded with 11 $\mathrm{\mu}$m mean
+diameter hollow glass spheres. Seeding was added along the tank length,
+generally at the surface, and was mixed by towing the turbine through the tank.
+This process was repeated until the Vectrino's signal-to-noise ratio (SNR) was
+approximately above 12 dB. Seeding was added throughout experiments as
+necessary---totaling approximately 1--5 cups (dry) per day. Note that while
+acquiring ADV data the $y$- and $z$-axis stepper drive had to be disabled to
+reduce noise. The axes were re-enabled to position the probe before each run.
 
 
 \subsection{Software}
@@ -373,14 +374,14 @@ reputation as a good ``glue'' language for systems integration. The graphical
 user interface (GUI), shown in Figure~\ref{fig:TurbineDAQ}, was built using the
 PyQt bindings to the Qt framework. Communication with the tow tank's motion
 controller, data acquisition system, and ADV were integrated into a single
-application. This combined with the ability to load and automatically execute
-test matrices in comma-separated value (CSV) format allowed for experiments
-consisting of thousands of tows, where the previous generation could only
-realistically achieve around 100. Note that the software was developed after the
-experiments in Chapter~\ref{chap:RVAT-baseline}, for which turbine tip speed
-ratio, Vectrino positioning, and data collection parameters were input manually.
-However, \textit{TurbineDAQ} was developed before and employed for both the
-larger experiments described in Chapter~\ref{chap:Re-dep} and
+application. This, combined with the ability to load and automatically execute
+test matrices in comma-separated value (CSV) format, allowed for experiments
+consisting of thousands of tows, where the previous generation test bed could
+only realistically achieve around 100. Note that the software was developed
+after the experiments in Chapter~\ref{chap:RVAT-baseline}, for which turbine tip
+speed ratio, Vectrino positioning, and data collection parameters were input
+manually. However, \textit{TurbineDAQ} was developed before and employed for
+both the larger experiments described in Chapter~\ref{chap:Re-dep} and
 Chapter~\ref{chap:RM2}.
 
 \begin{figure}
@@ -483,12 +484,12 @@ presented in Table~\ref{tab:calibrations}.
 
 \section{Determining tank settling time}
 
-Each experiment, sample turbine tows were performed at each speed to determine
-the amount of time taken between runs such that the tank has settled adequately,
-i.e., background turbulence and any large scale mean flows have been dissipated.
-This was assessed by towing the turbine, bringing the carriage back to mid-tank,
-and allowing the Vectrino to continue recording velocity data, monitoring the
-mean and standard deviation of the signals. 
+For each experiment, sample turbine tows were performed at each speed to
+determine the amount of time taken between runs such that the tank has settled
+adequately, i.e., background turbulence and any large scale mean flows have been
+dissipated. This was assessed by towing the turbine, bringing the carriage back
+to mid-tank, and allowing the Vectrino to continue recording velocity data,
+monitoring the mean and standard deviation of the signals.
 
 Turbulence intensity tended to decay quickly, while the lower frequency
 fluctuations were damped with the help of the tank's ``beach,'' designed for
@@ -534,7 +535,7 @@ Table~\ref{tab:sensors}.
 
 Selecting the Student $t$-statistic $t_{95}$ requires an estimate for the number
 of degrees of freedom $\nu_X$, which was obtained using the Welch--Satterthwaite
-formula:
+formula \cite{ColemanSteele}:
 \begin{equation}
     \nu_X = \frac{\left(s_X^2 + \sum_{k=1}^M b_k^2 \right)^2} {s_X^4/\nu_{s_X} +
     \sum_{k=1}^M b_k^4/\nu_{b_k}},
