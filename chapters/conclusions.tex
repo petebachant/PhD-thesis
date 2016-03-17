@@ -52,6 +52,27 @@ blade-resolved CFD really depends on availability of high performance computing
 resources, much like physical model testing depends on the availability of
 experimental facilities.
 
+Motivated by the prospect of reducing the computational cost of 3-D CFD
+simulations, an actuator line model was developed for cross-flow turbines and
+implemented in a standard $k$--$\epsilon$ RANS model. The ALM was coupled with a
+Leishman--Beddoes type semi-empirical dynamic stall model, end effects
+correction, flow curvature correction, and an added mass model. Both the
+UNH-RVAT and RM2 turbines were modeled with the RANS ALM. The performance curve
+for the UNH-RVAT was well-postdicted for tip speed ratios below that of maximum
+power output, but overpredicted above. For the RM2, however, the shape of the
+$C_P$--$\lambda$ curve was not modeled correctly, though the maximum predicted
+power coefficient was close to that observed in the experiments. To address this
+issue, it is recommended that a more rigorous validation be performed with
+respect to the LB DS model time constants. It is hypothesized that tip speed
+ratio dependent time constants may improve mean performance predictions.
+
+Wake predictions with the RANS ALM matched some of the qualitative near-wake
+flow field characteristics seen in experiments, e.g., the mean vertical
+advection, and production of turbulence kinetic energy on the $+y$ or upwind
+facing side of the rotor. Neither of these matched perfectly with experiments,
+but did a much better job representing a CFT wake than a simple actuator disk,
+with minimal additional computational effort.
+
 It is argued that the research community and industry alike would benefit from
 the development of an open-source actuator line model to represent cross-flow
 turbines in Navier--Stokes simulations---written as an extension to OpenFOAM, in
