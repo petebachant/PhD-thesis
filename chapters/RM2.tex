@@ -92,17 +92,19 @@ CC-BY for data and MIT license for code) as a Git repository on GitHub
 digital object identifier (DOI) \cite{Bachant2016-RM2-data}.
 
 
-\subsection{Survey of Validation Data and Usage}
+\section{Survey of validation data and usage}
 
-A selection of measured performance data in the literature and its usage in
-numerical model validation is presented in Table~\ref{tab:validation-data}.
-Turbine diameter Reynolds numbers spanned from small laboratory scale ($Re_D
-\sim 10^5$) all the way to full scale ($Re_D \sim 10^7$). Individual blade
-forces were only measured in two of the experiments---Strickland et al.
-\cite{Strickland1981} and Laneville and Vitecoq \cite{Laneville1986}. There has
-been nearly equal attention given to the eggbeater-shaped Darrieus rotor and the
-straight-bladed H-rotor. The performance of a large scale H-rotor with tapered
-blades, the VAWT 850 \cite{Mays1990}, has also been measured.
+To provide perspective on where this study fits among previous studies,
+including those in previous chapters, a selection of measured performance data
+in the literature and its usage in numerical model validation is presented in
+Table~\ref{tab:validation-data}. Turbine diameter Reynolds numbers spanned from
+small laboratory scale ($Re_D \sim 10^5$) all the way to full scale ($Re_D \sim
+10^7$). Individual blade forces were only measured in two of the
+experiments---Strickland et al. \cite{Strickland1981} and Laneville and Vitecoq
+\cite{Laneville1986}. There has been nearly equal attention given to the
+eggbeater-shaped Darrieus rotor and the straight-bladed H-rotor. The performance
+of a large scale H-rotor with tapered blades, the VAWT 850 \cite{Mays1990}, has
+also been measured.
 
 \begin{table}
     \centering
@@ -155,7 +157,7 @@ interesting comparison for the near-wake dynamics of a rotor similar in size to
 the 1:6 scale RM2, but with non-tapered blades and a high solidity $c/R = 0.28$.
 
 
-\section{Materials and Methods}
+\section{Test bed external regeneration resistor modification}
 
 During the UNH-RVAT Reynolds number dependence experiment described in
 Chapter~\ref{chap:Re-dep}, it was noted that the turbine test bed's Kollmorgen
@@ -166,7 +168,8 @@ was added to the system to bring the power dissipation capacity up to 1 kW,
 ensuring this would not be a limiting factor for testing the RM2 at higher tow
 speeds.
 
-\subsection{Turbine Model}
+
+\section{Turbine model details}
 
 Geometric parameters for the 1:6 scale RM2 rotor were taken from the RM2 design
 report \cite{Barone2011}, with the exception of the shaft diameter, which was
@@ -229,7 +232,7 @@ the strut covers is shown in Figure~\ref{fig:covers}.
 \end{figure}
 
 
-\subsection{Test parameters}
+\section{Test parameters}
 
 Data collection runs were separated into individual tows, for which all
 independent variables---tow speed, tip speed ratio, velocity probe
@@ -276,7 +279,7 @@ the experimental database.
 \end{figure}
 
 
-\subsection{Data Processing}
+\section{Data processing}
 
 For each tow speed, a relevant quasi-steady duration was selected by manually
 inspecting a plot of the $C_P$ time series. This interval was then truncated to
@@ -313,7 +316,7 @@ automatically download raw data as necessary so users can perform a full
 reanalysis of the measurements presented here.
 
 
-\section{Results and Discussion}
+\section{Results and discussion}
 
 \subsection{Performance}
 
@@ -612,5 +615,3 @@ Efficiency and Renewable Energy (EERE), Wind and Water Power Technologies Office
 operated by Sandia Corporation, a wholly owned subsidiary of Lockheed Martin
 Corporation, for the U.S. Department of Energy's National Nuclear Security
 Administration under contract DE-AC04-94AL85000.
-
-%%% End from RM2 paper
