@@ -73,6 +73,19 @@ facing side of the rotor. Neither of these matched perfectly with experiments,
 but did a much better job representing a CFT wake than a simple actuator disk,
 with minimal additional computational effort.
 
+The UNH-RVAT was also modeled using a Smagorinsky large eddy simulation. Inside
+the LES, the ALM's mean performance coefficient predictions at
+$\lambda=\lambda_0=1.9$ dropped about five percentage points compared with RANS.
+However, the LES was able to resolve some of the important qualitative features
+of the near-wake's mean velocity field, i.e., the apparent mean vortex pair
+created by the blade tip vortex shedding. On the other hand, levels of
+turbulence were significantly lower than those measured in the experiment, which
+is thought to be an effect of the subgrid-scale modeling delaying vortex
+breakdown. Therefore, it is recommended that wake measurements be taken further
+downstream, and deeper investigation of SGS modeling be undertaken in order to
+recommend which LES model might be most effective for modeling arrays of
+cross-flow turbines.
+
 It is argued that the research community and industry alike would benefit from
 the development of an open-source actuator line model to represent cross-flow
 turbines in Navier--Stokes simulations---written as an extension to OpenFOAM, in
