@@ -570,33 +570,6 @@ m\textsuperscript{2} turbine creates a reasonably low blockage---on the order of
 10\%---no corrections were applied.
 
 
-\section{Data processing}
-
-All experiments performed with the turbine test bed were analyzed similarly.
-For each tow speed, a relevant quasi-steady duration was selected by manually
-inspecting a plot of the $C_P$ time series. This interval was then truncated to
-include a whole number of blade passages. Relevant statistics were then
-calculated over this duration.
-
-To calculate turbine RPM from shaft angle, the encoder signal was differentiated
-using a second order central difference scheme, after which an 8 sample wide
-moving average smoothing filter was applied to match the noise level present in
-the redundant turbine RPM measurement from the motion controller. A similar
-approach was used for calculating tow carriage speed $U_\infty$ from carriage
-position measurements. Power and drag coefficients were calculated as
-instantaneous quantities from the carriage speed as
-
-\begin{equation}
-    C_P = \frac{T \omega}{\frac{1}{2} \rho A U_\infty^3}
-\end{equation}
-and
-\begin{equation}
-    C_D = \frac{F_\mathrm{drag}}{\frac{1}{2} \rho A U_\infty^2},
-\end{equation}
-where $\rho$ is the fluid density (assumed to be a nominal 1000
-kg/m\textsuperscript{3}) and $A$ is the turbine frontal area $DH$.
-
-
 \section{Turbine models}
 
 Two physical turbine models were designed and built. The first was intended to
