@@ -1,0 +1,154 @@
+.authors {
+    vertical-align: bottom;
+}
+
+.input_prompt, .input_area, .prompt {
+    display:none !important;
+}
+
+.float-right {
+    float: right;
+    /*margin: 0 0 10px 10px;*/
+    padding-left: 1.5em;
+}
+
+/* Customize text cells */
+div.text_cell_render {
+    font-size: 140%;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Some stuff from https://github.com/ellisonbg/talk-scipy2013/blob/master/FeaturesAndScope.ipynb#/43 */
+
+.rendered_html h1 {
+    margin-bottom: 5px;
+    color: #003591;
+    text-align: center;
+    line-height: 1.2;
+    page-break-before: always;
+}
+
+.rendered_html h2 {
+    margin-bottom: 8px;
+    color: #003591;
+    line-height: 1.0;
+}
+
+.rendered_html h3 {
+    color: #003591;
+}
+
+.rendered_html li {
+    line-height: 1.5;
+}
+
+.prompt {
+    font-size: 120%;
+}
+
+.CodeMirror-lines {
+    font-size: 120%;
+}
+
+.output_area {
+    font-size: 120%;
+}
+
+h1.bigtitle {
+    margin: 4cm 1cm 4cm 1cm;
+    font-size: 300%;
+}
+
+h3.point {
+    font-size: 200%;
+    text-align: center;
+    margin: 2em 0em 2em 0em;
+    #26465D
+}
+
+.logo {
+    margin: 20px 0 20px 0;
+}
+
+a.anchor-link {
+    display: none;
+}
+
+h1.title {
+    font-size: 250%;
+}
+
+.output_area, .output_subarea {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.gap-above
+{
+  padding-top: 200px;
+  }
+
+.gap01
+{
+  padding-top: 10px;
+  }
+
+.gap05
+{
+  padding-top: 50px;
+  }
+
+.gap1
+{
+    padding-top: 100px;
+}
+
+.gap2
+{
+    padding-top: 200px;
+}
+
+.gap3
+{
+    padding-top: 300px;
+}
+
+.reveal {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.reveal .slide-number {
+    /*position: fixed;
+    display: block;
+    right: 59.5px;
+    bottom: 50px;
+    opacity: 0.5;
+    z-index: 31;*/
+    font-size: 75%;
+}
+
+.reveal pre {
+  display: block;
+  padding: 5px;
+  overflow: auto;
+  max-height: 400px;
+  word-wrap: normal;
+  background: #2d2d2d; /*#3F3F3F;*/
+  color: #DCDCDC;
+}
+
+.rendered_html .citation {
+    font-style: italic;
+    color: #808080;
+    font-size: 70%;
+}
+
+.reveal .MathJax_Display, .reveal .MathJax_SVG_Display {
+  padding-top: 1em;
+}
+
+figure {
+    text-align: center;
+}
