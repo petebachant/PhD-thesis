@@ -115,3 +115,5 @@ figures
 *.nls
 
 .ipynb_checkpoints
+archive
+presentation.slides.html
