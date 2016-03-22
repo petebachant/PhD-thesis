@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-cp "C:/Users/Pete/Google Drive/Research/CFT-vectors/videos/cft-animation.mp4" videos/cft-animation.mp4
+mkdir -p videos
 
-cp "C:/Users/Pete/Google Drive/Research/OpenFOAM/turbinesFoam/video/turbinesFoam-RVAT-LES-fineMesh.ogv" videos/unh-rvat-alm-les.ogv
+cp "$HOME/Google Drive/Research/CFT-vectors/videos/cft-animation.mp4" videos/cft-animation.mp4
 
-cp "C:/Users/Pete/Google Drive/Research/OpenFOAM/turbinesFoam/video/unh-rvat-near-surface-nx48.ogv" videos/unh-rvat-alm-free-surface.ogv
+cp "$HOME/Google Drive/Research/OpenFOAM/turbinesFoam/video/unh-rvat-les-Smagorinsky-7_thresh-30fps-longer-domain.ogv" videos/unh-rvat-alm-les.ogv
+
+cp "$HOME/Google Drive/Research/OpenFOAM/turbinesFoam/video/unh-rvat-near-surface-nx48.ogv" videos/unh-rvat-alm-free-surface.ogv
