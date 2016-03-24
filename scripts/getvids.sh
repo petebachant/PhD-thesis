@@ -7,3 +7,5 @@ cp "$HOME/Google Drive/Research/CFT-vectors/videos/cft-animation.mp4" videos/cft
 cp "$HOME/Google Drive/Research/OpenFOAM/turbinesFoam/video/unh-rvat-les-Smagorinsky-7_thresh-30fps-longer-domain.ogv" videos/unh-rvat-alm-les.ogv
 
 cp "$HOME/Google Drive/Research/OpenFOAM/turbinesFoam/video/unh-rvat-near-surface-nx48.ogv" videos/unh-rvat-alm-free-surface.ogv
+
+cp "$HOME/Google Drive/Research/OpenFOAM/turbinesFoam/video/NTNU-HAWT-LES-refined-more-Smagorinsky.ogv" videos/aft-alm-les.ogv

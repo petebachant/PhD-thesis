@@ -34,7 +34,9 @@ if __name__ == "__main__":
             "BR-CFD_meancontquiv_SpalartAllmaras.pdf",
             "BR-CFD_kcont_kOmegaSST.pdf",
             "BR-CFD_kcont_SpalartAllmaras.pdf",
-            "BR-CFD_mom_bar_graph.pdf"]
+            "BR-CFD_mom_bar_graph.pdf",
+            "turbine-test-bed-drawing.pdf",
+            "rm2-drawing.pdf"]
     figs = [os.path.join("figures", f) for f in figs]
 
     for f in figs:
