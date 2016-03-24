@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Should be run from project root directory
+if [[ "$PWD" == *scripts ]]
+then
+    cd ..
+fi
+
 mkdir -p videos
 
 cp "$HOME/Google Drive/Research/CFT-vectors/videos/cft-animation.mp4" videos/cft-animation.mp4
