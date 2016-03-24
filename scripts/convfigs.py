@@ -36,10 +36,17 @@ if __name__ == "__main__":
             "BR-CFD_kcont_SpalartAllmaras.pdf",
             "BR-CFD_mom_bar_graph.pdf",
             "turbine-test-bed-drawing.pdf",
-            "rm2-drawing.pdf"]
+            "rm2-drawing.pdf",
+            "RVAT-ALM_verification.pdf",
+            "RM2-ALM_verification.pdf",
+            "RM2-ALM_perf-curves.pdf",
+            "alm-geometry.pdf"]
     figs = [os.path.join("figures", f) for f in figs]
+
+    overwrite = False
 
     for f in figs:
         fout = os.path.split(f)[-1].replace(".pdf", ".png")
         fout = os.path.join("figures", "converted", fout)
-        convert(f, fout)
+        if not os.path.isfile(fout) or overwrite:
+            convert(f, fout)
