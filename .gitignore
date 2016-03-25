@@ -110,6 +110,7 @@ sympy-plots-for-*.tex/
 
 thesis.pdf
 figures
+*.pdf
 
 # Nomenclature
 *.nls
