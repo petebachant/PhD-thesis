@@ -13,6 +13,7 @@ Could use straight ImageMagick:
 
 from wand.image import Image
 import os
+import argparse
 
 
 def convert(fpath_in, fpath_out):
@@ -21,39 +22,18 @@ def convert(fpath_in, fpath_out):
 
 
 if __name__ == "__main__":
-    figs = ["unh-rvat-coord-sys.pdf",
-            "BR-CFD_verification.pdf",
-            "BR-CFD_perf_bar_chart.pdf",
-            "RVAT-ALM_perf-curves.pdf",
-            "RVAT-ALM_meancontquiv.pdf",
-            "RVAT-ALM_kcont.pdf",
-            "RVAT-ALM_recovery-bar-chart.pdf",
-            "RVAT-ALM_wake-profiles.pdf",
-            "RVAT-baseline_meancontquiv.pdf",
-            "RVAT-baseline_kcont.pdf",
-            "BR-CFD_meancontquiv_kOmegaSST.pdf",
-            "BR-CFD_meancontquiv_SpalartAllmaras.pdf",
-            "BR-CFD_kcont_kOmegaSST.pdf",
-            "BR-CFD_kcont_SpalartAllmaras.pdf",
-            "BR-CFD_mom_bar_graph.pdf",
-            "turbine-test-bed-drawing.pdf",
-            "rm2-drawing.pdf",
-            "RVAT-ALM_verification.pdf",
-            "RM2-ALM_verification.pdf",
-            "RM2-ALM_perf-curves.pdf",
-            "alm-geometry.pdf",
-            "RM2-ALM_meancontquiv.pdf",
-            "RM2-ALM_kcont.pdf",
-            "RM2-ALM_wake-profiles.pdf",
-            "RM2-ALM_recovery-bar-chart.pdf",
-            "RM2-tow-tank_meancontquiv.pdf",
-            "RM2-tow-tank_k_contours.pdf"]
-    figs = [os.path.join("figures", f) for f in figs]
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-f", "--overwrite", action="store_true",
+                        default=False)
+    args = parser.parse_args()
 
-    overwrite = False
+    figs = [f for f in os.listdir("figures") if f.endswith(".pdf") \
+            or f.endswith(".PDF")]
+    figs = [os.path.join("figures", f) for f in figs]
 
     for f in figs:
         fout = os.path.split(f)[-1].replace(".pdf", ".png")
+        fout = fout.replace(".PDF", ".png")
         fout = os.path.join("figures", "converted", fout)
-        if not os.path.isfile(fout) or overwrite:
+        if not os.path.isfile(fout) or args.overwrite:
             convert(f, fout)
