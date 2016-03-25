@@ -28,6 +28,7 @@ if __name__ == "__main__":
             "RVAT-ALM_meancontquiv.pdf",
             "RVAT-ALM_kcont.pdf",
             "RVAT-ALM_recovery-bar-chart.pdf",
+            "RVAT-ALM_wake-profiles.pdf",
             "RVAT-baseline_meancontquiv.pdf",
             "RVAT-baseline_kcont.pdf",
             "BR-CFD_meancontquiv_kOmegaSST.pdf",
@@ -40,7 +41,13 @@ if __name__ == "__main__":
             "RVAT-ALM_verification.pdf",
             "RM2-ALM_verification.pdf",
             "RM2-ALM_perf-curves.pdf",
-            "alm-geometry.pdf"]
+            "alm-geometry.pdf",
+            "RM2-ALM_meancontquiv.pdf",
+            "RM2-ALM_kcont.pdf",
+            "RM2-ALM_wake-profiles.pdf",
+            "RM2-ALM_recovery-bar-chart.pdf",
+            "RM2-tow-tank_meancontquiv.pdf",
+            "RM2-tow-tank_k_contours.pdf"]
     figs = [os.path.join("figures", f) for f in figs]
 
     overwrite = False
