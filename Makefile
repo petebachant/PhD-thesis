@@ -10,6 +10,10 @@ serve-slides:
 	start cmd //c "jupyter nbconvert presentation.ipynb --to slides --post serve --config config/slides_config.py"
 
 
+notebook:
+	start cmd //c "jupyter notebook presentation.ipynb"
+
+
 png-figs:
 	python scripts/convfigs.py
 
