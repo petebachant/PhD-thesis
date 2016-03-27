@@ -1,6 +1,6 @@
 # PhD-thesis
 
-Repository for my PhD thesis.
+Repository for my PhD thesis. The latest version can be viewed [here](https://drive.google.com/file/d/0BwMVIAlxIxfZOWt2S3VaS2RoajA/view?usp=sharing).
 
 
 ## License
