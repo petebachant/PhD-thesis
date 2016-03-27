@@ -6,7 +6,7 @@ slides:
 	cp presentation.slides.html index.html
 
 
-serve-slides:
+serve:
 	start cmd //c "jupyter nbconvert presentation.ipynb --to slides --post serve --config config/slides_config.py"
 
 
