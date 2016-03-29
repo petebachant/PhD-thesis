@@ -14,56 +14,38 @@ numerical model validation were acquired with low solidity rotors.
 
 An experimental campaign was undertaken to produce high quality open datasets
 for the performance and near-wake flow dynamics of CFTs. An automated
-experimental setup was developed using the University of New Hampshire's towing
-tank. The tank's linear motion, control, and data acquisition systems were
-redesigned and rebuilt to facilitate automated cross-flow turbine testing at
-large laboratory (on the order of 1 meter) scale.
+experimental setup was developed using the UNH's tow tank to measure the
+performance and near-wake of CFTs at ~1 m scale.
 
-Two turbines were designed and built---one high solidity (dubbed the UNH
-Reference Vertical-Axis Turbine or UNH-RVAT) and one medium-to-low solidity,
-which was a scaled model of the US Department of Energy and Sandia National
-Labs' Reference Model 2 (RM2) cross-flow MHK turbine. A baseline performance and
-near-wake dataset was acquired for the UNH-RVAT, which revealed that the
-relatively fast wake recovery observed in vertical-axis wind turbine arrays,
-thought to be caused by increased turbulence compared with horizontal-axis wind
-turbine wakes \cite{Kinzel2012}, could be attributed to the mean vertical
-advection of momentum and energy, caused by the unique interaction of vorticity
-shed from the blade tips.
+Two turbines were investigated---one high solidity (dubbed the UNH Reference
+Vertical-Axis Turbine or UNH-RVAT) and one medium-to-low solidity, which was a
+scaled model of the US Department of Energy and Sandia National Labs' Reference
+Model 2 (RM2) cross-flow MHK turbine. A baseline performance and near-wake
+dataset was acquired for the UNH-RVAT, which revealed that the relatively fast
+wake recovery observed in vertical-axis wind turbine arrays could be attributed
+to the mean vertical advection of momentum and energy, caused by the unique
+interaction of vorticity shed from the blade tips.
 
-The Reynolds number dependence of the UNH-RVAT was investigated by varying
-turbine tow speeds, indicating that the baseline data had essentially achieved a
-Reynolds number independent state at a turbine diameter Reynolds number $Re_D
-\sim 10^6$. A similar study was undertaken for the RM2, with similar results. An
-additional dataset was acquired for the RM2 to investigate the effects of blade
-support strut drag on overall performance, which showed that these effects can
-be quite significant---on the order of percentage points of the power
-coefficient---especially for lower solidity rotors, which operate at higher tip
-speed ratio. The wake of the RM2 also showed the significance of mean vertical
-advection on wake recovery, though the lower solidity made these effects weaker
-than for the UNH-RVAT.
+The Reynolds number dependence of the UNH-RVAT was investigated, the results
+from which indicated that independence was achieved at a rotor diameter Reynolds
+number $Re_D \sim 10^6$. A similar study was undertaken for the RM2, with
+similar results. The wake of the RM2 also showed the significance of mean
+vertical advection on wake recovery, though the lower solidity made these
+effects weaker than for the UNH-RVAT.
 
 Blade-resolved Reynolds-averaged Navier--Stokes (RANS) computational fluid
 dynamics (CFD) simulations were performed to assess their ability to model
-performance and near-wake of the UNH-RVAT baseline case at optimal tip speed
-ratio. In agreement with previous studies, the 2-D simulations were a poor
+performance and near-wake of the UNH-RVAT. The 2-D simulations were a poor
 predictor of both the performance and near-wake. 3-D simulations faired much
-better, but the choice of an appropriate turbulence model remains uncertain.
-Furthermore, 3-D blade-resolved RANS modeling is very computationally expensive,
-requiring high performance computing (HPC), which precludes its use for array
+better, but their high computational expense precludes their use for array
 analysis.
 
-Finally, an actuator line model (ALM) was developed to attempt to drive down the
-cost of 3-D CFD simulations of cross-flow turbines, since previously, the ALM
-had only been investigated for a very low Reyolds number 2-D CFT. Despite
-retaining some of the disadvantages of the lower fidelity blade element momentum
-and vortex methods, the ALM, when coupled with dynamic stall, flow curvature,
-added mass, and end effects models, was able to predict the performance of
-cross-flow turbines reasonably well. Near-wake predictions were able to match
-some of the important qualitative flow features, which warrants further
-validation farther downstream and with multiple turbines. Ultimately, the ALM
-provides an attractive alternative to blade-resolved CFD, with computational
-savings of two to four orders of magnitude for large eddy simulation and RANS,
-respectively.
+Finally, an actuator line model (ALM) was developed to reduce the cost of 3-D
+CFD simulations of CFTs, since previously, the ALM had only been investigated
+for a low Reynolds number 2-D CFT. Despite retaining some disadvantages of the
+lower fidelity blade element momentum and vortex methods, the ALM was able to
+predict the performance reasonably well. Near-wake results matched some of the
+important qualitative flow features, which warrants further development.
 
 }
 
