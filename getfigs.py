@@ -18,7 +18,7 @@ foamrun_dev_ext2 = foamrun_ext2.replace("2.3.x", "dev")
 
 figdirs = {"RVAT-baseline": join(expdir, "RVAT baseline", "Figures"),
            "RVAT-Re-dep": join(expdir, "RVAT Re dep", "Figures"),
-           "AD": join(foamrun_24x, "actuatorSurface", "figures"),
+           "AD": join(foamrun_23x, "actuatorSurface", "figures"),
            "CFD-pop": join(homedir, "Google Drive", "Research",
                            "CFD popularity", "figures"),
            "CFT-vectors": join(gdrive, "Research", "CFT-vectors", "figures"),
