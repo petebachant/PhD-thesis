@@ -37,6 +37,12 @@ div.text_cell_render {
 
 .rendered_html h3 {
     color: #003591;
+    /*font-size: 90%;*/
+    /*margin-bottom: 4px;*/
+}
+
+.rendered_html h4 {
+    /*color: #003591;*/
     font-size: 80%;
     margin-bottom: 4px;
 }
