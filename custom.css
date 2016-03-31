@@ -38,7 +38,7 @@ div.text_cell_render {
 .rendered_html h3 {
     color: #003591;
     /*font-size: 90%;*/
-    margin-top: 4px;
+    margin-top: 15px;
     margin-bottom: 6px;
 }
 
@@ -46,6 +46,7 @@ div.text_cell_render {
     /*color: #003591;*/
     font-size: 80%;
     margin-bottom: 4px;
+    margin-top: 15px;
 }
 
 .rendered_html li {
