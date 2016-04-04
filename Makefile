@@ -7,11 +7,19 @@ slides:
 
 
 serve:
+ifeq ($(shell uname -s),Linux)
+	jupyter nbconvert presentation.ipynb --to slides --post serve --config config/slides_config.py
+else
 	start cmd //c "jupyter nbconvert presentation.ipynb --to slides --post serve --config config/slides_config.py"
+endif
 
 
 notebook:
+ifeq ($(shell uname -s),Linux)
+	jupyter notebook presentation.ipynb
+else
 	start cmd //c "jupyter notebook presentation.ipynb"
+endif
 
 
 png-figs:
