@@ -178,23 +178,27 @@ Blade element theory, originally conceived by
 Drzewiecki~\cite{Drzewiecki1892,Drzewiecki1920}, is the analysis of a rotor or
 propeller as a collection of 2-D foil sections, or blade elements, and can be
 employed to obtain a simplified view of the kinematics and dynamics of a CFT.
-Figure~\ref{fig:vectors} shows the relevant velocity and and force vectors on a
-CFT blade element. The relative velocity and angle of attack $\alpha$ are
-calculated by adding the inflow velocity vector to the opposite of the blade
-element velocity $\omega r$, where $\omega$ is the shaft angular velocity and
-$r$ is the element radius, which for a straight-bladed turbine is equal to the
-rotor radius $R$. In the relative velocity coordinate system, the lift and drag
-are then oriented normal and tangential to the relative velocity, respectively.
-These forces ultimately produce the shaft torque, and in turn the shaft power.
+Figure~\ref{fig:vectors} shows the relevant velocity and force vectors on a CFT
+blade element. The relative velocity and angle of attack $\alpha$ are calculated
+by adding the inflow velocity vector to the opposite of the blade element
+velocity $\omega r$, where $\omega$ is the shaft angular velocity and $r$ is the
+element radius, which for a straight-bladed turbine is equal to the rotor radius
+$R$. In the relative velocity coordinate system, the lift ($F_l$) and drag
+($F_d$) forces are then oriented normal and tangential to the relative velocity,
+respectively. These forces, combined with the blade element pitching moment $M$
+ultimately produce the shaft torque, and in turn the shaft power.
 
 \begin{figure}
     \centering
     
     \includegraphics[clip, trim=1in 1.5in 1in 0.5in,
-    width=0.6\textwidth]{figures/CFT-vectors_cft-vectors}
+    width=0.5\textwidth]{figures/CFT-vectors_cft-vectors}
     
     \caption{Vector diagram of velocity and forcing on a cross-flow turbine
-        blade element.}
+        blade element. Note that the free stream flow is from top to bottom, the
+        blade chord is in line with the tangential velocity (i.e., zero preset
+        pitch), and the drag vector is magnified by a factor of two (approximately,
+        relative to the lift vector) to enhance visibility.}
     
     \label{fig:vectors}
 \end{figure}
