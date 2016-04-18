@@ -37,9 +37,7 @@ def fix_file(fname):
             if any(kw in line for kw in bad_kws):
                 line = ""
             elif "\\includegraphics" in line:
-                print("Got one", line)
                 line = fix_image_url(line)
-                print(line)
             txt += line
     with open(fname, "w") as f:
         f.write(txt)
