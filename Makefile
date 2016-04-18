@@ -30,8 +30,12 @@ all-png-figs:
 	python scripts/convfigs.py --overwrite
 
 
-thesis:
+thesis: appendices
 	latexmk -pdf thesis.tex
+
+
+clean:
+	latexmk -c thesis.tex
 
 
 excerpt: thesis
@@ -40,3 +44,16 @@ excerpt: thesis
 
 signatures:
 	latexmk -pdf signatures.tex
+
+
+appendices:
+	# Update wiki submodules
+	git submodule update --remote appendices/turbine-test-bed.wiki
+
+	git submodule update --remote appendices/RM2-tow-tank.wiki
+
+	# Build LaTeX from Markdown
+	pandoc appendices/turbine-test-bed.wiki/Operation.md -o appendices/operation.tex --chapters
+
+    # Clean up automatically generated LaTeX
+	python scripts/fix-appendix-latex.py
