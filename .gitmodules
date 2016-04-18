@@ -3,7 +3,7 @@
 	url = https://github.com/hakimel/reveal.js.git
 [submodule "appendices/turbine-test-bed.wiki"]
 	path = appendices/turbine-test-bed.wiki
-	url = git@github.com:UNH-CORE/turbine-test-bed.wiki
+	url = https://github.com/UNH-CORE/turbine-test-bed.wiki
 [submodule "appendices/RM2-tow-tank.wiki"]
 	path = appendices/RM2-tow-tank.wiki
-	url = git@github.com:UNH-CORE/RM2-tow-tank.wiki
+	url = https://github.com/UNH-CORE/RM2-tow-tank.wiki
