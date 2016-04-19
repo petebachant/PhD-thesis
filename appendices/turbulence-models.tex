@@ -73,3 +73,18 @@ Typical closure coefficients are
     \sigma_k = 1.0, \, \,
     \sigma_\epsilon = 1.3
 \end{equation}
+
+
+\section{Smagorinsky LES model}
+
+Large eddy simulation solves for the filtered velocity field $\tilde{u}$. The
+filtered Navier--Stokes equations are
+
+\begin{equation}
+    \frac{\partial \tilde{u}_i}{\partial t}
+    + \tilde{u}_j \frac{\partial \tilde{u}_i}{\partial x_j}
+    = - \frac{1}{\rho} \frac{\partial \tilde{p}}{\partial x_i}
+    + \nu \frac{\partial^2 \tilde{u}_i}{\partial x_j \partial x_j}
+    - \frac{\partial \tau_{ij}}{\partial x_j}
+    \label{eq:filtered-ns}
+\end{equation}
