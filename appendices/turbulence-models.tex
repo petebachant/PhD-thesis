@@ -1,0 +1,27 @@
+\chapter{Turbulence models}
+\doublespace
+
+In this chapter the turbulence models used throughout this work are detailed.
+
+Three eddy viscosity RANS and one LES model was used. The RANS equations with
+the eddy viscosity formulation are
+
+\todo[inline]{Define RANS with eddy viscosity.}
+
+
+\section{Spalart--Allmaras}
+
+The Spalart--Allmaras turbulence model is defined by the transport of a 
+\begin{equation}
+\frac{\mathrm{D} \tilde{\nu}}{\mathrm{D} t}
+= c_{b1} \tilde{S} \tilde{\nu}
++ \frac{1}{\sigma} 
+\left[ 
+\nabla \cdot \left( (\nu + \tilde{\nu}) \nabla \tilde{\nu} \right)
++ c_{b2} (\nabla \tilde{\nu})^2
+\right]
+- c_{w1} f_w \left[ \frac{\tilde{\nu}}{d} \right]^2,
+\label{eq:SA}
+\end{equation}
+
+The SA turbulent viscosity is defined as $\nu_t = f_{v1} \tilde{\nu}$.
