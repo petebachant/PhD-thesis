@@ -29,6 +29,23 @@ The SA turbulent viscosity is defined as $\nu_t = f_{v1} \tilde{\nu}$.
 
 \section{$k$--$\omega$ SST}
 
+Menter's $k$--$\omega$ SST is defined as \cite{Menter2001}
+
+\begin{equation}
+    \rho \frac{\partial k}{\partial t}
+    + \rho U_j \frac{\partial k}{\partial x_j}
+    = \tilde{P}_k - \rho \beta^* \omega k
+    + \frac{\partial}{\partial x_j}
+    \left(
+    \Gamma_k \frac{\partial k}{\partial x_j}
+    \right)
+    \label{eq:komegasst-k}
+\end{equation}
+
+\textit{OpenFOAM}'s implementation of the SST model features updated
+coefficients from \cite{Menter2003}, with the consistent production terms from
+\cite{Menter2001}/
+
 
 \section{$k$--$\epsilon$}
 
