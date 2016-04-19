@@ -11,12 +11,12 @@ the eddy viscosity formulation are
 
 \section{Spalart--Allmaras}
 
-The Spalart--Allmaras turbulence model is defined by the transport of a 
+The Spalart--Allmaras turbulence model is defined by the transport of a
 \begin{equation}
 \frac{\mathrm{D} \tilde{\nu}}{\mathrm{D} t}
 = c_{b1} \tilde{S} \tilde{\nu}
-+ \frac{1}{\sigma} 
-\left[ 
++ \frac{1}{\sigma}
+\left[
 \nabla \cdot \left( (\nu + \tilde{\nu}) \nabla \tilde{\nu} \right)
 + c_{b2} (\nabla \tilde{\nu})^2
 \right]
@@ -25,3 +25,51 @@ The Spalart--Allmaras turbulence model is defined by the transport of a
 \end{equation}
 
 The SA turbulent viscosity is defined as $\nu_t = f_{v1} \tilde{\nu}$.
+
+
+\section{$k$--$\omega$ SST}
+
+
+\section{$k$--$\epsilon$}
+
+The standard $k$--$\epsilon$ model is defined as \cite{Wilcox1993}
+
+\begin{equation}
+    \nu_t = C_\mu k^2 / \epsilon,
+    \label{eq:kepsilon-nut}
+\end{equation}
+
+\begin{equation}
+    \rho \frac{\partial k}{\partial t}
+    + \rho U_j \frac{\partial k}{\partial x_j}
+    = \tau_{ij} \frac{\partial U_i}{\partial x_j}
+    - \rho \epsilon
+    + \frac{\partial}{\partial x_j}
+    \left[
+    (\mu + \mu_t/\sigma_k) \frac{\partial k}{\partial x_j}
+    \right]
+    \label{eq:kepsilon-k}
+\end{equation}
+
+\begin{equation}
+    \rho \frac{\partial \epsilon}{\partial t}
+    + \rho U_j \frac{\partial \epsilon}{\partial x_j}
+    = C_{\epsilon 1} \frac{\epsilon}{k} \tau_{ij}
+    \frac{\partial U_i}{\partial x_j}
+    - C_{\epsilon 2} \rho \frac{\epsilon^2}{k}
+    + \frac{\partial}{\partial x_j}
+    \left[
+    (\mu + \mu_t/\sigma_k) \frac{\partial \epsilon}{\partial x_j}
+    \right]
+    \label{eq:kepsilon-epsilon}
+\end{equation}
+
+Typical closure coefficients are
+
+\begin{equation}
+    C_{\epsilon 1} = 1.44, \, \,
+    C_{\epsilon 2} = 1.92, \, \,
+    C_\mu = 0.09, \, \,
+    \sigma_k = 1.0, \, \,
+    \sigma_\epsilon = 1.3
+\end{equation}
