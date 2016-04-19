@@ -121,9 +121,10 @@ urlcolor=black, linkcolor=black]{hyperref}
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mylightgray}{rgb}{0.95,0.95,0.95}
 
 \lstset{frame=single,
-    language=C++,
+    % language=C++,
     aboveskip=3mm,
     belowskip=3mm,
     showstringspaces=false,
@@ -134,11 +135,16 @@ urlcolor=black, linkcolor=black]{hyperref}
     keywordstyle=\bfseries\color{blue!40!black},
     commentstyle=\color{gray},
     stringstyle=\color{mygreen},
-    otherkeywords={for,if,else},
+    % otherkeywords={for,if,else},
     breaklines=true,
     breakatwhitespace=true,
     tabsize=4,
     escapeinside={\%*}{*)},
     keepspaces=true,
-    captionpos=b
+    captionpos=b,
+    backgroundcolor=\color{mylightgray}
 }
+
+% Pandoc tightlist
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}

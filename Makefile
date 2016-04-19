@@ -46,14 +46,18 @@ signatures:
 	latexmk -pdf signatures.tex
 
 
-appendices:
+wikis:
 	# Update wiki submodules
 	git submodule update --remote appendices/turbine-test-bed.wiki
 
 	git submodule update --remote appendices/RM2-tow-tank.wiki
 
+
+appendices:
 	# Build LaTeX from Markdown
-	pandoc appendices/turbine-test-bed.wiki/Operation.md -o appendices/operation.tex --chapters
+	pandoc appendices/turbine-test-bed.wiki/Operation.md -o appendices/test-bed-wiki-operation.tex --chapters --listings --wrap=preserve
+
+	pandoc appendices/RM2-tow-tank.wiki/Home.md -o appendices/rm2-wiki-home.tex --chapters --listings --wrap=preserve
 
     # Clean up automatically generated LaTeX
 	python scripts/fix-appendix-latex.py

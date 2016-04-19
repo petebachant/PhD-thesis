@@ -118,12 +118,12 @@ points.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{alm-geometry}
-    
+
     \caption{Actuator line geometry. Filled circles indicate geometry points
         whereas squares indicate actuator line element locations.}
-    
+
     \label{fig:AL-geom}
 \end{figure}
 
@@ -196,7 +196,7 @@ $\epsilon$, which is then multiplied by the actuator line element force and
 imparted on a cell with distance $| \vec{r} |$ from the actuator line element
 quarter chord location:
 \begin{equation}
-    \eta = \frac{1}{\epsilon^3 \pi^{3/2}} \exp 
+    \eta = \frac{1}{\epsilon^3 \pi^{3/2}} \exp
     \left[ - \left( \frac{| \vec{r} |}{\epsilon} \right)^2 \right].
     \label{eq:projection}
 \end{equation}
@@ -286,12 +286,12 @@ following principles:
 \begin{itemize}
     \item Dynamic conditions cause a time lag in effective angle of attack and
     lift force.
-    
+
     \item Separation is determined by the Kirchoff flow approximation, which is
     also used to parameterize the normal force coefficient table based on the
     trailing edge separation point. This separation point also encounters a time
     lag.
-    
+
     \item The separation initiates a vortex shedding cycle that causes an
     overshoot and subsequent undershoot in lift before returning to an attached
     flow condition.
@@ -328,18 +328,18 @@ element coordinate system, the normal and chordwise (pointing from trailing to
 leading edge, which is opposite the $x$-direction used by Strickland \emph{et
     al.}) coefficients due to added mass are
 \begin{equation}
-    C_{n_\mathrm{AM}} = -\frac{\pi c \dot{U_n}}{8 | U_\mathrm{rel} |^2}, 
+    C_{n_\mathrm{AM}} = -\frac{\pi c \dot{U_n}}{8 | U_\mathrm{rel} |^2},
 \end{equation}
 and
 \begin{equation}
-    C_{c_\mathrm{AM}} = \frac{\pi c \dot{\alpha} U_n }{8 | U_\mathrm{rel} |^2}, 
+    C_{c_\mathrm{AM}} = \frac{\pi c \dot{\alpha} U_n }{8 | U_\mathrm{rel} |^2},
 \end{equation}
 respectively, where $U_n$ is the normal component of the relative velocity, and
 dotted variables indicate time derivatives, which were calculated using a simple
 first order backward finite difference. Similarly, the quarter-chord moment
 coefficient due to added mass was calculated as
 \begin{equation}
-    C_{m_\mathrm{AM}} = -\frac{C_{n_\mathrm{AM}}}{4} 
+    C_{m_\mathrm{AM}} = -\frac{C_{n_\mathrm{AM}}}{4}
         - \frac{U_n U_c}{8 | U_\mathrm{rel} |^2},
 \end{equation}
 where $U_c$ is the chordwise component of relative velocity. Note that the
@@ -422,7 +422,7 @@ An incidence correction factor
 \end{equation}
 is introduced and added to the uncorrected angle of attack. Like the Goude
 model, $\alpha_c$ is positive on the upstream half of the turbine rotation and
-negative on the downstream half. 
+negative on the downstream half.
 
 It was determined that the Goude model performed best with respect to matching
 the near-wake characteristics measured in the experiments, while the performance
@@ -505,7 +505,7 @@ lift coefficient distribution
     F = C_l(\theta)/C_l(\theta)_{\max},
 \end{equation}
 which will be in the range $[0, 1]$, similar to the Glauert corrections, but
-does not contain rotor parameters. 
+does not contain rotor parameters.
 
 The correction functions for the standard Glauert and lifting line methods are
 plotted for comparison in Figure~\ref{fig:end-effects}. Function values were
@@ -517,13 +517,13 @@ cross-flow rotor parameters.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.75\textwidth]{end-effects_rvat-20-deg}
-    
+
     \caption{End effect correction function values for the Glauert and lifting
         line methods using UNH-RVAT parameters at 20 degrees tip angle of attack and
         $\lambda=1.9$.}
-    
+
     \label{fig:end-effects}
 \end{figure}
 
@@ -553,7 +553,7 @@ simulating the free surface in MHK installations), and even with heat transfer.
 This is in contrast to SOWFA's implementation, which requires custom flow
 solvers to be developed and maintained.
 
-\begin{lstlisting}[float,caption=Adding source terms to the momentum equation in OpenFOAM.,label=lst:fvOptions]
+\begin{lstlisting}[float,language=C++,caption=Adding source terms to the momentum equation in OpenFOAM.,label=lst:fvOptions]
     tmp<fvVectorMatrix> UEqn
     (
         fvm::ddt(U)
@@ -611,12 +611,12 @@ plane is shown in Figure~\ref{fig:ALM-mesh}.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.8\textwidth]{alm-mesh}
-    
+
     \caption{$x$--$y$ planar slice of the mesh used for the ALM RANS
         simulations.}
-    
+
     \label{fig:ALM-mesh}
 \end{figure}
 
@@ -677,23 +677,23 @@ the time step was adjusted to $\Delta t = \Delta t_0 \lambda_0 / \lambda$.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM_verification}
-    
+
     \caption{Temporal (left) and spatial (right) grid resolution sensitivity
         results for the UNH-RVAT ALM RANS model.}
-    
+
     \label{fig:RVAT-ALM-verification}
 \end{figure}
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RM2-ALM_verification}
-    
+
     \caption{Temporal (left) and spatial (right) grid resolution sensitivity
         results for the RM2 ALM RANS model.}
-    
+
     \label{fig:RM2-ALM-verification}
 \end{figure}
 
@@ -716,12 +716,12 @@ in Figure 6.70 of \cite{Para2002}.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM_perf-curves}
-    
+
     \caption{Power and drag coefficient curves computed for the UNH-RVAT using
         the actuator line model with RANS.}
-    
+
     \label{fig:RVAT-ALM-perf-curves}
 \end{figure}
 
@@ -739,10 +739,10 @@ location of blade loading.
     \centering
 
     \includegraphics[width=0.9\textwidth]{RVAT-ALM_meancontquiv}
-    
+
     \caption{Mean velocity field at $x/D=1$ with the LB-SGC model, with and
         without the Goude flow curvature correction.}
-    
+
     \label{fig:RVAT-ALM-meancontquiv}
 \end{figure}
 
@@ -758,10 +758,10 @@ vortices or turbulence.
     \centering
 
     \includegraphics[width=0.85\textwidth]{RVAT-ALM_kcont}
-    
+
     \caption{Turbulence kinetic energy contours at $x/D=1$ predicted by the
         ALM.}
-    
+
     \label{fig:RVAT-ALM-kcont}
 \end{figure}
 
@@ -774,12 +774,12 @@ the rotor.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM_wake-profiles}
-    
+
     \caption{Mean streamwise velocity (left) and turbulence kinetic energy
         (right) profiles at $z/H=0$ for the UNH-RVAT ALM.}
-    
+
     \label{fig:RVAT-ALM-profiles}
 \end{figure}
 
@@ -800,14 +800,14 @@ captured.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM_recovery-bar-chart}
 
     \caption{Weighted average momentum recovery terms for the UNH-RVAT actuator
         line model with a $k$--$\epsilon$ RANS closure, the two 3-D blade resolved
         RANS models described in Chapter~\ref{chap:CFD}, and the experiments in
         Chapter~\ref{chap:RVAT-baseline}}.
-    
+
     \label{fig:RVAT-ALM-recovery}
 \end{figure}
 
@@ -826,12 +826,12 @@ constant roughly double the default value.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RM2-ALM_perf-curves}
-    
+
     \caption{Power and drag coefficient curves computed for the RM2 using the
         ALM.}
-    
+
     \label{fig:RM2-ALM-perf-curves}
 \end{figure}
 
@@ -844,12 +844,12 @@ is an important qualitative feature of both CFT near-wakes.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{RM2-ALM_meancontquiv}
-    
+
     \caption{Mean velocity field at $x/D=0.93$ for the RM2 predicted by the
         ALM.}
-    
+
     \label{fig:RM2-ALM-meancontquiv}
 \end{figure}
 
@@ -862,12 +862,12 @@ vortex shedding was not captured by the ALM.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{RM2-ALM_kcont}
-    
+
     \caption{Turbulence kinetic energy contours at $x/D=0.93$ behind the RM2
         predicted by the ALM.}
-    
+
     \label{fig:RM2-ALM-kcont}
 \end{figure}
 
@@ -881,12 +881,12 @@ even in the experimental measurements.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RM2-ALM_wake-profiles}
-    
+
     \caption{Mean streamwise velocity (left) and turbulence kinetic energy
         (right) profiles at $x/D=0.93$ and $z/H=0$ for the RM2 ALM.}
-    
+
     \label{fig:RM2-ALM-profiles}
 \end{figure}
 
@@ -899,13 +899,13 @@ transport due to the eddy viscosity was also relatively large.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RM2-ALM_recovery-bar-chart}
-    
+
     \caption{Weighted average momentum recovery terms at $x/D=0.93$ for the RM2
         actuator line model with a $k$--$\epsilon$ RANS closure and the experiments
         described in Chapter~\ref{chap:RM2}}.
-    
+
     \label{fig:RM2-ALM-recovery}
 \end{figure}
 
@@ -955,12 +955,12 @@ isosurfaces of vorticity produced by the actuator lines.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=\textwidth]{RVAT-ALM-LES_vorticity-snapshot}
 
     \caption{Snapshot of vorticity isosurfaces (colored by their streamwise
         component) at $t=6$ s for the UNH-RVAT LES case.}
-    
+
     \label{RVAT-ALM-LES-vorticity}
 \end{figure}
 
@@ -972,12 +972,12 @@ of the rotor, respectively.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{RVAT-ALM-LES_meancontquiv}
-    
+
     \caption{Mean velocity field in the UNH-RVAT near-wake at $x/D=1$ computed
         with the Smagorinsky LES model.}
-    
+
     \label{fig:RVAT-ALM-LES-meancontquiv}
 \end{figure}
 
@@ -995,12 +995,12 @@ where the blade bound and tip vortices are still relatively coherent at $x/D=1$.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM-LES_kcont}
-    
+
     \caption{Turbulence kinetic energy in the UNH-RVAT near-wake at $x/D=1$
         computed with the Smagorinsky LES model.}
-    
+
     \label{fig:RVAT-ALM-LES-kcont}
 \end{figure}
 
@@ -1016,12 +1016,12 @@ its effect on the stability of vortex structures.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM-LES_wake-profiles}
-    
+
     \caption{Mean velocity profiles in the UNH-RVAT near-wake at $x/D=1$ and
         $z/H=0$ computed with the Smagorinsky LES model.}
-    
+
     \label{fig:RVAT-ALM-LES-profiles}
 \end{figure}
 
@@ -1031,7 +1031,7 @@ term, which for the LES was computed from the $x$-components of the divergence
 of the resolved and SGS Reynolds stress tensors:
 \begin{equation}
     \text{Turb. trans.} = - \left( \frac{\partial}{\partial x_j}
-    \overline{u^\prime_x u^\prime_j} 
+    \overline{u^\prime_x u^\prime_j}
     + \frac{\partial}{\partial x_j} R_{xj}
     \right),
 \end{equation}
@@ -1053,12 +1053,12 @@ turbulence levels significantly.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM-LES_recovery-bar-chart}
-    
+
     \caption{Weighted average momentum recovery terms at $x/D=1$ for the RVAT
         ALM LES using the Smagorinsky SGS model}.
-    
+
     \label{fig:RVAT-ALM-LES-recovery}
 \end{figure}
 
