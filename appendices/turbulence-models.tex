@@ -11,7 +11,10 @@ the eddy viscosity formulation are
 
 \section{Spalart--Allmaras}
 
-The Spalart--Allmaras turbulence model is defined by the transport of a
+The Spalart--Allmaras turbulence model is based on the transport of a single
+scalar $\tilde{\nu}$ \cite{Spalart1992}:
+
+% Eq. 9 from Spalart1992 (or 1994)
 \begin{equation}
     \frac{\mathrm{D} \tilde{\nu}}{\mathrm{D} t}
     = c_{b1} \tilde{S} \tilde{\nu}
@@ -21,7 +24,24 @@ The Spalart--Allmaras turbulence model is defined by the transport of a
     + c_{b2} (\nabla \tilde{\nu})^2
     \right]
     - c_{w1} f_w \left[ \frac{\tilde{\nu}}{d} \right]^2,
-    \label{eq:SA}
+    \label{eq:SA-nutilde}
+\end{equation}
+
+% Taken from OpenFOAM
+\begin{equation}
+    c_{w1} = c_{b1}/\kappa^2 + (1 + c_{b2})/\sigma
+\end{equation}
+
+\begin{equation}
+    f_w(r) = g \left[ \frac{1 + c_{w3}^6}{g^6 + c_{w3}^6} \right]^{1/6}
+\end{equation}
+
+\begin{equation}
+    g = r + c_{w2} (r^6 - r)
+\end{equation}
+
+\begin{equation}
+    f = \frac{\tilde{nu}}{\tilde{S} \kappa^2 d^2}
 \end{equation}
 
 The SA turbulent viscosity is defined as $\nu_t = f_{v1} \tilde{\nu}$.
