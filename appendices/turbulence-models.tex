@@ -145,3 +145,23 @@ filtered Navier--Stokes equations are
     - \frac{\partial \tau_{ij}}{\partial x_j}
     \label{eq:filtered-ns}
 \end{equation}
+
+Smagorinsky~\cite{Smagorinsky1963} proposed an eddy viscosity type relation for
+the subgrid scale (SGS) stress tensor
+
+% From Wilcox 1994 Eq 8.32
+\begin{equation}
+    \tau_{ij} = 2 \mu_t S_{ij}, \, \, \,
+    S_{ij} = \frac{1}{2}
+    \left(
+    \frac{\partial \tilde{u}_i}{\partial u_j}
+    + \frac{\partial \tilde{u}_j}{\partial u_i}
+    \right)
+\end{equation}
+
+The eddy viscosity is then
+\begin{equation}
+    \mu_t = \rho (C_S \Delta)^2 \sqrt{S_{ij} S_{ij}},
+\end{equation}
+where $C_S$ is the Smagorinsky coefficient, which is not universal, i.e., will
+vary for different flow conditions.
