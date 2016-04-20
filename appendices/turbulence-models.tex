@@ -1,16 +1,32 @@
 \chapter{Turbulence models}
 \doublespace
 
-In this chapter the turbulence models used throughout this work are detailed.
-Note that since all of these were applied via \textit{OpenFOAM}, their exact
-implementation can be interrogated by looking at the source code, which is
-freely available.
+In this chapter the three eddy viscosity RANS and one LES turbulence models used
+throughout this work are detailed. Note that since all of these were applied via
+\textit{OpenFOAM}, their exact implementation can be interrogated by looking at
+the source code, which is freely available.
 
-Three eddy viscosity RANS and one LES model was used. The RANS equations with
-the eddy viscosity formulation are modified with the relation
-$-\overline{u_i^\prime u_j^\prime} = 2 \nu_t S_{ij}$.
+The exact incompressible RANS equations are written as
+\begin{equation}
+    \frac{\partial U_i}{\partial t}
+    + U_j \frac{partial U_i}{\partial x_j}
+    =
+    -\frac{1}{\rho}\frac{\partial P}{\partial x_i}
+    - \frac{\partial}{\partial x_j} \overline{u_i^\prime u_j^\prime}
+    + \nu \frac{\partial^2 U_i}{\partial x_j \partial x_j}
+\end{equation}
 
-\todo[inline]{Define RANS with eddy viscosity.}
+The RANS equations with the eddy viscosity formulation are modified with the
+relation $-\overline{u_i^\prime u_j^\prime} = 2 \nu_t S_{ij}$, where $nu_t$ is
+the turbulence viscosity and $S_{ij}$ is the mean strain rate tensor. The RANS
+equations with the eddy viscosity approximation then become
+\begin{equation}
+    \frac{\partial U_i}{\partial t}
+    + U_j \frac{partial U_i}{\partial x_j}
+    =
+    -\frac{1}{\rho}\frac{\partial P}{\partial x_i}
+    + (\nu _ \nu_t) \frac{\partial^2 U_i}{\partial x_j \partial x_j}.
+\end{equation}
 
 
 \section{Spalart--Allmaras}
