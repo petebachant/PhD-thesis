@@ -4,7 +4,8 @@
 In this chapter the turbulence models used throughout this work are detailed.
 
 Three eddy viscosity RANS and one LES model was used. The RANS equations with
-the eddy viscosity formulation are
+the eddy viscosity formulation are modified with the relation
+$-\overline{u_i^\prime u_j^\prime} = 2 \nu_t S_{ij}$.
 
 \todo[inline]{Define RANS with eddy viscosity.}
 
@@ -44,7 +45,26 @@ scalar $\tilde{\nu}$ \cite{Spalart1992}:
     f = \frac{\tilde{nu}}{\tilde{S} \kappa^2 d^2}
 \end{equation}
 
+% From OpenFOAM: Cw1_(Cb1_/sqr(kappa_) + (1.0 + Cb2_)/sigmaNut_)
+\begin{equation}
+    c_{w1} = c_{b1}/\kappa^2 + \frac{1 + c_{b2}}{\sigma}
+\end{equation}
+
+$d$ is the distance to the wall.
+
 The SA turbulent viscosity is defined as $\nu_t = f_{v1} \tilde{\nu}$.
+
+Typical coefficients are
+\begin{equation}
+    c_{b1} = 0.1355, \, \,
+    c_{b2} = 0.622, \, \,
+    c_{w2} = 0.3, \, \,
+    c_{w3} = 2.0, \, \,
+    c_{v1} = 7.1, \, \,
+    c_{v2} = 5.0, \, \,
+    \sigma = 0.66666, \, \,
+    \kappa = 0.41
+\end{equation}
 
 
 \section{$k$--$\omega$ SST}
