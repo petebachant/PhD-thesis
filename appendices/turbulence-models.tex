@@ -2,6 +2,9 @@
 \doublespace
 
 In this chapter the turbulence models used throughout this work are detailed.
+Note that since all of these were applied via \textit{OpenFOAM}, their exact
+implementation can be interrogated by looking at the source code, which is
+freely available.
 
 Three eddy viscosity RANS and one LES model was used. The RANS equations with
 the eddy viscosity formulation are modified with the relation
@@ -13,7 +16,8 @@ $-\overline{u_i^\prime u_j^\prime} = 2 \nu_t S_{ij}$.
 \section{Spalart--Allmaras}
 
 The Spalart--Allmaras turbulence model is based on the transport of a single
-scalar $\tilde{\nu}$ \cite{Spalart1992}:
+scalar $\tilde{\nu}$ \cite{Spalart1992}, which is designed to behave linearly
+near the wall. The transport equation for $\tilde{\nu}$ is defined as
 
 % Eq. 9 from Spalart1992 (or 1994)
 \begin{equation}
@@ -28,9 +32,21 @@ scalar $\tilde{\nu}$ \cite{Spalart1992}:
     \label{eq:SA-nutilde}
 \end{equation}
 
-% Taken from OpenFOAM
+% Stilda from OpenFOAM
 \begin{equation}
-    c_{w1} = c_{b1}/\kappa^2 + (1 + c_{b2})/\sigma
+    \tilde{S} = f_{v3}\sqrt{2} | \skew[\nabla U] |
+    + f_{v2} \frac{\tilde{\nu}}{\kappa^2 d^2}
+\end{equation}
+
+%fv2 and fv3 from OpenFOAM (no Ashford correction)
+\begin{equation}
+    f_{v2} = 1 - \frac{\chi}{1 + \chi f_{v1}}, \, \, \,
+    f_{v3} = 1
+\end{equation}
+
+% From OpenFOAM: Cw1_(Cb1_/sqr(kappa_) + (1.0 + Cb2_)/sigmaNut_)
+\begin{equation}
+    c_{w1} = c_{b1}/\kappa^2 + \frac{1 + c_{b2}}{\sigma}
 \end{equation}
 
 \begin{equation}
@@ -43,11 +59,6 @@ scalar $\tilde{\nu}$ \cite{Spalart1992}:
 
 \begin{equation}
     f = \frac{\tilde{nu}}{\tilde{S} \kappa^2 d^2}
-\end{equation}
-
-% From OpenFOAM: Cw1_(Cb1_/sqr(kappa_) + (1.0 + Cb2_)/sigmaNut_)
-\begin{equation}
-    c_{w1} = c_{b1}/\kappa^2 + \frac{1 + c_{b2}}{\sigma}
 \end{equation}
 
 $d$ is the distance to the wall.
@@ -136,6 +147,8 @@ Typical closure coefficients are
 
 Large eddy simulation solves for the filtered velocity field $\tilde{u}$. The
 filtered Navier--Stokes equations are
+
+\todo[inline]{Get the correct form of the filtered pressure $p^*$ for LES.}
 
 \begin{equation}
     \frac{\partial \tilde{u}_i}{\partial t}
