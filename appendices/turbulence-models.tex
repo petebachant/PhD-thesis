@@ -50,9 +50,11 @@ near the wall. The transport equation for $\tilde{\nu}$ is defined as
 
 % Stilda from OpenFOAM
 \begin{equation}
-    \tilde{S} = f_{v3}\sqrt{2} | \skew[\nabla U] |
-    + f_{v2} \frac{\tilde{\nu}}{\kappa^2 d^2}
+    \tilde{S} = f_{v3}\sqrt{2} | \skew \nabla U |
+    + f_{v2} \frac{\tilde{\nu}}{\kappa^2 d^2},
 \end{equation}
+where $\skew \nabla U$ is the skew-symmetric component of the velocity gradient
+tensor.
 
 %fv2 and fv3 from OpenFOAM (no Ashford correction)
 \begin{equation}
@@ -176,7 +178,7 @@ filtered Navier--Stokes equations are
 \end{equation}
 
 Smagorinsky~\cite{Smagorinsky1963} proposed an eddy viscosity type relation for
-the subgrid scale (SGS) stress tensor
+the computing the subgrid scale (SGS) stress tensor $\tau_{ij}$.
 
 % From Wilcox 1994 Eq 8.32
 \begin{equation}
@@ -190,9 +192,42 @@ the subgrid scale (SGS) stress tensor
 
 The eddy viscosity is then
 \begin{equation}
-    \mu_t = \rho (C_S \Delta)^2 \sqrt{S_{ij} S_{ij}},
+    \mu_t = \rho (C_S \Delta)^2 \sqrt{\tilde{S}_{ij} \tilde{S}_{ij}},
 \end{equation}
 where $C_S$ is the Smagorinsky coefficient, which is not universal, i.e., will
 vary for different flow conditions.
 
+
+\subsection{\textit{OpenFOAM}'s implementation}
+
 \todo[inline]{Add OpenFOAM's calculation of $C_s$.}
+
+% From OpenFOAM
+\begin{equation}
+    \mathbf{B} = \frac{2}{3}k \mathbf{I}
+    - 2 \nu_{\mathrm{SGS}} \mathrm{dev} \mathbf{D}
+\end{equation}
+
+\begin{equation}
+    \mathbf{D} = \mathrm{symm} \nabla U
+\end{equation}
+
+\begin{equation}
+    \nu_{\mathrm{SGS}} = C_k \sqrt{k} \Delta
+\end{equation}
+
+\begin{equation}
+    k =
+    (
+    -2/3 D_{ii} + \sqrt{(2/3 \mathbf{D}_{ii})^2
+    + 4C_\epsilon \Delta 2 C_k \Delta
+    (\mathrm{dev} \mathbf{D} \cdot \mathbf{D})}
+    / (2 C_\epsilon / \Delta)
+    )^2
+\end{equation}
+
+Default model coefficients are
+\begin{equation}
+    C_k = 0.094, \, \, \,
+    C_\epsilon = 1.048
+\end{equation}
