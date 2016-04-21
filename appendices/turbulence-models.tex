@@ -9,7 +9,7 @@ the source code, which is freely available.
 The exact incompressible RANS equations are written as
 \begin{equation}
     \frac{\partial U_i}{\partial t}
-    + U_j \frac{partial U_i}{\partial x_j}
+    + U_j \frac{\partial U_i}{\partial x_j}
     =
     -\frac{1}{\rho}\frac{\partial P}{\partial x_i}
     - \frac{\partial}{\partial x_j} \overline{u_i^\prime u_j^\prime}
@@ -22,10 +22,10 @@ the turbulence viscosity and $S_{ij}$ is the mean strain rate tensor. The RANS
 equations with the eddy viscosity approximation then become
 \begin{equation}
     \frac{\partial U_i}{\partial t}
-    + U_j \frac{partial U_i}{\partial x_j}
+    + U_j \frac{\partial U_i}{\partial x_j}
     =
     -\frac{1}{\rho}\frac{\partial P}{\partial x_i}
-    + (\nu _ \nu_t) \frac{\partial^2 U_i}{\partial x_j \partial x_j}.
+    + (\nu + \nu_t) \frac{\partial^2 U_i}{\partial x_j \partial x_j}.
 \end{equation}
 
 
@@ -50,10 +50,10 @@ near the wall. The transport equation for $\tilde{\nu}$ is defined as
 
 % Stilda from OpenFOAM
 \begin{equation}
-    \tilde{S} = f_{v3}\sqrt{2} | \skew \nabla U |
+    \tilde{S} = f_{v3}\sqrt{2} | \mathrm{skew} \nabla U |
     + f_{v2} \frac{\tilde{\nu}}{\kappa^2 d^2},
 \end{equation}
-where $\skew \nabla U$ is the skew-symmetric component of the velocity gradient
+where $\mathrm{skew} \nabla U$ is the skew-symmetric component of the velocity gradient
 tensor.
 
 %fv2 and fv3 from OpenFOAM (no Ashford correction)
@@ -76,7 +76,7 @@ tensor.
 \end{equation}
 
 \begin{equation}
-    f = \frac{\tilde{nu}}{\tilde{S} \kappa^2 d^2}
+    f = \frac{\tilde{\nu}}{\tilde{S} \kappa^2 d^2}
 \end{equation}
 
 $d$ is the distance to the wall.
