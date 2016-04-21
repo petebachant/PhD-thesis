@@ -231,3 +231,13 @@ Default model coefficients are
     C_k = 0.094, \, \, \,
     C_\epsilon = 1.048
 \end{equation}
+
+These are related to the typical $C_S$ by
+% http://blog.sina.com.cn/s/blog_6d9c27ab0100u9ez.html
+% http://www.cfd-online.com/Forums/openfoam-solving/65838-smagorinsky-model-details.html
+\begin{equation}
+    C_S =
+    \left(
+        C_k \left(C_k / C_\epsilon \right)^{1/2}
+    \right)^{1/2}
+\end{equation}
