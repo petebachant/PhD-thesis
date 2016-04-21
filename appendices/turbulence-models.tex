@@ -111,9 +111,75 @@ Menter's $k$--$\omega$ SST is defined as \cite{Menter2001}
     \label{eq:komegasst-k}
 \end{equation}
 
+\begin{equation}
+    \rho \frac{\partial \omega}{\partial t}
+    + \rho U_j \frac{\partial \omega}{\partial x_j}
+    = \frac{\gamma}{\nu_t} P_k - \rho \beta \omega^2
+    + \frac{\partial}{\partial x_j}
+    \left(
+    \Gamma_\omega \frac{\partial \omega}{\partial x_j}
+    \right)
+    + 2 \rho (1 - F_1) \sigma_{\omega 2}
+    \frac{1}{\omega} \frac{\partial k}{\partial x_j}
+    \frac{\partial \omega}{\partial x_j}
+\end{equation}
+
+\begin{equation}
+    \Gamma_k = \mu + \frac{\mu_t}{\sigma_k}, \, \, \,
+    \Gamma_\omega = \mu + \frac{\mu_t}{\sigma_\omega}, \, \, \,
+    P_k = \tau_{ij} \frac{\partial U_i}{\partial x_j}, \, \, \,
+    \tilde{P}_k = \min(P_k;c_l \epsilon), \, \, \,
+    \mu_t = \rho \frac{a_1 k}{\max(a_1 \omega; S \cdot F_2)}
+\end{equation}
+
+Coefficients $\phi$ are blended with $\phi = F_1 \phi_1 + (1 - F_1) \phi_2$,
+where the 1 and 2 subscripts denote values from the $k$--$\omega$ and
+$k$--$\epsilon$ models, respectively.
+
+\begin{equation}
+    F_1 = \tanh (\arg_1^4); \, \, \, \,
+    \arg_1 = \min
+    \left(
+    \max
+    \left(
+    \frac{\sqrt{k}}{\beta^* \omega y};
+    \feac{500 \nu}{y^2 \omega}
+    \right);
+    \frac{4 \rho \sigma_{\omega2} k}{CD_{k \omega} y^2}
+    \right); \, \, \, \,
+    CD_{k \omega} = \max
+    \left(
+    2 \rho \sigma_{\omega 2} \frac{1}{\omega}
+    \frac{\partial k}{\partial x_j}
+    \frac{\partial \omega}{\partial x_j};
+    1 \times 10^{-10}
+    \right)
+\end{equation}
+
 \textit{OpenFOAM}'s implementation of the SST model features updated
 coefficients from \cite{Menter2003}, with the consistent production terms from
-\cite{Menter2001}/
+\cite{Menter2001}.
+
+\textit{OpenFOAM} also uses coefficients in terms of $\alpha = 1/\sigma$ to
+apply blending functions. Default coefficients are
+
+\begin{equation}
+\begin{split}
+&   \alpha_{k1} = 0.85, \, \, \,
+    \alpha_{k2} = 1.0, \, \, \,
+    \alpha_{\omega1} = 0.5, \, \, \,
+    \alpha_{\omega2} = 0.856, \, \, \,
+    \beta_1 = 0.075, \, \, \,
+    \beta_2 = 0.0828, \, \, \,
+    \beta^* = 0.09, \, \, \, \\
+&   \gamma_1 = 5/9, \, \, \,
+    \gamma_2 = 0.44, \, \, \,
+    a_1 = 0.31, \, \, \,
+    b_1 = 1.0, \, \, \,
+    c_1 = 10.0, \, \, \,
+\end{split}
+\end{equation}
+
 
 
 \section{$k$--$\epsilon$}
