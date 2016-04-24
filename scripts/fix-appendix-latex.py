@@ -45,7 +45,8 @@ def fix_file(fname):
 
 if __name__ == "__main__":
     files = ["appendices/test-bed-wiki-operation.tex",
-             "appendices/rm2-wiki-home.tex"]
+             "appendices/rm2-wiki-home.tex",
+             "appendices/turbinedaq.tex"]
 
     for f in files:
         fix_file(f)
