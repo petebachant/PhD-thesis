@@ -52,7 +52,7 @@ wikis:
 	cd appendices/RM2-tow-tank.wiki && git pull origin master
 
 
-appendices:
+appendices: appendices/turbine-test-bed.wiki/Operation.md appendices/RM2-tow-tank.wiki/Home.md
 	# Build LaTeX from Markdown
 	pandoc appendices/turbine-test-bed.wiki/Operation.md -o appendices/test-bed-wiki-operation.tex --chapters --listings --wrap=preserve
 
