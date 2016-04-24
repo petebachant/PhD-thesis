@@ -48,9 +48,8 @@ signatures:
 
 wikis:
 	# Update wiki submodules
-	git submodule update --remote appendices/turbine-test-bed.wiki
-
-	git submodule update --remote appendices/RM2-tow-tank.wiki
+	cd appendices/turbine-test-bed.wiki && git pull origin master
+	cd appendices/RM2-tow-tank.wiki && git pull origin master
 
 
 appendices:
