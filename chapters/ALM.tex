@@ -86,12 +86,12 @@ and
 where $\rho$ is the fluid density, $A_\mathrm{elem}$ is the blade element
 planform area (span $\times$ chord), $\vec{U}_\mathrm{rel}$ is the local
 relative velocity, and $C_l$ and $C_d$ are the sectional lift and drag
-coefficients, chosen from a table per the local angle of attack. The forces are
-then projected onto the rotor coordinate system to calculate torque, overall
-drag, etc. Forces from the turbine shaft and blade support struts are computed
-in a similar way. After the force on the actuator lines from the flow is
-computed, it is then added to the Navier--Stokes equations as a body force or
-momentum source (per unit density, assuming incompressible flow):
+coefficients, linearly interpolated from a table per the local angle of attack.
+The forces are then projected onto the rotor coordinate system to calculate
+torque, overall drag, etc. Forces from the turbine shaft and blade support
+struts are computed in a similar way. After the force on the actuator lines from
+the flow is computed, it is then added to the Navier--Stokes equations as a body
+force or momentum source (per unit density, assuming incompressible flow):
 \begin{equation}
     \frac{\mathrm{D} \vec{u}}{\mathrm{D} t} = - \frac{1}{\rho} \nabla p + \nu
     \nabla^2 \vec{u} + F_\mathrm{turbine}.
