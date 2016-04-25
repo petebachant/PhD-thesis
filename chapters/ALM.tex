@@ -648,12 +648,13 @@ end element drag coefficients were set to 0.05, to approximate the effects of
 separation in the corners of the blade--strut connections.
 
 Since the ALM is intended to be an engineering tool when coupled with RANS, it
-was assumed that information about tip speed ratio due to control details would
-not be known a priori, and was excluded, unlike the 3-D blade-resolved cases in
-Chapter~\ref{chap:CFD}. Note that a systematic investigation of the effects of
-sinusoidal $\lambda$ was not undertaken, but for the UNH-RVAT a one to two
-percentage point increase in $C_P$ was observed when running with similar
-parameters as the blade-resolved simulation.
+was assumed that information about tip speed ratio due to control details---that
+is, sinusoidally oscillating $\lambda$---would not be known a priori, and was
+excluded, unlike the 3-D blade-resolved cases in Chapter~\ref{chap:CFD}. Note
+that a systematic investigation of the effects of sinusoidal $\lambda$ was not
+undertaken, but for the UNH-RVAT a one to two percentage point increase in $C_P$
+was observed when running with similar parameters as the blade-resolved
+simulation.
 
 Compared to 3-D blade-resolved RANS, the ALM can solve a standalone turbine case
 on the order of CPU minutes per second of simulated time versus 1,000 CPU hours
