@@ -19,14 +19,15 @@ hydrokinetic applications. Their description of the flow field is very crude as
 well, simply computing the momemtum contained within discretized streamtubes,
 which cannot resolve any of the complicated flow structures shed by the rotor.
 
-Blade element based vortex line methods can be computationally
-feasible---ranging from an expense close to BEM up to that of 2-D blade-resolved
-CFD. The cost is a function of the number of vortex elements, which for free
-vortex methods increases at each time step, slowing down the calculation as it
-marches forward in time. Vortex methods can resolve more flow details than BEM.
-However, since the flow is governed by the Laplace equation, nonlinear effects
-such as the turbulent transport will not be included, which we have determined
-in experiments to be the same order of magnitude as the mean vertical advection.
+Blade element based vortex line methods can be solved with reasonable
+computational effort---ranging from an expense close to BEM up to that of 2-D
+blade-resolved CFD. The cost is a function of the number of vortex elements,
+which for free vortex methods increases at each time step, slowing down the
+calculation as it marches forward in time. Vortex methods can resolve more flow
+details than BEM. However, since the flow is governed by the Laplace equation,
+nonlinear effects such as the turbulent transport will not be included, which we
+have determined in experiments to be the same order of magnitude as the mean
+vertical advection.
 
 It is therefore desirable to retain a Navier--Stokes description of the flow
 field and use an actuator-type model for parameterizing the turbine loading,
