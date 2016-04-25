@@ -147,10 +147,10 @@ and local angle of attack with no corrections \cite{Churchfield2013}.
 Schito and Zasso developed an effective velocity model (EVM) for computing
 actuator forces in Navier--Stokes simulations \cite{Schito2014}. Their EVM
 proposes that inflow velocity should be sampled along a line perpendicular to
-the mean relative flow direction. They ultimately chose a the line to be 1.5
-chord lengths upstream of the actuator point (i.e. quarter-chord location). A
-sampling line was chosen to be 5 times the local mesh cell length. Finally, an
-angle of attack correction is proposed
+the mean relative flow direction. They ultimately determined that the sampling
+line should be 1.5 chord lengths upstream of the actuator point (i.e.
+quarter-chord location). A sampling line was chosen to be 5 times the local mesh
+cell length. Finally, an angle of attack correction is proposed
 \begin{equation}
     \Delta \alpha = \frac{c}{M} (1.2553 - 0.0552 C_d) C_l,
     \label{eq:EVM-dalpha}
