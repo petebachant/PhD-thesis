@@ -922,14 +922,15 @@ transport due to the eddy viscosity was also relatively large.
 \subsection{UNH-RVAT LES}
 
 The state-of-the-art in high fidelity turbine array modeling uses the actuator
-line method inside large eddy simulation, which allows more of the turbulent
-energy spectrum to be directly resolved, only requiring the dynamics of the
-smallest scales to be computed by the so-called subgrid-scale (SGS) model. Since
-the ALM LES approach has only been reported in the literature for a very low
-Reynolds number 2-D CFT \cite{Shamsoddin2014}, and CFTs may provide unique
-opportunities to array optimization, which could be explored with LES, it was of
-interest to determine how well the ALM coupled with LES might predict wake
-dynamics of a higher $Re$ 3-D CFT rotor.
+line method coupled with large eddy simulation (LES), which allows more of the
+turbulent energy spectrum to be directly resolved, only requiring the dynamics
+of the smallest scales---where dissipation occurs---to be computed by the
+so-called subgrid-scale (SGS) model. Since the ALM LES approach has only been
+reported in the literature for a very low Reynolds number 2-D CFT
+\cite{Shamsoddin2014}, and CFTs may provide unique opportunities to array
+optimization, which could be explored with LES, it was of interest to determine
+how well the ALM coupled with LES might predict wake dynamics of a higher $Re$
+3-D CFT rotor.
 
 Thus, the UNH-RVAT baseline case was simulated using the Smagorinsky LES
 turbulence model \cite{Smagorinsky1963}, which was the first of its kind, and
