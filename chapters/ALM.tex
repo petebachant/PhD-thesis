@@ -247,10 +247,16 @@ the element as
 \begin{equation}
     \Delta x \approx \sqrt[3]{V_\mathrm{cell}},
 \end{equation}
-where $V_\mathrm{cell}$ is the cell volume. To account for the possibility of non-unity aspect ratio cells, an additional factor $C_\mathrm{mesh}$, 2.0 by default, was introduced, giving
+where $V_\mathrm{cell}$ is the cell volume. To account for the possibility of
+non-unity aspect ratio cells, an additional factor $C_\mathrm{mesh}$ was
+introduced, giving
 \begin{equation}
     \epsilon_{\mathrm{mesh}} = 2C_\mathrm{mesh} \Delta x.
 \end{equation}
+$C_{\mathrm{mesh}}$ was set to 2.0 for the simulations presented
+here---determined by trial-and-error to provide stability on the finest grids.
+However, in the ALM code $C_{\mathrm{mesh}}$ is selectable at run time for each
+profile used.
 
 
 \section{Unsteady effects}
