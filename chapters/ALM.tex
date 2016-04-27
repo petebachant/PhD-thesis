@@ -177,15 +177,22 @@ order of one cell length per time step.
 
 Static input foil coefficient data were taken from Sheldahl and
 Klimas~\cite{Sheldahl1981}---a popular database developed for CFTs, which
-contains values over a wide range of Reynolds numbers. NACA 0021 coefficients
-were used for both turbines, despite the fact that the UNH-RVAT is constructed
-from NACA 0020 foils, as a NACA 0020 dataset is not available---it is assumed
-the small difference in foil thickness is negligible. Since pitching moment data
-were only available at limited Reynolds numbers, two datasets were used: The
-lowest for $Re_c \leq 3.6 \times 10^5$ and highest $Re_c \geq 6.8 \times 10^5$.
-For each actuator line element, blade chord Reynolds number is computed based on
-the sampled inflow velocity, and the static coefficients are then interpolated
-linearly within the database.
+contains values over a wide range of Reynolds numbers. The Sheldahl and Klimas
+dataset has some limitations, namely that data for some foil and/or Reynolds
+numbers were ``synthesized'' numerically from other measurements. Despite its
+flaws, this dataset is the likely most comprehensive available with respect to
+variety of profiles and ranges of Reynolds numbers. Surprisingly, considering
+the maturity and popularity of NACA foils, data remains scarce, especially for
+$Re_c \sim 10^5$.
+
+NACA 0021 coefficients were used for both turbines, despite the fact that the
+UNH-RVAT is constructed from NACA 0020 foils, as a NACA 0020 dataset is not
+available---it is assumed the small difference in foil thickness is negligible.
+Since pitching moment data were only available at limited Reynolds numbers, two
+datasets were used: The lowest for $Re_c \leq 3.6 \times 10^5$ and highest $Re_c
+\geq 6.8 \times 10^5$. For each actuator line element, blade chord Reynolds
+number is computed based on the sampled inflow velocity, and the static
+coefficients are then interpolated linearly within the database.
 
 
 \section{Force projection}
