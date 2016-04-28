@@ -807,7 +807,7 @@ the rotor.
 Weighted averages for the momentum recovery terms were computed identically as
 they were in Chapter~\ref{chap:CFD}, and are plotted in
 Figure~\ref{fig:RVAT-ALM-recovery} along with the actuator disk (AD) results
-from Chapter~\ref{chap:RVAT-baseline), 3-D blade-resolved RANS results from
+from Chapter~\ref{chap:RVAT-baseline}, 3-D blade-resolved RANS results from
 Chapter~\ref{chap:CFD} and experiments. The most glaring discrepancy is the
 ALM's prediction of positive cross-stream advection, which is caused by the lack
 of detail in the tip vortex shedding. The total for vertical advection, however,
@@ -1075,12 +1075,14 @@ cross-stream advection contributions are negative, as they are in the experiment
 and blade-resolved CFD models. The vertical advection term is positive as
 expected, though smaller than in other cases. Interestingly, the turbulent
 transport is negative in the LES, meaning the combined effects of the resolved
-and SGS stressed are transferring momentum out of the wake. These discrepancies
-highlight the difficulty of predicting the near-wake dynamics, the importance of
-the SGS model in LES, and the need for data further downstream to test and
-refine predictions for wake evolution. For example, setting the Smagorinsky
-coefficient higher may induce vortex breakdown earlier, which would raise the
-turbulence levels significantly.
+and SGS stressed are transferring momentum out of the wake. The low turbulent
+transport appears to be partially balanced by higher levels of viscous
+diffusion---about an order of magnitude larger than the 3-D blade-resolved RANS
+models and experiments. These discrepancies highlight the difficulty of
+predicting the near-wake dynamics, the importance of the SGS model in LES, and
+the need for data further downstream to test and refine predictions for wake
+evolution. For example, setting the Smagorinsky coefficient higher may induce
+vortex breakdown earlier, which would raise the turbulence levels significantly.
 
 \begin{figure}
     \centering
