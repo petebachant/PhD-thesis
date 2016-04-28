@@ -61,5 +61,5 @@ appendices: appendices/turbine-test-bed.wiki/Operation.md appendices/RM2-tow-tan
 
 	pandoc appendices/TurbineDAQ.wiki/Home.md -o appendices/turbinedaq.tex --listings --wrap=preserve
 
-    # Clean up automatically generated LaTeX
+	# Clean up automatically generated LaTeX
 	python scripts/fix-appendix-latex.py
