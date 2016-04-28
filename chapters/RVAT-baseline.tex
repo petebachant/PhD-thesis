@@ -53,10 +53,10 @@ To summarize, the goals of this experiment were:
 \begin{enumerate}
     \item To identify the essential features of the near-wake of a cross-flow
     turbine.
-    
+
     \item To assess the relative importance of mean and turbulent dynamics on the
     transport of momentum and kinetic energy in the wake.
-    
+
     \item To compare the measured CFT wake to numerical predictions from a
     uniform actuator disk force parameterization implemented inside a RANS
     model, to evaluate its prospects for representing CFTs in array simulations.
@@ -86,11 +86,11 @@ shown in Figure~\ref{fig:RVAT-baseline-wake-coordinates}.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.99\textwidth]{unh-rvat-coord-sys}
-    
+
     \caption{Wake measurement coordinate system and grid.}
-    
+
     \label{fig:RVAT-baseline-wake-coordinates}
 \end{figure}
 
@@ -183,13 +183,13 @@ observations of counter-rotating turbine pairs helping speed wake recovery
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{RVAT-baseline_meancontquiv}
-    
+
     \caption{Mean velocity at $\lambda=1.9$. Vectors are cross-stream and
         vertical velocities; contours are streamwise velocity. View is looking
         upstream, with the turbine frontal area indicated by the solid gray lines.}
-    
+
     \label{fig:RVAT-baseline-meancontquiv}
 \end{figure}
 
@@ -225,13 +225,13 @@ mean flow into its momentum deficit region, albeit in a asymmetric fashion.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{RVAT-baseline_xvorticitycont}
 
     \caption{Contours of mean streamwise vorticity. Note that this perspective
         is looking upstream and therefore negative values indicate clockwise
         rotation.}
-    
+
     \label{fig:RVAT-baseline-xvorticity}
 \end{figure}
 
@@ -251,17 +251,17 @@ production.
         \caption{}
         \label{fig:RVAT-baseline-uvcont}
     \end{subfigure}
-    
+
     \begin{subfigure}{\textwidth}
         \centering
         \includegraphics[width=0.8\textwidth]{RVAT-baseline_meanupwpcont}
         \caption{}
         \label{fig:RVAT-baseline-uwcont}
     \end{subfigure}
-    
+
     \caption{Contours of (a) streamwise--cross-stream and (b)
         streamwise--vertical Reynolds shear stress.}
-    
+
     \label{fig:Re-stress}
 \end{figure}
 
@@ -271,7 +271,7 @@ contributing to its streamwise derivative. Assuming the flow is stationary in
 the mean and incompressible, the equation becomes
 \begin{equation}
     \begin{split}
-        \frac{\p U}{\p x}  =  
+        \frac{\p U}{\p x}  =
         \frac{1}{U} \bigg{[}
         & - V\frac{\p U}{\p y}
         - W\frac{\p U}{\p z} \\
@@ -305,14 +305,14 @@ turbine in similar conditions.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{RVAT-baseline_mombargraph}
-    
+
     \caption{Estimates for the contributions to mean streamwise momentum
         recovery in the streamwise direction, multiplied by two (due to assumed
         symmetry), averaged over the measurement plane, and normalized by the
         average streamwise velocity, freestream velocity, and turbine diameter.}
-    
+
     \label{fig:mombargraph}
 \end{figure}
 
@@ -360,14 +360,14 @@ peak in its spectrum at the blade passage frequency.
 
 \begin{figure}
     \centering
-    
+
     \begin{subfigure}{\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{RVAT-baseline_fpeak_vcont}
         \caption{}
         \label{fig:RVAT-baseline-fpeak}
     \end{subfigure}
-    
+
     \begin{subfigure}{\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{RVAT-baseline_fstrength_vcont}
@@ -379,7 +379,7 @@ peak in its spectrum at the blade passage frequency.
         turbine angular frequency and (b) spectral concentration. Note
         that white regions have values higher than the maximum value of the color
         bar, caused by both noise and wakes of the guy wire supports.}
-    
+
     \label{fig:RVAT-baseline-fcont}
 \end{figure}
 
@@ -395,7 +395,7 @@ peak in its spectrum at the blade passage frequency.
         95\% confidence interval for a $\chi^2$ variable with 8 degrees of
         freedom---twice the number of frequencies over which spectral values were
         averaged to reduce noise.}
-    
+
     \label{fig:RVAT-baseline-multispec}
 \end{figure}
 
@@ -421,7 +421,7 @@ the occurrence of dynamic stall.
 
     \caption{Contours of normalized turbulence kinetic energy. Turbine frontal
         area is indicated by solid black lines.}
-    
+
     \label{fig:RVAT-baseline-kcont}
 \end{figure}
 
@@ -447,11 +447,11 @@ isolate the streamwise recovery ($\partial / \partial x$) can be written as
             \frac{1}{2}\frac{\p}{\p x_j} \overline{u_i' u_j'} U_i
         }_{\text{Turb. trans.}} \\
         % Production of k
-        & + 
+        & +
         \underbrace{
             \overline{u_i' u_j'} \frac{\p U_i}{\p x_j}
         }_{k\text{-prod.}}
-        - 
+        -
         \underbrace{
             2 \nu S_{ij}S_{ij}
         }_{\text{Mean diss.}}
@@ -471,21 +471,21 @@ of each transport term.
 \begin{table}
     \centering
     \begin{tabular}{c|c}
-        Term in Eq.~\ref{eq:K-full} & Implementation \\ 
-        \hline  
-        $y$-adv. & $-\frac{V}{U}\frac{\p K}{\p y}$ \\ 
-        $z$-adv.  & $-\frac{W}{U}\frac{\p K}{\p z}$ \\ 
-        Turb. trans. ($y$) & $-\frac{1}{2U} \big{[} \frac{\p }{\p y}\overline{u'v'}U 
-        + \frac{\p }{\p y}\overline{v'v'}V + \frac{\p }{\p y}\overline{w'v'}W \big{]} $\\ 
-        Turb. trans. ($z$)  & $-\frac{1}{2U} \big{[} \frac{\p }{\p z}\overline{u'w'}U 
-        + \frac{\p }{\p z}\overline{v'w'}V + \frac{\p }{\p z}\overline{w'w'}W \big{]} $\\ 
+        Term in Eq.~\ref{eq:K-full} & Implementation \\
+        \hline
+        $y$-adv. & $-\frac{V}{U}\frac{\p K}{\p y}$ \\
+        $z$-adv.  & $-\frac{W}{U}\frac{\p K}{\p z}$ \\
+        Turb. trans. ($y$) & $-\frac{1}{2U} \big{[} \frac{\p }{\p y}\overline{u'v'}U
+        + \frac{\p }{\p y}\overline{v'v'}V + \frac{\p }{\p y}\overline{w'v'}W \big{]} $\\
+        Turb. trans. ($z$)  & $-\frac{1}{2U} \big{[} \frac{\p }{\p z}\overline{u'w'}U
+        + \frac{\p }{\p z}\overline{v'w'}V + \frac{\p }{\p z}\overline{w'w'}W \big{]} $\\
         $k$-prod.  & $\frac{1}{U} \big{[} \overline{u'v'}\frac{\p U}{\p y}
-        + \overline{v'v'}\frac{\p V}{\p y} 
+        + \overline{v'v'}\frac{\p V}{\p y}
         + \overline{w'v'}\frac{\p W}{\p y} $ \\
         & $ + \overline{u'w'}\frac{\p U}{\p z}
         + \overline{v'w'}\frac{\p V}{\p z}
         + \overline{w'w'}\frac{\p W}{\p z}
-        \big{]} $ \\ 
+        \big{]} $ \\
         Mean diss.   & $ - \frac{2 \nu}{U} \big{[}
         \big{(} \frac{\p U}{\p y} \big{)}^2
         + \big{(} \frac{\p U}{\p z} \big{)}^2
@@ -494,8 +494,8 @@ of each transport term.
         + \big{(} \frac{\p V}{\p z} \big{)}^2
         + \big{(} \frac{\p W}{\p y} \big{)}^2
         + \big{(} \frac{\p W}{\p z} \big{)}^2
-        \big{]} $ \\ 
-    \end{tabular} 
+        \big{]} $ \\
+    \end{tabular}
     \caption{Terms used to compute contributions to mean kinetic energy recovery.}
     \label{tab:RVAT-baseline-eqs}
 \end{table}
@@ -510,13 +510,13 @@ turbulent transport are similar on both.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{RVAT-baseline_Kturbtranscont}
 
     \caption{Contours of estimated mean kinetic energy transport by turbulent
         fluctuations, where streamwise derivatives are omitted. Turbine frontal area
         is indicated by solid black lines.}
-    
+
     \label{fig:RVAT-baseline-Kturbtrans}
 \end{figure}
 
@@ -530,7 +530,7 @@ mean advection contributes negatively since the flow is accelerating around the
 turbine due to its pressure disturbance, where streamlines diverge.
 
 Viscous dissipation due to mean shear is essentially negligible compared to
-the other terms, which is to be expected in a high Reynolds number shear flow a 
+the other terms, which is to be expected in a high Reynolds number shear flow a
 short distance downstream of the shear flow (wake) generator (CFT).
 
 Production of turbulence kinetic energy acts to reduce mean kinetic energy, as
@@ -554,7 +554,7 @@ effects.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{RVAT-baseline_Kbargraph}
 
     \caption{Estimates for the contributions to mean kinetic energy recovery in
@@ -562,7 +562,7 @@ effects.
         averaged over the measurement plane, and normalized by the average
         streamwise advection velocity, freestream kinetic energy, and turbine
         diameter.}
-    
+
     \label{fig:RVAT-baseline-Kbargraph}
 \end{figure}
 
@@ -591,14 +591,14 @@ orientation of the blade tip vortices.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.75\textwidth]{RVAT-baseline_mean_vel_vs_tsr}
 
     \caption{Normalized centerline mean velocity components at $x/D=1$ versus
         tip speed ratio. Filled markers indicate measurements at $z/H=0$, while open
         markers indicate those at $z/H=0.25$.}
 
-    \label{fig:RVAT-baseline-mean-vel-vs-tsr} 
+    \label{fig:RVAT-baseline-mean-vel-vs-tsr}
 \end{figure}
 
 Next we want to look more closely at the effects of lowering $\lambda$, thereby
@@ -641,46 +641,46 @@ upstream blade path, i.e., at higher positive values of $y$.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.75\textwidth]{RVAT-baseline_meanu_2tsrs}
 
     \caption{Streamwise mean velocity profiles for $\lambda = 1.9$ and
         $\lambda=1.4$ at $x/D=1$ and $z/H = 0.25$.}
 
-    \label{fig:RVAT-baseline-meanu-2tsrs} 
+    \label{fig:RVAT-baseline-meanu-2tsrs}
 \end{figure}
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.75\textwidth]{RVAT-baseline_meanw_2tsrs}
 
     \caption{Mean vertical velocity profiles for $\lambda = 1.9$ and
         $\lambda=1.4$ at $x/D=1$ and $z/H = 0.25$.}
 
-    \label{fig:RVAT-baseline-meanw-2tsrs} 
+    \label{fig:RVAT-baseline-meanw-2tsrs}
 \end{figure}
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.75\textwidth]{RVAT-baseline_meanv_2tsrs}
 
     \caption{Mean cross-stream velocity profiles for $\lambda = 1.9$ and
         $\lambda=1.4$ at $x/D=1$ and $z/H = 0.25$.}
 
-    \label{fig:RVAT-baseline-meanv-2tsrs} 
+    \label{fig:RVAT-baseline-meanv-2tsrs}
 \end{figure}
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.75\textwidth]{RVAT-baseline_k_2tsrs}
 
     \caption{Turbulence kinetic energy for $\lambda = 1.9$ and
         $\lambda=1.4$ at $x/D=1$ and $z/H = 0.25$.}
 
-    \label{fig:RVAT-baseline-k-2tsrs} 
+    \label{fig:RVAT-baseline-k-2tsrs}
 \end{figure}
 
 
@@ -715,8 +715,8 @@ previous sections, the asymmetry of the turbine's wake indicates that a uniform
 streamwise force from the actuator disk will likely not capture the wake
 accurately.
 
-The open source CFD package \textit{OpenFOAM} (v2.3.x) was used to solve the
-RANS equations with the turbine represented by an actuator disk, which was
+The open source CFD package OpenFOAM (v2.3.x) was used to solve the RANS
+equations with the turbine represented by an actuator disk, which was
 implemented as a force or sink in the momentum equation, applied over a selected
 volume of cells in the mesh.
 
@@ -732,8 +732,8 @@ conditions were set to approximate the tow tank environment, i.e., the velocity
 at the bottom and walls were set to the free stream value. The free surface was
 not modeled---the domain had a rigid lid with a slip velocity boundary
 condition---a reasonable approximation for low Froude numbers. Inputs to
-\textit{OpenFOAM}'s \texttt{actuationDiskSource} are given in
-Table~\ref{tab:AS}, and the case files for this simulation are available from
+OpenFOAM's \texttt{actuationDiskSource} are given in Table~\ref{tab:AS}, and the
+case files for this simulation are available from
 \cite{Bachant2014-OF-AS-case-files}.
 
 \begin{figure}
@@ -744,19 +744,19 @@ Table~\ref{tab:AS}, and the case files for this simulation are available from
     \caption{Snapshot of the computational mesh for the actuator disk RANS
         simulation. The cylindrical region indicates the cells in which the momentum
         source was added.}
-    
+
     \label{fig:AD-mesh}
 \end{figure}
 
 \begin{table}
     \begin{center}
         \begin{tabular}{r|l}
-            \texttt{Cp} & \texttt{0.26} \\ 
-            \texttt{Ct} & \texttt{0.96} \\ 
-            \texttt{diskArea} & \texttt{1.0} \\ 
-            \texttt{upstreamPoint} & \texttt{(-1.0 0 0)} \\ 
-        \end{tabular} 
-        \caption{Input parameters for the actuator surface using \textit{OpenFOAM}'s
+            \texttt{Cp} & \texttt{0.26} \\
+            \texttt{Ct} & \texttt{0.96} \\
+            \texttt{diskArea} & \texttt{1.0} \\
+            \texttt{upstreamPoint} & \texttt{(-1.0 0 0)} \\
+        \end{tabular}
+        \caption{Input parameters for the actuator surface using OpenFOAM's
             \texttt{actuationDiskSource}.}
     \label{tab:AS}
     \end{center}
@@ -803,8 +803,8 @@ streamwise evolution, despite being very small. One way to increase the wake
 recovery in such a model is to have the actuator disk ``inject'' turbulence
 quantities to increase the eddy viscosity \cite{James2011, Nelson2013}. However,
 this will likely still not be sufficient to predict evolution and interaction in
-closely-spaced arrays of CFTs, since neither the significant vertical mean 
-velocities in the CFT wake, nor any coherent vortical structures 
+closely-spaced arrays of CFTs, since neither the significant vertical mean
+velocities in the CFT wake, nor any coherent vortical structures
 due to blade, shaft, or strut forces are captured by the actuator disk model.
 
 It could be argued that the actuator disk model should not be judged this way as
@@ -816,26 +816,26 @@ uncertainty if applied to cross-flow turbine installations.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[clip, trim=0 0.25in 0 0.5in,
     width=0.8\textwidth]{AD_meancontquiv}
 
     \caption{Mean velocity predictions at $x/D=1$ from the RANS actuator disk
         numerical model. Vectors are cross-stream and vertical velocities; contours
         are streamwise velocity.}
-    
+
     \label{fig:AD-contours}
 \end{figure}
 
 \begin{figure}
-    \centering 
-    
+    \centering
+
     \includegraphics[width=0.87\textwidth]{AD_streamwise}
-    
+
     \caption{Downstream evolution of the centerline streamwise velocity (left)
         and normalized momentum transport terms (right) averaged over $y$--$z$
-        slices from the actuator disk RANS simulation.} 
-    
+        slices from the actuator disk RANS simulation.}
+
     \label{fig:AD-streamwise}
 \end{figure}
 
@@ -846,22 +846,22 @@ cross-flow turbine operating at peak power coefficient. The following essential
 features were identified:
 
 \begin{enumerate}
-    \item Asymmetry and three-dimensionality in the mean velocity field. 
-    
+    \item Asymmetry and three-dimensionality in the mean velocity field.
+
     \item Mean streamwise swirling flow, or vorticity produced by blade tip and
     dynamic stall vortex shedding, which propels fluid towards the wake's center
     and makes mean vertical advection the largest contributor to streamwise
     momentum and mean kinetic energy recovery.
-    
+
     \item Asymmetric turbulence generation due to the effects of dynamic stall
     being more pronounced on one side of the turbine.
 \end{enumerate}
 
-The most dominant timescale induced into the wake is the blade passage period. 
+The most dominant timescale induced into the wake is the blade passage period.
 The $+y$ side of the turbine contains more coherent motion at this
-frequency, as stalling is less prevalent there. The reduced separation due to 
-stall also leads to lower magnitudes of turbulence kinetic energy on the $+y$ 
-side. 
+frequency, as stalling is less prevalent there. The reduced separation due to
+stall also leads to lower magnitudes of turbulence kinetic energy on the $+y$
+side.
 
 Regarding recovery of the mean streamwise momentum and kinetic energy, it was
 calculated from the wake velocity measurements that vertical advection is more

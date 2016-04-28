@@ -17,12 +17,12 @@ ZB3 500 lbf load cells that allowed measurement of total streamwise rotor drag.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{tow-tank.png}
-    
+
     \caption{The University of New Hampshire's wave and tow tank, located in the
         Jere A. Chase Ocean Engineering Laboratory.}
-    
+
     \label{fig:tow-tank}
 \end{figure}
 
@@ -32,21 +32,21 @@ system had some issues to be addressed:
 \begin{itemize}
     \item No control over turbine shaft angular velocity. This made operation at
     tip speed ratio below peak torque impossible.
-    
+
     \item Fully manual starting and load application. This limited resolution of
     the applied torque, and took considerable effort to perform experiments on
     the order of 100 tows, since a person had to ride on the tow carriage to
     adjust and apply the load torque.
-    
+
     \item Open loop speed and manual position control of the tow carriage. This
     also took considerable effort to operate experiments, since the operator had
     to estimate braking distance to ensure the carriage did not hit the tank
     ends.
-    
+
     \item Low carriage acceleration. The carriage acceleration was on the order
     of 0.1 m/s\textsuperscript{2}, which limited the steady state turbine
     operating duration to a few seconds.
-    
+
     \item Low frequency resonance in the tow member. A long 0.25 inch diameter
     wire rope was used to tow the carriage, which resonated longitudinally with
     the significant variation of streamwise forces from the turbine.
@@ -74,14 +74,14 @@ Table~\ref{tab:tow-tank-specs}.
 \begin{table}
 \centering
 \begin{tabular}{c|c|c}
-Spec & Old system & Target \\ 
+Spec & Old system & Target \\
 \hline
-Maximum speed & 1.4 m/s  & 3.0 m/s \\ 
-Maximum acceleration & 0.1 m/s$^2$ & 2.0 m/s$^2$ \\ 
-Control system & Open loop velocity only & Closed loop position/velocity \\ 
-Onboard power & $4\times12$ V batteries & Continuous 120 and 220 VAC \\ 
+Maximum speed & 1.4 m/s  & 3.0 m/s \\
+Maximum acceleration & 0.1 m/s$^2$ & 2.0 m/s$^2$ \\
+Control system & Open loop velocity only & Closed loop position/velocity \\
+Onboard power & $4\times12$ V batteries & Continuous 120 and 220 VAC \\
 \end{tabular}
-\caption{Specifications summary for existing and upgraded tow tank systems.} 
+\caption{Specifications summary for existing and upgraded tow tank systems.}
 \label{tab:tow-tank-specs}
 \end{table}
 
@@ -113,7 +113,7 @@ inches~\cite{Darnell1996}.
 
 \begin{figure}
     \centering
-    
+
     \begin{subfigure}{0.47\textwidth}
         \includegraphics[width=\textwidth]{old-tow-tank-linear-guides}
         \caption{Previous linear guide system.}
@@ -124,7 +124,7 @@ inches~\cite{Darnell1996}.
         \caption{Upgraded linear guides.}
         \label{fig:new-linear-guides}
     \end{subfigure}
-    
+
     \caption{Linear guide system (on ``master'' side) (a) before and (b) after
         upgrades.}
 \end{figure}
@@ -155,12 +155,12 @@ system.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[clip, trim=0 0 0 1.5in, width=0.8\textwidth]{tow-servo}
-    
+
     \caption{Upgraded tow system servo motor, gearbox, and custom-designed
-        timing belt pulley housing.} 
-    
+        timing belt pulley housing.}
+
     \label{fig:tow-servo}
 \end{figure}
 
@@ -202,7 +202,7 @@ both motion and data acquisition. It was also determined that the UNH ME
 department's high frame rate particle image velocimetry (HFR-PIV) system would
 be used on the carriage at some point, which included laser power supplies and a
 laser chiller that could not be powered by the previous generation's isolated
-battery/inverter system. 
+battery/inverter system.
 
 An onboard electronics cabinet was designed by Minarik, Inc. as part of the
 upgraded motion system. A 45 amp, 120 VAC circuit and 20 amp, 240 VAC single
@@ -237,21 +237,21 @@ following sections.
     \centering
     \begin{tabular}{c|c|c|c}
         Measured quantity & Device type & Mfg. \& model & Nominal accuracy \\
-        \hline 
+        \hline
         Carriage position & Linear encoder & Renishaw LM15 & 10 $\mu$m/pulse \cite{RenishawLM15}\\
         Turbine angle & Servo encoder output & Kollmorgen AKD & 10$^5$ pulse/rev \cite{KollmorgenAKD}\\
-        Turbine torque & Rotary transducer & Interface T8-200 & $\pm$0.5 Nm \cite{InterfaceT8}\\ 
+        Turbine torque & Rotary transducer & Interface T8-200 & $\pm$0.5 Nm \cite{InterfaceT8}\\
         Turbine torque (2) & Load cell (\& arm) & Sentran ZB3-200 & $\pm$0.2 Nm \cite{SentranZB}\\
         Drag force, left & Load cell & Sentran ZB3-500 & $\pm$0.6 N \cite{SentranZB}\\
         Drag force, right & Load cell & Sentran ZB3-500 & $\pm$0.6 N \cite{SentranZB}\\
         Fluid velocity & ADV & Nortek Vectrino+ & $\pm$0.5\% $\pm$1 mm/s \cite{NortekVectrino}\\
     \end{tabular}
-    
+
     \caption{Turbine test bed sensor details. Note that ``(2)'' denotes a
         secondary redundant measurement. ``Turbine torque (2)'' nominal accuracy
         estimated by combining load cell accuracy and arm machining tolerances ($\pm
         1 \times 10^{-4}$ m) as root-sum-square.}
-    
+
     \label{tab:sensors}
 \end{table}
 
@@ -259,21 +259,21 @@ following sections.
     \centering
     \begin{tabular}{c|c|c}
         Measured quantity & Device type & Mfg. \& model \\
-        \hline 
+        \hline
         Carriage position & Differential counter & NI 9411 \\
         Carriage velocity (2) & Motion controller & ACS NTM \\
         Turbine angle & Differential counter & NI 9411 \\
         Turbine RPM (2) & Motion controller & ACS NTM \\
-        Turbine torque & Analog voltage input & NI 9205 \\ 
+        Turbine torque & Analog voltage input & NI 9205 \\
         Turbine torque (2) & Analog bridge input & NI 9237 \\
         Drag force, left & Analog bridge input & NI 9237 \\
         Drag force, right & Analog bridge input & NI 9237 \\
     \end{tabular}
-    
+
     \caption{Details of the instrumentation used to perform experiments with the
         turbine test bed. Note that ``(2)'' denotes a secondary redundant
-        measurement.} 
-    
+        measurement.}
+
     \label{tab:instrumentation}
 \end{table}
 
@@ -281,26 +281,26 @@ following sections.
     \centering
     \begin{subfigure}[t]{\textwidth}
         \centering
-        
+
         \includegraphics[width=0.75\textwidth]{figures/turbine-test-bed-photo}
-        
-        \caption{} 
-        
+
+        \caption{}
+
         \label{fig:turbine-test-bed-photo}
     \end{subfigure}
-    
+
     \begin{subfigure}[t]{\textwidth}
         \centering
-        
+
         \includegraphics[width=0.85\textwidth]{turbine-test-bed-drawing}
-        
+
         \caption{}
-        
+
         \label{fig:turbine-test-bed-drawing}
     \end{subfigure}
-    
+
     \caption{Turbine test bed photo (a) and drawing (b).}
-    
+
     \label{fig:turbine-test-bed}
 \end{figure}
 
@@ -369,10 +369,10 @@ reduce noise. The axes were re-enabled to position the probe before each run.
 \subsection{Software}
 
 Software was developed to automate the entire turbine testing process. Dubbed
-\textit{TurbineDAQ}, the desktop application was written in Python due to its
-reputation as a good ``glue'' language for systems integration. The graphical
-user interface (GUI), shown in Figure~\ref{fig:TurbineDAQ}, was built using the
-PyQt bindings to the Qt framework. Communication with the tow tank's motion
+TurbineDAQ, the desktop application was written in Python due to its reputation
+as a good ``glue'' language for systems integration. The graphical user
+interface (GUI), shown in Figure~\ref{fig:TurbineDAQ}, was built using the PyQt
+bindings to the Qt framework. Communication with the tow tank's motion
 controller, data acquisition system, and ADV were integrated into a single
 application. This, combined with the ability to load and automatically execute
 test matrices in comma-separated value (CSV) format, allowed for experiments
@@ -380,23 +380,23 @@ consisting of thousands of tows, where the previous generation test bed could
 only realistically achieve around 100. Note that the software was developed
 after the experiments in Chapter~\ref{chap:RVAT-baseline}, for which turbine tip
 speed ratio, Vectrino positioning, and data collection parameters were input
-manually. However, \textit{TurbineDAQ} was developed before and employed for
-both the larger experiments described in Chapter~\ref{chap:Re-dep} and
+manually. However, TurbineDAQ was developed before and employed for both the
+larger experiments described in Chapter~\ref{chap:Re-dep} and
 Chapter~\ref{chap:RM2}.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.95\textwidth]{TurbineDAQ}
-    
-    \caption{\textit{TurbineDAQ} turbine test bed experiment automation software
-        graphical interface.}
-    
+
+    \caption{TurbineDAQ turbine test bed experiment automation software
+    graphical interface.}
+
     \label{fig:TurbineDAQ}
 \end{figure}
 
 
-\subsection{Tare drag and torque compensation} 
+\subsection{Tare drag and torque compensation}
 
 The drag and torque measurement systems were set up in such a way that raw
 measurements for drag would include all submerged gear and torque would include
@@ -443,15 +443,15 @@ nut, and self-lubricating thrust bearing.
         \includegraphics[clip, trim=0 0 0 3in,
         width=\textwidth]{torque-arm-calibration} \caption{}
     \end{subfigure}
-    
+
     \begin{subfigure}{0.9\textwidth}
         \includegraphics[width=\textwidth]{drag-slide-calibration}
         \caption{}
     \end{subfigure}
-    
+
     \caption{Torque arm (a) and drag slide (b) calibration fixtures. Note that
         the same load cell, indicator, and thrust bearing are used for both setups.}
-    
+
     \label{fig:calibration-fixtures}
 \end{figure}
 
@@ -466,18 +466,18 @@ presented in Table~\ref{tab:calibrations}.
 \begin{table}
     \centering
 \begin{tabular}{c|c|c|c}
-    Signal & Calibration 1 & Calibration 2 & Difference \\ 
-    \hline 
-    Torque trans. & 40.0000 Nm/V & 39.8380 Nm/V & -0.4 \% \\ 
-    Torque arm & 122531 Nm/V/V & 123437 Nm/V/V & 0.7 \% \\ 
-    Drag left & 743104 N/V/V & 742830 N/V/V & -0.1 \% \\ 
-    Drag right & 740137 N/V/V & 742400 N/V/V & 0.3 \% \\ 
+    Signal & Calibration 1 & Calibration 2 & Difference \\
+    \hline
+    Torque trans. & 40.0000 Nm/V & 39.8380 Nm/V & -0.4 \% \\
+    Torque arm & 122531 Nm/V/V & 123437 Nm/V/V & 0.7 \% \\
+    Drag left & 743104 N/V/V & 742830 N/V/V & -0.1 \% \\
+    Drag right & 740137 N/V/V & 742400 N/V/V & 0.3 \% \\
 \end{tabular}
     \caption{Calibration slopes used for experimental measurements. Calibration
         1 was used for the experiments described in Chapter~\ref{chap:RVAT-baseline}
         and Chapter~\ref{chap:Re-dep}. Calibration 2 was used for those in
         Chapter~\ref{chap:RM2}.}
-    
+
     \label{tab:calibrations}
 \end{table}
 
@@ -496,8 +496,7 @@ fluctuations were damped with the help of the tank's ``beach,'' designed for
 absorbing waves created by the paddle-style wavemaker. Settling times ranged
 from 140 seconds for tows at 0.3 m/s up to 360 seconds for those at 1.4 m/s.
 These values were then included in the experiment configuration---one value for
-each tow speed, to be used by \textit{TurbineDAQ} as wait times between
-automated runs.
+each tow speed, to be used by TurbineDAQ as wait times between automated runs.
 
 
 \section{Experimental uncertainty}\label{sec:uncertainty}
@@ -616,13 +615,13 @@ installed in the test bed mounting frame in Figure~\ref{fig:rvat-photo}.
         \caption{}
         \label{fig:rvat-photo}
     \end{subfigure}
-    
+
     \caption{Drawing (a) and photo (b) of the UNH-RVAT vertical-axis cross-flow
         turbine. Note that the upper and lower mounting flanges (and the area of the
         shaft they cover) have been excluded in the drawing. These were included in
         the tare drag measurements for the experiments in Chapter~\ref{chap:Re-dep},
         but excluded for those in Chapter~\ref{chap:RVAT-baseline}.}
-    
+
     \label{fig:unh-rvat}
 \end{figure}
 
@@ -642,7 +641,7 @@ Chapter~\ref{chap:RM2}.
 
 \begin{figure}
     \centering
-    
+
     \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[clip, trim=0 0.5in 0 0.6in, width=\textwidth]{rm2-drawing}
@@ -652,11 +651,11 @@ Chapter~\ref{chap:RM2}.
     \begin{subfigure}{0.41\textwidth}
         \centering
         \includegraphics[width=\textwidth]{rm2-photo}
-        
+
         \caption{}
         \label{fig:rm2-photo}
     \end{subfigure}
-    
+
     \caption{Drawing (a) and photo (b) of the 1:6 RM2 scaled physical model cross-flow turbine.}
     \label{fig:rm2}
 \end{figure}

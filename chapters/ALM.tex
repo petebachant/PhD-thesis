@@ -65,8 +65,8 @@ It is therefore proposed that an actuator line model may be the optimal
 combination of high-fidelity flow modeling that includes performance
 predictions, but with reduced computational expense. Here we will develop and
 evaluate the effectiveness of an ALM for cross-flow turbines inside both RANS
-and LES simulations, implemented as an extension for the \textit{OpenFOAM}
-open-source CFD library.
+and LES simulations, implemented as an extension for the OpenFOAM open-source
+CFD library.
 
 
 \section{Theory}
@@ -547,22 +547,21 @@ cross-flow rotor parameters.
 \section{Software implementation}
 
 The US National Renewable Energy Laboratory (NREL) has developed and released an
-actuator line modeling library, \textit{SOWFA}~\cite{Churchfield2014b}, for
-simulating horizontal-axis wind turbine arrays using the \textit{OpenFOAM}
-finite volume CFD library. \textit{OpenFOAM} is free, open-source, widely used
-throughout industry and academia, and has grown a very active support community
-around itself \cite{Bachant2015-CFD-online}. Though \textit{SOWFA} is also
-open-source, and has the ability to be coupled to NREL's \textit{FAST} HAWT BEM
-code, its mostly procedural style would have required significant effort and
-duplicate code to adapt for cross-flow turbines. Thus, a new and more general
-ALM library was developed from the ground up that could model both cross- and
-axial-flow turbines, as well as standalone actuator lines. The actuator line
-model developed here, dubbed \textit{turbinesFoam}
-\cite{Bachant2016-turbinesFoam-v0.0.7}, was also written as an extension library
-for \textit{OpenFOAM}, and was developed freely and openly from its inception in
-order to increase community engagement and research efficiency.
+actuator line modeling library, SOWFA~\cite{Churchfield2014b}, for simulating
+horizontal-axis wind turbine arrays using the OpenFOAM finite volume CFD
+library. OpenFOAM is free, open-source, widely used throughout industry and
+academia, and has grown a very active support community around itself
+\cite{Bachant2015-CFD-online}. Though SOWFA is also open-source, and has the
+ability to be coupled to NREL's FAST HAWT BEM code, its mostly procedural style
+would have required significant effort and duplicate code to adapt for
+cross-flow turbines. Thus, a new and more general ALM library was developed from
+the ground up that could model both cross- and axial-flow turbines, as well as
+standalone actuator lines. The actuator line model developed here, dubbed
+turbinesFoam \cite{Bachant2016-turbinesFoam-v0.0.7}, was also written as an
+extension library for OpenFOAM, and was developed freely and openly from its
+inception in order to increase community engagement and research efficiency.
 
-\textit{turbinesFoam} was written in OpenFOAM's style, using OpenFOAM's
+turbinesFoam was written in OpenFOAM's style, using OpenFOAM's
 \texttt{fvOptions} framework for adding source terms to equations at
 runtime---see Listing~\ref{lst:fvOptions} for an example implementation within
 the Navier--Stokes' momentum equation. Using the \texttt{fvOptions} framework
@@ -583,21 +582,21 @@ solvers to be developed and maintained.
     );
 \end{lstlisting}
 
-OpenFOAM and \textit{turbinesFoam} are written in the C++ programming language,
-which follows the object oriented programming paradigm. This characteristic
-helped modularize the ALM code for increased readability and reuse. In
-\textit{turbinesFoam}, a turbine is a software object that is composed of
-actuator line objects, which themselves are composed of actuator line element
-objects. Structuring the code this way allows isolation and reuse of the
-functionality of individual components. For example, the actuator line object
-was written such that is could be used outside the turbine context to ensure it
-produces the correct forcing, without adding the complexity of rotation, other
-actuator lines, etc. that would be present in a turbine rotor. The very same
-actuator line objects can be used in both axial-flow and cross-flow rotors,
-without having to copy code from one to the other. In contrast, the actuator
-line model in \textit{SOWFA} uses a single software object to represent an
-entire array of turbines, which necessitates iterating through many nested lists
-down to the element level, which can be confusing to read.
+OpenFOAM and turbinesFoam are written in the C++ programming language, which
+follows the object oriented programming paradigm. This characteristic helped
+modularize the ALM code for increased readability and reuse. In turbinesFoam, a
+turbine is a software object that is composed of actuator line objects, which
+themselves are composed of actuator line element objects. Structuring the code
+this way allows isolation and reuse of the functionality of individual
+components. For example, the actuator line object was written such that is could
+be used outside the turbine context to ensure it produces the correct forcing,
+without adding the complexity of rotation, other actuator lines, etc. that would
+be present in a turbine rotor. The very same actuator line objects can be used
+in both axial-flow and cross-flow rotors, without having to copy code from one
+to the other. In contrast, the actuator line model in SOWFA uses a single
+software object to represent an entire array of turbines, which necessitates
+iterating through many nested lists down to the element level, which can be
+confusing to read.
 
 OpenFOAM's data structures are designed to be inherently parallel via message
 passing interface (MPI). By working within the library infrastructure the ALM
@@ -652,7 +651,7 @@ blades' higher aspect ratio (15 versus the UNH-RVAT's 7.1) and tapered planform,
 though will need to be investigated further. The number of elements per actuator
 line was set to be approximately equal to the total span divided by the Gaussian
 force projection width $\epsilon$. Case files for running all the simulations
-presented here with \textit{OpenFOAM} 3.0.x are available from
+presented here with OpenFOAM 3.0.x are available from
 \cite{Bachant2016-UNH-RVAT-turbinesFoam-v1.0.0,
 Bachant2016-RM2-turbinesFoam-v1.0.0,
 Bachant2016-UNH-RVAT-turbinesFoam-v1.0.0-LES}.
@@ -1160,9 +1159,9 @@ unsteadiness of the wake not resolved by a conventional actuator disk.
 Furthermore, its implementation within finite volume CFD provides a convenient
 way to study turbine array siting, since effects like terrain and buildings can
 be included, as can no-slip boundary conditions and boundary layer inflow
-profiles. Since the \textit{turbinesFoam} library developed here uses OpenFOAM's
-modular \texttt{fvOptions} framework, the ALM body force term can be added as-is
-to compressible or multiphase solvers, for exploring more complicated physics.
+profiles. Since the turbinesFoam library developed here uses OpenFOAM's modular
+\texttt{fvOptions} framework, the ALM body force term can be added as-is to
+compressible or multiphase solvers, for exploring more complicated physics.
 These features would be difficult or impossible to implement in a momentum or
 vortex models.
 
@@ -1231,11 +1230,11 @@ determine the optimal location for sensing reference velocity used to compute
 tip speed ratio and power coefficient, which can become difficult in sheared or
 otherwise nonuniform flows \cite{Forbush2015}.
 
-Since \textit{turbinesFoam} is compatible with OpenFOAM's volume of fluid (VOF)
-multiphase flow solver \textit{interFoam}, the ALM's effectiveness should be
-assessed for predicting the generation and interaction of turbines with surface
-waves. The ADV positioning system developed in Chapter~\ref{chap:exp-setup}
-could be retrofitted with a wave staff to measure and validate the free surface
+Since turbinesFoam is compatible with OpenFOAM's volume of fluid (VOF)
+multiphase flow solver interFoam, the ALM's effectiveness should be assessed for
+predicting the generation and interaction of turbines with surface waves. The
+ADV positioning system developed in Chapter~\ref{chap:exp-setup} could be
+retrofitted with a wave staff to measure and validate the free surface
 disturbance, which could be key to predicting the effects of placing turbines in
 channels at high blockage ratio.
 

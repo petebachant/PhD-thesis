@@ -3,8 +3,8 @@
 
 In this chapter the three eddy viscosity RANS and one LES turbulence models used
 throughout this work are detailed. Note that since all of these were applied via
-\textit{OpenFOAM}, their exact implementation can be interrogated by looking at
-the source code, which is freely available.
+OpenFOAM, their exact implementation can be interrogated by looking at the
+source code, which is freely available.
 
 The exact incompressible RANS equations are written as
 \begin{equation}
@@ -156,12 +156,11 @@ $k$--$\epsilon$ models, respectively.
     \right)
 \end{equation}
 
-\textit{OpenFOAM}'s implementation of the SST model features updated
-coefficients from \cite{Menter2003}, with the consistent production terms from
-\cite{Menter2001}.
+OpenFOAM's implementation of the SST model features updated coefficients from
+\cite{Menter2003}, with the consistent production terms from \cite{Menter2001}.
 
-\textit{OpenFOAM} also uses coefficients in terms of $\alpha = 1/\sigma$ to
-apply blending functions. Default coefficients are
+OpenFOAM also uses coefficients in terms of $\alpha = 1/\sigma$ to apply
+blending functions. Default coefficients are
 
 \begin{equation}
 \begin{split}
@@ -264,7 +263,7 @@ where $C_S$ is the Smagorinsky coefficient, which is not universal, i.e., will
 vary for different flow conditions.
 
 
-\subsection{\textit{OpenFOAM}'s implementation}
+\subsection{OpenFOAM's implementation}
 
 \todo[inline]{Add OpenFOAM's calculation of $C_s$.}
 

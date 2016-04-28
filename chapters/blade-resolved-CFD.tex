@@ -40,23 +40,23 @@ entirely.
 \begin{table}
     \centering
     \begin{tabular}{c|c|c|c}
-        Author & Turbulence modeling & Perf. val. & Wake val. \\ 
+        Author & Turbulence modeling & Perf. val. & Wake val. \\
         \hline
-        Alaimo et al.~\cite{Alaimo2015} & $k$--$\epsilon$ & N/A & N/A \\ 
-        Marsh et al.~\cite{Marsh2015} & SST & \cite{Rawlings2008} & N/A \\ 
-        Orlandi et al.~\cite{Orlandi2015} & SST & \cite{Akins1989,Mertens2003} & N/A \\ 
-        Lam \& Peng~\cite{Lam2016} & SST RANS \& IDDES\tablefootnote{Improved delayed detached-eddy simulation.} & N/A & \cite{Tescione2014} \\ 
-        Nini et al.~\cite{Nini2014} & Spalart--Allmaras & N/A & \cite{Battisti2011} \\ 
-        Boudreau \& Dumas~\cite{Boudreau2015} & DDES\tablefootnote{Delayed detached-eddy simulation.} & N/A & N/A \\ 
-        Li et al.~\cite{Li2013} & SST \& Smagorinsky--Lilly LES & \cite{McLaren2011} & N/A \\ 
+        Alaimo et al.~\cite{Alaimo2015} & $k$--$\epsilon$ & N/A & N/A \\
+        Marsh et al.~\cite{Marsh2015} & SST & \cite{Rawlings2008} & N/A \\
+        Orlandi et al.~\cite{Orlandi2015} & SST & \cite{Akins1989,Mertens2003} & N/A \\
+        Lam \& Peng~\cite{Lam2016} & SST RANS \& IDDES\tablefootnote{Improved delayed detached-eddy simulation.} & N/A & \cite{Tescione2014} \\
+        Nini et al.~\cite{Nini2014} & Spalart--Allmaras & N/A & \cite{Battisti2011} \\
+        Boudreau \& Dumas~\cite{Boudreau2015} & DDES\tablefootnote{Delayed detached-eddy simulation.} & N/A & N/A \\
+        Li et al.~\cite{Li2013} & SST \& Smagorinsky--Lilly LES & \cite{McLaren2011} & N/A \\
         Howell et al.~\cite{Howell2010} & $k$--$\epsilon$ RNG\tablefootnote{Renormalization group.} & \cite{Howell2010} & N/A
     \end{tabular}
-    
+
     \caption{Selected 3-D blade-resolved cross-flow turbine simulations reported
         in the literature, turbulence modeling employed, and performance and/or wake
         studies used for validation. Note the Li et al. study used periodic boundary
         conditions and is technically considered 2.5-D.}
-    
+
     \label{tab:cfd-refs}
 \end{table}
 
@@ -144,12 +144,12 @@ modeled geometries is presented in Figure~\ref{fig:cfd-cad}.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[clip, trim=0 1in 0 1in, width=0.8\textwidth]{BR-CFD_CAD}
-    
+
     \caption{CAD drawings of the UNH-RVAT cross-flow turbine as designed (left)
         and cleaned for simulation (right).}
-    
+
     \label{fig:cfd-cad}
 \end{figure}
 
@@ -183,20 +183,19 @@ in the experiments. The 2-D mesh overview is shown in
 Figure~\ref{fig:2d-br-mesh} and the blade mesh detail is shown in
 Figure~\ref{fig:blade-mesh}.
 
-Meshes were generated using \textit{OpenFOAM}'s \textit{blockMesh} and
-\textit{snappyHexMesh} utilities. Mesh topology consists of a background
-hexahedral mesh, which is refined in all three directions by a factor of 2 in a
-rectangular region containing the turbine and near-wake (0.9 m upstream, 1.3 m
-downstream, $\pm 0.9$ m cross-stream, and $\pm 0.8$ m vertically). Cells
-adjacent to the turbine shaft and struts are refined by a factor of 4, while
-cells adjacent to the blades are refined by a factor of 6. To capture the
-boundary layer, 20 layers are added next to the blades with an expansion ratio
-of 1.2. Overall mesh refinement is controlled by a single parameter---the number
-of cells in the streamwise direction, $N_x$.
+Meshes were generated using OpenFOAM's blockMesh and snappyHexMesh utilities.
+Mesh topology consists of a background hexahedral mesh, which is refined in all
+three directions by a factor of 2 in a rectangular region containing the turbine
+and near-wake (0.9 m upstream, 1.3 m downstream, $\pm 0.9$ m cross-stream, and
+$\pm 0.8$ m vertically). Cells adjacent to the turbine shaft and struts are
+refined by a factor of 4, while cells adjacent to the blades are refined by a
+factor of 6. To capture the boundary layer, 20 layers are added next to the
+blades with an expansion ratio of 1.2. Overall mesh refinement is controlled by
+a single parameter---the number of cells in the streamwise direction, $N_x$.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.8\textwidth]{BR-CFD_2D_mesh}
 
     \caption{Overview of the 2-D computational mesh.}
@@ -207,7 +206,7 @@ of cells in the streamwise direction, $N_x$.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.7\textwidth]{BR-CFD_2D_blade_mesh_closeup}
 
     \caption{Detailed view of the 2-D computational mesh near the blades.}
@@ -218,14 +217,13 @@ of cells in the streamwise direction, $N_x$.
 
 \subsection{Solver}
 
-Simulations were run using the \textit{pimpleDyMFoam} solver from the
-open-source finite volume CFD package \textit{OpenFOAM}, version 2.3.x.
-\textit{pimpleDyMFoam} uses a hybrid PISO-SIMPLE algorithm for pressure-velocity
-coupling and is compatible with dynamic meshes. An Euler scheme was used to
-advance the simulation forward in time. The case files required to replicate the
-simulations are available from \cite{Bachant2016-UNH-RVAT-2D-OpenFOAM-SST,
-    Bachant2016-UNH-RVAT-2D-OpenFOAM-SA, Bachant2016-UNH-RVAT-3D-OpenFOAM-SST,
-    Bachant2016-UNH-RVAT-3D-OpenFOAM-SA}.
+Simulations were run using the pimpleDyMFoam solver from the open-source finite
+volume CFD package OpenFOAM, version 2.3.x. pimpleDyMFoam uses a hybrid
+PISO-SIMPLE algorithm for pressure-velocity coupling and is compatible with
+dynamic meshes. An Euler scheme was used to advance the simulation forward in
+time. The case files required to replicate the simulations are available from
+\cite{Bachant2016-UNH-RVAT-2D-OpenFOAM-SST, Bachant2016-UNH-RVAT-2D-OpenFOAM-SA,
+Bachant2016-UNH-RVAT-3D-OpenFOAM-SST, Bachant2016-UNH-RVAT-3D-OpenFOAM-SA}.
 
 
 \subsection{Initial and boundary conditions}
@@ -275,10 +273,9 @@ final time step of 0.001 s. The results from the SST model show a local minimum
 at $\Delta t = 0.002$ s, with some divergence for smaller time steps. The local
 minimum was chosen as the final time step to run the simulations. Note that the
 SST model's convergence behavior may be due to its specific implementation in
-\textit{OpenFOAM}, and not indicative of the nature of the model equations.
-Verification studies for CFTs with this level of detail in the literature are
-not common, though the final time step is comparable to others
-\cite{Balduzzi2016}.
+OpenFOAM, and not indicative of the nature of the model equations. Verification
+studies for CFTs with this level of detail in the literature are not common,
+though the final time step is comparable to others \cite{Balduzzi2016}.
 
 
 \section{Results}
@@ -343,7 +340,7 @@ importance of three-dimensional effects on wake dynamics.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.75\textwidth]{BR-CFD_2D_vorticity_SA_964}
 
     \caption{Instantaneous vorticity contours (at $t=9.64$ s) computed for the
@@ -630,4 +627,3 @@ purpose.
 
 Thanks to Vincent S. Neary and Sandia National Labs for the use of their Red
 Mesa high performance computing cluster to run the simulations.
-
