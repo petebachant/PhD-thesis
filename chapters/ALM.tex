@@ -806,18 +806,22 @@ the rotor.
 
 Weighted averages for the momentum recovery terms were computed identically as
 they were in Chapter~\ref{chap:CFD}, and are plotted in
-Figure~\ref{fig:RVAT-ALM-recovery} along with the 3-D blade-resolved RANS
-results and experiments. The most glaring discrepancy is the ALM's prediction of
-positive cross-stream advection, which is caused by the lack of detail in the
-tip vortex shedding. The total for vertical advection, however, is close to that
-predicted by the 3-D blade-resolved Spalart--Allmaras model. Levels of turbulent
-transport due to eddy viscosity and deceleration due to the adverse pressure
-gradient are between those predicted by the 3-D blade-resolved $k$--$\omega$ SST
-and SA models. Overall, however, one might expect the total wake recovery rate
-to be comparable between all models, which suggests the ALM would be an
-effective tool for assessing downstream spacing of subsequent turbines, though
-blade--vortex interaction for very tightly spaced rotors may not be captured, at
-least on relatively coarse meshes as used here.
+Figure~\ref{fig:RVAT-ALM-recovery} along with the actuator disk (AD) results
+from Chapter~\ref{chap:RVAT-baseline), 3-D blade-resolved RANS results from
+Chapter~\ref{chap:CFD} and experiments. The most glaring discrepancy is the
+ALM's prediction of positive cross-stream advection, which is caused by the lack
+of detail in the tip vortex shedding. The total for vertical advection, however,
+is close to that predicted by the 3-D blade-resolved Spalart--Allmaras model.
+Levels of turbulent transport due to eddy viscosity and deceleration due to the
+adverse pressure gradient are between those predicted by the 3-D blade-resolved
+$k$--$\omega$ SST and SA models. Overall, however, one might expect the total
+wake recovery rate to be comparable between all models except the actuator disk,
+which induces negative vertical advection, very little turbulent transport, and
+has a positive pressure gradient contribution. These results suggests the ALM
+would be an effective tool---much better than an actuator disk---for assessing
+downstream spacing of subsequent CFTs, though blade--vortex interaction for very
+tightly spaced rotors may not be captured, at least on relatively coarse meshes
+as used here.
 
 \begin{figure}
     \centering
