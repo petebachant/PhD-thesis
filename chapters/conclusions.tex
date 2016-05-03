@@ -88,19 +88,19 @@ modeling arrays of cross-flow turbines.
 
 On the whole, the work described here helps engineers better select initial CFT
 rotor concepts, along with which methods should be used to predict their
-suitability. Full scale prototyping is still the ``gold standard,'' while
-physical modeling at $Re_D \sim 10^6$ can be effective. Both of these methods
-are expensive, so it may be desirable to use 3-D blade-resolved RANS, despite
-also being expensive, and its uncertainty with respect to turbulence modeling.
-The actuator line model presents a good alternative when budgets are
-constrained, allowing turbines to be simulated in a 3-D Navier--Stokes model
-with typical computing resources, i.e., dropping the expense by two to four
-orders of magnitude versus blade-resolved CFD for LES and RANS, respectively.
-For designing arrays of turbines, the ALM at present is probably the best
-balance between cost and accuracy, as its computational expense can be adjusted
-by the turbulence modeling fidelity. Furthermore, the effects of, e.g., a free
-surface or temperature/density stratification can easily be incorporated into
-ALM simulations, opening up many opportunities for future investigation.
+suitability. When full scale prototyping is not feasible, physical modeling at
+$Re_D \sim 10^6$ can be effective. Both of these methods are expensive, so it
+may be desirable to use 3-D blade-resolved RANS, despite also being expensive,
+and its uncertainty with respect to turbulence modeling. The actuator line model
+presents a good alternative when budgets are constrained, allowing turbines to
+be simulated in a 3-D Navier--Stokes model with typical computing resources,
+i.e., dropping the expense by two to four orders of magnitude versus
+blade-resolved CFD for LES and RANS, respectively. For designing arrays of
+turbines, the ALM at present is probably the best balance between cost and
+accuracy, as its computational expense can be adjusted by the turbulence
+modeling fidelity. Furthermore, the effects of, e.g., a free surface or
+temperature/density stratification can easily be incorporated into ALM
+simulations, opening up many opportunities for future investigation.
 
 The products of this research---datasets, processing code, CAD files, simulation
 case files, and the newly developed ALM software library turbinesFoam---have
