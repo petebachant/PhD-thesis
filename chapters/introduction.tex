@@ -551,8 +551,10 @@ general enough to be applicable to other unsteady turbomachinery and/or foil
 flows, e.g., Voith Schneider propellers, Cyclogyros, or even conventional
 helicopter rotors.
 
-This work will increase the amount of experimental data available for device
-comparison and numerical model validation. This is especially important for CFTs
+The experiments performed as part of this work have helped elucidate the unique
+wake features of cross-flow turbines~\cite{Bachant2015-JoT} and establish
+scaling guidelines for physical modeling and numerical model
+validation~\cite{Bachant2016-Energies}. This is especially important for CFTs
 since typical designs for small wind and MHK use have not yet been established.
 This means that in order to be robust, numerical models must be tested against
 measurements from turbines with varying design parameters, notably the solidity
@@ -561,19 +563,18 @@ respectively. There is a danger that validating against the most ubiquitous
 Darrieus turbine experiments may result in models that fail with newer, more
 unique designs.
 
-From this work, open datasets have been generated and published
-\cite{Bachant2014-RVAT-baseline, Bachant2016-RVAT-Re-dep, Bachant2016-RM2-data},
-both for a high and low-to-medium solidity turbine. These datasets will help
-others evaluate their numerical models, and since their availability also
-includes processing code, other researchers may find new knowledge to glean from
-them. Open-source software tools have also been developed
-\cite{Bachant2016-turbinesFoam}, which have been made available to the public
+In addition to conventional publications, the datasets collected and analyzed
+have been provided openly \cite{Bachant2014-RVAT-baseline,
+    Bachant2016-RVAT-Re-dep, Bachant2016-RM2-data}, both for a high and
+low-to-medium solidity turbine. These datasets will help others evaluate their
+numerical models, and since their availability also includes processing code,
+other researchers may find new knowledge to glean from them.
+
+Lastly, the effectiveness of state-of-the-art Navier--Stokes based numerical
+modeling techniques was evaluated, and an actuator line model was developed and
+validated against performance and wake measurements for three-dimensional
+cross-flow turbines operating at Reynolds numbers relevant to full scale.
+Software tools here have also been made open-source, e.g.,
+\cite{Bachant2016-turbinesFoam-v0.0.7}, have been made available to the public
 throughout all phases of development, and have benefited from open collaboration
 as well.
-
-In summary, this research will elucidate the unique wake properties of
-cross-flow turbines, establish scaling guidelines for physical modeling, inform
-designers on the trustworthiness of state-of-the-art numerical modeling
-techniques, and introduce (to our knowledge) the first actuator line model
-validated against sufficiently high Reynolds number, three-dimensional
-cross-flow turbines.
