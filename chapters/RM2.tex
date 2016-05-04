@@ -20,6 +20,7 @@ RM device to allow exact replication for physical and numerical modeling
 studies; resource site information used to design each RM device; and references
 to physical modeling data sets that can be used to validate numerical modeling
 design and analysis tools.
+
 \nomenclature{DOE}{US Department of Energy.}
 
 Reference Model 2 (RM2) is a dual-rotor, vertical-axis cross-flow hydrokinetic
@@ -109,27 +110,27 @@ also been measured.
 
 \begin{table}
     \centering
-    
+
     \begin{tabular}{c|c|c|c|c|c}
-        Name & Rotor type & $N_\mathrm{b}$ & $c/R$ & $Re_D$ & Used in \\ 
+        Name & Rotor type & $N_\mathrm{b}$ & $c/R$ & $Re_D$ & Used in \\
         \hline
-        Sandia 2 m \cite{Blackwell1976} &  Darrieus  & 2--3 & 0.06--0.09 & $\sim 10^6$ & \cite{Roh2013,Bedon2014} \\ 
-        Sandia 5 m \cite{Sheldahl1977} &  Darrieus  & 3 & 0.08 & $\sim 10^6$ & \cite{Antheaume2008,Bedon2014} \\ 
-        Sandia 17 m \cite{Worstell1978} & Darrieus  & 2 & 0.06 & $\sim 10^7$ & \cite{Para1988,Orlandi2015,Bedon2014} \\ 
-        Sandia 34 m \cite{Ashwill1992} & Darrieus  & 2 & 0.05 & $\sim 10^7$ & \cite{Liu1992,Murray2011,Bedon2014}  \\ 
-        Strickland et al. \cite{Strickland1981} & H & 1--3 & 0.15 & $\sim 10^5$ & \cite{Ponta2001,Scheurich2011b} \\ 
-        Laneville and Vitecoq \cite{Laneville1986} & H & 2 & 0.13 & $\sim 10^6$ & \cite{Amet2009} \\ 
-        Howell et al. \cite{Howell2010} & H & 2--3 & 0.33 & $\sim 10^5$ & \cite{Joo2015} \\ 
-        Mertens \cite{Mertens2003} & H & 2 & 0.21 & $\sim 10^5$ & \cite{Orlandi2015} \\ 
-        VAWT 850 \cite{Mays1990} & Tapered H & 2 & 0.05 & $\sim 10^7$ & \cite{Murray2011} \\ 
+        Sandia 2 m \cite{Blackwell1976} &  Darrieus  & 2--3 & 0.06--0.09 & $\sim 10^6$ & \cite{Roh2013,Bedon2014} \\
+        Sandia 5 m \cite{Sheldahl1977} &  Darrieus  & 3 & 0.08 & $\sim 10^6$ & \cite{Antheaume2008,Bedon2014} \\
+        Sandia 17 m \cite{Worstell1978} & Darrieus  & 2 & 0.06 & $\sim 10^7$ & \cite{Para1988,Orlandi2015,Bedon2014} \\
+        Sandia 34 m \cite{Ashwill1992} & Darrieus  & 2 & 0.05 & $\sim 10^7$ & \cite{Liu1992,Murray2011,Bedon2014}  \\
+        Strickland et al. \cite{Strickland1981} & H & 1--3 & 0.15 & $\sim 10^5$ & \cite{Ponta2001,Scheurich2011b} \\
+        Laneville and Vitecoq \cite{Laneville1986} & H & 2 & 0.13 & $\sim 10^6$ & \cite{Amet2009} \\
+        Howell et al. \cite{Howell2010} & H & 2--3 & 0.33 & $\sim 10^5$ & \cite{Joo2015} \\
+        Mertens \cite{Mertens2003} & H & 2 & 0.21 & $\sim 10^5$ & \cite{Orlandi2015} \\
+        VAWT 850 \cite{Mays1990} & Tapered H & 2 & 0.05 & $\sim 10^7$ & \cite{Murray2011} \\
         UNH-RVAT \cite{Bachant2014-RVAT-baseline} & H & 3 & 0.28 & $\sim 10^6$ & \cite{Michelen2014} \\
-        RM2 (present) & Tapered H & 3 & 0.07--0.12 & $\sim 10^6$ & 
-    \end{tabular}     
-    
+        RM2 (present) & Tapered H & 3 & 0.07--0.12 & $\sim 10^6$ &
+    \end{tabular}
+
     \caption{Selected measured performance data and its usage for numerical
         model validation. Note that individual blade forces were measured in the
         Strickland et al. and Laneville and Vitecoq experiments.}
-    
+
     \label{tab:validation-data}
 \end{table}
 
@@ -225,10 +226,10 @@ the strut covers is shown in Figure~\ref{fig:covers}.
     \centering
 
     \includegraphics[width=0.95\textwidth]{RM2-strut-covers}
-    
+
     \caption{A drawing of the high drag strut cover configuration with and
         without blades.}
-    
+
     \label{fig:covers}
 \end{figure}
 
@@ -256,11 +257,11 @@ and blade chord Reynolds numbers are presented in Table~\ref{tab:re}.
         1.0 & $1.1 \times 10^6$ & $1.2 \times 10^5$ & $2.1 \times 10^5$ & $1.7 \times 10^5$ \\
         1.2 & $1.3 \times 10^6$ & $1.5 \times 10^5$ & $2.5 \times 10^5$ & $2.0 \times 10^5$ \\
     \end{tabular}
-    
+
     \caption{Turbine diameter and approximate average blade chord Reynolds
         numbers $Re_c \equiv \lambda U_\infty c / \nu$ at blade tip, root, and
         mid-span, corresponding to various tow speeds at $\lambda=3.1$.}
-    
+
     \label{tab:re}
 \end{table}
 
@@ -273,10 +274,10 @@ the experimental database.
     \centering
 
     \includegraphics[width=\textwidth]{RM2-coord-sys}
-    
+
     \caption{RM2 wake measurement coordinate system and cross-stream/vertical
         coordinates. All dimensions are in meters.}
-    
+
     \label{fig:coordinates}
 \end{figure}
 
@@ -330,10 +331,10 @@ negative torque to the rotor.
     \centering
 
     \includegraphics[width=0.75\textwidth]{RM2-tow-tank_cp_curves}
-    
+
     \caption{Mean rotor power coefficient plotted versus mean tip speed ratio
         for multiple Reynolds numbers.}
-    
+
     \label{fig:cp-curves}
 \end{figure}
 
@@ -351,10 +352,10 @@ was measured.
     \centering
 
     \includegraphics[width=0.75\textwidth]{RM2-tow-tank_cd_curves}
-    
+
     \caption{Mean rotor drag coefficient plotted versus mean tip speed ratio for
         multiple Reynolds numbers.}
-    
+
     \label{fig:cd-curves}
 \end{figure}
 
@@ -396,10 +397,10 @@ lift-to-drag ratio do not converge as strongly \cite{Bachant2016-RVAT-Re-dep}.
     \centering
 
     \includegraphics[width=0.85\textwidth]{RM2-tow-tank_perf_re_dep}
-    
+
     \caption{Power and drag coefficient at $\lambda=3.1$ plotted versus turbine
         diameter and approximate average blade root chord Reynolds number.}
-    
+
     \label{fig:perf-re-dep}
 \end{figure}
 
@@ -420,10 +421,10 @@ the cylindrical and NACA 0021 strut cases.
     \centering
 
     \includegraphics[width=0.9\textwidth]{RM2-tow-tank_perf_covers}
-    
+
     \caption{Turbine performance and rotor drag coefficient curves with both
         NACA 0021 and cylindrical struts.}
-    
+
     \label{fig:perf-covers}
 \end{figure}
 
@@ -440,10 +441,10 @@ turbines, given the inverse correlation between solidity and $\lambda_0$
     \centering
 
     \includegraphics[width=0.9\textwidth]{RM2-tow-tank_no_blades_all}
-    
+
     \caption{Measurements of the strut drag losses for (a) NACA 0021 and (b)
         cylindrical struts, both stationary and towed.}
-    
+
     \label{fig:no-blades}
 \end{figure}
 
@@ -477,12 +478,12 @@ length and tapered blades.
     \centering
 
     \includegraphics[width=0.9\textwidth]{RM2-tow-tank_meancontquiv}
-    
+
     \caption{RM2 near-wake mean velocity field (looking upstream) at 1 m
         downstream ($x/D=0.93$), $U_\infty=1.0$ m/s, and $\lambda=3.1$. Refer to
         Figure~\ref{fig:coordinates} for turbine axis orientation. Solid dark gray
         lines indicate turbine frontal area.}
-    
+
     \label{fig:meancontquiv}
 \end{figure}
 
@@ -498,11 +499,11 @@ optimal tip speed ratio.
     \centering
 
     \includegraphics[width=0.9\textwidth]{RM2-tow-tank_k_contours}
-    
+
     \caption{Turbulence kinetic energy in the RM2's near-wake (looking upstream)
         at 1 m downstream ($x/D=0.93$), $U_\infty=1.0$ m/s, and $\lambda=3.1$. Solid
         black lines indicate turbine frontal area.}
-    
+
     \label{fig:kcont}
 \end{figure}
 
@@ -542,10 +543,10 @@ the downstream evolution and turbine--wake interaction.
     \centering
 
     \includegraphics[width=0.9\textwidth]{RM2-tow-tank_K_trans_bar_graph}
-    
+
     \caption{Weighted average estimates for terms contributing to streamwise
         recovery of mean kinetic energy, multiplied by two due to implied symmetry.}
-    
+
     \label{fig:Ktransport}
 \end{figure}
 
