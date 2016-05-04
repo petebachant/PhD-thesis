@@ -100,6 +100,7 @@ which makes blade loading hard to predict. Beside their unpredictability, the
 highly oscillatory blade loading presents significant design challenges for
 avoiding fatigue---a main cause for failure or premature retirement of the large
 Darrieus wind turbines.
+\nomenclature{AFT}{Axial-flow turbine.}
 
 \begin{figure}
     \centering
@@ -112,7 +113,7 @@ Darrieus wind turbines.
     \label{fig:AFT}
 \end{figure}
 
-Despite these engineering challenges, CFTs may have advantages over AFT under
+Despite these engineering challenges, CFTs may have advantages over AFTs under
 certain conditions. They are simpler, omni-directional machines, which do not
 require yawing or pitching mechanisms. There were considerations in the 2010s by
 DEEPWIND in Europe \cite{Paulsen2011} and SNL \cite{Sandia2012} in the US for
@@ -129,6 +130,7 @@ array, since the devices can be spaced more closely than HAWTs
 quickly than those of AFTs, and this cannot be entirely attributed to higher
 turbulence generation \cite{Kinzel2012}. This phenomenon is investigated in
 later chapters.
+\nomenclature{VAWT}{Vertical-axis wind turbine.}
 
 In the built, i.e., suburban and urban environments, wind resources are less
 understood, more variable in terms of direction, speed, and turbulence levels
@@ -463,6 +465,7 @@ significantly from experimental measurements, especially when using RANS models
 \nomenclature{$y^+$}{Nondimensional wall distance.}
 \nomenclature{$u^*$}{Friction velocity.}
 \nomenclature{$\tau_w$}{Wall shear stress.}
+\nomenclature{LES}{Large eddy simulation.}
 
 Actuator line modeling (ALM), first used by Sorensen and
 Shen~\cite{Sorensen2002}, is a hybrid of the blade element and Navier--Stokes
@@ -476,6 +479,9 @@ RANS or LES equations. Removing the need for complex grids is also an advantage
 with respect to  mesh generation, which is arguably the largest impediment to
 automation in CFD \cite{Slotnick2014}. Computational effort is also
 significantly reduced since the ALM does not need a rotating mesh.
+\nomenclature{ALM}{Actuator line model.}
+\nomenclature{CFD}{Computational fluid dynamics.}
+\nomenclature{RANS}{Reynolds-averaged Navier--Stokes.}
 
 To the author's knowledge, at the time of
 this writing there has only been one study in the literature investigating the
@@ -505,6 +511,8 @@ validity of these models for application to CFT arrays is questionable. At the
 very least they would need to be recalibrated for CFTs, though their
 applicability is limited in the near-wake of any turbine, meaning they are
 generally inappropriate for closely-spaced arrays.
+\nomenclature{HAWT}{Horizontal-axis wind turbine.}
+\nomenclature{CFT}{Cross-flow turbine.}
 	
 The next step up in complexity is the actuator disk method, where a constant
 body force is added to the Navier--Stokes equations. This method can be
