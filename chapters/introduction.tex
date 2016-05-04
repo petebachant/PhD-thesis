@@ -202,16 +202,23 @@ moment $M$ ultimately produce the shaft torque, and in turn the shaft power.
 
 The shaft's angular velocity $\omega$ is nondimensionalized as the tip speed
 ratio
+\nomenclature{$\omega$}{Turbine shaft angular velocity.}
 \begin{equation}
     \lambda = \frac{\omega R}{U_\infty},
     \label{eq:lambda}
 \end{equation}
+\nomenclature{$\lambda$}{Turbine tip speed ratio.}
+\nomenclature{$R$}{Maximum rotor radius.}
+\nomenclature{$U_\infty$}{Free stream velocity.}
 where $U_\infty$ is the free stream velocity. The turbine's shaft torque, $T$,
 is characterized by the nondimensional torque coefficient
 \begin{equation}
     C_T = \frac{T}{\frac{1}{2} \rho A R U_\infty^2},
     \label{eq:ct}
 \end{equation}
+\nomenclature{$T$}{Shaft torque.}
+\nomenclature{$\rho$}{Fluid density.}
+\nomenclature{$A$}{Turbine frontal area.}
 where $\rho$ is the fluid density and $A$ is the turbine's frontal area.
 Similarly, the turbine power $P = T\omega$ and overall rotor drag $F_D$ are
 normalized as the power coefficient
@@ -224,6 +231,9 @@ and the rotor drag (a.k.a. thrust) coefficient
     C_D = \frac{F_D}{\frac{1}{2} \rho A U_\infty^2}.
     \label{eq:cd}
 \end{equation}
+\nomenclature{$C_P$}{Turbine power coefficient.}
+\nomenclature{$C_D$}{Overall rotor drag (or thrust) coefficient.}
+\nomenclature{$C_T$}{Turbine torque coefficient.}
 It is also worth noting that $C_P = \lambda C_T$.
 
 So why then, is it so difficult to analyze these machines? A first glimpse can
@@ -236,6 +246,10 @@ $\lambda_0$ are inversely correlated \cite{Templin1974}), we see that angles of
 attack can be very high even in optimal conditions. Keep in mind that we are
 calculating geometric angle of attack---the ``true'' angle of attack will be
 reduced by a slowing of the inflow velocity, also known as induction.
+\nomenclature{$\sigma$}{Turbine rotor solidity.} 
+\nomenclature{$N$}{Number of blades.} 
+\nomenclature{$\lambda_0$}{Typical operating tip speed ratio, or that at which 
+    power coefficient is maximum.}
 
 \begin{figure}
     \centering
@@ -266,6 +280,9 @@ propellers, or axial-flow wind turbines, but a cross-flow turbine will most
 likely encounter post-stall regimes, cf. Figure~\ref{fig:geom-alpha-urel},
 making even high-fidelity CFD analysis an uncertain prospect for accurate blade
 load prediction.
+\nomenclature{$C_l$}{Foil or blade element lift coefficient.}
+\nomenclature{$C_d$}{Foil or blade element drag coefficient.}
+\nomenclature{$Re_c$}{Reynolds number based on chord length.}
 
 \begin{figure}
     \centering
