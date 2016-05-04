@@ -98,6 +98,10 @@ force or momentum source (per unit density, assuming incompressible flow):
     \nabla^2 \vec{u} + F_\mathrm{turbine}.
 \end{equation}
 
+\nomenclature{$F_l$}{Blade element lift force.}
+\nomenclature{$F_d$}{Blade element drag force.}
+\nomenclature{$M$}{Blade element pitching moment.}
+
 
 \section{Blade element discretization}
 
@@ -106,6 +110,8 @@ collections of actuator line elements (ALEs). The position of each ALE is a
 point in space indicating its quarter-chord location. The element is further
 defined by its chord direction vector, chord length, span direction vector, span
 length, and velocity vector.
+
+\nomenclature{ALE}{Actuator line element.}
 
 An actuator line is created from defined geometry points, between which ALE
 parameters are interpolated linearly. This way, an actuator line can be defined
@@ -145,6 +151,8 @@ turbine using LES \cite{Shamsoddin2014}. NREL's SOWFA ALM for OpenFOAM also uses
 the velocity at the actuator line element location for computing inflow velocity
 and local angle of attack with no corrections \cite{Churchfield2013}.
 
+\nomenclature{NREL}{National Renewable Energy Laboratory.}
+
 Schito and Zasso developed an effective velocity model (EVM) for computing
 actuator forces in Navier--Stokes simulations \cite{Schito2014}. Their EVM
 proposes that inflow velocity should be sampled along a line perpendicular to
@@ -160,6 +168,8 @@ where $c$ is the chord length, $M$ is the mesh size, and $C_l$ and $C_d$ are the
 lift and drag coefficients, respectively. Note that the constants in
 Equation~\ref{eq:EVM-dalpha} were determined from a calibration with 2-D
 blade-resolved CFD for a NACA 0012 foil and are not assumed to be universal.
+
+\nomenclature{$\alpha$}{Blade element angle of attack.}
 
 The EVM, despite showing robustness for its chosen validation case,
 unfortunately involves determination of two unknown tuning parameters. To avoid
@@ -210,6 +220,8 @@ quarter chord location:
     \left[ - \left( \frac{| \vec{r} |}{\epsilon} \right)^2 \right].
     \label{eq:projection}
 \end{equation}
+
+\nomenclature{$\epsilon$}{Actuator line element force Gaussian smearing width.}
 
 Troldborg~\cite{Troldborg2008} proposed that the Gaussian width should be set to
 twice the local cell length $\Delta x$ in order to maintain numerical stability.
