@@ -40,17 +40,21 @@ A blade-resolved RANS CFD model was evaluated for its ability to postdict the
 UNH-RVAT baseline data, using both 2-D and 3-D configurations, and the
 Spalart--Allmaras and $k$--$\omega$ SST turbulence models. As expected, the 2-D
 models overestimated performance due to higher blockage and lack of end effects.
-The lack of the vertical dimension also made them poor predictors of overall
-wake dynamics, which precludes their use for analyzing arrays of turbines like
-the UNH-RVAT, despite the computational feasibility. The 3-D models performed
-better, with the Spalart--Allmaras model postdicting mean performance closest to
-the experimental results. Both models did a good job resolving the qualitative
-features of the near-wake's mean velocity field. Overall, 3-D blade-resolved
-RANS presents a potentially less expensive, though less trustworthy alternative
-to $Re$-independent physical model testing. However, the cost of 3-D
-blade-resolved CFD really depends on availability of high performance computing
-resources, much like physical model testing depends on the availability of
-experimental facilities.
+The lack of the vertical dimension made them unable to realize the strongest
+contribution to wake recovery---mean vertical advection----which precludes their
+use for analyzing arrays of low aspect ratio turbines, despite the computational
+feasibility.
+
+The 3-D blade-resolved RANS models performed better---the Spalart--Allmaras
+model postdicting mean performance just 6\% below the experimental results,
+where $k$--$\omega$ overpredicted by 30\%. Both models were able to resolve the
+effects of blade tip vortex shedding in the near-wake's mean velocity field, and
+therefore the vertical advection. Overall, 3-D blade-resolved RANS presents a
+potentially less expensive alternative to $Re$-independent physical model
+testing, though there is still some uncertainty with respect to turbulence model
+selection. However, the cost of 3-D blade-resolved CFD really depends on
+availability of high performance computing resources, much like physical model
+testing depends on the availability of experimental facilities.
 
 Motivated by the prospect of reducing the computational cost of 3-D CFD
 simulations, an actuator line model was developed for cross-flow turbines and
