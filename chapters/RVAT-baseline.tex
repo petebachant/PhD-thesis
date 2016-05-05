@@ -732,15 +732,14 @@ a 1 m diameter by 1 m tall cylinder, mimicking the turbine swept area. The
 domain extended 2 m upstream and 8 m downstream.  The background mesh consisted
 of 96, 64, and 48 points in the $x$, $y$, and $z$ directions, respectively. The
 cells in the volume enclosed by the actuator disk region were refined by a
-factor of two, giving a total of  approximately $3 \times 10^5$ hexahedral
-cells. A snapshot of the mesh is shown in Figure~\ref{fig:AD-mesh}. Boundary
-conditions were set to approximate the tow tank environment, i.e., the velocity
-at the bottom and walls were set to the free stream value. The free surface was
-not modeled---the domain had a rigid lid with a slip velocity boundary
-condition---a reasonable approximation for low Froude numbers. Inputs to
-OpenFOAM's \texttt{actuationDiskSource} are given in Table~\ref{tab:AS}, and the
-case files for this simulation are available from
-\cite{Bachant2014-OF-AS-case-files}.
+factor of two, giving a total of approximately $3 \times 10^5$ hexahedral cells.
+A snapshot of the mesh is shown in Figure~\ref{fig:AD-mesh}. Boundary conditions
+were set to approximate the tow tank environment, i.e., the velocity at the
+bottom and walls were set to the free stream value. The free surface was not
+modeled---the domain had a rigid lid with a slip velocity boundary condition---a
+reasonable approximation for low Froude numbers. Inputs to OpenFOAM's
+\texttt{actuationDiskSource} are given in Table~\ref{tab:AS}, and the case files
+for this simulation are available from \cite{Bachant2014-OF-AS-case-files}.
 
 \begin{figure}
     \centering
