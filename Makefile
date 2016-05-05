@@ -1,5 +1,21 @@
 # Makefile for thesis text, slides, etc.
 
+thesis: appendices
+	latexmk -pdf thesis.tex
+
+
+view: thesis
+ifeq ($(shell uname -s),MINGW64_NT-10.0)
+	start "" thesis.pdf
+else
+	echo "Viewing only setup for Windows"
+endif
+
+
+clean:
+	latexmk -c thesis.tex
+
+
 slides:
 	jupyter nbconvert presentation.ipynb --to slides --config config/slides_config.py
 
@@ -28,22 +44,6 @@ png-figs:
 
 all-png-figs:
 	python scripts/convfigs.py --overwrite
-
-
-thesis: appendices
-	latexmk -pdf thesis.tex
-
-
-view: thesis
-ifeq ($(shell uname -s),MINGW64_NT-10.0)
-	start "" thesis.pdf
-else
-	echo "Viewing only setup for Windows"
-endif
-
-
-clean:
-	latexmk -c thesis.tex
 
 
 excerpt: thesis
