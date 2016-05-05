@@ -723,8 +723,9 @@ accurately.
 
 The open source CFD package OpenFOAM (v2.3.x) was used to solve the RANS
 equations with the turbine represented by an actuator disk, which was
-implemented as a force or sink in the momentum equation, applied over a selected
-volume of cells in the mesh.
+implemented as a force or sink in the momentum equation, parameterized by the
+power and drag (or thrust) coefficients, and applied over a selected volume of
+cells in the mesh.
 
 The cross-section of the domain was the same as that of the tow tank used for
 the experimental measurements. The actuator disk was technically not a disk, but
@@ -747,8 +748,8 @@ for this simulation are available from \cite{Bachant2014-OF-AS-case-files}.
     \includegraphics[width=0.9\textwidth]{AD_mesh}
 
     \caption{Snapshot of the computational mesh for the actuator disk RANS
-        simulation. The cylindrical region indicates the cells in which the momentum
-        source was added.}
+    simulation. The cylindrical region indicates the cells in which the momentum
+    source was added.}
 
     \label{fig:AD-mesh}
 \end{figure}
