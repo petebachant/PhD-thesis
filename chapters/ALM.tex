@@ -13,21 +13,25 @@ individual devices.
 
 Very fast solution times can be obtained with blade element momentum (BEM)
 models, such as the double multiple streamtube (DMST) approached developed by
-Paraschivoiu~\cite{Para1988}. However, their poor performance for high solidity
-turbines \cite{Joo2015}, makes them less attractive, particular for marine
-hydrokinetic applications. Their description of the flow field is very crude as
-well, simply computing the momemtum contained within discretized streamtubes,
-which cannot resolve any of the complicated flow structures shed by the rotor.
+Paraschivoiu~\cite{Para1988}. However, their poor performance for rotors with
+high solidity~\cite{Joo2015} $Nc/R$ (and/or chord-to-radius ratio $c/R$), where
+$N$ is the number of blades, $c$ is the chord length, and $R$ is the maximum
+rotor radius, makes them less attractive, particular for marine hydrokinetic
+applications where rotors of the same size will encounter approximately an order
+of magnitude higher torque compared to wind turbines. Their description of the
+flow field is very crude as well, simply computing the momentum contained within
+discretized streamtubes, which cannot resolve any of the complicated flow
+structures shed by the rotor, limiting their applicability for array analysis.
 
-Blade element based vortex line methods can be solved with reasonable
-computational effort---ranging from an expense close to BEM up to that of 2-D
-blade-resolved CFD. The cost is a function of the number of vortex elements,
-which for free vortex methods increases at each time step, slowing down the
-calculation as it marches forward in time. Vortex methods can resolve more flow
-details than BEM. However, since the flow is governed by the Laplace equation,
-nonlinear effects such as the turbulent transport will not be included, which we
-have determined in experiments to be the same order of magnitude as the mean
-vertical advection.
+Blade element based potential flow vortex line methods, e.g.,
+\cite{Strickland1981,Murray2011}, can be solved with reasonable computational
+effort---ranging from an expense close to BEM up to that of 2-D blade-resolved
+CFD. The cost is a function of the number of vortex elements, which for free
+vortex methods increases at each time step, slowing down the calculation as it
+marches forward in time. Vortex methods can resolve more flow details than BEM.
+However, since the flow is governed by the Laplace equation, nonlinear effects
+such as the turbulent transport will not be included, which we have determined
+in experiments to be the same order of magnitude as the mean vertical advection.
 
 It is therefore desirable to retain a Navier--Stokes description of the flow
 field and use an actuator-type model for parameterizing the turbine loading,
@@ -76,7 +80,8 @@ with a Navier--Stokes description of the flow field. The ALM treats turbine
 blades as lines of blade elements, for which 2-D profile lift and drag
 coefficients are given. For each blade element, relative flow velocity and angle
 of attack are computed by adding the vectors of relative blade motion and the
-local fluid velocity. The blade lift and drag forces are calculated as
+local fluid velocity. The blade element lift force, drag force, and pitching
+moment are calculated as
 \begin{equation}
     F_l = \frac{1}{2} \rho A_\mathrm{elem} C_l |\vec{U}_\mathrm{rel}|^2,
 \end{equation}
@@ -84,15 +89,20 @@ and
 \begin{equation}
     F_d = \frac{1}{2} \rho A_\mathrm{elem} C_d |\vec{U}_\mathrm{rel}|^2,
 \end{equation}
-where $\rho$ is the fluid density, $A_\mathrm{elem}$ is the blade element
-planform area (span $\times$ chord), $\vec{U}_\mathrm{rel}$ is the local
-relative velocity, and $C_l$ and $C_d$ are the sectional lift and drag
-coefficients, linearly interpolated from a table per the local angle of attack.
-The forces are then projected onto the rotor coordinate system to calculate
-torque, overall drag, etc. Forces from the turbine shaft and blade support
-struts are computed in a similar way. After the force on the actuator lines from
-the flow is computed, it is then added to the Navier--Stokes equations as a body
-force or momentum source (per unit density, assuming incompressible flow):
+\begin{equation}
+    M = \frac{1}{2} \rho A_\mathrm{elem} c C_m |\vec{U}_\mathrm{rel}|^2,
+\end{equation}
+respectively, where $\rho$ is the fluid density, $A_\mathrm{elem}$ is the blade
+element planform area (span $\times$ chord), $\vec{U}_\mathrm{rel}$ is the local
+relative velocity projected onto the plane of the element profile cross-section
+(i.e., the spanwise component is neglected), and $C_l$, $C_d$, and $C_m$ are the
+sectional lift, drag, and pitching moment coefficients, respectively, which are
+linearly interpolated from a table per the local angle of attack. The forces are
+then projected onto the rotor coordinate system to calculate torque, overall
+drag, etc. Forces from the turbine shaft and blade support struts are computed
+in a similar way. After the force on the actuator lines from the flow is
+computed, it is then added to the Navier--Stokes equations as a body force or
+momentum source (per unit density, assuming incompressible flow):
 \begin{equation}
     \frac{\mathrm{D} \vec{u}}{\mathrm{D} t} = - \frac{1}{\rho} \nabla p + \nu
     \nabla^2 \vec{u} + F_\mathrm{turbine}.
@@ -130,8 +140,11 @@ points.
 
     \includegraphics[width=0.9\textwidth]{alm-geometry}
 
-    \caption{Actuator line geometry. Filled circles indicate geometry points
-        whereas squares indicate actuator line element locations.}
+    \caption{Actuator line geometry. Filled circles indicate points where
+        geometry is defined whereas squares indicate actuator line element
+        quarter-chord locations. Chord mount offset is defined as the distance from
+        an element's leading edge to each geometry point in chord lengths, which was
+        0.5 for both rotors modeled in this study.}
 
     \label{fig:AL-geom}
 \end{figure}
@@ -147,9 +160,10 @@ more information about the flow. Sorensen and Shen used an actuator line
 element's position to determine the inflow velocity for an axial-flow turbine
 \cite{Sorensen2002}. Similarly, Shamsoddin and Porte-Agel use the velocity at a
 blade element's location in their actuator line simulation of a vertical-axis
-turbine using LES \cite{Shamsoddin2014}. NREL's SOWFA ALM for OpenFOAM also uses
-the velocity at the actuator line element location for computing inflow velocity
-and local angle of attack with no corrections \cite{Churchfield2013}.
+turbine using LES \cite{Shamsoddin2014}. The US National Renewable Energy Lab
+(NREL) SOWFA ALM for OpenFOAM also uses the velocity at the actuator line
+element location for computing inflow velocity and local angle of attack with no
+corrections \cite{Churchfield2013}.
 
 \nomenclature{NREL}{National Renewable Energy Laboratory.}
 
@@ -159,7 +173,7 @@ proposes that inflow velocity should be sampled along a line perpendicular to
 the mean relative flow direction. They ultimately determined that the sampling
 line should be 1.5 chord lengths upstream of the actuator point (i.e.
 quarter-chord location). A sampling line was chosen to be 5 times the local mesh
-cell length. Finally, an angle of attack correction is proposed
+cell length. Finally, an angle of attack correction was proposed
 \begin{equation}
     \Delta \alpha = \frac{c}{M} (1.2553 - 0.0552 C_d) C_l,
     \label{eq:EVM-dalpha}
@@ -395,7 +409,7 @@ angle of attack distributions due to their circular paths---producing so-called
 flow curvature effects~\cite{Migliore1980}. This makes it difficult to define a
 single angle of attack for use in the static coefficient lookup tables.
 Furthermore, this effect is more pronounced for high solidity ($c/R$) turbines.
-Two different flow curvature corrections were considered: one by Goude
+Two different flow curvature corrections were considered: one derived in Goude
 \cite{Goude2012} and one by Mandal and Burton \cite{Mandal1994}.
 
 The Goude correction is derived by considering a flat plat moving along a
@@ -557,20 +571,20 @@ cross-flow rotor parameters.
 
 \section{Software implementation}
 
-The US National Renewable Energy Laboratory (NREL) has developed and released an
-actuator line modeling library, SOWFA~\cite{Churchfield2014b}, for simulating
-horizontal-axis wind turbine arrays using the OpenFOAM finite volume CFD
-library. OpenFOAM is free, open-source, widely used throughout industry and
-academia, and has grown a very active support community around itself
-\cite{Bachant2015-CFD-online}. Though SOWFA is also open-source, and has the
-ability to be coupled to NREL's FAST HAWT BEM code, its mostly procedural style
-would have required significant effort and duplicate code to adapt for
-cross-flow turbines. Thus, a new and more general ALM library was developed from
-the ground up that could model both cross- and axial-flow turbines, as well as
-standalone actuator lines. The actuator line model developed here, dubbed
-turbinesFoam \cite{Bachant2016-turbinesFoam-v0.0.7}, was also written as an
-extension library for OpenFOAM, and was developed freely and openly from its
-inception in order to increase community engagement and research efficiency.
+NREL has developed and released an actuator line modeling library,
+SOWFA~\cite{Churchfield2014b}, for simulating horizontal-axis wind turbine
+arrays using the OpenFOAM finite volume CFD library. OpenFOAM is free,
+open-source, widely used throughout industry and academia, and has grown a very
+active support community around itself \cite{Bachant2015-CFD-online}. Though
+SOWFA is also open-source, and has the ability to be coupled to NREL's FAST HAWT
+BEM code, its mostly procedural style would have required significant effort and
+duplicate code to adapt for cross-flow turbines. Thus, a new and more general
+ALM library was developed from the ground up that could model both cross- and
+axial-flow turbines, as well as standalone actuator lines. The actuator line
+model developed here, dubbed turbinesFoam
+\cite{Bachant2016-turbinesFoam-v0.0.7}, was also written as an extension library
+for OpenFOAM, and was developed freely and openly from its inception in order to
+increase community engagement and research efficiency.
 
 turbinesFoam was written in OpenFOAM's style, using OpenFOAM's
 \texttt{fvOptions} framework for adding source terms to equations at
@@ -1160,15 +1174,9 @@ momentum recovery. Therefore, subgrid-scale modeling should be investigated
 further before applying the ALM LES to array analyses.
 
 The ALM provides a more physical flow description compared to momentum and
-vortex models, at a reasonable cost. The ALM has an important advantage over
-vortex methods in that the effort solving the flow field remains reasonably
-constant as a simulation progresses, whereas free-wake vortex methods typically
-increase in computational complexity each time step. This is especially
-important for array simulations, where for a given domain adding many turbines
-will be cheap in the ALM compared to the rapidly increasing number of vortex
-elements generated by each turbine. The ALM also drastically reduces
-computational effort compared to blade-resolved CFD, while maintaining the
-unsteadiness of the wake not resolved by a conventional actuator disk.
+potential flow vortex models, at a reasonable cost. The ALM also drastically
+reduces computational effort compared to blade-resolved CFD, while maintaining
+the unsteadiness of the wake not resolved by a conventional actuator disk.
 Furthermore, its implementation within finite volume CFD provides a convenient
 way to study turbine array siting, since effects like terrain and buildings can
 be included, as can no-slip boundary conditions and boundary layer inflow
