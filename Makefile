@@ -34,6 +34,14 @@ thesis: appendices
 	latexmk -pdf thesis.tex
 
 
+view: thesis
+ifeq ($(shell uname -s),MINGW64_NT-10.0)
+	start "" thesis.pdf
+else
+	echo "Viewing only setup for Windows"
+endif
+
+
 clean:
 	latexmk -c thesis.tex
 
