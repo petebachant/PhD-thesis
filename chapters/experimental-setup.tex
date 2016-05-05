@@ -507,56 +507,6 @@ These values were then included in the experiment configuration---one value for
 each tow speed, to be used by TurbineDAQ as wait times between automated runs.
 
 
-\section{Experimental uncertainty}\label{sec:uncertainty}
-
-For each set of experimental measurements, uncertainty was estimated from both
-systematic and random errors. Random error was computed on a
-per-rotor-revolution basis and systematic errors were estimated from the sensor
-calibrations or datasheets. Computation and combination of both error sources
-and their propagation into derived quantities, followed Coleman and Steele
-\cite{ColemanSteele}, which is summarized below.
-
-An expanded uncertainty interval with 95\% confidence
-\begin{equation}
-    U_{95} = t_{95} u_c,
-\end{equation}
-was computed for mean power coefficient $C_P$, mean rotor drag coefficient
-$C_D$, and mean wake velocities, where $t_{95}$ is the value from the Student
-$t$-distribution for a 95\% confidence interval and $u_c$ is the combined
-standard uncertainty, which is given by
-\begin{equation}
-    u_X^2 = s_{\bar{X}}^2 + b_X^2,
-\end{equation}
-where $s_{\bar{X}} = s_X/\sqrt{N}$ is the sample standard deviation of the mean
-per turbine revolution, the total of which is $N$. The systematic uncertainty
-$b_X$ is computed as
-\begin{equation}
-    b_{X}^2 = \sum_{i=1}^J \left( \frac{\partial X}{\partial x_i} \right)^2
-    b_{x_i}^2,
-\end{equation}
-where $x_i$ is a primitive quantity used to calculate $X$ (e.g., $T$, $\omega$,
-and $U_\infty$ for calculating $C_P$), and $b_{x_i}$ is the primitive quantity's
-systematic uncertainty, estimated as half the value listed on the sensor
-manufacturer's documentation. Values for each of the sensors are listed in
-Table~\ref{tab:sensors}.
-
-Selecting the Student $t$-statistic $t_{95}$ requires an estimate for the number
-of degrees of freedom $\nu_X$, which was obtained using the Welch--Satterthwaite
-formula \cite{ColemanSteele}:
-\begin{equation}
-    \nu_X = \frac{\left(s_X^2 + \sum_{k=1}^M b_k^2 \right)^2} {s_X^4/\nu_{s_X} +
-    \sum_{k=1}^M b_k^4/\nu_{b_k}},
-\end{equation}
-where $\nu_{s_X}$ is the number of degrees of freedom associated with $s_X$ and
-$\nu_{b_k}$ is the number of degrees of freedom associated with $b_k$.
-$\nu_{s_X}$ is assumed to be $(N-1)$. $\nu_{b_k}$ was estimated as
-\begin{equation}
-    \nu_{b_k} = \frac{1}{2} \left( \frac{\Delta b_k}{b_k} \right)^{-2},
-\end{equation}
-where the quantity in parentheses is the relative uncertainty of $b_k$, which
-was assumed to be 0.25.
-
-
 \section{Blockage}
 
 Placing a turbine in a confined environment such as a towing tank will force
