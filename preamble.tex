@@ -148,3 +148,23 @@ urlcolor=black, linkcolor=black]{hyperref}
 % Pandoc tightlist
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+%%% Heading spacing fixes
+%%% For some reason this doesn't work inside the class
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+                    {-4ex \@plus -1ex \@minus -.2ex}%
+                    {1ex \@plus .2ex}%
+                    {\normalfont\large\bfseries}}
+
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                       {-3ex \@plus -1ex \@minus -.2ex}%
+                       {0.001ex \@plus .2ex}%
+                       {\normalfont\normalsize\bfseries}}
+
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                          {-3ex \@plus -1ex \@minus -.2ex}%
+                          {0.001ex \@plus .2ex}%
+                          {\normalfont\normalsize\bfseries}}
+\makeatother
