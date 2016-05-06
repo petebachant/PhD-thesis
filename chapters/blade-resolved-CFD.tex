@@ -8,16 +8,20 @@ submitted for publication as~\cite{Bachant2016-BR-CFD}.
 
 Despite the development of many simple engineering models based on blade element
 momentum or vortex methods, it remains difficult to predict the performance of
-cross-flow turbines (CFTs, often vertical-axis turbines or VATs) in all
+cross-flow turbines (CFTs, often vertical-axis turbines or VATs) for all
 cases---namely when solidity, or blade chord-to-radius ratio is high---a common
 characteristic of smaller rotors, and those designed for marine hydrokinetic
 (MHK) applications. With computing power becoming evermore available and
-affordable, computational fluid dynamics has become an attractive method for
-predicting the performance of cross-flow turbines since it only requires that
-turbulence be modeled, i.e., the physics can be described from theoretical true
-first principles by solving the Navier--Stokes equations using a boundary layer
-resolving body-fitted grid. However, CFD can be computationally expensive when
-done in three dimensions, which may be necessary in some cases.
+affordable, CFD based on the Reynolds-averaged Navier--Stokes (RANS) equations
+has become an attractive method for predicting the performance of cross-flow
+turbines. Since a direct numerical simulation (DNS) of all scales at realisitc
+Reynolds numbers is not currently feasible, turbulence be modeled. However, with
+an appropriate turbulence model, blade-resolved RANS presents a more physically
+realistic first principles based approach versus simpler models based on
+momentum theory or potential flow. However, CFD can be computationally expensive
+when done in three dimensions, which may be necessary in some cases.
+
+\nomenclature{DNS}{Direct numerical simulation.}
 
 There are many examples in the literature of 2-D cross-flow turbine simulations
 with widely varying results. Balduzzi et al.~\cite{Balduzzi2016} provides
@@ -38,8 +42,8 @@ turbulence model is shown to be a popular choice due to its success in
 predicting flows with adverse pressure gradients and
 separation~\cite{Menter2003}. Higher fidelity methods that resolve the large
 scales of turbulence, such as large eddy and detached eddy simulation have also
-been used. Note that for all the studies listed, model validation was either
-done for performance or wake predictions---not both---and in some case omitted
+been used. Note that for all the studies listed, model validation was performed
+for either performance or wake predictions---not both---and in some case omitted
 entirely.
 
 \begin{table}
@@ -47,20 +51,20 @@ entirely.
     \begin{tabular}{c|c|c|c}
         Author & Turbulence modeling & Perf. val. & Wake val. \\
         \hline
-        Alaimo et al.~\cite{Alaimo2015} & $k$--$\epsilon$ & N/A & N/A \\
-        Marsh et al.~\cite{Marsh2015} & SST & \cite{Rawlings2008} & N/A \\
-        Orlandi et al.~\cite{Orlandi2015} & SST & \cite{Akins1989,Mertens2003} & N/A \\
+        Alaimo et al.~\cite{Alaimo2015} & $k$--$\epsilon$ RANS & N/A & N/A \\
+        Marsh et al.~\cite{Marsh2015} & SST RANS & \cite{Rawlings2008} & N/A \\
+        Orlandi et al.~\cite{Orlandi2015} & SST RANS & \cite{Akins1989,Mertens2003} & N/A \\
         Lam \& Peng~\cite{Lam2016} & SST RANS \& IDDES\tablefootnote{Improved delayed detached eddy simulation.} & N/A & \cite{Tescione2014} \\
-        Nini et al.~\cite{Nini2014} & Spalart--Allmaras & N/A & \cite{Battisti2011} \\
-        Boudreau \& Dumas~\cite{Boudreau2015} & DDES\tablefootnote{Delayed detached eddy simulation.} & N/A & N/A \\
-        Li et al.~\cite{Li2013} & SST \& Smagorinsky--Lilly LES & \cite{McLaren2011} & N/A \\
-        Howell et al.~\cite{Howell2010} & $k$--$\epsilon$ RNG\tablefootnote{Renormalization group.} & \cite{Howell2010} & N/A
+        Nini et al.~\cite{Nini2014} & Spalart--Allmaras RANS & N/A & \cite{Battisti2011} \\
+        Boudreau \& Dumas~\cite{Boudreau2015} & Spalart--Allmaras DDES\tablefootnote{Delayed detached eddy simulation.} & N/A & N/A \\
+        Li et al.~\cite{Li2013} & SST RANS \& Smagorinsky--Lilly LES & \cite{McLaren2011} & N/A \\
+        Howell et al.~\cite{Howell2010} & $k$--$\epsilon$ RNG\tablefootnote{Renormalization group.} RANS & \cite{Howell2010} & N/A
     \end{tabular}
 
     \caption{Selected 3-D blade-resolved cross-flow turbine simulations reported
-        in the literature, turbulence modeling employed, and performance and/or wake
-        studies used for validation. Note the Li et al. study used periodic boundary
-        conditions and is technically considered 2.5-D.}
+    in the literature, turbulence modeling employed, and performance and/or wake
+    studies used for validation. Note the Li et al. study used periodic boundary
+    conditions and is technically considered 2.5-D.}
 
     \label{tab:cfd-refs}
 \end{table}
@@ -87,17 +91,17 @@ through a VAT array using ``leaky Rankine body'' potential flow singularities,
 which was able to rank relative---though not absolute---performance of array
 configurations. Goude and Agren~\cite{Goude2010} used a 2-D vortex method to
 simulate a farm of cross-flow turbines, though this was not validated with
-experiments. Durrani et al.~\cite{Durrani2011} used 2-D CFD to model a
-group of cross-flow turbines, observing higher power output for a staggered
-configuration, but also did not compare with experimental results. Giorgetti
-et al.~\cite{Giorgetti2015} took a similar approach for 2-D array analysis using
+experiments. Durrani et al.~\cite{Durrani2011} used 2-D CFD to model a group of
+cross-flow turbines, observing higher power output for a staggered
+configuration, but also did not compare with experimental results. Giorgetti et
+al.~\cite{Giorgetti2015} took a similar approach for 2-D array analysis using
 turbine pairs inspired by Dabiri~\cite{Dabiri2011}, but again experimental
 validation was not performed. Li and Calisal \cite{Li2010} used a 3-D vortex
 line method to show mutually improved power output from two adjacent turbines,
-though the simulations over-predicted the effects compared with experiments.
-Antheaume et al.~\cite{Antheaume2008} used a blade element approach
-coupled with a 3-D RANS solver to also show how close spacing can improve power
-output of CFTs.
+though the simulations over-predicted the effectsby approximately 5\% compared
+with experiments. Antheaume et al.~\cite{Antheaume2008} used a blade element
+approach coupled with a 3-D RANS solver to also show how close spacing can
+improve power output of CFTs.
 
 In this study we set out to model the performance and near-wake of the high
 solidity University of New Hampshire Reference Vertical Axis Turbine (UNH-RVAT)
@@ -110,8 +114,8 @@ experimentally that the near-wake's momentum and energy transport processes are
 dominated by vertical advection \cite{Bachant2015-JoT}. It logically follows
 that a 2-D simulation, which omits the vertical dimension, would not correctly
 predict wake recovery and turbine--turbine interaction. However, it is of
-interest to determine how wrong a 2-D model may be, since the computational
-feasibility is attractive.
+interest to determine how wrong a 2-D model may be, since the lower
+computational cost of 2-D simulations is attractive.
 
 It is assumed that if the turbine power output and near-wake predictions from
 the numerical model match those of the experiments, the flow field can be
