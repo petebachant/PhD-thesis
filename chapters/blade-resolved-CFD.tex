@@ -8,18 +8,18 @@ submitted for publication as~\cite{Bachant2016-BR-CFD}.
 
 Despite the development of many simple engineering models based on blade element
 momentum or vortex methods, it remains difficult to predict the performance of
-cross-flow turbines (CFTs, often vertical-axis turbines or VATs) for all
-cases---namely when solidity, or blade chord-to-radius ratio is high---a common
-characteristic of smaller rotors, and those designed for marine hydrokinetic
-(MHK) applications. With computing power becoming evermore available and
-affordable, CFD based on the Reynolds-averaged Navier--Stokes (RANS) equations
-has become an attractive method for predicting the performance of cross-flow
-turbines. Since a direct numerical simulation (DNS) of all scales at realistic
-Reynolds numbers is not currently feasible, turbulence be modeled. However, with
-an appropriate turbulence model, blade-resolved RANS presents a more physically
-realistic first principles based approach versus simpler models based on
-momentum theory or potential flow. However, CFD can be computationally expensive
-when done in three dimensions, which may be necessary in some cases.
+cross-flow turbines for all cases---namely when solidity, or blade
+chord-to-radius ratio is high---a common characteristic of smaller rotors, and
+those designed for marine hydrokinetic (MHK) applications. With computing power
+becoming evermore available and affordable, CFD based on the Reynolds-averaged
+Navier--Stokes (RANS) equations has become an attractive method for predicting
+the performance of cross-flow turbines. Since a direct numerical simulation
+(DNS) of all scales at realistic Reynolds numbers is not currently feasible,
+turbulence be modeled. However, with an appropriate turbulence model,
+blade-resolved RANS presents a more physically realistic first principles based
+approach versus simpler models based on momentum theory or potential flow.
+However, CFD can be computationally expensive when done in three dimensions,
+which may be necessary in some cases.
 
 \nomenclature{DNS}{Direct numerical simulation.}
 
@@ -421,9 +421,9 @@ which is zero for the SA model.
 
 \nomenclature{$k$}{Turbulence kinetic energy.}
 
-Both Spalart--Allmaras cases do a poor job predicting the turbulence kinetic
+Both Spalart--Allmaras cases did a poor job predicting the turbulence kinetic
 energy in the flow, since it must be resolved as variance in the velocity field.
-The 2-D SST model does a good job predicting the peak in $k$ at $y/R=-1$, though
+The 2-D SST model did a good job predicting the peak in $k$ at $y/R=-1$, though
 is missing the smaller peak at $y/R=-1$. This is once again likely due to
 blockage issues, where local tip speed ratio is decreased, increasing the
 blades' instantaneous angle of attack at this location on the downstream
@@ -491,13 +491,13 @@ model.
 
 Turbulence kinetic energy contours for the experimental measurements and each
 CFD case at $x/D=1$ are presented in Figure~\ref{fig:br-cfd-kcont}. As seen in
-the profiles in Figure~\ref{fig:br-cfd-profiles}, the SA model is resolving very
-little of the flow unsteadiness. In contrast, the SST model does a good job
-predicting the locations and magnitudes of various peaks in $k$. These are
-generated along the top of the turbine via tip vortex shedding, and the $-y$
-side of the turbine via dynamic stall. We do however see the smearing effect
-from the dynamic stall vortex centered around $z/H=0$, which is likely more of
-an issue with wake evolution rather than wake generation.
+the profiles in Figure~\ref{fig:br-cfd-profiles}, the SA model was not able to
+resolve the majority of the unsteadiness in the flow. In contrast, the SST model
+did a good job predicting the locations and magnitudes of various peaks in $k$.
+These are generated along the top of the turbine via tip vortex shedding, and
+the $-y$ side of the turbine via dynamic stall. We do however see the smearing
+effect from the dynamic stall vortex centered around $z/H=0$, which is likely
+more of an issue with wake evolution rather than wake generation.
 
 \begin{figure}
     \centering
@@ -606,14 +606,15 @@ gradient condition.
 \section{Conclusions}
 
 A cross-flow turbine was modeled using the $k$--$\omega$ SST and
-Spalart--Allmaras (SA) Reynolds-averaged Navier--Stokes turbulence models to test
-their abilities to predict turbine performance and near-wake dynamics. It was
-observed that when modeled in 2-D, the performance is over-predicted compared to
-the data from the tow tank experiments, which was expected due to omission of
-blade end effects, support strut drag, and increased blockage. Vertical (or
-axial) wake dynamics were unresolved in the 2-D model, despite being identified
-as a significant contributor to streamwise wake recovery, which casts doubt on
-the 2-D model's applicability as a tool to study array spacing effects.
+Spalart--Allmaras (SA) Reynolds-averaged Navier--Stokes turbulence models to
+test their abilities to predict turbine performance and near-wake dynamics. It
+was observed that when modeled in 2-D, the performance is over-predicted
+compared to the data from the tow tank experiments, which was expected due to
+omission of blade end effects, support strut drag, and increased blockage.
+Vertical (or axial) wake dynamics were unresolved in the 2-D model, despite
+being identified as a significant contributor to streamwise wake recovery, which
+casts doubt on the 2-D model's applicability as a tool to study array spacing
+effects.
 
 The 3-D blade-resolved RANS simulations predicted turbine performance and
 near-wake quite well, where the SA model results were closest to the
