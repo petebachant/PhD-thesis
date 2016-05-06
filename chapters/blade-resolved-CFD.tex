@@ -250,9 +250,11 @@ Bachant2016-UNH-RVAT-3D-OpenFOAM-SST, Bachant2016-UNH-RVAT-3D-OpenFOAM-SA}.
 Initial and boundary conditions were set to match those of the tow tank as well
 as possible. The velocity at the inlet, bottom, and side walls was fixed to 1
 m/s to match the tow tank case, while the top boundary condition was a slip
-velocity condition. Pressure was held fixed at the outlet. Note that in 2-D the
-top and bottom boundary conditions are ``empty,'' which is an OpenFOAM
-convention to indicate two-dimensionality.
+velocity condition. Pressure was held fixed at the outlet while a zero-gradient
+boundary condition was applied at the inlet (a typical
+velocity-inlet/pressure-outlet case). Note that in 2-D the top and bottom
+boundary conditions are ``empty,'' which is an OpenFOAM convention to indicate
+two-dimensionality.
 
 Since the mesh was only refined next to the blade surfaces in order to resolve
 the boundary layer profile, no wall functions were used. However, wall functions
