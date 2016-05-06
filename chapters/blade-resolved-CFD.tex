@@ -169,20 +169,22 @@ geometries is presented in Figure~\ref{fig:cfd-cad}.
     \label{fig:cfd-cad}
 \end{figure}
 
-To close the RANS equations, two different turbulence models were
-used---Menter's $k$--$\omega$ SST \cite{Menter1994} and the Spalart--Allmaras
-(SA) one equation model \cite{Spalart1992}. Both closures use the eddy-viscosity
-approach---the SA employing a single additional scalar transport equation and
-the SST two. The SST model was chosen due to its prominence in the literature
-for simulating separating flows, which we assumed to be present in the current
-problem in the form of dynamic stall. The SA model was shown by Ferreira
-et al.~\cite{Ferreira2007} to match experimental particle image
-velocimetry (PIV) results for a CFT in dynamic stall, though this was a somewhat
-low Reynolds number case ($5 \times 10^4$). Further justification for using the
-SA model for this case comes from Crivellini and D'Alessandro
-\cite{Crivellini2014}, where they successfully modeled the laminar separation
-bubble and subsequent boundary layer transition to turbulence at Reynolds
-numbers similar to those investigated here.
+To close the RANS equations, two different turbulence models were used: Menter's
+$k$--$\omega$ SST \cite{Menter1994} and the Spalart--Allmaras (SA) one equation
+model \cite{Spalart1992}. Both closures use the eddy-viscosity approach---the SA
+employing a single additional scalar transport equation for an
+eddy-viscosity-like quantity $\tilde{\nu}$ and the SST solving equations for the
+turbulence kinetic energy $k$ and specific dissipation $\omega$---see
+Appendix~\ref{chap:turbulence-models} for the model details. The SST model was
+chosen due to its prominence in the literature for simulating separating flows,
+which we assumed to be present in the current problem in the form of dynamic
+stall. The SA model was shown by Ferreira et al.~\cite{Ferreira2007} to match
+experimental particle image velocimetry (PIV) results for a CFT in dynamic
+stall, though this was a somewhat low Reynolds number case ($5 \times 10^4$).
+Further justification for using the SA model for this case comes from Crivellini
+and D'Alessandro \cite{Crivellini2014}, where they successfully modeled the
+laminar separation bubble and subsequent boundary layer transition to turbulence
+at Reynolds numbers similar to those investigated here.
 
 \nomenclature{SST}{Shear stress transport.}
 
