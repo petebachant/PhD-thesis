@@ -92,7 +92,8 @@ as $\nu_t = f_{v1} \tilde{\nu}$. Typical coefficients are
 
 \section{$k$--$\omega$ SST}
 
-Menter's $k$--$\omega$ SST is defined as \cite{Menter2001}
+Menter's $k$--$\omega$ SST is defined in \cite{Menter2001}. The transport
+equation for the turbulence kinetic energy $k$ is
 
 \begin{equation}
     \rho \frac{\partial k}{\partial t}
@@ -101,10 +102,10 @@ Menter's $k$--$\omega$ SST is defined as \cite{Menter2001}
     + \frac{\partial}{\partial x_j}
     \left(
     \Gamma_k \frac{\partial k}{\partial x_j}
-    \right)
+    \right),
     \label{eq:komegasst-k}
 \end{equation}
-
+and for the specific dissipation $\omega$:
 \begin{equation}
     \rho \frac{\partial \omega}{\partial t}
     + \rho U_j \frac{\partial \omega}{\partial x_j}
@@ -118,6 +119,7 @@ Menter's $k$--$\omega$ SST is defined as \cite{Menter2001}
     \frac{\partial \omega}{\partial x_j}
 \end{equation}
 
+Auxiliary relations include:
 \begin{equation}
     \Gamma_k = \mu + \frac{\mu_t}{\sigma_k}, \, \, \,
     \Gamma_\omega = \mu + \frac{\mu_t}{\sigma_\omega}, \, \, \,
@@ -128,10 +130,11 @@ Menter's $k$--$\omega$ SST is defined as \cite{Menter2001}
 
 Coefficients $\phi$ are blended with $\phi = F_1 \phi_1 + (1 - F_1) \phi_2$,
 where the 1 and 2 subscripts denote values from the $k$--$\omega$ and
-$k$--$\epsilon$ models, respectively.
-
+$k$--$\epsilon$ models, respectively:
 \begin{equation}
-    F_1 = \tanh (\arg_1^4); \, \, \, \,
+    F_1 = \tanh (\arg_1^4),
+\end{equation}
+\begin{equation}
     \arg_1 = \min
     \left(
     \max
@@ -140,19 +143,20 @@ $k$--$\epsilon$ models, respectively.
     \frac{500 \nu}{y^2 \omega}
     \right);
     \frac{4 \rho \sigma_{\omega2} k}{CD_{k \omega} y^2}
-    \right); \, \, \, \,
+    \right),
+\end{equation}
+\begin{equation}
     CD_{k \omega} = \max
     \left(
     2 \rho \sigma_{\omega 2} \frac{1}{\omega}
     \frac{\partial k}{\partial x_j}
     \frac{\partial \omega}{\partial x_j};
     10^{-10}
-    \right)
+    \right).
 \end{equation}
 
 OpenFOAM's implementation of the SST model features updated coefficients from
 \cite{Menter2003}, with the consistent production terms from \cite{Menter2001}.
-
 OpenFOAM also uses coefficients in terms of $\alpha = 1/\sigma$ to apply
 blending functions. Default coefficients are
 
