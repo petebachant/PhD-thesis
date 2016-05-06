@@ -60,7 +60,7 @@ Auxiliary relations are defined by:
 %fv2 and fv3 from OpenFOAM (no Ashford correction)
 \begin{equation}
     f_{v2} = 1 - \frac{\chi}{1 + \chi f_{v1}}, \, \, \,
-    f_{v3} = 1
+    f_{v3} = 1,
 \end{equation}
 % From OpenFOAM: Cw1_(Cb1_/sqr(kappa_) + (1.0 + Cb2_)/sigmaNut_)
 \begin{equation}
@@ -86,7 +86,7 @@ as $\nu_t = f_{v1} \tilde{\nu}$. Typical coefficients are
     c_{v1} = 7.1, \, \,
     c_{v2} = 5.0, \, \,
     \sigma = 0.66666, \, \,
-    \kappa = 0.41
+    \kappa = 0.41.
 \end{equation}
 
 
@@ -116,7 +116,7 @@ and for the specific dissipation $\omega$:
     \right)
     + 2 \rho (1 - F_1) \sigma_{\omega 2}
     \frac{1}{\omega} \frac{\partial k}{\partial x_j}
-    \frac{\partial \omega}{\partial x_j}
+    \frac{\partial \omega}{\partial x_j}.
 \end{equation}
 
 Auxiliary relations include:
@@ -125,7 +125,7 @@ Auxiliary relations include:
     \Gamma_\omega = \mu + \frac{\mu_t}{\sigma_\omega}, \, \, \,
     P_k = \tau_{ij} \frac{\partial U_i}{\partial x_j}, \, \, \,
     \tilde{P}_k = \min(P_k;c_l \epsilon), \, \, \,
-    \mu_t = \rho \frac{a_1 k}{\max(a_1 \omega; S \cdot F_2)}
+    \mu_t = \rho \frac{a_1 k}{\max(a_1 \omega; S \cdot F_2)}.
 \end{equation}
 
 Coefficients $\phi$ are blended with $\phi = F_1 \phi_1 + (1 - F_1) \phi_2$,
@@ -159,7 +159,6 @@ OpenFOAM's implementation of the SST model features updated coefficients from
 \cite{Menter2003}, with the consistent production terms from \cite{Menter2001}.
 OpenFOAM also uses coefficients in terms of $\alpha = 1/\sigma$ to apply
 blending functions. Default coefficients are
-
 \begin{equation}
 \begin{split}
 &   \alpha_{k1} = 0.85, \, \, \,
@@ -173,7 +172,7 @@ blending functions. Default coefficients are
     \gamma_2 = 0.44, \, \, \,
     a_1 = 0.31, \, \, \,
     b_1 = 1.0, \, \, \,
-    c_1 = 10.0, \, \, \,
+    c_1 = 10.0.
 \end{split}
 \end{equation}
 
@@ -190,7 +189,7 @@ for the turbulence kinetic energy is
     + \frac{\partial}{\partial x_j}
     \left[
     (\mu + \mu_t/\sigma_k) \frac{\partial k}{\partial x_j}
-    \right]
+    \right].
     \label{eq:kepsilon-k}
 \end{equation}
 and for the dissipation $\epsilon$:
@@ -203,7 +202,7 @@ and for the dissipation $\epsilon$:
     + \frac{\partial}{\partial x_j}
     \left[
     (\mu + \mu_t/\sigma_k) \frac{\partial \epsilon}{\partial x_j}
-    \right]
+    \right].
     \label{eq:kepsilon-epsilon}
 \end{equation}
 
@@ -244,7 +243,7 @@ the computing the subgrid scale (SGS) stress tensor $\tau_{ij}$:
     \left(
     \frac{\partial \tilde{u}_i}{\partial u_j}
     + \frac{\partial \tilde{u}_j}{\partial u_i}
-    \right)
+    \right).
 \end{equation}
 The eddy viscosity is then
 \begin{equation}
