@@ -23,13 +23,13 @@ def fix_image_url(line):
         wget.download(url=url, out=fout)
     line = line.replace(url, fout)
     line = line.replace("includegraphics{",
-                        "includegraphics[width=0.9\\textwidth]{")
+                        "includegraphics[width=0.8\\textwidth]{")
     return line
 
 
 def fix_file(fname):
     """Apply rules to given file."""
-    bad_kws = ["\\textbf{Figure", "Welcome", "\\tightlist"]
+    bad_kws = ["\\textbf{Figure", "Welcome"]
     with open(fname) as f:
         txt = ""
         for line in f.readlines():
