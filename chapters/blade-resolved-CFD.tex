@@ -406,7 +406,8 @@ experiments.
 \end{figure}
 
 Turbulence kinetic energy profiles are also shown in
-Figure~\ref{fig:br-cfd-profiles}. The turbulence kinetic energy is calculated as
+Figure~\ref{fig:br-cfd-profiles}. The turbulence kinetic energy for the unsteady
+RANS models was calculated as
 \begin{equation}
     k = k_{\mathrm{RA}} + \frac{1}{2} \left(
     \overline{U^\prime}^2 +
@@ -414,8 +415,9 @@ Figure~\ref{fig:br-cfd-profiles}. The turbulence kinetic energy is calculated as
     \overline{W^\prime}^2 \right),
     \label{eq:k}
 \end{equation}
-where $U^\prime = U - \overline{U}$ and $k_{\mathrm{RA}}$ is the kinetic energy
-calculated by the turbulence model, which is zero for the SA model.
+where $U^\prime = U - \overline{U}$ (the resolved velocity fluctuations) and
+$k_{\mathrm{RA}}$ is the kinetic energy calculated by the turbulence model,
+which is zero for the SA model.
 
 \nomenclature{$k$}{Turbulence kinetic energy.}
 
