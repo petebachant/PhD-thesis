@@ -47,43 +47,37 @@ near the wall. The transport equation for $\tilde{\nu}$ is defined as
     - c_{w1} f_w \left[ \frac{\tilde{\nu}}{d} \right]^2,
     \label{eq:SA-nutilde}
 \end{equation}
-
+with
 % Stilda from OpenFOAM
 \begin{equation}
     \tilde{S} = f_{v3}\sqrt{2} | \mathrm{skew} \nabla U |
     + f_{v2} \frac{\tilde{\nu}}{\kappa^2 d^2},
 \end{equation}
-where $\mathrm{skew} \nabla U$ is the skew-symmetric component of the velocity gradient
-tensor.
+where $\mathrm{skew} \nabla U$ is the skew-symmetric component of the velocity
+gradient tensor.
 
+Auxiliary relations are defined by:
 %fv2 and fv3 from OpenFOAM (no Ashford correction)
 \begin{equation}
     f_{v2} = 1 - \frac{\chi}{1 + \chi f_{v1}}, \, \, \,
     f_{v3} = 1
 \end{equation}
-
 % From OpenFOAM: Cw1_(Cb1_/sqr(kappa_) + (1.0 + Cb2_)/sigmaNut_)
 \begin{equation}
-    c_{w1} = c_{b1}/\kappa^2 + \frac{1 + c_{b2}}{\sigma}
+    c_{w1} = c_{b1}/\kappa^2 + \frac{1 + c_{b2}}{\sigma},
 \end{equation}
-
 \begin{equation}
-    f_w(r) = g \left[ \frac{1 + c_{w3}^6}{g^6 + c_{w3}^6} \right]^{1/6}
+    f_w(r) = g \left[ \frac{1 + c_{w3}^6}{g^6 + c_{w3}^6} \right]^{1/6},
 \end{equation}
-
 \begin{equation}
-    g = r + c_{w2} (r^6 - r)
+    g = r + c_{w2} (r^6 - r),
 \end{equation}
-
+and
 \begin{equation}
-    f = \frac{\tilde{\nu}}{\tilde{S} \kappa^2 d^2}
+    f = \frac{\tilde{\nu}}{\tilde{S} \kappa^2 d^2},
 \end{equation}
-
-$d$ is the distance to the wall.
-
-The SA turbulent viscosity is defined as $\nu_t = f_{v1} \tilde{\nu}$.
-
-Typical coefficients are
+where $d$ is the distance to the wall. The SA turbulent viscosity is calculated
+as $\nu_t = f_{v1} \tilde{\nu}$. Typical coefficients are
 \begin{equation}
     c_{b1} = 0.1355, \, \,
     c_{b2} = 0.622, \, \,
