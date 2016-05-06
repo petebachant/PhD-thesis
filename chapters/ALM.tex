@@ -872,14 +872,25 @@ Figure~\ref{fig:RM2-ALM-perf-curves} shows the performance curves computed for
 the RM2 by the ALM, and those from the tow tank experiments. As with the high
 solidity RVAT, $C_P$ is overpredicted at high $\lambda$. However, $\lambda_0$,
 the tip speed ratio of peak power coefficient, is also shifted to the right.
-This is indicative of inaccurate dynamic stall modeling, which could possibly be
-attributed to one of the models' tuning constants, e.g., the time constant for
-the lagged angle of attack. Limited ad hoc testing revealed that $C_P$ at
-$\lambda_0$ was more accurately predicted with a lagged angle of attack time
-constant roughly double the default value. This could be investigated further by
-looking at the phase of, e.g., maximum $C_P$ peaks compared to the experimental
-values (or possibly those from blade-resolved CFD), but for the present study
-only mean values were considered.
+This is indicative of inaccurate dynamic stall modeling, which could be
+attributed to one of the models' tuning constants, e.g., the time constant
+$T_\alpha$ for the lagged angle of attack $\alpha^\prime$, the change of which
+per time step is given by~\cite{Sheng2008}
+\begin{equation}
+    \Delta \alpha^\prime = \Delta \alpha (s) (1 - \mathrm{e}^{-s/T_\alpha}),
+    \label{eq:alpha-prime}
+\end{equation}
+where $s$ is a nondimensional time, defined as~\cite{Leishman1989}
+\begin{equation}
+    s = \frac{2 | \vec{U}_{\mathrm{rel}} | t}{c}.
+\end{equation}
+
+ Limited ad hoc testing revealed that $C_P$ at $\lambda_0$ was more accurately
+ predicted with $T_\alpha$ roughly double the default value given
+ in~\cite{Sheng2008}. This could be investigated further by looking at the phase
+ of, e.g., maximum $C_P$ peaks compared to the experimental values (or possibly
+ those from blade-resolved CFD), but for the present study only mean values were
+ considered.
 
 \begin{figure}
     \centering
