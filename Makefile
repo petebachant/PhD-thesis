@@ -71,3 +71,7 @@ appendices: appendices/turbine-test-bed.wiki/Operation.md appendices/RM2-tow-tan
 
 	# Clean up automatically generated LaTeX
 	python scripts/fix-appendix-latex.py
+
+
+bib:
+	python getbib.py
