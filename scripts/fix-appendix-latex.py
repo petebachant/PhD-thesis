@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 """Fix automatically generated LaTeX appendices.
 
-* Remove `\tightlist` commands
 * Replace `\includegraphics` calls with URLs and automatically download images
 """
 
