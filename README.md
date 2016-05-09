@@ -31,7 +31,7 @@ to see usage.
 The slides are created with the [Jupyter Notebook](http://jupyter.org) and
 converted to a [reveal.js](https://github.com/hakimel/reveal.js) powered
 slideshow. When committed to the `gh-pages` branch on GitHub, these can be
-[viewed on the web](https://petebachant.github.io/PhD-thesis).
+[viewed on the web](http://petebachant.github.io/PhD-thesis).
 
 
 ## License
