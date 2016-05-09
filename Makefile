@@ -1,9 +1,11 @@
 # Makefile for thesis text, slides, etc.
 
+.PHONY: thesis
 thesis: appendices
 	latexmk -pdf thesis.tex
 
 
+.PHONY: view
 view: thesis
 ifeq ($(shell uname -s),MINGW64_NT-10.0)
 	start "" thesis.pdf
@@ -12,16 +14,19 @@ else
 endif
 
 
+.PHONY: clean
 clean:
 	latexmk -c thesis.tex
 
 
+.PHONY: slides
 slides:
 	jupyter nbconvert presentation.ipynb --to slides --config config/slides_config.py
 
 	cp presentation.slides.html index.html
 
 
+.PHONY: serve
 serve:
 ifeq ($(shell uname -s),Linux)
 	jupyter nbconvert presentation.ipynb --to slides --post serve --config config/slides_config.py
@@ -30,6 +35,7 @@ else
 endif
 
 
+.PHONY: notebook
 notebook:
 ifeq ($(shell uname -s),Linux)
 	jupyter notebook presentation.ipynb
@@ -38,22 +44,27 @@ else
 endif
 
 
+.PHONY: png-figs
 png-figs:
 	python scripts/convfigs.py
 
 
+.PHONY: all-png-figs
 all-png-figs:
 	python scripts/convfigs.py --overwrite
 
 
+.PHONY: excerpt
 excerpt: thesis
 	latexmk -pdf excerpt.tex
 
 
+.PHONY: signatures
 signatures:
 	latexmk -pdf signatures.tex
 
 
+.PHONY: wikis
 wikis:
 	# Update wiki submodules
 	cd appendices/turbine-test-bed.wiki && git pull origin master
@@ -61,6 +72,7 @@ wikis:
 	cd appendices/TurbineDAQ.wiki && git pull origin master
 
 
+.PHONY: appendices
 appendices: appendices/turbine-test-bed.wiki/Operation.md appendices/RM2-tow-tank.wiki/Home.md appendices/TurbineDAQ.wiki/Home.md
 	# Build LaTeX from Markdown
 	pandoc appendices/turbine-test-bed.wiki/Operation.md -o appendices/test-bed-wiki-operation.tex --chapters --listings --wrap=preserve
@@ -73,5 +85,6 @@ appendices: appendices/turbine-test-bed.wiki/Operation.md appendices/RM2-tow-tan
 	python scripts/fix-appendix-latex.py
 
 
+.PHONY: bib
 bib:
 	python getbib.py
