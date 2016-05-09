@@ -13,14 +13,19 @@ individual devices.
 
 Very fast solution times can be obtained with blade element momentum (BEM)
 models, such as the double multiple streamtube (DMST) approached developed by
-Paraschivoiu~\cite{Para1988}. However, their poor performance for high solidity
-turbines \cite{Joo2015}, makes them less attractive, particular for marine
-hydrokinetic applications. Their description of the flow field is very crude as
-well, simply computing the momemtum contained within discretized streamtubes,
-which cannot resolve any of the complicated flow structures shed by the rotor.
+Paraschivoiu~\cite{Para1988}. However, their poor performance for rotors with
+high solidity~\cite{Joo2015} $Nc/R$ (and/or chord-to-radius ratio $c/R$), where
+$N$ is the number of blades, $c$ is the chord length, and $R$ is the maximum
+rotor radius, makes them less attractive, particular for marine hydrokinetic
+applications where rotors of the same size will encounter approximately an order
+of magnitude higher torque compared to wind turbines. Their description of the
+flow field is very crude as well, simply computing the momentum contained within
+discretized streamtubes, which cannot resolve any of the complicated flow
+structures shed by the rotor, limiting their applicability for array analysis.
 
-Blade element based vortex line methods can be computationally
-feasible---ranging from an expense close to BEM up to that of 2-D blade-resolved
+Blade element based potential flow vortex line methods, e.g.,
+\cite{Strickland1981,Murray2011}, can be solved with reasonable computational
+effort---ranging from an expense close to BEM up to that of 2-D blade-resolved
 CFD. The cost is a function of the number of vortex elements, which for free
 vortex methods increases at each time step, slowing down the calculation as it
 marches forward in time. Vortex methods can resolve more flow details than BEM.
@@ -49,7 +54,7 @@ shown in blind tests to be competitive with blade-resolved
 CFD~\cite{Krogstad2013, Pierella2014}. The ALM combined with large eddy
 simulation has become the state-of-the-art for modeling entire wind
 farms~\cite{Archer2013, Churchfield2012, Sorensen2015, Fleming2013,
-    Fleming2014}. Like other blade element techniques, the effectiveness of the ALM
+Fleming2014}. Like other blade element techniques, the effectiveness of the ALM
 for AFTs is in part due to the quasi-steady nature of the flow in the blade
 reference frame, and the relatively rare occurrence of stall.
 
@@ -63,7 +68,10 @@ al.~\cite{Brochier1986}.
 It is therefore proposed that an actuator line model may be the optimal
 combination of high-fidelity flow modeling that includes performance
 predictions, but with reduced computational expense. Here we will develop and
-evaluate its effectiveness for cross-flow turbines.
+evaluate the effectiveness of an ALM for cross-flow turbines inside both RANS
+and LES simulations, implemented as an extension for the OpenFOAM open-source
+CFD library. Note that the content here has been submitted for publication
+as~\cite{Bachant2016-VAT-ALM}.
 
 
 \section{Theory}
@@ -73,7 +81,8 @@ with a Navier--Stokes description of the flow field. The ALM treats turbine
 blades as lines of blade elements, for which 2-D profile lift and drag
 coefficients are given. For each blade element, relative flow velocity and angle
 of attack are computed by adding the vectors of relative blade motion and the
-local fluid velocity. The blade lift and drag forces are calculated as
+local fluid velocity. The blade element lift force, drag force, and pitching
+moment are calculated as
 \begin{equation}
     F_l = \frac{1}{2} \rho A_\mathrm{elem} C_l |\vec{U}_\mathrm{rel}|^2,
 \end{equation}
@@ -81,10 +90,15 @@ and
 \begin{equation}
     F_d = \frac{1}{2} \rho A_\mathrm{elem} C_d |\vec{U}_\mathrm{rel}|^2,
 \end{equation}
-where $\rho$ is the fluid density, $A_\mathrm{elem}$ is the blade element
-planform area (span $\times$ chord), $\vec{U}_\mathrm{rel}$ is the local
-relative velocity, and $C_l$ and $C_d$ are the sectional lift and drag
-coefficients, chosen from a table per the local angle of attack. The forces are
+\begin{equation}
+    M = \frac{1}{2} \rho A_\mathrm{elem} c C_m |\vec{U}_\mathrm{rel}|^2,
+\end{equation}
+respectively, where $\rho$ is the fluid density, $A_\mathrm{elem}$ is the blade
+element planform area (span $\times$ chord), $\vec{U}_\mathrm{rel}$ is the local
+relative velocity projected onto the plane of the element profile cross-section
+(i.e., the spanwise component is neglected), and $C_l$, $C_d$, and $C_m$ are the
+sectional lift, drag, and pitching moment coefficients, respectively, which are
+linearly interpolated from a table per the local angle of attack. The forces are
 then projected onto the rotor coordinate system to calculate torque, overall
 drag, etc. Forces from the turbine shaft and blade support struts are computed
 in a similar way. After the force on the actuator lines from the flow is
@@ -95,6 +109,10 @@ momentum source (per unit density, assuming incompressible flow):
     \nabla^2 \vec{u} + F_\mathrm{turbine}.
 \end{equation}
 
+\nomenclature{$F_l$}{Blade element lift force.}
+\nomenclature{$F_d$}{Blade element drag force.}
+\nomenclature{$M$}{Blade element pitching moment.}
+
 
 \section{Blade element discretization}
 
@@ -103,6 +121,8 @@ collections of actuator line elements (ALEs). The position of each ALE is a
 point in space indicating its quarter-chord location. The element is further
 defined by its chord direction vector, chord length, span direction vector, span
 length, and velocity vector.
+
+\nomenclature{ALE}{Actuator line element.}
 
 An actuator line is created from defined geometry points, between which ALE
 parameters are interpolated linearly. This way, an actuator line can be defined
@@ -118,12 +138,15 @@ points.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{alm-geometry}
-    
-    \caption{Actuator line geometry. Filled circles indicate geometry points
-        whereas squares indicate actuator line element locations.}
-    
+
+    \caption{Actuator line geometry. Filled circles indicate points where
+    geometry is defined whereas squares indicate actuator line element
+    quarter-chord locations. Chord mount offset is defined as the distance from
+    an element's leading edge to each geometry point in chord lengths, which was
+    0.5 for both rotors modeled in this study.}
+
     \label{fig:AL-geom}
 \end{figure}
 
@@ -138,17 +161,20 @@ more information about the flow. Sorensen and Shen used an actuator line
 element's position to determine the inflow velocity for an axial-flow turbine
 \cite{Sorensen2002}. Similarly, Shamsoddin and Porte-Agel use the velocity at a
 blade element's location in their actuator line simulation of a vertical-axis
-turbine using LES \cite{Shamsoddin2014}. NREL's SOWFA ALM for OpenFOAM also uses
-the velocity at the actuator line element location for computing inflow velocity
-and local angle of attack with no corrections \cite{Churchfield2013}.
+turbine using LES \cite{Shamsoddin2014}. The US National Renewable Energy Lab
+(NREL) SOWFA ALM for OpenFOAM also uses the velocity at the actuator line
+element location for computing inflow velocity and local angle of attack with no
+corrections \cite{Churchfield2013}.
+
+\nomenclature{NREL}{National Renewable Energy Laboratory.}
 
 Schito and Zasso developed an effective velocity model (EVM) for computing
 actuator forces in Navier--Stokes simulations \cite{Schito2014}. Their EVM
 proposes that inflow velocity should be sampled along a line perpendicular to
-the mean relative flow direction. They ultimately chose a the line to be 1.5
-chord lengths upstream of the actuator point (i.e. quarter-chord location). A
-sampling line was chosen to be 5 times the local mesh cell length. Finally, an
-angle of attack correction is proposed
+the mean relative flow direction. They ultimately determined that the sampling
+line should be 1.5 chord lengths upstream of the actuator point (i.e.
+quarter-chord location). A sampling line was chosen to be 5 times the local mesh
+cell length. Finally, an angle of attack correction was proposed
 \begin{equation}
     \Delta \alpha = \frac{c}{M} (1.2553 - 0.0552 C_d) C_l,
     \label{eq:EVM-dalpha}
@@ -157,6 +183,8 @@ where $c$ is the chord length, $M$ is the mesh size, and $C_l$ and $C_d$ are the
 lift and drag coefficients, respectively. Note that the constants in
 Equation~\ref{eq:EVM-dalpha} were determined from a calibration with 2-D
 blade-resolved CFD for a NACA 0012 foil and are not assumed to be universal.
+
+\nomenclature{$\alpha$}{Blade element angle of attack.}
 
 The EVM, despite showing robustness for its chosen validation case,
 unfortunately involves determination of two unknown tuning parameters. To avoid
@@ -174,41 +202,49 @@ order of one cell length per time step.
 
 Static input foil coefficient data were taken from Sheldahl and
 Klimas~\cite{Sheldahl1981}---a popular database developed for CFTs, which
-contains values over a wide range of Reynolds numbers. NACA 0021 coefficients
-were used for both turbines, despite the fact that the UNH-RVAT is constructed
-from NACA 0020 foils, as a NACA 0020 dataset is not available---it is assumed
-the small difference in foil thickness is negligible. Since pitching moment data
-were only available at limited Reynolds numbers, two datasets were used: The
-lowest for $Re_c \leq 3.6 \times 10^5$ and highest $Re_c \geq 6.8 \times 10^5$.
-For each actuator line element, blade chord Reynolds number is computed based on
-the sampled inflow velocity, and the static coefficients are then interpolated
-linearly within the database.
+contains values over a wide range of Reynolds numbers. The Sheldahl and Klimas
+dataset has some limitations, namely that data for some foil and/or Reynolds
+numbers were ``synthesized'' numerically from other measurements. Despite its
+flaws, this dataset is the likely most comprehensive available with respect to
+variety of profiles and ranges of Reynolds numbers. Surprisingly, considering
+the maturity and popularity of NACA foils, data remains scarce, especially for
+$Re_c \sim 10^5$.
+
+NACA 0021 coefficients were used for both turbines, despite the fact that the
+UNH-RVAT is constructed from NACA 0020 foils, as a NACA 0020 dataset is not
+available---it is assumed the small difference in foil thickness is negligible.
+Since pitching moment data were only available at limited Reynolds numbers, two
+datasets were used: The lowest for $Re_c \leq 3.6 \times 10^5$ and highest $Re_c
+\geq 6.8 \times 10^5$. For each actuator line element, blade chord Reynolds
+number is computed based on the sampled inflow velocity, and the static
+coefficients are then interpolated linearly within the database.
 
 
 \section{Force projection}
 
 After the force on the ALE from the flow is calculated, it is then projected
 back onto the flow field as a source term in the momentum equation. To avoid
-instability due to sharp gradients, the source term is tapered from its maximum
+instability due to steep gradients, the source term is tapered from its maximum
 value away from the element location by means of a spherical Gaussian function.
 The width of this function $\eta$ is controlled by a single parameter
 $\epsilon$, which is then multiplied by the actuator line element force and
 imparted on a cell with distance $| \vec{r} |$ from the actuator line element
 quarter chord location:
 \begin{equation}
-    \eta = \frac{1}{\epsilon^3 \pi^{3/2}} \exp 
+    \eta = \frac{1}{\epsilon^3 \pi^{3/2}} \exp
     \left[ - \left( \frac{| \vec{r} |}{\epsilon} \right)^2 \right].
     \label{eq:projection}
 \end{equation}
 
+\nomenclature{$\epsilon$}{Actuator line element force Gaussian smearing width.}
+
 Troldborg~\cite{Troldborg2008} proposed that the Gaussian width should be set to
 twice the local cell length $\Delta x$ in order to maintain numerical stability.
-
-Jha et al.~\cite{Jha2014} provides guidelines for choosing a projection
-width.
-
 Schito and Zasso \cite{Schito2014} found that a projection $\epsilon$ equal to
-the local mesh length was optimal.
+the local mesh length was optimal. Jha et al.~\cite{Jha2014} investigated the
+ideal projection width for HAWT blades, recommending an equivalent elliptic
+planform be constructed and used to calculate a spanwise $\epsilon$
+distribution.
 
 Martinez-Tossas and Meneveau \cite{Martinez-Tossas2015b} used a 2-D potential
 flow analysis to determine that the optimal projection width for a lifting
@@ -237,10 +273,16 @@ the element as
 \begin{equation}
     \Delta x \approx \sqrt[3]{V_\mathrm{cell}},
 \end{equation}
-where $V_\mathrm{cell}$ is the cell volume. To account for the possibility of non-unity aspect ratio cells, an additional factor $C_\mathrm{mesh}$, 2.0 by default, was introduced, giving
+where $V_\mathrm{cell}$ is the cell volume. To account for the possibility of
+non-unity aspect ratio cells, an additional factor $C_\mathrm{mesh}$ was
+introduced, giving
 \begin{equation}
     \epsilon_{\mathrm{mesh}} = 2C_\mathrm{mesh} \Delta x.
 \end{equation}
+$C_{\mathrm{mesh}}$ was set to 2.0 for the simulations presented
+here---determined by trial-and-error to provide stability on the finest grids.
+However, in the ALM code $C_{\mathrm{mesh}}$ is selectable at run time for each
+profile used.
 
 
 \section{Unsteady effects}
@@ -286,12 +328,12 @@ following principles:
 \begin{itemize}
     \item Dynamic conditions cause a time lag in effective angle of attack and
     lift force.
-    
+
     \item Separation is determined by the Kirchoff flow approximation, which is
     also used to parameterize the normal force coefficient table based on the
     trailing edge separation point. This separation point also encounters a time
     lag.
-    
+
     \item The separation initiates a vortex shedding cycle that causes an
     overshoot and subsequent undershoot in lift before returning to an attached
     flow condition.
@@ -328,18 +370,18 @@ element coordinate system, the normal and chordwise (pointing from trailing to
 leading edge, which is opposite the $x$-direction used by Strickland \emph{et
     al.}) coefficients due to added mass are
 \begin{equation}
-    C_{n_\mathrm{AM}} = -\frac{\pi c \dot{U_n}}{8 | U_\mathrm{rel} |^2}, 
+    C_{n_\mathrm{AM}} = -\frac{\pi c \dot{U_n}}{8 | U_\mathrm{rel} |^2},
 \end{equation}
 and
 \begin{equation}
-    C_{c_\mathrm{AM}} = \frac{\pi c \dot{\alpha} U_n }{8 | U_\mathrm{rel} |^2}, 
+    C_{c_\mathrm{AM}} = \frac{\pi c \dot{\alpha} U_n }{8 | U_\mathrm{rel} |^2},
 \end{equation}
 respectively, where $U_n$ is the normal component of the relative velocity, and
 dotted variables indicate time derivatives, which were calculated using a simple
 first order backward finite difference. Similarly, the quarter-chord moment
 coefficient due to added mass was calculated as
 \begin{equation}
-    C_{m_\mathrm{AM}} = -\frac{C_{n_\mathrm{AM}}}{4} 
+    C_{m_\mathrm{AM}} = -\frac{C_{n_\mathrm{AM}}}{4}
         - \frac{U_n U_c}{8 | U_\mathrm{rel} |^2},
 \end{equation}
 where $U_c$ is the chordwise component of relative velocity. Note that the
@@ -368,7 +410,7 @@ angle of attack distributions due to their circular paths---producing so-called
 flow curvature effects~\cite{Migliore1980}. This makes it difficult to define a
 single angle of attack for use in the static coefficient lookup tables.
 Furthermore, this effect is more pronounced for high solidity ($c/R$) turbines.
-Two different flow curvature corrections were considered: one by Goude
+Two different flow curvature corrections were considered: one derived in Goude
 \cite{Goude2012} and one by Mandal and Burton \cite{Mandal1994}.
 
 The Goude correction is derived by considering a flat plat moving along a
@@ -422,7 +464,7 @@ An incidence correction factor
 \end{equation}
 is introduced and added to the uncorrected angle of attack. Like the Goude
 model, $\alpha_c$ is positive on the upstream half of the turbine rotation and
-negative on the downstream half. 
+negative on the downstream half.
 
 It was determined that the Goude model performed best with respect to matching
 the near-wake characteristics measured in the experiments, while the performance
@@ -437,7 +479,7 @@ fluid, but must either form closed loops or extend to boundaries. Consequently
 the lift distribution due to the bound vortex from foils of finite span must
 drop to zero at the tips.
 
-Glauert\cite{Glauert1935} used Prandtl's lifting line theory \cite{Prandtl1927}
+Glauert~\cite{Glauert1935} used Prandtl's lifting line theory \cite{Prandtl1927}
 to develop a tip loss correction factor $F$ to be applied to the local lift of
 an axial-flow rotor blade element:
 \begin{equation}
@@ -505,7 +547,7 @@ lift coefficient distribution
     F = C_l(\theta)/C_l(\theta)_{\max},
 \end{equation}
 which will be in the range $[0, 1]$, similar to the Glauert corrections, but
-does not contain rotor parameters. 
+does not contain rotor parameters.
 
 The correction functions for the standard Glauert and lifting line methods are
 plotted for comparison in Figure~\ref{fig:end-effects}. Function values were
@@ -517,33 +559,35 @@ cross-flow rotor parameters.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.75\textwidth]{end-effects_rvat-20-deg}
-    
+
     \caption{End effect correction function values for the Glauert and lifting
         line methods using UNH-RVAT parameters at 20 degrees tip angle of attack and
         $\lambda=1.9$.}
-    
+
     \label{fig:end-effects}
 \end{figure}
 
 
 \section{Software implementation}
 
-The USA National Renewable Energy Laboratory (NREL) has developed and released
-an actuator line modeling library, SOFWA~\cite{Churchfield2014b}, for simulating
-horizontal-axis wind turbine arrays using the OpenFOAM finite volume CFD
-library. OpenFOAM is free, open-source, and widely used throughout industry and
-academia. Though SOWFA is also open-source, its procedural style would have
-required significant effort and duplicate code to adapt for cross-flow turbines.
-Thus, a new and more general ALM library was developed from the ground up that
-could model both cross- and axial-flow turbines, as well as standalone actuator
-lines. The actuator line model developed here, dubbed \textit{turbinesFoam}
-\cite{Bachant2016-turbinesFoam}, was also written as an extension library for
-OpenFOAM, and was developed freely and openly from its inception in order to
+NREL has developed and released an actuator line modeling library,
+SOWFA~\cite{Churchfield2014b}, for simulating horizontal-axis wind turbine
+arrays using the OpenFOAM finite volume CFD library. OpenFOAM is free,
+open-source, widely used throughout industry and academia, and has grown a very
+active support community around itself \cite{Bachant2015-CFD-online}. Though
+SOWFA is also open-source, and has the ability to be coupled to NREL's FAST HAWT
+BEM code, its mostly procedural style would have required significant effort and
+duplicate code to adapt for cross-flow turbines. Thus, a new and more general
+ALM library was developed from the ground up that could model both cross- and
+axial-flow turbines, as well as standalone actuator lines. The actuator line
+model developed here, dubbed turbinesFoam
+\cite{Bachant2016-turbinesFoam-v0.0.7}, was also written as an extension library
+for OpenFOAM, and was developed freely and openly from its inception in order to
 increase community engagement and research efficiency.
 
-\textit{turbinesFoam} was written in OpenFOAM's style, using OpenFOAM's
+turbinesFoam was written in OpenFOAM's style, using OpenFOAM's
 \texttt{fvOptions} framework for adding source terms to equations at
 runtime---see Listing~\ref{lst:fvOptions} for an example implementation within
 the Navier--Stokes' momentum equation. Using the \texttt{fvOptions} framework
@@ -553,7 +597,7 @@ simulating the free surface in MHK installations), and even with heat transfer.
 This is in contrast to SOWFA's implementation, which requires custom flow
 solvers to be developed and maintained.
 
-\begin{lstlisting}[float,caption=Adding source terms to the momentum equation in OpenFOAM.,label=lst:fvOptions]
+\begin{lstlisting}[float,language=C++,caption=Adding source terms to the momentum equation in OpenFOAM.,label=lst:fvOptions]
     tmp<fvVectorMatrix> UEqn
     (
         fvm::ddt(U)
@@ -564,21 +608,21 @@ solvers to be developed and maintained.
     );
 \end{lstlisting}
 
-OpenFOAM and \textit{turbinesFoam} are written in the C++ programming language,
-which follows the object oriented programming paradigm. This characteristic
-helped modularize the ALM code for increased readability and reuse. In
-\textit{turbinesFoam}, a turbine is a software object that is composed of
-actuator line objects, which themselves are composed of actuator line element
-objects. Structuring the code this way allows isolation and reuse of the
-functionality of individual components. For example, the actuator line object
-was written such that is could be used outside the turbine context to ensure is
-produces the correct forcing, without adding the complexity of rotation, other
-actuator lines, etc. that would be present in a turbine rotor. The very same
-actuator line objects can be used in both axial-flow and cross-flow rotors,
-without having to copy code from one to the other. In contrast, the actuator
-line model in \textit{SOWFA} uses a single software object to represent an
-entire array of turbines, which necessitates iterating through many nested lists
-down to the element level, which can be confusing to read.
+OpenFOAM and turbinesFoam are written in the C++ programming language, which
+follows the object oriented programming paradigm. This characteristic helped
+modularize the ALM code for increased readability and reuse. In turbinesFoam, a
+turbine is a software object that is composed of actuator line objects, which
+themselves are composed of actuator line element objects. Structuring the code
+this way allows isolation and reuse of the functionality of individual
+components. For example, the actuator line object was written such that is could
+be used outside the turbine context to ensure it produces the correct forcing,
+without adding the complexity of rotation, other actuator lines, etc. that would
+be present in a turbine rotor. The very same actuator line objects can be used
+in both axial-flow and cross-flow rotors, without having to copy code from one
+to the other. In contrast, the actuator line model in SOWFA uses a single
+software object to represent an entire array of turbines, which necessitates
+iterating through many nested lists down to the element level, which can be
+confusing to read.
 
 OpenFOAM's data structures are designed to be inherently parallel via message
 passing interface (MPI). By working within the library infrastructure the ALM
@@ -588,35 +632,36 @@ performance computing clusters for large flow simulations.
 Since all applications are run from a command line and all input data is text
 based, automation and integration with other tools is relatively
 straightforward. Future enhancements could include coupling with software for
-generating static foil data, e.g., XFOIL or other OpenFOAM solvers, turbine
-controller models, structural analysis codes, and optimization tools, e.g.,
-SNL's DAKOTA \cite{AdamsBaumanBohnhoffEtAl2009}, for both individual turbines
-and array layouts.
+generating static foil data, e.g., XFOIL~\cite{Drela1989} or other OpenFOAM
+solvers, turbine controller models, structural analysis codes, and optimization
+tools, e.g., SNL's DAKOTA \cite{AdamsBaumanBohnhoffEtAl2009} or
+OpenMDAO~\cite{Gray2010}, for both individual turbines and array layouts.
 
 
 \section{Results}
 
 Both the high solidity UNH-RVAT and medium-low solidity RM2 turbines were
-simulated using a $k$--$\epsilon$ Reynolds-averaged Navier--Stokes (RANS)
-turbulence model. These rotors provide diverse parameters, which helped evaluate
-the robustness of the ALM. The simulations were performed inside a domain
-similar in size to that used in Chapter~\ref{chap:CFD} to mimic the tow tank
-(3.66 m wide, 2.44 m tall, 1.52 m upstream and 2.16 m downstream), with similar
-boundary conditions (1 m/s inflow, no-slip walls and bottom, and a rigid slip
-for the top). Simulations were run for a total of 6 seconds, with the latter
-half used to calculate performance and wake statistics. Pressure--velocity
-coupling for the momentum equation was achieved using the PISO (pressure
-implicit splitting of operators) method. A slice of the mesh in the $x$--$y$
-plane is shown in Figure~\ref{fig:ALM-mesh}.
+modeled using the ALM inside a Reynolds-averaged Navier--Stokes (RANS)
+simulation, closed with the standard $k$--$\epsilon$ turbulence model. These
+rotors provide diverse parameters, which helped evaluate the robustness of the
+ALM. The simulations were performed inside a domain similar in size to that used
+in Chapter~\ref{chap:CFD} to mimic the tow tank (3.66 m wide, 2.44 m tall, 1.52
+m upstream and 2.16 m downstream), with similar boundary conditions (1 m/s
+inflow, no-slip walls and bottom, and a rigid slip for the top). Simulations
+were run for a total of 6 seconds, with the latter half used to calculate
+performance and wake statistics. Pressure--velocity coupling for the momentum
+equation was achieved using the PISO (pressure implicit splitting of operators)
+method. A slice of the mesh in the $x$--$y$ plane is shown in
+Figure~\ref{fig:ALM-mesh}.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.8\textwidth]{alm-mesh}
-    
+
     \caption{$x$--$y$ planar slice of the mesh used for the ALM RANS
         simulations.}
-    
+
     \label{fig:ALM-mesh}
 \end{figure}
 
@@ -627,12 +672,15 @@ difference was used for advancing the simulation in time, and second order
 linear schemes were used for the majority of the terms' spatial discretizations.
 The only major difference between the two simulation configurations was that the
 end effects model was deactivated for the RM2, since it reduced $C_P$ far below
-the experimental measurements. This modification is at least consistent with the
-RM2 blades' higher aspect ratio and tapered planform. The number of elements per
-actuator line was set to be approximately equal to the total span divided by the
-Gaussian force projection width $\epsilon$. Case files for the UNH-RVAT and RM2
-ALM simulations are available from XXX and XXX, respectively. \todo[inline]{Cite
-    ALM case files.}
+the experimental measurements. This modification is consistent with the RM2
+blades' higher aspect ratio (15 versus the UNH-RVAT's 7.1) and tapered planform,
+though will need to be investigated further. The number of elements per actuator
+line was set to be approximately equal to the total span divided by the Gaussian
+force projection width $\epsilon$. Case files for running all the simulations
+presented here with OpenFOAM 3.0.x are available from
+\cite{Bachant2016-UNH-RVAT-turbinesFoam-v1.0.0,
+Bachant2016-RM2-turbinesFoam-v1.0.0,
+Bachant2016-UNH-RVAT-turbinesFoam-v1.0.0-LES}.
 
 The same foil coefficient data were used for all simulations---those for a NACA
 0021 as reported by Sheldahl and Klimas \cite{Sheldahl1981}. Each rotor's shaft
@@ -641,12 +689,13 @@ end element drag coefficients were set to 0.05, to approximate the effects of
 separation in the corners of the blade--strut connections.
 
 Since the ALM is intended to be an engineering tool when coupled with RANS, it
-was assumed that information about tip speed ratio due to control details would
-not be known a priori, and was excluded, unlike the 3-D blade-resolved cases in
-Chapter~\ref{chap:CFD}. Note that a systematic investigation of the effects of
-sinusoidal $\lambda$ was not undertaken, but for the UNH-RVAT a one to two
-percentage point increase in $C_P$ was observed when running with similar
-parameters as the blade-resolved simulation.
+was assumed that information about tip speed ratio due to control details---that
+is, sinusoidally oscillating $\lambda$---would not be known a priori, and was
+excluded, unlike the 3-D blade-resolved cases in Chapter~\ref{chap:CFD}. Note
+that a systematic investigation of the effects of sinusoidal $\lambda$ was not
+undertaken, but for the UNH-RVAT a one to two percentage point increase in $C_P$
+was observed when running with similar parameters as the blade-resolved
+simulation.
 
 Compared to 3-D blade-resolved RANS, the ALM can solve a standalone turbine case
 on the order of CPU minutes per second of simulated time versus 1,000 CPU hours
@@ -677,23 +726,23 @@ the time step was adjusted to $\Delta t = \Delta t_0 \lambda_0 / \lambda$.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM_verification}
-    
+
     \caption{Temporal (left) and spatial (right) grid resolution sensitivity
         results for the UNH-RVAT ALM RANS model.}
-    
+
     \label{fig:RVAT-ALM-verification}
 \end{figure}
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RM2-ALM_verification}
-    
+
     \caption{Temporal (left) and spatial (right) grid resolution sensitivity
         results for the RM2 ALM RANS model.}
-    
+
     \label{fig:RM2-ALM-verification}
 \end{figure}
 
@@ -716,12 +765,12 @@ in Figure 6.70 of \cite{Para2002}.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM_perf-curves}
-    
+
     \caption{Power and drag coefficient curves computed for the UNH-RVAT using
         the actuator line model with RANS.}
-    
+
     \label{fig:RVAT-ALM-perf-curves}
 \end{figure}
 
@@ -739,10 +788,10 @@ location of blade loading.
     \centering
 
     \includegraphics[width=0.9\textwidth]{RVAT-ALM_meancontquiv}
-    
-    \caption{Mean velocity field at $x/D=1$ with the LB-SGC model, with and
-        without the Goude flow curvature correction.}
-    
+
+    \caption{UNH-RVAT mean velocity field at $x/D=1$ computed with the ALM
+        coupled with a $k$--$\epsilon$ RANS model.}
+
     \label{fig:RVAT-ALM-meancontquiv}
 \end{figure}
 
@@ -758,10 +807,10 @@ vortices or turbulence.
     \centering
 
     \includegraphics[width=0.85\textwidth]{RVAT-ALM_kcont}
-    
-    \caption{Turbulence kinetic energy contours at $x/D=1$ predicted by the
-        ALM.}
-    
+
+    \caption{UNH-RVAT turbulence kinetic energy contours at $x/D=1$ predicted by
+        the ALM inside a $k$--$\epsilon$ RANS model.}
+
     \label{fig:RVAT-ALM-kcont}
 \end{figure}
 
@@ -774,40 +823,45 @@ the rotor.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM_wake-profiles}
-    
+
     \caption{Mean streamwise velocity (left) and turbulence kinetic energy
         (right) profiles at $z/H=0$ for the UNH-RVAT ALM.}
-    
+
     \label{fig:RVAT-ALM-profiles}
 \end{figure}
 
 Weighted averages for the momentum recovery terms were computed identically as
 they were in Chapter~\ref{chap:CFD}, and are plotted in
-Figure~\ref{fig:RVAT-ALM-recovery} along with the 3-D blade-resolved RANS
-results and experiments. The most glaring discrepancy is the ALM's prediction of
-positive cross-stream advection, which is caused by the lack of detail in the
-tip vortex shedding. The total for vertical advection, however, is close to that
-predicted by the 3-D blade-resolved Spalart--Allmaras model. Levels of turbulent
-transport due to eddy viscosity and deceleration due to the adverse pressure
-gradient are between those predicted by the 3-D blade-resolved $k$--$\omega$ SST
-and SA models. Overall, however, one might expect the total wake recovery rate
-to be comparable between all models, which suggests the ALM would be an
-effective tool for assessing downstream spacing of subsequent turbines, though
-any blade--vortex interaction of very tightly spaced rotors would likely not be
-captured.
+Figure~\ref{fig:RVAT-ALM-recovery} along with the actuator disk (AD) results
+from Chapter~\ref{chap:RVAT-baseline}, 3-D blade-resolved RANS results from
+Chapter~\ref{chap:CFD} and experiments. The most glaring discrepancy is the
+ALM's prediction of positive cross-stream advection, which is caused by the lack
+of detail in the tip vortex shedding. The total for vertical advection, however,
+is close to that predicted by the 3-D blade-resolved Spalart--Allmaras model.
+Levels of turbulent transport due to eddy viscosity and deceleration due to the
+adverse pressure gradient are between those predicted by the 3-D blade-resolved
+$k$--$\omega$ SST and SA models. Overall, however, one might expect the total
+wake recovery rate to be comparable between all models except the actuator disk,
+which induces negative vertical advection, very little turbulent transport, and
+has a positive pressure gradient contribution. These results suggests the ALM
+would be an effective tool---much better than an actuator disk---for assessing
+downstream spacing of subsequent CFTs, though blade--vortex interaction for very
+tightly spaced rotors may not be captured, at least on relatively coarse meshes
+as used here.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM_recovery-bar-chart}
 
-    \caption{Weighted average momentum recovery terms for the UNH-RVAT actuator
-        line model with a $k$--$\epsilon$ RANS closure, the two 3-D blade resolved
-        RANS models described in Chapter~\ref{chap:CFD}, and the experiments in
-        Chapter~\ref{chap:RVAT-baseline}}.
-    
+    \caption{Weighted average momentum recovery terms for the actuator disk (AD)
+    simulation from Chapter~\ref{chap:RVAT-baseline}, UNH-RVAT actuator line
+    model with a $k$--$\epsilon$ RANS closure, the two 3-D blade resolved RANS
+    models described in Chapter~\ref{chap:CFD}, and the experiments in
+    Chapter~\ref{chap:RVAT-baseline}.}
+
     \label{fig:RVAT-ALM-recovery}
 \end{figure}
 
@@ -818,20 +872,34 @@ Figure~\ref{fig:RM2-ALM-perf-curves} shows the performance curves computed for
 the RM2 by the ALM, and those from the tow tank experiments. As with the high
 solidity RVAT, $C_P$ is overpredicted at high $\lambda$. However, $\lambda_0$,
 the tip speed ratio of peak power coefficient, is also shifted to the right.
-This is indicative of inaccurate dynamic stall modeling, which could possibly be
-attributed to one of the models' tuning constants, e.g., the time constant for
-the lagged angle of attack. Limited ad hoc testing revealed that $C_P$ at
-$\lambda_0$ was more accurately predicted with a lagged angle of attack time
-constant roughly double the default value.
+This is indicative of inaccurate dynamic stall modeling, which could be
+attributed to one of the models' tuning constants, e.g., the time constant
+$T_\alpha$ for the lagged angle of attack $\alpha^\prime$, the change of which
+per time step is given by~\cite{Sheng2008}
+\begin{equation}
+    \Delta \alpha^\prime = \Delta \alpha (s) (1 - \mathrm{e}^{-s/T_\alpha}),
+    \label{eq:alpha-prime}
+\end{equation}
+where $s$ is a nondimensional time, defined as~\cite{Leishman1989}
+\begin{equation}
+    s = \frac{2 | \vec{U}_{\mathrm{rel}} | t}{c}.
+\end{equation}
+
+Limited ad hoc testing revealed that the mean $C_P$ at $\lambda_0$ more closely
+matched experimental measurements with $T_\alpha$ roughly double the default
+value given in~\cite{Sheng2008}. This could be investigated further by looking
+at the phase of, e.g., maximum $C_P$ peaks compared to the experimental values
+(or possibly those from blade-resolved CFD), but for the present study only mean
+values were considered.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RM2-ALM_perf-curves}
-    
+
     \caption{Power and drag coefficient curves computed for the RM2 using the
         ALM.}
-    
+
     \label{fig:RM2-ALM-perf-curves}
 \end{figure}
 
@@ -844,12 +912,12 @@ is an important qualitative feature of both CFT near-wakes.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{RM2-ALM_meancontquiv}
-    
+
     \caption{Mean velocity field at $x/D=0.93$ for the RM2 predicted by the
         ALM.}
-    
+
     \label{fig:RM2-ALM-meancontquiv}
 \end{figure}
 
@@ -862,12 +930,12 @@ vortex shedding was not captured by the ALM.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{RM2-ALM_kcont}
-    
+
     \caption{Turbulence kinetic energy contours at $x/D=0.93$ behind the RM2
         predicted by the ALM.}
-    
+
     \label{fig:RM2-ALM-kcont}
 \end{figure}
 
@@ -881,12 +949,13 @@ even in the experimental measurements.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RM2-ALM_wake-profiles}
-    
+
     \caption{Mean streamwise velocity (left) and turbulence kinetic energy
-        (right) profiles at $x/D=0.93$ and $z/H=0$ for the RM2 ALM.}
-    
+    (right) profiles at $x/D=0.93$ and $z/H=0$ computed for the RM2 using the
+    ALM inside a $k$--$\epsilon$ RANS model.}
+
     \label{fig:RM2-ALM-profiles}
 \end{figure}
 
@@ -895,17 +964,21 @@ computing weighted sums of each term across the entire domain in the $y$--$z$
 directions. Similar results as for the UNH-RVAT were obtained, i.e.,
 cross-stream advection was predicted to be positive where it should have been
 negative, vertical advection was predicted reasonably well, and turbulent
-transport due to the eddy viscosity was also relatively large.
+transport due to the eddy viscosity was also relatively large. The ratio of wake
+transport compared with the UNH-RVAT RANS case (approximately 60\% to 70\% lower
+for the RM2) matches well with that computed from the experiments, which shows
+the ALM may successfully predict larger optimal array spacing for the RM2 versus
+UNH-RVAT.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RM2-ALM_recovery-bar-chart}
-    
+
     \caption{Weighted average momentum recovery terms at $x/D=0.93$ for the RM2
-        actuator line model with a $k$--$\epsilon$ RANS closure and the experiments
-        described in Chapter~\ref{chap:RM2}}.
-    
+    actuator line model with a $k$--$\epsilon$ RANS closure and the experiments
+    described in Chapter~\ref{chap:RM2}.}
+
     \label{fig:RM2-ALM-recovery}
 \end{figure}
 
@@ -913,14 +986,17 @@ transport due to the eddy viscosity was also relatively large.
 \subsection{UNH-RVAT LES}
 
 The state-of-the-art in high fidelity turbine array modeling uses the actuator
-line method inside large eddy simulation, which allows more of the turbulent
-energy spectrum to be directly resolved, only requiring the dynamics of the
-smallest scales to be computed by the so-called subgrid-scale (SGS) model. Since
-the ALM LES approach has only been reported in the literature for a very low
-Reynolds number 2-D CFT \cite{Shamsoddin2014}, and CFTs may provide unique
-opportunities to array optimization, which could be explored with LES, it was of
-interest to determine how well the ALM coupled with LES might predict wake
-dynamics of a higher $Re$ 3-D CFT rotor.
+line method coupled with large eddy simulation (LES), which allows more of the
+turbulent energy spectrum to be directly resolved, only requiring the dynamics
+of the smallest scales---where dissipation occurs---to be computed by the
+so-called subgrid-scale (SGS) model. Since the ALM LES approach has only been
+reported in the literature for a very low Reynolds number 2-D CFT
+\cite{Shamsoddin2014}, and CFTs may provide unique opportunities to array
+optimization, which could be explored with LES, it was of interest to determine
+how well the ALM coupled with LES might predict wake dynamics of a higher $Re$
+3-D CFT rotor.
+
+\nomenclature{SGS}{Subgrid-scale.}
 
 Thus, the UNH-RVAT baseline case was simulated using the Smagorinsky LES
 turbulence model \cite{Smagorinsky1963}, which was the first of its kind, and
@@ -955,12 +1031,12 @@ isosurfaces of vorticity produced by the actuator lines.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=\textwidth]{RVAT-ALM-LES_vorticity-snapshot}
 
     \caption{Snapshot of vorticity isosurfaces (colored by their streamwise
         component) at $t=6$ s for the UNH-RVAT LES case.}
-    
+
     \label{RVAT-ALM-LES-vorticity}
 \end{figure}
 
@@ -972,16 +1048,16 @@ of the rotor, respectively.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.9\textwidth]{RVAT-ALM-LES_meancontquiv}
-    
+
     \caption{Mean velocity field in the UNH-RVAT near-wake at $x/D=1$ computed
         with the Smagorinsky LES model.}
-    
+
     \label{fig:RVAT-ALM-LES-meancontquiv}
 \end{figure}
 
-Contours turbulence kinetic energy sampled at $x/D=1$ from the large eddy
+Contours of turbulence kinetic energy sampled at $x/D=1$ from the large eddy
 simulation are plotted in Figure~\ref{fig:RVAT-ALM-LES-kcont}. Compared with
 RANS, LES is more able to predict the turbulence generated by the blade tip
 vortex shedding and dynamic stall effects, though the overall level of
@@ -995,12 +1071,12 @@ where the blade bound and tip vortices are still relatively coherent at $x/D=1$.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM-LES_kcont}
-    
+
     \caption{Turbulence kinetic energy in the UNH-RVAT near-wake at $x/D=1$
         computed with the Smagorinsky LES model.}
-    
+
     \label{fig:RVAT-ALM-LES-kcont}
 \end{figure}
 
@@ -1016,12 +1092,12 @@ its effect on the stability of vortex structures.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM-LES_wake-profiles}
-    
+
     \caption{Mean velocity profiles in the UNH-RVAT near-wake at $x/D=1$ and
         $z/H=0$ computed with the Smagorinsky LES model.}
-    
+
     \label{fig:RVAT-ALM-LES-profiles}
 \end{figure}
 
@@ -1031,7 +1107,7 @@ term, which for the LES was computed from the $x$-components of the divergence
 of the resolved and SGS Reynolds stress tensors:
 \begin{equation}
     \text{Turb. trans.} = - \left( \frac{\partial}{\partial x_j}
-    \overline{u^\prime_x u^\prime_j} 
+    \overline{u^\prime_x u^\prime_j}
     + \frac{\partial}{\partial x_j} R_{xj}
     \right),
 \end{equation}
@@ -1044,21 +1120,23 @@ cross-stream advection contributions are negative, as they are in the experiment
 and blade-resolved CFD models. The vertical advection term is positive as
 expected, though smaller than in other cases. Interestingly, the turbulent
 transport is negative in the LES, meaning the combined effects of the resolved
-and SGS stressed are transferring momentum out of the wake. These discrepancies
-highlight the difficulty of predicting the near-wake dynamics, the importance of
-the SGS model in LES, and the need for data further downstream to test and
-refine predictions for wake evolution. For example, setting the Smagorinsky
-coefficient higher may induce vortex breakdown earlier, which would raise the
-turbulence levels significantly.
+and SGS stressed are transferring momentum out of the wake. The low turbulent
+transport appears to be partially balanced by higher levels of viscous
+diffusion---about an order of magnitude larger than the 3-D blade-resolved RANS
+models and experiments. These discrepancies highlight the difficulty of
+predicting the near-wake dynamics, the importance of the SGS model in LES, and
+the need for data further downstream to test and refine predictions for wake
+evolution. For example, setting the Smagorinsky coefficient higher may induce
+vortex breakdown earlier, which would raise the turbulence levels significantly.
 
 \begin{figure}
     \centering
-    
+
     \includegraphics[width=0.85\textwidth]{RVAT-ALM-LES_recovery-bar-chart}
-    
+
     \caption{Weighted average momentum recovery terms at $x/D=1$ for the RVAT
-        ALM LES using the Smagorinsky SGS model}.
-    
+        ALM LES using the Smagorinsky SGS model.}
+
     \label{fig:RVAT-ALM-LES-recovery}
 \end{figure}
 
@@ -1071,8 +1149,8 @@ effects corrections, was developed and validated against experimental datasets
 acquired for high and medium-low solidity rotors at scales where the performance
 and near-wake dynamics were essentially Reynolds number independent. When
 coupled to a $k$--$\epsilon$ RANS solver ALM simulations took $O(0.1)$ CPU hours
-per second of simulated time, while when coupled to a Smagorinsky LES model the
-computing time was $O(10)$ hours per second, which represent a four and two
+per second of simulated time, while when coupled with a Smagorinsky LES model
+the computing time was $O(10)$ hours per second, which represent a four and two
 order of magnitude decrease in computational expense versus 3-D blade-resolved
 RANS, respectively.
 
@@ -1112,21 +1190,15 @@ momentum recovery. Therefore, subgrid-scale modeling should be investigated
 further before applying the ALM LES to array analyses.
 
 The ALM provides a more physical flow description compared to momentum and
-vortex models, at a reasonable cost. The ALM has an important advantage over
-vortex methods in that the effort solving the flow field remains reasonably
-constant as a simulation progresses, whereas free-wake vortex methods typically
-increase in computational complexity each time step. This is especially
-important for array simulations, where for a given domain adding many turbines
-will be cheap in the ALM compared to the rapidly increasing number of vortex
-elements generated by each turbine. The ALM also drastically reduces
-computational effort compared to blade-resolved CFD, while maintaining the
-unsteadiness of the wake not resolved by a conventional actuator disk.
+potential flow vortex models, at a reasonable cost. The ALM also drastically
+reduces computational effort compared to blade-resolved CFD, while maintaining
+the unsteadiness of the wake not resolved by a conventional actuator disk.
 Furthermore, its implementation within finite volume CFD provides a convenient
 way to study turbine array siting, since effects like terrain and buildings can
 be included, as can no-slip boundary conditions and boundary layer inflow
-profiles. Since the \textit{turbinesFoam} library developed here uses OpenFOAM's
-modular \texttt{fvOptions} framework, the ALM body force term can be added as-is
-to compressible or multiphase solvers, for exploring more complicated physics.
+profiles. Since the turbinesFoam library developed here uses OpenFOAM's modular
+\texttt{fvOptions} framework, the ALM body force term can be added as-is to
+compressible or multiphase solvers, for exploring more complicated physics.
 These features would be difficult or impossible to implement in a momentum or
 vortex models.
 
@@ -1161,11 +1233,11 @@ numbers are rare, even for the standard symmetrical foils. CFD may play a role
 in generating new data, but models must be rigorously validated, given the
 difficulty in predicting stall and its importance on CFT blade loading.
 
-Profile coefficient databases could be expanded to include more dimensions. For
-example, since the ALM will almost always involve turbulence modeling, the
-effects of local turbulence levels on foil coefficient data could be included,
-since stall delay could affect loading significantly, especially for a
-cross-flow turbine.
+Profile coefficient databases could be expanded to include more dimensions, or
+independent variables. For example, since the ALM will almost always involve
+turbulence modeling, the effects of local turbulence levels on foil coefficient
+data could be included, since stall delay could affect loading significantly,
+especially for a cross-flow turbine.
 
 Dynamic stall model empirical constants should be further investigated for their
 optimal values within the cross-flow turbine context. Though the
@@ -1175,7 +1247,10 @@ indicated by the improvement in predictions for the RM2 at optimal tip speed
 ratio when using a higher angle of attack lag time constant. Machine learning
 techniques could be employed to ``train'' the constants (and/or their
 $\lambda$-dependence) to one turbine's power curve, and they could be validated
-against the other turbine's data.
+against the other turbine's data. A more data-intensive alternative could be to
+develop dynamic cyclic profile coefficient databases---either experimentally or
+numerically---for many reduced frequencies, though this would be a difficult
+task, even for a single profile.
 
 Flow curvature corrections should be examined in more detail, and it may be
 beneficial to develop models to transform entire foil datasets to match their
@@ -1192,11 +1267,11 @@ determine the optimal location for sensing reference velocity used to compute
 tip speed ratio and power coefficient, which can become difficult in sheared or
 otherwise nonuniform flows \cite{Forbush2015}.
 
-Since \textit{turbinesFoam} is compatible with OpenFOAM's volume of fluid (VOF)
-multiphase flow solver \textit{interFoam}, the ALM's effectiveness should be
-assessed for predicting the generation and interaction of turbines with surface
-waves. The ADV positioning system developed in Chapter~\ref{chap:exp-setup}
-could be retrofitted with a wave staff to measure and validate the free surface
+Since turbinesFoam is compatible with OpenFOAM's volume of fluid (VOF)
+multiphase flow solver interFoam, the ALM's effectiveness should be assessed for
+predicting the generation and interaction of turbines with surface waves. The
+ADV positioning system developed in Chapter~\ref{chap:exp-setup} could be
+retrofitted with a wave staff to measure and validate the free surface
 disturbance, which could be key to predicting the effects of placing turbines in
 channels at high blockage ratio.
 

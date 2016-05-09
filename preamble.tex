@@ -64,17 +64,17 @@ urlcolor=black, linkcolor=black]{hyperref}
 \titlespacing*{\section}{0in}{*0}{0.2in}
 
 \makenomenclature
-\RequirePackage{ifthen}
-\renewcommand{\nomgroup}[1]{%
-\ifthenelse{\equal{#1}{A}}{\item[\textbf{Roman Symbols}]}{%
-\ifthenelse{\equal{#1}{G}}{\vspace{0.5cm}\item[\textbf{Greek Symbols}]}{%
-\ifthenelse{\equal{#1}{Z}}{\vspace{0.5cm}\item[\textbf{Abbreviations}]}{%
-\ifthenelse{\equal{#1}{S}}{\vspace{0.5cm}\item[\textbf{Subscripts/Superscripts}]}
-{}
-}% matches Subscripts
-}% matches Abbreviations
-}% matches Greek Symbols
-}% matches Roman Symbols
+%\RequirePackage{ifthen}
+%\renewcommand{\nomgroup}[1]{%
+%\ifthenelse{\equal{#1}{A}}{\item[\textbf{Roman Symbols}]}{%
+%\ifthenelse{\equal{#1}{G}}{\vspace{0.5cm}\item[\textbf{Greek Symbols}]}{%
+%\ifthenelse{\equal{#1}{Z}}{\vspace{0.5cm}\item[\textbf{Abbreviations}]}{%
+%\ifthenelse{\equal{#1}{S}}{\vspace{0.5cm}\item[\textbf{Subscripts/Superscripts}]}
+%{}
+%}% matches Subscripts
+%}% matches Abbreviations
+%}% matches Greek Symbols
+%}% matches Roman Symbols
 
 \hoffset        -0.00in
 \voffset         0.0in
@@ -121,9 +121,10 @@ urlcolor=black, linkcolor=black]{hyperref}
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mylightgray}{rgb}{0.95,0.95,0.95}
 
 \lstset{frame=single,
-    language=C++,
+    % language=C++,
     aboveskip=3mm,
     belowskip=3mm,
     showstringspaces=false,
@@ -134,11 +135,36 @@ urlcolor=black, linkcolor=black]{hyperref}
     keywordstyle=\bfseries\color{blue!40!black},
     commentstyle=\color{gray},
     stringstyle=\color{mygreen},
-    otherkeywords={for,if,else},
+    % otherkeywords={for,if,else},
     breaklines=true,
     breakatwhitespace=true,
     tabsize=4,
     escapeinside={\%*}{*)},
     keepspaces=true,
-    captionpos=b
+    captionpos=b,
+    backgroundcolor=\color{mylightgray}
 }
+
+% Pandoc tightlist
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+%%% Heading spacing fixes
+%%% For some reason this doesn't work inside the class
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+                    {-4ex \@plus -1ex \@minus -.2ex}%
+                    {1ex \@plus .2ex}%
+                    {\normalfont\large\bfseries}}
+
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                       {-3ex \@plus -1ex \@minus -.2ex}%
+                       {0.001ex \@plus .2ex}%
+                       {\normalfont\normalsize\bfseries}}
+
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                          {-3ex \@plus -1ex \@minus -.2ex}%
+                          {0.001ex \@plus .2ex}%
+                          {\normalfont\normalsize\bfseries}}
+\makeatother

@@ -205,7 +205,7 @@ require(
             transition: "linear",
             transitionSpeed: "fast",
             keyboard: {
-                32: null,
+                // 32: null,
                 // 38: "prev", // Up arrow
                 // 40: "next", // Down arrow
             },

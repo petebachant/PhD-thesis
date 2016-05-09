@@ -30,13 +30,23 @@ div.text_cell_render {
 }
 
 .rendered_html h2 {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: #003591;
     line-height: 1.0;
 }
 
 .rendered_html h3 {
     color: #003591;
+    /*font-size: 90%;*/
+    margin-top: 15px;
+    margin-bottom: 6px;
+}
+
+.rendered_html h4 {
+    /*color: #003591;*/
+    font-size: 80%;
+    margin-bottom: 4px;
+    margin-top: 15px;
 }
 
 .rendered_html li {
@@ -119,16 +129,6 @@ h1.title {
     overflow-x: hidden;
 }
 
-.reveal .slide-number {
-    /*position: fixed;
-    display: block;
-    right: 59.5px;
-    bottom: 50px;
-    opacity: 0.5;
-    z-index: 31;*/
-    font-size: 75%;
-}
-
 .reveal pre {
   display: block;
   padding: 5px;
@@ -142,11 +142,54 @@ h1.title {
 .rendered_html .citation {
     font-style: italic;
     color: #808080;
-    font-size: 70%;
+    font-size: 65%;
 }
 
 .reveal .MathJax_Display, .reveal .MathJax_SVG_Display {
-  padding-top: 1em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.reveal section img {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.rendered_html h2:first-child {
+    margin-top: 0em; /* .636 em */
+}
+
+.rendered_html *+p {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.reveal p {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+
+.rendered_html *+ol, .rendered_html *+ul {
+    margin-top: 10px; /* 1em */
+    margin-bottom: 10px;
+}
+
+.reveal .slides > section.present, .reveal .slides > section > section.present {
+    display: block;
+    z-index: 11;
+    opacity: 1;
+    padding: 0px;
+}
+
+.reveal .slide-number {
+    right: 28px;
+    font-size: 75%;
+}
+
+.reveal .controls {
+    right: 1px;
+    bottom: 25px;
 }
 
 figure {

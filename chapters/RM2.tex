@@ -21,6 +21,8 @@ studies; resource site information used to design each RM device; and references
 to physical modeling data sets that can be used to validate numerical modeling
 design and analysis tools.
 
+\nomenclature{DOE}{US Department of Energy.}
+
 Reference Model 2 (RM2) is a dual-rotor, vertical-axis cross-flow hydrokinetic
 (river) turbine that was designed to operate in a reach of the lower Mississippi
 River near Baton Rouge, Louisiana \cite{Barone2011, Neary2011}. The rotor has
@@ -28,7 +30,7 @@ three tapered blades and a relatively low solidity $Nc/(\pi D)$ or
 chord-to-radius ratio $c/R \approx 0.1$. A preliminary analysis with Sandia's
 CACTUS vortex line numerical model \cite{Murray2011} predicted an individual
 rotor's full-scale performance coefficient to be $C_P=0.47$ at 1 m/s flow speed
-and a tip speed ratio $\lambda \equiv \frac{\omega R}{U_\infty} = 3.15$
+and a tip speed ratio $\lambda = \frac{\omega R}{U_\infty} = 3.15$
 \cite{Barone2011}, where $\omega$ and $R$ are the rotor's angular velocity and
 radius, respectively. Note that the RM2 rotor solidity would be considered
 moderate to high for a wind turbine, whose $c/R$ values typically range from
@@ -52,12 +54,12 @@ significant on the 2 m Sandia Research Darrieus turbine in wind tunnel testing
 \cite{Blackwell1976}: The maximum power coefficient, $C_{P_{\max}}$, increased
 with Reynolds number, $Re_c=\lambda U_\infty c / \nu$ (based on blade chord
 rather than diameter, though these are approximately proportional since optimal
-tip speed ratio correlates inversely with solitidy and therefore chord length),
+tip speed ratio correlates inversely with solidity and therefore chord length),
 along with a shift of the location of $C_{P_{\max}}$ toward lower tip speed
 ratios due to delayed blade stall. The effects of Reynolds number were quite
 dramatic over a relatively small range of $Re_c \approx 1.1 \times 10^5$--$2.9
 \times 10^5$. More recently, Bachant and Wosnik \cite{Bachant2014,
-    Bachant2016-RVAT-Re-dep} showed that performance and near-wake characteristics
+Bachant2016-RVAT-Re-dep} showed that performance and near-wake characteristics
 of a high solidity cross-flow turbine become Reynolds number independent at
 $Re_D \approx 10^6$ or $Re_c \approx 2 \times 10^5$.
 
@@ -108,27 +110,27 @@ also been measured.
 
 \begin{table}
     \centering
-    
+
     \begin{tabular}{c|c|c|c|c|c}
-        Name & Rotor type & $N_\mathrm{b}$ & $c/R$ & $Re_D$ & Used in \\ 
+        Name & Rotor type & $N_\mathrm{b}$ & $c/R$ & $Re_D$ & Used in \\
         \hline
-        Sandia 2 m \cite{Blackwell1976} &  Darrieus  & 2--3 & 0.06--0.09 & $\sim 10^6$ & \cite{Roh2013,Bedon2014} \\ 
-        Sandia 5 m \cite{Sheldahl1977} &  Darrieus  & 3 & 0.08 & $\sim 10^6$ & \cite{Antheaume2008,Bedon2014} \\ 
-        Sandia 17 m \cite{Worstell1978} & Darrieus  & 2 & 0.06 & $\sim 10^7$ & \cite{Para1988,Orlandi2015,Bedon2014} \\ 
-        Sandia 34 m \cite{Ashwill1992} & Darrieus  & 2 & 0.05 & $\sim 10^7$ & \cite{Liu1992,Murray2011,Bedon2014}  \\ 
-        Strickland et al. \cite{Strickland1981} & H & 1--3 & 0.15 & $\sim 10^5$ & \cite{Ponta2001,Scheurich2011b} \\ 
-        Laneville and Vitecoq \cite{Laneville1986} & H & 2 & 0.13 & $\sim 10^6$ & \cite{Amet2009} \\ 
-        Howell et al. \cite{Howell2010} & H & 2--3 & 0.33 & $\sim 10^5$ & \cite{Joo2015} \\ 
-        Mertens \cite{Mertens2003} & H & 2 & 0.21 & $\sim 10^5$ & \cite{Orlandi2015} \\ 
-        VAWT 850 \cite{Mays1990} & Tapered H & 2 & 0.05 & $\sim 10^7$ & \cite{Murray2011} \\ 
+        Sandia 2 m \cite{Blackwell1976} &  Darrieus  & 2--3 & 0.06--0.09 & $\sim 10^6$ & \cite{Roh2013,Bedon2014} \\
+        Sandia 5 m \cite{Sheldahl1977} &  Darrieus  & 3 & 0.08 & $\sim 10^6$ & \cite{Antheaume2008,Bedon2014} \\
+        Sandia 17 m \cite{Worstell1978} & Darrieus  & 2 & 0.06 & $\sim 10^7$ & \cite{Para1988,Orlandi2015,Bedon2014} \\
+        Sandia 34 m \cite{Ashwill1992} & Darrieus  & 2 & 0.05 & $\sim 10^7$ & \cite{Liu1992,Murray2011,Bedon2014}  \\
+        Strickland et al. \cite{Strickland1981} & H & 1--3 & 0.15 & $\sim 10^5$ & \cite{Ponta2001,Scheurich2011b} \\
+        Laneville and Vitecoq \cite{Laneville1986} & H & 2 & 0.13 & $\sim 10^6$ & \cite{Amet2009} \\
+        Howell et al. \cite{Howell2010} & H & 2--3 & 0.33 & $\sim 10^5$ & \cite{Joo2015} \\
+        Mertens \cite{Mertens2003} & H & 2 & 0.21 & $\sim 10^5$ & \cite{Orlandi2015} \\
+        VAWT 850 \cite{Mays1990} & Tapered H & 2 & 0.05 & $\sim 10^7$ & \cite{Murray2011} \\
         UNH-RVAT \cite{Bachant2014-RVAT-baseline} & H & 3 & 0.28 & $\sim 10^6$ & \cite{Michelen2014} \\
-        RM2 (present) & Tapered H & 3 & 0.07--0.12 & $\sim 10^6$ & 
-    \end{tabular}     
-    
+        RM2 (present) & Tapered H & 3 & 0.07--0.12 & $\sim 10^6$ &
+    \end{tabular}
+
     \caption{Selected measured performance data and its usage for numerical
         model validation. Note that individual blade forces were measured in the
         Strickland et al. and Laneville and Vitecoq experiments.}
-    
+
     \label{tab:validation-data}
 \end{table}
 
@@ -204,7 +206,8 @@ the experimental repository \cite{Bachant2016-RM2-data}.
     \label{tab:rm2-geom}
 \end{table}
 
-The rotor was 1.075 m in diameter and 0.8067 m tall, with blade chords that
+The rotor was 1.075 m in diameter and 0.8067 m tall, presenting a 10\% blockage
+in the tow tank cross-section based on frontal area. The blade chord lengths
 taper from 0.067 m at the roots, or half-span, to 0.04 m at the tips, varying
 the chord-to-radius ratio $c/R$ from 0.12 to 0.07 (0.1 average). The rotor was
 therefore approximately at the threshold between high and low solidity
@@ -224,10 +227,10 @@ the strut covers is shown in Figure~\ref{fig:covers}.
     \centering
 
     \includegraphics[width=0.95\textwidth]{RM2-strut-covers}
-    
+
     \caption{A drawing of the high drag strut cover configuration with and
         without blades.}
-    
+
     \label{fig:covers}
 \end{figure}
 
@@ -242,7 +245,7 @@ matrix ``sections,'' in which typically a single independent variable was
 varied. Test matrix section names and descriptions are provided in the
 \texttt{README.md} file of the experimental data and code repository
 \cite{Bachant2016-RM2-data}. Tow speed and their corresponding turbine diameter
-and blade chord Reynolds numbers are presented in Table~\ref{tab:re}.
+and blade chord Reynolds numbers are presented in Table~\ref{tab:rm2-re}.
 
 \begin{table}
     \centering
@@ -255,12 +258,12 @@ and blade chord Reynolds numbers are presented in Table~\ref{tab:re}.
         1.0 & $1.1 \times 10^6$ & $1.2 \times 10^5$ & $2.1 \times 10^5$ & $1.7 \times 10^5$ \\
         1.2 & $1.3 \times 10^6$ & $1.5 \times 10^5$ & $2.5 \times 10^5$ & $2.0 \times 10^5$ \\
     \end{tabular}
-    
+
     \caption{Turbine diameter and approximate average blade chord Reynolds
-        numbers $Re_c \equiv \lambda U_\infty c / \nu$ at blade tip, root, and
+        numbers $Re_c = \lambda U_\infty c / \nu$ at blade tip, root, and
         mid-span, corresponding to various tow speeds at $\lambda=3.1$.}
-    
-    \label{tab:re}
+
+    \label{tab:rm2-re}
 \end{table}
 
 Wake measurements were all performed at 1 m downstream, which corresponds to
@@ -272,10 +275,10 @@ the experimental database.
     \centering
 
     \includegraphics[width=\textwidth]{RM2-coord-sys}
-    
+
     \caption{RM2 wake measurement coordinate system and cross-stream/vertical
         coordinates. All dimensions are in meters.}
-    
+
     \label{fig:coordinates}
 \end{figure}
 
@@ -311,13 +314,13 @@ kg/m\textsuperscript{3}) and $A$ is the turbine frontal area $DH$.
 \subsection{Performance}
 
 Mean rotor power coefficients for multiple Reynolds numbers are plotted versus
-tip speed ratio in Figure~\ref{fig:cp-curves}. In general, $C_P$ increases with
-$Re$, along with a reduction in the optimal tip speed ratio, due to the tendency
-of foils to stall at higher angles of attack at higher $Re$, and the higher
-angle of attack ranges seen by the blades at lower $\lambda$. These effects
-diminish with increasing $Re$, which is expected as the blade boundary layers
-transition to turbulence closer to the leading edge \cite{Lissaman1983,
-    McMasters1980, Bachant2016-RVAT-Re-dep}, which helps flow remain attached longer
+tip speed ratio in Figure~\ref{fig:rm2-cp-curves}. In general, $C_P$ increases
+with $Re$, along with a reduction in the optimal tip speed ratio, due to the
+tendency of foils to stall at higher angles of attack at higher $Re$, and the
+higher angle of attack ranges seen by the blades at lower $\lambda$. These
+effects diminish with increasing $Re$, which is expected as the blade boundary
+layers transition to turbulence closer to the leading edge \cite{Lissaman1983,
+McMasters1980, Bachant2016-RVAT-Re-dep}, which helps flow remain attached longer
 as it moves against the adverse pressure gradient on the suction side of the
 foil. For the experiment reported here, a maximum power coefficient $C_P=0.37$
 was reached at $Re_D=1.3 \times 10^6$. Note how at lower tip speed ratios and
@@ -329,32 +332,32 @@ negative torque to the rotor.
     \centering
 
     \includegraphics[width=0.75\textwidth]{RM2-tow-tank_cp_curves}
-    
+
     \caption{Mean rotor power coefficient plotted versus mean tip speed ratio
         for multiple Reynolds numbers.}
-    
-    \label{fig:cp-curves}
+
+    \label{fig:rm2-cp-curves}
 \end{figure}
 
 Mean rotor drag coefficients are plotted versus tip speed ratio in
-Figure~\ref{fig:cd-curves}. These $C_D$ curves show little difference compared to
-the power coefficient curves, which is most noticeable at low $\lambda$ and low
-$Re$. The relative similarity could be attributed to the effects of stall, where
-the lift-to-drag ratio on the blades may drop, decreasing rotor torque, though
-the total resultant force due to high blade drag retains a similar component in
-the streamwise direction. When operating at maximum power coefficient,
-$\lambda_0=3.1$, and $Re_D=1.3 \times 10^6$, a rotor drag coefficient $C_D=0.84$
-was measured.
+Figure~\ref{fig:rm2-cd-curves}. These $C_D$ curves show little difference
+compared to the power coefficient curves, which is most noticeable at low
+$\lambda$ and low $Re$. The relative similarity could be attributed to the
+effects of stall, where the lift-to-drag ratio on the blades may drop,
+decreasing rotor torque, though the total resultant force due to high blade drag
+retains a similar component in the streamwise direction. When operating at
+maximum power coefficient, $\lambda_0=3.1$, and $Re_D=1.3 \times 10^6$, a rotor
+drag coefficient $C_D=0.84$ was measured.
 
 \begin{figure}
     \centering
 
     \includegraphics[width=0.75\textwidth]{RM2-tow-tank_cd_curves}
-    
+
     \caption{Mean rotor drag coefficient plotted versus mean tip speed ratio for
         multiple Reynolds numbers.}
-    
-    \label{fig:cd-curves}
+
+    \label{fig:rm2-cd-curves}
 \end{figure}
 
 The power coefficient curves do not collapse exactly onto each other, indicating
@@ -366,10 +369,10 @@ coefficient curves nearly collapse onto each other for $Re_D \ge 0.6 \times
 10^6$.
 
 The effects of Reynolds number on the power and drag coefficients at
-$\lambda=3.1$ are shown in Figure~\ref{fig:perf-re-dep}. The rotor drag
+$\lambda=3.1$ are shown in Figure~\ref{fig:rm2-perf-re-dep}. The rotor drag
 coefficient $C_D$ became more or less Reynolds number independent for $Re_D \ge
 0.6 \times 10^6$. The power coefficient of the turbine increased dramatically
-below $Re_D = 1 \times 10^6$ or $Re_c \equiv \lambda U_\infty c / \nu \approx 2
+below $Re_D = 1 \times 10^6$ or $Re_c = \lambda U_\infty c / \nu \approx 2
 \times 10^5$, beyond which there appears to be a small, linear, positive trend.
 At the lowest Reynolds number, mean power coefficient even dropped below zero,
 which is consistent with the low performance of the 1:15 scale RM2 physical
@@ -395,11 +398,11 @@ lift-to-drag ratio do not converge as strongly \cite{Bachant2016-RVAT-Re-dep}.
     \centering
 
     \includegraphics[width=0.85\textwidth]{RM2-tow-tank_perf_re_dep}
-    
+
     \caption{Power and drag coefficient at $\lambda=3.1$ plotted versus turbine
         diameter and approximate average blade root chord Reynolds number.}
-    
-    \label{fig:perf-re-dep}
+
+    \label{fig:rm2-perf-re-dep}
 \end{figure}
 
 
@@ -419,30 +422,30 @@ the cylindrical and NACA 0021 strut cases.
     \centering
 
     \includegraphics[width=0.9\textwidth]{RM2-tow-tank_perf_covers}
-    
+
     \caption{Turbine performance and rotor drag coefficient curves with both
         NACA 0021 and cylindrical struts.}
-    
+
     \label{fig:perf-covers}
 \end{figure}
 
 Measurements for the power coefficient contributions of the strut drag losses
 are presented in Figure~\ref{fig:no-blades} for NACA 0021 and cylindrical
 struts---both in towed and stationary conditions. These are computed in the same
-fashion as the curves in Figure~\ref{fig:cp-curves}, but with the rotor blades
-removed. We see that strut drag losses increase with tip speed ratio to the
-power 2--3, which makes streamlined struts much more important for low solidity
-turbines, given the inverse correlation between solidity and $\lambda_0$
-\cite{Templin1974}.
+fashion as the curves in Figure~\ref{fig:rm2-cp-curves}, but with the rotor
+blades removed. We see that strut drag losses increase with tip speed ratio to
+the power 2--3, which makes streamlined struts much more important for low
+solidity turbines, given the inverse correlation between solidity and
+$\lambda_0$ \cite{Templin1974}.
 
 \begin{figure}
     \centering
 
     \includegraphics[width=0.9\textwidth]{RM2-tow-tank_no_blades_all}
-    
+
     \caption{Measurements of the strut drag losses for (a) NACA 0021 and (b)
         cylindrical struts, both stationary and towed.}
-    
+
     \label{fig:no-blades}
 \end{figure}
 
@@ -464,8 +467,8 @@ high/low drag struts and with/without blades.
 
 The mean velocity field at the chosen optimal tip speed ratio $\lambda_0=3.1$, 1
 m downstream ($x/D=0.93$) from the rotor axis is plotted in
-Figure~\ref{fig:meancontquiv}. The mean streamwise velocity deficit is markedly
-more symmetric than that of the higher solidity UNH-RVAT, shown in
+Figure~\ref{fig:rm2-meancontquiv}. The mean streamwise velocity deficit is
+markedly more symmetric than that of the higher solidity UNH-RVAT, shown in
 Figure~\ref{fig:RVAT-baseline-meancontquiv}, with the RM2 inducing lower
 acceleration around the turbine due to the lower rotor drag coefficient and a
 slightly lower blockage ratio \cite{Bachant2015-JoT}. Tip vortex shedding is
@@ -476,17 +479,17 @@ length and tapered blades.
     \centering
 
     \includegraphics[width=0.9\textwidth]{RM2-tow-tank_meancontquiv}
-    
+
     \caption{RM2 near-wake mean velocity field (looking upstream) at 1 m
-        downstream ($x/D=0.93$), $U_\infty=1.0$ m/s, and $\lambda=3.1$. Refer to
-        Figure~\ref{fig:coordinates} for turbine axis orientation. Solid dark gray
-        lines indicate turbine frontal area.}
-    
-    \label{fig:meancontquiv}
+    downstream ($x/D=0.93$), $U_\infty=1.0$ m/s, and $\lambda=3.1$. Refer to
+    Figure~\ref{fig:coordinates} for turbine axis orientation. Solid dark gray
+    lines indicate turbine frontal area.}
+
+    \label{fig:rm2-meancontquiv}
 \end{figure}
 
-Figure~\ref{fig:kcont} shows the turbulence kinetic energy in the turbine wake.
-We mainly see unsteadiness in the flow generated by the blade tip vortex
+Figure~\ref{fig:rm2-kcont} shows the turbulence kinetic energy in the turbine
+wake. We mainly see unsteadiness in the flow generated by the blade tip vortex
 shedding (the horizontal band around $z/H=0.5$). Compared with the UNH-RVAT,
 shown in Figure~\ref{fig:RVAT-baseline-kcont}, turbulence generation is lower
 overall, without the intense vertical band around $y/R=-1$, which indicates that
@@ -497,12 +500,12 @@ optimal tip speed ratio.
     \centering
 
     \includegraphics[width=0.9\textwidth]{RM2-tow-tank_k_contours}
-    
+
     \caption{Turbulence kinetic energy in the RM2's near-wake (looking upstream)
         at 1 m downstream ($x/D=0.93$), $U_\infty=1.0$ m/s, and $\lambda=3.1$. Solid
         black lines indicate turbine frontal area.}
-    
-    \label{fig:kcont}
+
+    \label{fig:rm2-kcont}
 \end{figure}
 
 As described in Chapter~\ref{chap:RVAT-baseline}, analysis of the near-wake of
@@ -524,32 +527,32 @@ dissipation due to the mean velocity gradient (Mean diss.).
 Derivatives were computed with a second order central difference scheme for
 interior points, and a second order inward-facing scheme for the edges,
 following the methodology in \cite{Bachant2015-JoT}. Weighted averages for these
-calculations are shown in Figure~\ref{fig:Ktransport}. Due to the weaker blade
-vortex shedding, transport due to vertical advection at this point in the wake
-was approximately 3 times lower than the higher solidity UNH-RVAT. Note that
-direct comparison is somewhat invalid, since the total measurement plane area
-was about 5\% lower for this experiment. However, the differences observed are
-larger than the area ratio between the two experiments. We also see relatively
-lower levels of cross-stream turbulent transport due to the lack of blade stall
-vortex shedding. These results may have interesting implications regarding the
-application of turbines with lower power coefficient to possibly improve overall
-array performance through enhanced transport of kinetic energy from the free
-stream, though evaluating these trade-offs will require a detailed analysis of
-the downstream evolution and turbine--wake interaction.
+calculations are shown in Figure~\ref{fig:rm2-Ktransport}. Due to the weaker
+blade vortex shedding, transport due to vertical advection at this point in the
+wake was approximately 3 times lower than the higher solidity UNH-RVAT. Note
+that direct comparison is somewhat invalid, since the total measurement plane
+area was about 5\% lower for this experiment. However, the differences observed
+are larger than the area ratio between the two experiments. We also see
+relatively lower levels of cross-stream turbulent transport due to the lack of
+blade stall vortex shedding. These results may have interesting implications
+regarding the application of turbines with lower power coefficient to possibly
+improve overall array performance through enhanced transport of kinetic energy
+from the free stream, though evaluating these trade-offs will require a detailed
+analysis of the downstream evolution and turbine--wake interaction.
 
 \begin{figure}
     \centering
 
     \includegraphics[width=0.9\textwidth]{RM2-tow-tank_K_trans_bar_graph}
-    
+
     \caption{Weighted average estimates for terms contributing to streamwise
         recovery of mean kinetic energy, multiplied by two due to implied symmetry.}
-    
-    \label{fig:Ktransport}
+
+    \label{fig:rm2-Ktransport}
 \end{figure}
 
 
-\subsection{Conclusions}
+\section{Conclusions}
 
 The performance and near-wake velocity of a 1:6 scale DOE Reference Model 2
 cross-flow turbine were measured in a towing tank. A maximum power coefficient
@@ -601,9 +604,10 @@ reanalysis of the measurements presented here.
 
 \section{Acknowledgments}
 
-This study was supported by the Department of Energy (DOE), Office of Energy
-Efficiency and Renewable Energy (EERE), Wind and Water Power Technologies Office
-(WWPTO). Sandia National Laboratories is a multi-program laboratory managed and
-operated by Sandia Corporation, a wholly owned subsidiary of Lockheed Martin
-Corporation, for the U.S. Department of Energy's National Nuclear Security
-Administration under contract DE-AC04-94AL85000.
+This study was carried out in collaboration with Sandia National Laboratories
+and was supported by the Department of Energy (DOE), Office of Energy Efficiency
+and Renewable Energy (EERE), Wind and Water Power Technologies Office (WWPTO).
+Sandia National Laboratories is a multi-program laboratory managed and operated
+by Sandia Corporation, a wholly owned subsidiary of Lockheed Martin Corporation,
+for the U.S. Department of Energy's National Nuclear Security Administration
+under contract DE-AC04-94AL85000.

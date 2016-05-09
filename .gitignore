@@ -109,7 +109,6 @@ sympy-plots-for-*.tex/
 *.xdy
 
 thesis.pdf
-figures
 *.pdf
 
 # Nomenclature
@@ -118,5 +117,9 @@ figures
 .ipynb_checkpoints
 archive
 presentation.slides.html
-index.html
-videos
+figures/SolidWorks
+
+appendices/test-bed-wiki-operation.tex
+appendices/rm2-wiki-home.tex
+figures/downloaded
+appendices/TurbineDAQ.tex
