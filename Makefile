@@ -1,10 +1,12 @@
 # Makefile for thesis text, slides, etc.
 
+## thesis:          Use `latemk` to build PDF of the thesis
 .PHONY: thesis
 thesis: appendices
 	latexmk -pdf thesis.tex
 
 
+## view:            View `thesis.pdf`
 .PHONY: view
 view: thesis
 ifeq ($(shell uname -s),MINGW64_NT-10.0)
@@ -14,11 +16,13 @@ else
 endif
 
 
+## clean:           Use `latexmk` to clean all files from `thesis.tex`
 .PHONY: clean
 clean:
 	latexmk -c thesis.tex
 
 
+## slides:          Convert slides to HTML and copy to `index.html`
 .PHONY: slides
 slides:
 	jupyter nbconvert presentation.ipynb --to slides --config config/slides_config.py
@@ -26,6 +30,7 @@ slides:
 	cp presentation.slides.html index.html
 
 
+## serve:           Convert slides to HTML and view locally in browser
 .PHONY: serve
 serve:
 ifeq ($(shell uname -s),Linux)
@@ -35,6 +40,7 @@ else
 endif
 
 
+## notebook:        Open up slides with Jupyter Notebook
 .PHONY: notebook
 notebook:
 ifeq ($(shell uname -s),Linux)
@@ -44,26 +50,31 @@ else
 endif
 
 
+## png-figs:        Convert PDF figures to PNG
 .PHONY: png-figs
 png-figs:
 	python scripts/convfigs.py
 
 
+## all-png-figs:    Convert PDF figures to PNG, overwriting all
 .PHONY: all-png-figs
 all-png-figs:
 	python scripts/convfigs.py --overwrite
 
 
+## excerpt:         Create excerpt PDF with title page and abstract
 .PHONY: excerpt
 excerpt: thesis
 	latexmk -pdf excerpt.tex
 
 
+## signatures:      Make committee signatures page
 .PHONY: signatures
 signatures:
 	latexmk -pdf signatures.tex
 
 
+## wikis:           Pull latest versions of wiki repos
 .PHONY: wikis
 wikis:
 	# Update wiki submodules
@@ -72,6 +83,7 @@ wikis:
 	cd appendices/TurbineDAQ.wiki && git pull origin master
 
 
+## appendices:      Convert wiki Markdown to LaTeX and fix it up
 .PHONY: appendices
 appendices: appendices/turbine-test-bed.wiki/Operation.md appendices/RM2-tow-tank.wiki/Home.md appendices/TurbineDAQ.wiki/Home.md
 	# Build LaTeX from Markdown
@@ -85,6 +97,12 @@ appendices: appendices/turbine-test-bed.wiki/Operation.md appendices/RM2-tow-tan
 	python scripts/fix-appendix-latex.py
 
 
+## bib:             Copy most up-to-date BibTeX database to this directory
 .PHONY: bib
 bib:
 	python getbib.py
+
+
+.PHONY: help
+help: Makefile
+	@sed -n "s/^##//p" $<
