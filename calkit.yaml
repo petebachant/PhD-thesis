@@ -8,3 +8,10 @@ questions:
   - How well do modern computational fluid dynamics (CFD) methods predict
     the performance and wake characteristics of these (relatively high-solidity)
     turbines?
+publications:
+  - path: index.html
+    title: Defense slides
+    description: >
+      These are the slides from my dissertation defense.
+showcase:
+  - publication: index.html
