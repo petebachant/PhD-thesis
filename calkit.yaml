@@ -1,3 +1,5 @@
 questions:
   - Why to cross-flow (vertical-axis) turbine wakes recover more quickly
     than axial-flow (horizontal-axis) turbine wakes?
+  - What is a reasonable minimum threshold Reynolds number for physical
+    models such that they will be useful for predicting full-scale performance?
