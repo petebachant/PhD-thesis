@@ -9,6 +9,9 @@ questions:
     the performance and wake characteristics of these (relatively high-solidity)
     turbines?
 publications:
+  - path: thesis.pdf
+    kind: phd-thesis
+    title: Physical and numerical modeling of cross-flow turbines
   - path: index.html
     url: https://petebachant.me/PhD-thesis
     kind: presentation
