@@ -4,3 +4,6 @@
 ['remote "calkit"']
     url = https://api.calkit.io/projects/petebachant/phd-thesis/dvc
     auth = custom
+['remote "calkit-local"']
+    url = http://api.localhost/projects/petebachant/phd-thesis/dvc
+    auth = custom
