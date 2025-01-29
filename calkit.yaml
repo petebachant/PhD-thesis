@@ -3,3 +3,6 @@ questions:
     than axial-flow (horizontal-axis) turbine wakes?
   - What is a reasonable minimum threshold Reynolds number for physical
     models such that they will be useful for predicting full-scale performance?
+  - How well do modern computational fluid dynamics (CFD) methods predict
+    the performance and wake characteristics of these (relatively high-solidity)
+    turbines?
