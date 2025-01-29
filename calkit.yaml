@@ -10,6 +10,7 @@ questions:
     turbines?
 publications:
   - path: index.html
+    kind: presentation
     title: Defense slides
     description: >
       These are the slides from my dissertation defense.
