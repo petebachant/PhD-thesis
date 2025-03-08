@@ -18,5 +18,7 @@ publications:
     title: Defense slides
     description: >
       These are the slides from my dissertation defense.
+references:
+  - path: library.bib
 showcase:
   - publication: index.html
