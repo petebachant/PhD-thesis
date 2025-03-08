@@ -23,6 +23,9 @@ software:
   - path: software/turbinesFoam
     kind: library
     title: turbinesFoam
+  - path: software/turbinedaq
+    kind: app
+    title: TurbineDAQ
 references:
   - path: library.bib
 showcase:
