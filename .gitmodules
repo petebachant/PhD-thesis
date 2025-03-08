@@ -10,3 +10,6 @@
 [submodule "appendices/TurbineDAQ.wiki"]
 	path = appendices/TurbineDAQ.wiki
 	url = https://github.com/petebachant/TurbineDAQ.wiki.git
+[submodule "software/turbinesFoam"]
+	path = software/turbinesFoam
+	url = https://github.com/turbinesFoam/turbinesFoam.git

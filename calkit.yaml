@@ -19,6 +19,10 @@ publications:
     title: Defense slides
     description: >
       These are the slides from my dissertation defense.
+software:
+  - path: software/turbinesFoam
+    kind: library
+    title: turbinesFoam
 references:
   - path: library.bib
 showcase:
