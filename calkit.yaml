@@ -1,5 +1,6 @@
 owner: petebachant
 name: phd-thesis
+title: Physical and numerical modeling of cross-flow turbines
 questions:
   - Why to cross-flow (vertical-axis) turbine wakes recover more quickly
     than axial-flow (horizontal-axis) turbine wakes?
@@ -18,5 +19,24 @@ publications:
     title: Defense slides
     description: >
       These are the slides from my dissertation defense.
+software:
+  - path: software/turbinesFoam
+    kind: library
+    title: turbinesFoam
+  - path: software/turbinedaq
+    kind: app
+    title: TurbineDAQ
+references:
+  - path: library.bib
 showcase:
   - publication: index.html
+environments:
+  pandoc-1.17:
+    kind: docker
+    image: yoshitakehamano/pandoc:1.17.2
+    platform: linux/amd64
+  py-wget:
+    kind: uv-venv
+    prefix: .venvs/py-wget
+    path: environments/py-wget.txt
+    python: "3.8"

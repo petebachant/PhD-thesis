@@ -87,14 +87,14 @@ wikis:
 .PHONY: appendices
 appendices: appendices/turbine-test-bed.wiki/Operation.md appendices/RM2-tow-tank.wiki/Home.md appendices/TurbineDAQ.wiki/Home.md
 	# Build LaTeX from Markdown
-	pandoc appendices/turbine-test-bed.wiki/Operation.md -o appendices/test-bed-wiki-operation.tex --chapters --listings --wrap=preserve
+	calkit xenv -n pandoc-1.17 -- pandoc appendices/turbine-test-bed.wiki/Operation.md -o appendices/test-bed-wiki-operation.tex --chapters --listings --wrap=preserve
 
-	pandoc appendices/RM2-tow-tank.wiki/Home.md -o appendices/rm2-wiki-home.tex --chapters --listings --wrap=preserve
+	calkit xenv -n pandoc-1.17 -- pandoc appendices/RM2-tow-tank.wiki/Home.md -o appendices/rm2-wiki-home.tex --chapters --listings --wrap=preserve
 
-	pandoc appendices/TurbineDAQ.wiki/Home.md -o appendices/turbinedaq.tex --listings --wrap=preserve
+	calkit xenv -n pandoc-1.17 -- pandoc appendices/TurbineDAQ.wiki/Home.md -o appendices/turbinedaq.tex --listings --wrap=preserve
 
 	# Clean up automatically generated LaTeX
-	python scripts/fix-appendix-latex.py
+	calkit xenv -n py-wget -- python scripts/fix-appendix-latex.py
 
 
 ## bib:             Copy most up-to-date BibTeX database to this directory
