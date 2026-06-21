@@ -20,3 +20,11 @@ publications:
       These are the slides from my dissertation defense.
 showcase:
   - publication: index.html
+releases:
+  final:
+    kind: project
+    path: .
+    publisher: github
+    url: https://github.com/petebachant/PhD-thesis/releases/tag/final
+    date: '2017-07-22'
+    title: Final
